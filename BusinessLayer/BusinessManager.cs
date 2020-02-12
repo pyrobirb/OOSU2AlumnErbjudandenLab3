@@ -7,7 +7,7 @@ using DataLayer;
 
 namespace BusinessLayer
 {
-    public class BusinessLayer
+    public class BusinessManager
     {
 
     }
