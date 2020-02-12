@@ -118,9 +118,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BusinessEntites\BusinessEntites.csproj">
+    <ProjectReference Include="..\BusinessEntites\BusinessEntities.csproj">
       <Project>{796eaf58-09a0-4573-be2a-8c723e6ff1a9}</Project>
-      <Name>BusinessEntites</Name>
+      <Name>BusinessEntities</Name>
     </ProjectReference>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
       <Project>{3e1ef99b-88ef-4fe8-8538-e43f74960355}</Project>

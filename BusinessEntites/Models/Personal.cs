@@ -8,5 +8,7 @@ namespace BusinessEntites.Models
 {
     public class Personal
     {
+        public string Användarnamn { get; set; }
+        public string Lösenord { get; set; }
     }
 }
