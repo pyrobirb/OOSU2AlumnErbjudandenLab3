@@ -8,14 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
+using DataLayer.Contexts;
+using DataLayer;
 
 namespace PresentationLayer
 {
     public partial class LoginForm : Form
     {
+        InfoutskickContext infoutskickContext = new InfoutskickContext();
+        
+
         public LoginForm()
         {
             InitializeComponent();
+            infoutskickContext.Database.EnsureDeleted();
+            infoutskickContext.Database.EnsureCreated();
         }
 
         private void labelCreateAccount_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ namespace DataLayer.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server = localhost\SQLEXPRESS; Database = master; Trusted_Connection = True;");
+            optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=AlumnErbjudanden;Trusted_Connection=True;");
             base.OnConfiguring(optionsBuilder);
         }
     }
