@@ -8,5 +8,7 @@ namespace BusinessEntites.Models
 {
     public class Informationsutskick
     {
+        public DateTime UtskickDatum { get; set; }
+        public List<Alumn> Utskickslista { get; set; }
     }
 }

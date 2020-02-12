@@ -48,19 +48,5 @@
     <Compile Include="Models\Personal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
-      <Project>{3e1ef99b-88ef-4fe8-8538-e43f74960355}</Project>
-      <Name>BusinessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
-      <Project>{0619d5ae-08a0-4071-99da-dc91e8ee3992}</Project>
-      <Name>DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PresentationLayer\PresentationLayer.csproj">
-      <Project>{b31c20c2-ce54-474f-95ed-68e5d161eed5}</Project>
-      <Name>PresentationLayer</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
