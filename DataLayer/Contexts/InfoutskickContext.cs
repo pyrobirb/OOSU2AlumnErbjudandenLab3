@@ -15,7 +15,7 @@ namespace DataLayer.Contexts
             optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=AlumnErbjudanden;Trusted_Connection=True;MultipleActiveResultSets=true;Integrated Security=True;");
             base.OnConfiguring(optionsBuilder);
         }
-
+        
 
         public DbSet<Aktivitet> Aktiviteter { get; set; }
         public DbSet<Alumn> Alumner { get; set; }

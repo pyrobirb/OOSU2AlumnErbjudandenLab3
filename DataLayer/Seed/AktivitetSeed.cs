@@ -14,6 +14,7 @@ namespace DataLayer.Seed
         {
             infoutskickContext.Aktiviteter.Add(new Aktivitet()
             {
+                AktivitetsID = "001",
 
 
             });
