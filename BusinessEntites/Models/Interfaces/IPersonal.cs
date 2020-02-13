@@ -8,6 +8,9 @@ namespace BusinessEntites.Models.Interfaces
 {
     public interface IPersonal
     {
+        string Förnamn { get; set; }
+        string Efternamn { get; set; }
+        string PersonalID { get; set; }
         string Användarnamn { get; set; }
         string Lösenord { get; set; }
     }

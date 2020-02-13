@@ -9,7 +9,8 @@ using BusinessEntites.Models.Interfaces;
 namespace BusinessEntites.Models
 {
     public class Alumn : IAlumn
-    {   [Key]
+    {   
+        [Key]
         public string AnvändarID { get; set; }
         public string Användarnamn { get; set; }
         public string Lösenord { get; set; }
