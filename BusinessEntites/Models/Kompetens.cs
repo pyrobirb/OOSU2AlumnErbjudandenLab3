@@ -7,9 +7,9 @@ using BusinessEntites.Models.Interfaces;
 
 namespace BusinessEntites.Models
 {
-    public class Program : IProgram
+    public class Kompetens : IKompetens
     {
-        public string ProgramID { get; set; }
-        public string Namn { get; set; }
+        public string KompetensID { get; set; }
+        public string Beskrivning { get; set; }
     }
 }

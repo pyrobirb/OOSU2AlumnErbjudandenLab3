@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessEntites.Models.Interfaces;
 
 namespace BusinessEntites.Models
 {
-    public class Aktivitet
-    {
+    public class Aktivitet : IAktivitet
+    {   [Key]
         public string AktivitetsID { get; set; }
         public string Titel { get; set; }
         public string Kontaktperson { get; set; }
