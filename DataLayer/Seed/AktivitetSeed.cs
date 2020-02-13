@@ -10,14 +10,14 @@ namespace DataLayer.Seed
 {
     public class AktivitetSeed
     {
-        public static void Populate(InfoutskickContext infoutskickContext)
-        {
-            infoutskickContext.Aktiviteter.Add(new Aktivitet()
-            {
-                AktivitetsID = "001",
+        //public static void Populate(InfoutskickContext infoutskickContext)
+        //{
+        //    infoutskickContext.Aktiviteter.Add(new Aktivitet()
+        //    {
+        //        AktivitetsID = "001",
 
 
-            });
-        }
+        //    });
+        //}
     }
 }
