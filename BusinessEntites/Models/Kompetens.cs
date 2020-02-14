@@ -11,7 +11,7 @@ namespace BusinessEntites.Models
     public class Kompetens : IKompetens
     {
         [Key]
-        public string KompetensID { get; set; }
+        public int KompetensID { get; set; }
         public string Beskrivning { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BusinessLayer;
 using DataLayer.Contexts;
 using DataLayer;
+using DataLayer.Seed;
 
 namespace PresentationLayer
 {
@@ -23,6 +24,8 @@ namespace PresentationLayer
             InitializeComponent();
             infoutskickContext.Database.EnsureDeleted();
             infoutskickContext.Database.EnsureCreated();
+
+            AlumnProgramSeed.Populate(infoutskickContext);
         }
 
         private void labelCreateAccount_Click(object sender, EventArgs e)

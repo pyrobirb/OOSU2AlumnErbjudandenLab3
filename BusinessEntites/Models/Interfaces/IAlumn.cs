@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessEntites.Models.Junction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,12 @@ namespace BusinessEntites.Models.Interfaces
 {
     public interface IAlumn
     {
-        string AnvändarID { get; set; }
+        int AnvändarID { get; set; }
         string Förnamn { get; set; }
         string Efternamn { get; set; }
         string Användarnamn { get; set; }
         string Lösenord { get; set; }
+
+        ICollection<AlumnProgram> AlumnProgram { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace BusinessEntites.Models.Interfaces
 {
     interface IKompetens
     {
-        string KompetensID { get; set; }
+        int KompetensID { get; set; }
         string Beskrivning { get; set; }
     }
 }

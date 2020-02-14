@@ -8,7 +8,7 @@ namespace BusinessEntites.Models.Interfaces
 {
     public interface IAktivitet
     {
-        string AktivitetsID { get; set; }
+        int AktivitetsID { get; set; }
         string Titel { get; set; }
         string Kontaktperson { get; set; }
         string Ansvarig { get; set; }

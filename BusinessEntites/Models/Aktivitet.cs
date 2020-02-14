@@ -10,7 +10,7 @@ namespace BusinessEntites.Models
 {
     public class Aktivitet : IAktivitet
     {   [Key]
-        public string AktivitetsID { get; set; }
+        public int AktivitetsID { get; set; }
         public string Titel { get; set; }
         public string Kontaktperson { get; set; }
         public string Ansvarig { get; set; }

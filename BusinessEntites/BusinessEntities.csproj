@@ -52,6 +52,7 @@
     <Compile Include="Models\Interfaces\IKompetens.cs" />
     <Compile Include="Models\Interfaces\IPersonal.cs" />
     <Compile Include="Models\Interfaces\IProgram.cs" />
+    <Compile Include="Models\Junction\AlumnProgram.cs" />
     <Compile Include="Models\Kompetens.cs" />
     <Compile Include="Models\Personal.cs" />
     <Compile Include="Models\Program.cs" />

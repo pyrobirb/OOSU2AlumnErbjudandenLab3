@@ -11,10 +11,11 @@ namespace BusinessEntites.Models
     public class Informationsutskick : IInformationsutskick
     {
         [Key]
-        public string UtskicksID { get; set; }
+        public int UtskicksID { get; set; }
         public DateTime UtskickDatum { get; set; }
+        public ICollection<Alumn> Utskickslista { get; set; }
 
-        public virtual ICollection<Alumn> Utskickslista { get; set; }
-        
+ 
+
     }
 }

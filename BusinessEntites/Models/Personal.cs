@@ -11,7 +11,7 @@ namespace BusinessEntites.Models
     public class Personal : IPersonal
     {
         [Key]
-        public string PersonalID { get; set; }
+        public int PersonalID { get; set; }
         public string Användarnamn { get; set; }
         public string Lösenord { get; set; }
         public string Förnamn { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Seed
 {
-    public class KompetensSeed
+    public class AlumnKompetensSeed
     {
     }
 }

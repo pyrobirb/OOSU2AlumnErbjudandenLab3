@@ -1,4 +1,5 @@
 ﻿using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,14 @@ namespace DataLayer.Contexts
             optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=AlumnErbjudanden;Trusted_Connection=True;MultipleActiveResultSets=true;Integrated Security=True;");
             base.OnConfiguring(optionsBuilder);
         }
-        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AlumnProgram>()
+                .HasKey();
+            
+            base.OnModelCreating(modelBuilder);
+        }
 
         public DbSet<Aktivitet> Aktiviteter { get; set; }
         public DbSet<Alumn> Alumner { get; set; }
