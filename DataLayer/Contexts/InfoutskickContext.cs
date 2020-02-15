@@ -20,8 +20,18 @@ namespace DataLayer.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AlumnProgram>()
-                .HasKey();
-            
+                .HasKey(t => new { t.AlumnID, t.ProgramID });
+
+            modelBuilder.Entity<AlumnProgram>()
+                .HasOne(ap => ap.Alumn)
+                .WithMany(a => a.AlumnProgram)
+                .HasForeignKey(ap => ap.AlumnID);
+
+            modelBuilder.Entity<AlumnProgram>()
+                .HasOne(ap => ap.Program)
+                .WithMany(p => p.AlumnProgram)
+                .HasForeignKey(ap => ap.ProgramID);
+
             base.OnModelCreating(modelBuilder);
         }
 
