@@ -16,5 +16,8 @@ namespace BusinessEntites.Models.Interfaces
         string Lösenord { get; set; }
 
         ICollection<AlumnProgram> AlumnProgram { get; set; }
+
+        ICollection<AlumnKompetens> AlumnKompetens { get; set; }
+
     }
 }

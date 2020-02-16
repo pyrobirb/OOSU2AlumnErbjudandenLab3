@@ -16,16 +16,16 @@ namespace PresentationLayer
 {
     public partial class LoginForm : Form
     {
-        InfoutskickContext infoutskickContext = new InfoutskickContext();
+        DbContext dbContext = new DbContext();
         
 
         public LoginForm()
         {
             InitializeComponent();
-            infoutskickContext.Database.EnsureDeleted();
-            infoutskickContext.Database.EnsureCreated();
+            dbContext.Database.EnsureDeleted();
+            dbContext.Database.EnsureCreated();
 
-            AlumnProgramSeed.Populate(infoutskickContext);
+            Seed.Populate(dbContext);
         }
 
         private void labelCreateAccount_Click(object sender, EventArgs e)

@@ -19,9 +19,9 @@ namespace BusinessEntites.Models
         public string Förnamn { get; set; }
         public string Efternamn { get; set; }
 
-
-        //public int ProgramId { get; set; }
         public virtual ICollection<AlumnProgram> AlumnProgram { get; set; }
+        public virtual ICollection<AlumnKompetens> AlumnKompetens { get; set; }
+
 
     }
 }

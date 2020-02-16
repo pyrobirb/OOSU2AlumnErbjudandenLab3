@@ -134,14 +134,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contexts\InfoutskickContext.cs" />
+    <Compile Include="Contexts\DbContext.cs" />
     <Compile Include="DataLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seed\AktivitetSeed.cs" />
-    <Compile Include="Seed\AlumnProgramSeed.cs" />
-    <Compile Include="Seed\InformationsutskickSeed.cs" />
-    <Compile Include="Seed\AlumnKompetensSeed.cs" />
-    <Compile Include="Seed\PersonalSeed.cs" />
+    <Compile Include="Seed\Seed.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

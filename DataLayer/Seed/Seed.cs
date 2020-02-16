@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Seed
 {
-    public class AlumnProgramSeed
+    public class Seed
     {
-        public static void Populate(InfoutskickContext infoutskickContext)
+        public static void Populate(DbContext dbContext)
         {
             Alumn alumn1 = new Alumn()
             {
@@ -23,7 +23,7 @@ namespace DataLayer.Seed
 
             };
 
-            infoutskickContext.Alumner.Add(alumn1);
+            dbContext.Alumner.Add(alumn1);
 
             //infoutskickContext.Alumner.Add(alumn1);
 
@@ -33,19 +33,17 @@ namespace DataLayer.Seed
 
             };
 
-            infoutskickContext.Program.Add(program1);
+            dbContext.Program.Add(program1);
 
-            infoutskickContext.AlumnProgram.Add(new AlumnProgram()
+            dbContext.AlumnProgram.Add(new AlumnProgram()
             {
                 Alumn = alumn1,
                 Program = program1
             });
 
-            //infoutskickContext.AlumnProgram.Add(alumnProgram1);
 
-            //infoutskickContext.AlumnPro.Add();
 
-            infoutskickContext.SaveChanges();
+            dbContext.SaveChanges();
 
         }
 

@@ -13,5 +13,6 @@ namespace BusinessEntites.Models.Interfaces
         string Namn { get; set; }
 
         ICollection<AlumnProgram> AlumnProgram { get; set; }
+
     }
 }
