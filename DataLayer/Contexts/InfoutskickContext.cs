@@ -41,6 +41,7 @@ namespace DataLayer.Contexts
         public DbSet<Kompetens> Kompetenser { get; set; }
         public DbSet<Personal> Personal { get; set; }
         public DbSet<Program> Program { get; set; }
+        public DbSet<AlumnProgram> AlumnProgram { get; set; }
 
     }
 }

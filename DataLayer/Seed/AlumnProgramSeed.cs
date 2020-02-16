@@ -13,30 +13,35 @@ namespace DataLayer.Seed
     {
         public static void Populate(InfoutskickContext infoutskickContext)
         {
-            infoutskickContext.Alumner.Add(new Alumn()
+            Alumn alumn1 = new Alumn()
             {
                 Användarnamn = "Vims@gmail.com",
                 Lösenord = "smiv",
                 Förnamn = "Vissla",
                 Efternamn = "Kvist",
-                AlumnProgram = new List<AlumnProgram>()
-                {
-                    new AlumnProgram()
-                    {
-                        Namn = "Systemarkitekt"
-                    }
-                }
 
-            });
+
+            };
+
+            infoutskickContext.Alumner.Add(alumn1);
+
             //infoutskickContext.Alumner.Add(alumn1);
 
-            //Program program1 = new Program()
-            //{
-            //    Namn = "Systemarkitekt"
+            Program program1 = new Program()
+            {
+                Namn = "Systemarkitekt"
 
-            //};
+            };
 
+            infoutskickContext.Program.Add(program1);
 
+            infoutskickContext.AlumnProgram.Add(new AlumnProgram()
+            {
+                Alumn = alumn1,
+                Program = program1
+            });
+
+            //infoutskickContext.AlumnProgram.Add(alumnProgram1);
 
             //infoutskickContext.AlumnPro.Add();
 

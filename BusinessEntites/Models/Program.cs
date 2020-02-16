@@ -16,7 +16,7 @@ namespace BusinessEntites.Models
         public string Namn { get; set; }
 
         
-        public ICollection<AlumnProgram> AlumnProgram { get; set; }
+        public virtual ICollection<AlumnProgram> AlumnProgram { get; set; }
         
     }
 }
