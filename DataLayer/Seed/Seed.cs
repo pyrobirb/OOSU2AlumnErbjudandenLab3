@@ -13,6 +13,7 @@ namespace DataLayer.Seed
     {
         public static void Populate(DbContext dbContext)
         {
+            //Alumn
             Alumn alumn1 = new Alumn()
             {
                 Användarnamn = "Vims@gmail.com",
@@ -25,8 +26,7 @@ namespace DataLayer.Seed
 
             dbContext.Alumner.Add(alumn1);
 
-            //infoutskickContext.Alumner.Add(alumn1);
-
+            //Program
             Program program1 = new Program()
             {
                 Namn = "Systemarkitekt"
@@ -40,6 +40,18 @@ namespace DataLayer.Seed
                 Alumn = alumn1,
                 Program = program1
             });
+            //Kompetens
+            Kompetens kompetens1 = new Kompetens()
+            {
+                Beskrivning = "Har 3 års erfarenhet som utvecklare i C#"
+            };
+
+            dbContext.AlumnKompetens.Add(new AlumnKompetens()
+            {
+                Alumn = alumn1,
+                Kompetens = kompetens1
+            });
+
 
 
 
