@@ -19,5 +19,7 @@ namespace BusinessEntites.Models.Interfaces
 
         ICollection<AlumnKompetens> AlumnKompetens { get; set; }
 
+        ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
+
     }
 }

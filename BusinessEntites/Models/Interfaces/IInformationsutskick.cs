@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessEntites.Models.Junction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,8 @@ namespace BusinessEntites.Models.Interfaces
         DateTime UtskickDatum { get; set; }
 
         ICollection<Alumn> Utskickslista { get; set; }
+        ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
+
+
     }
 }
