@@ -48,6 +48,34 @@ namespace DataLayer.Contexts
                 .WithMany(k => k.AlumnKompetens)
                 .HasForeignKey(ak => ak.KompetensID);
 
+            //InformationsutskickAlumn
+            modelBuilder.Entity<InformationsutskickAlumn>()
+                .HasKey(a => new { a.AlumnID, a.InformationsutskickID });
+
+            modelBuilder.Entity<InformationsutskickAlumn>()
+                .HasOne(ia => ia.Alumn)
+                .WithMany(i => i.InformationsutskickAlumn)
+                .HasForeignKey(ia => ia.AlumnID);
+
+            modelBuilder.Entity<InformationsutskickAlumn>()
+                .HasOne(ia => ia.Informationsutskick)
+                .WithMany(i => i.InformationsutskickAlumn)
+                .HasForeignKey(ia => ia.InformationsutskickID);
+
+            //PersonalInformationsutskick
+            modelBuilder.Entity<PersonalInformationsutskick>()
+                .HasKey(p => new { p.PersonalID, p.InformationsutskickID });
+
+            modelBuilder.Entity<PersonalInformationsutskick>()
+                .HasOne(pi => pi.Personal)
+                .WithMany(i => i.PersonalInformationsutskick)
+                .HasForeignKey(ia => ia.PersonalID);
+
+            modelBuilder.Entity<PersonalInformationsutskick>()
+                .HasOne(pi => pi.Informationsutskick)
+                .WithMany(i => i.PersonalInformationsutskick)
+                .HasForeignKey(pi => pi.InformationsutskickID);
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -59,6 +87,9 @@ namespace DataLayer.Contexts
         public DbSet<Program> Program { get; set; }
         public DbSet<AlumnProgram> AlumnProgram { get; set; }
         public DbSet<AlumnKompetens> AlumnKompetens { get; set; }
+        public DbSet<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
+        public DbSet<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }
+
 
 
     }

@@ -52,7 +52,17 @@ namespace DataLayer.Seed
                 Kompetens = kompetens1
             });
 
+            //Informationsutskick
+            //Informationsutskick informationsutskick1 = new Informationsutskick()
+            //{
+                
+            //};
 
+            //dbContext.AlumnKompetens.Add(new AlumnKompetens()
+            //{
+            //    Alumn = alumn1,
+            //    Kompetens = kompetens1
+            //});
 
 
             dbContext.SaveChanges();

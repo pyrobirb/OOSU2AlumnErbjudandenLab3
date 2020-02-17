@@ -55,6 +55,7 @@
     <Compile Include="Models\Junction\AlumnKompetens.cs" />
     <Compile Include="Models\Junction\AlumnProgram.cs" />
     <Compile Include="Models\Junction\InformationsutskickAlumn.cs" />
+    <Compile Include="Models\Junction\PersonalInformationsutskick.cs" />
     <Compile Include="Models\Kompetens.cs" />
     <Compile Include="Models\Personal.cs" />
     <Compile Include="Models\Program.cs" />

@@ -14,7 +14,7 @@ namespace BusinessEntites.Models.Interfaces
 
         ICollection<Alumn> Utskickslista { get; set; }
         ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
-
+        ICollection<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }
 
     }
 }
