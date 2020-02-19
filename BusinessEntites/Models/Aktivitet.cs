@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BusinessEntites.Models.Interfaces;
+using BusinessEntites.Models.Junction;
 
 namespace BusinessEntites.Models
 {
@@ -18,5 +19,7 @@ namespace BusinessEntites.Models
         public DateTime Startdatum { get; set; }
         public DateTime Slutdatum { get; set; }
         public string Beskrivning { get; set; }
+        public virtual ICollection<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }
+
     }
 }

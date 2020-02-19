@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessEntites.Models.Junction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,7 @@ namespace BusinessEntites.Models.Interfaces
         DateTime Startdatum { get; set; }
         DateTime Slutdatum { get; set; }
         string Beskrivning { get; set; }
+        ICollection<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }
+
     }
 }
