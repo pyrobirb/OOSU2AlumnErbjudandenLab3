@@ -150,17 +150,18 @@
     <Compile Include="CreateUserForm.Designer.cs">
       <DependentUpon>CreateUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GLOBALS.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainAdminForm.cs">
+    <Compile Include="MainPersonalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainAdminForm.Designer.cs">
-      <DependentUpon>MainAdminForm.cs</DependentUpon>
+    <Compile Include="MainPersonalForm.Designer.cs">
+      <DependentUpon>MainPersonalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainAlumnForm.cs">
       <SubType>Form</SubType>
@@ -176,8 +177,8 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainAdminForm.resx">
-      <DependentUpon>MainAdminForm.cs</DependentUpon>
+    <EmbeddedResource Include="MainPersonalForm.resx">
+      <DependentUpon>MainPersonalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainAlumnForm.resx">
       <DependentUpon>MainAlumnForm.cs</DependentUpon>

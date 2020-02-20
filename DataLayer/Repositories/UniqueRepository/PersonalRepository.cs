@@ -11,6 +11,14 @@ namespace DataLayer.Repositories.UniqueRepository
 {
     public class PersonalRepository : Repository<Personal>, IPersonalRepository
     {
+        public Personal HämtaPersonalKonto(string användarnamn, string lösenord)
+        {
+            using (var db = new DatabaseContext())
+            {
+                return db.Personal.Where(x => x.Användarnamn.ToLower() == användarnamn.ToLower() && x.Lösenord == lösenord).FirstOrDefault();
+            }
+        }
+
         public PersonalRepository(DatabaseContext context) : base(context)
         {
 

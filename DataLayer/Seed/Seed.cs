@@ -51,19 +51,15 @@ namespace DataLayer.Seed
                 Alumn = alumn1,
                 Kompetens = kompetens1
             });
-
-            //Informationsutskick
-            //Informationsutskick informationsutskick1 = new Informationsutskick()
-            //{
-                
-            //};
-
-            //dbContext.AlumnKompetens.Add(new AlumnKompetens()
-            //{
-            //    Alumn = alumn1,
-            //    Kompetens = kompetens1
-            //});
-
+            //Personal
+            Personal personal1 = new Personal()
+            {
+                Användarnamn = "P5500",
+                Lösenord = "pers",
+                Förnamn = "Jan",
+                Efternamn = "Andersson",
+            };
+            dbContext.Add(personal1);
 
             dbContext.SaveChanges();
 

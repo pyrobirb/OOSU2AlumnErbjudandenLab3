@@ -32,9 +32,10 @@
             this.btnLogIn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxUserName = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.LösenordTxtBox = new System.Windows.Forms.TextBox();
             this.labelCreateAccount = new System.Windows.Forms.Label();
+            this.AnvändarnamnTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -49,21 +50,22 @@
             // btnLogIn
             // 
             this.btnLogIn.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnLogIn.Location = new System.Drawing.Point(70, 139);
+            this.btnLogIn.Location = new System.Drawing.Point(66, 145);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(75, 23);
             this.btnLogIn.TabIndex = 1;
             this.btnLogIn.Text = "Logga in";
             this.btnLogIn.UseVisualStyleBackColor = false;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(28, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(133, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Användarnamn:";
+            this.label2.Text = "Användarnamn eller epost:";
             // 
             // label3
             // 
@@ -74,19 +76,12 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Lösenord:";
             // 
-            // textBoxUserName
+            // LösenordTxtBox
             // 
-            this.textBoxUserName.Location = new System.Drawing.Point(31, 66);
-            this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(157, 20);
-            this.textBoxUserName.TabIndex = 4;
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Location = new System.Drawing.Point(32, 106);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(156, 20);
-            this.textBoxPassword.TabIndex = 5;
+            this.LösenordTxtBox.Location = new System.Drawing.Point(32, 106);
+            this.LösenordTxtBox.Name = "LösenordTxtBox";
+            this.LösenordTxtBox.Size = new System.Drawing.Size(156, 20);
+            this.LösenordTxtBox.TabIndex = 5;
             // 
             // labelCreateAccount
             // 
@@ -100,15 +95,34 @@
             this.labelCreateAccount.Text = "Skapa konto";
             this.labelCreateAccount.Click += new System.EventHandler(this.labelCreateAccount_Click);
             // 
+            // AnvändarnamnTextBox
+            // 
+            this.AnvändarnamnTextBox.Location = new System.Drawing.Point(32, 65);
+            this.AnvändarnamnTextBox.Name = "AnvändarnamnTextBox";
+            this.AnvändarnamnTextBox.Size = new System.Drawing.Size(156, 20);
+            this.AnvändarnamnTextBox.TabIndex = 7;
+            this.AnvändarnamnTextBox.TextChanged += new System.EventHandler(this.AnvändarnamnTextBox_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label4.Location = new System.Drawing.Point(29, 129);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(160, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Fel användarnamn eller lösenord";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(217, 197);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.AnvändarnamnTextBox);
             this.Controls.Add(this.labelCreateAccount);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.textBoxUserName);
+            this.Controls.Add(this.LösenordTxtBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnLogIn);
@@ -127,9 +141,10 @@
         private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxUserName;
-        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.TextBox LösenordTxtBox;
         private System.Windows.Forms.Label labelCreateAccount;
+        private System.Windows.Forms.TextBox AnvändarnamnTextBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 

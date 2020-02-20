@@ -17,7 +17,7 @@ namespace PresentationLayer
     public partial class LoginForm : Form
     {
         DatabaseContext dbContext = new DatabaseContext();
-        
+        BusinessManager bm = new BusinessManager();
 
         public LoginForm()
         {
@@ -26,6 +26,13 @@ namespace PresentationLayer
             dbContext.Database.EnsureCreated();
 
             Seed.Populate(dbContext);
+        }
+
+        private void ShowForm(Form form)
+        {
+            Visible = !Visible;
+            if (form.ShowDialog() == DialogResult.OK)
+                Visible = !Visible;
         }
 
         private void labelCreateAccount_Click(object sender, EventArgs e)
@@ -42,6 +49,34 @@ namespace PresentationLayer
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogIn_Click(object sender, EventArgs e)
+        {
+            string användarnamn = AnvändarnamnTextBox.Text;
+            string lösenord = LösenordTxtBox.Text;
+
+            GLOBALS.AktuellAlumn = bm.HämtaAlumnKonto(användarnamn, lösenord);
+            GLOBALS.AktuellPersonal = bm.HämtaPersonalKonto(användarnamn, lösenord);
+
+            if (GLOBALS.AktuellAlumn != null)
+                ShowForm(new MainAlumnForm());
+
+            if (GLOBALS.AktuellPersonal != null)
+                ShowForm(new MainPersonalForm());
+
+            if ((GLOBALS.AktuellAlumn == null) && (GLOBALS.AktuellPersonal == null))
+            {
+                
+            }
+
+            
+        }
+
+
+        private void AnvändarnamnTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

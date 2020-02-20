@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class MainAdminForm
+    partial class MainPersonalForm
     {
         /// <summary>
         /// Required designer variable.

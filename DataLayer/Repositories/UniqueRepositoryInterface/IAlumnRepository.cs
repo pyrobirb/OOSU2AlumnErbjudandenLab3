@@ -9,5 +9,7 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
 {
     public interface IAlumnRepository : IRepository<Alumn>
     {
+        Alumn HämtaAlumnKonto(string användarnamn, string lösenord);
+
     }
 }
