@@ -39,8 +39,7 @@ namespace PresentationLayer
         {
             if (MessageBox.Show("Vårt syfte med alumnappen är att erbjuda alumner från högskolan i Borås aktiviteter som till exempel gästföreläsningar eller aktiviteter för att träffa personer som gått samma utbildning samt ge oss en möjlighet att kontakta alumner ifall vi behöver till exempel gästföreläsare från arbetslivet. \nVid registreringen av kontot behöver du uppge epostadress och namn som kontaktuppgifter. Sedan kan du frivilligt registrera fler uppgifter om examina, certifikat etc. \nVill du ändra på personuppgifter eller ta bord ditt konto finns den möjligheten i appen. \n\nGodkänner du villkoren?", "Villkor enligt GDPR för AlumnAppen", MessageBoxButtons.YesNo) ==DialogResult.Yes)
             {
-                CreateUserForm createUserForm = new CreateUserForm();
-                createUserForm.ShowDialog();
+                ShowForm(new CreateUserForm());
             }
             else
             {
@@ -68,9 +67,7 @@ namespace PresentationLayer
                 ShowForm(new MainPersonalForm());
 
             if ((GLOBALS.AktuellAlumn == null) && (GLOBALS.AktuellPersonal == null))
-            {
-                
-            }
+                FelInlogLabel.Visible = true;
 
             
         }

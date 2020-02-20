@@ -12,7 +12,7 @@ namespace BusinessLayer
 {
     public class BusinessManager
     {
-        UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext());
+        public UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext());
 
         public Alumn HämtaAlumnKonto(string användarnamn, string lösenord)
         {

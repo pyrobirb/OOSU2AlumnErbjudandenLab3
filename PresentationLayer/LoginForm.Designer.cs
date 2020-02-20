@@ -35,7 +35,7 @@
             this.LösenordTxtBox = new System.Windows.Forms.TextBox();
             this.labelCreateAccount = new System.Windows.Forms.Label();
             this.AnvändarnamnTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.FelInlogLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -80,6 +80,7 @@
             // 
             this.LösenordTxtBox.Location = new System.Drawing.Point(32, 106);
             this.LösenordTxtBox.Name = "LösenordTxtBox";
+            this.LösenordTxtBox.PasswordChar = '*';
             this.LösenordTxtBox.Size = new System.Drawing.Size(156, 20);
             this.LösenordTxtBox.TabIndex = 5;
             // 
@@ -103,15 +104,16 @@
             this.AnvändarnamnTextBox.TabIndex = 7;
             this.AnvändarnamnTextBox.TextChanged += new System.EventHandler(this.AnvändarnamnTextBox_TextChanged);
             // 
-            // label4
+            // FelInlogLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(29, 129);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Fel användarnamn eller lösenord";
+            this.FelInlogLabel.AutoSize = true;
+            this.FelInlogLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FelInlogLabel.Location = new System.Drawing.Point(29, 129);
+            this.FelInlogLabel.Name = "FelInlogLabel";
+            this.FelInlogLabel.Size = new System.Drawing.Size(160, 13);
+            this.FelInlogLabel.TabIndex = 8;
+            this.FelInlogLabel.Text = "Fel användarnamn eller lösenord";
+            this.FelInlogLabel.Visible = false;
             // 
             // LoginForm
             // 
@@ -119,7 +121,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(217, 197);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.FelInlogLabel);
             this.Controls.Add(this.AnvändarnamnTextBox);
             this.Controls.Add(this.labelCreateAccount);
             this.Controls.Add(this.LösenordTxtBox);
@@ -144,7 +146,7 @@
         private System.Windows.Forms.TextBox LösenordTxtBox;
         private System.Windows.Forms.Label labelCreateAccount;
         private System.Windows.Forms.TextBox AnvändarnamnTextBox;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label FelInlogLabel;
     }
 }
 
