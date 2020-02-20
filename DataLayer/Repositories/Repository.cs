@@ -10,9 +10,9 @@ namespace DataLayer.Repositories
 {
     public class Repository <TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly DbContext Context;
+        protected readonly DatabaseContext Context;
 
-        public Repository(DbContext context)
+        public Repository(DatabaseContext context)
         {
             Context = context;
         }

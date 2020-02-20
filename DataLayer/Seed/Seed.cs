@@ -11,7 +11,7 @@ namespace DataLayer.Seed
 {
     public class Seed
     {
-        public static void Populate(DbContext dbContext)
+        public static void Populate(DatabaseContext dbContext)
         {
             //Alumn
             Alumn alumn1 = new Alumn()

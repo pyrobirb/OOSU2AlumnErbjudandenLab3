@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Contexts
 {
-    public class DbContext : Microsoft.EntityFrameworkCore.DbContext
+    public class DatabaseContext : Microsoft.EntityFrameworkCore.DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

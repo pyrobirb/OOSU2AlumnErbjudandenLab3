@@ -16,7 +16,7 @@ namespace PresentationLayer
 {
     public partial class LoginForm : Form
     {
-        DbContext dbContext = new DbContext();
+        DatabaseContext dbContext = new DatabaseContext();
         
 
         public LoginForm()

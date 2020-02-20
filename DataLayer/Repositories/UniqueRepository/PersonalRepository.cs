@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepository
 {
-    public class AlumnRepository : Repository<Alumn>, IAlumnRepository
+    public class PersonalRepository : Repository<Personal>, IPersonalRepository
     {
-        public AlumnRepository(DatabaseContext context) : base(context)
+        public PersonalRepository(DatabaseContext context) : base(context)
         {
 
         }
