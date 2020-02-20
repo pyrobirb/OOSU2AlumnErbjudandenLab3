@@ -21,5 +21,7 @@ namespace BusinessEntites.Models.Interfaces
 
         ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
 
+
+        ICollection<AlumnAktivitet> AlumnAktivitet { get; set; }
     }
 }

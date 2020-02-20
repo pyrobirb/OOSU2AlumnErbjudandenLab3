@@ -20,6 +20,7 @@ namespace BusinessEntites.Models
         public DateTime Slutdatum { get; set; }
         public string Beskrivning { get; set; }
         public virtual ICollection<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }
+        public virtual ICollection<AlumnAktivitet> AlumnAktivitet { get; set; }
 
     }
 }

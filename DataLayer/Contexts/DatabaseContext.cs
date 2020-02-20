@@ -90,6 +90,20 @@ namespace DataLayer.Contexts
                 .WithMany(i => i.InformationsutskickAktivitet)
                 .HasForeignKey(pi => pi.AktivitetID);
 
+            //AlumnAktivitet
+            modelBuilder.Entity<AlumnAktivitet>()
+                .HasKey(i => new { i.AlumnID, i.AktivitetID });
+
+            modelBuilder.Entity<AlumnAktivitet>()
+                .HasOne(aa => aa.Alumn)
+                .WithMany(i => i.AlumnAktivitet)
+                .HasForeignKey(aa => aa.AlumnID);
+
+            modelBuilder.Entity<AlumnAktivitet>()
+                .HasOne(pi => pi.Aktivitet)
+                .WithMany(i => i.AlumnAktivitet)
+                .HasForeignKey(pi => pi.AktivitetID);
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -104,8 +118,9 @@ namespace DataLayer.Contexts
         public DbSet<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
         public DbSet<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }
         public DbSet<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }
+        public DbSet<AlumnAktivitet> AlumnAktivitet { get; set; }
 
-        
+
 
 
     }
