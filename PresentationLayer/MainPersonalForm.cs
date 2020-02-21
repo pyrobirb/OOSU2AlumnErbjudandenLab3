@@ -25,6 +25,19 @@ namespace PresentationLayer
 
         private void tabControlMainAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {
+            VäljAktivitetComboBox.DataSource = bm.unitOfWork.AktivitetRepository.GetAll();
+            VäljAktivitetComboBox.DisplayMember = "Titel";
+            VäljAktivitetComboBox.ValueMember = "AktivitetsID";
+
+            //Här och när man byter aktivitet i drop downen
+            GLOBALS.AktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            ÄndraTitelTxtBox.Text = GLOBALS.AktuellAktivitet.Titel;
+            AnsvarigPersonComboBox.Text = GLOBALS.AktuellAktivitet.Ansvarig;
+            KontaktpersonComboBox.Text = GLOBALS.AktuellAktivitet.Kontaktperson;
+            PlatsÄndraTxtBox.Text = GLOBALS.AktuellAktivitet.Plats;
+            StarttidDateTime.Value = GLOBALS.AktuellAktivitet.Startdatum;
+            SlutdatumÄndraDateTime.Value = GLOBALS.AktuellAktivitet.Slutdatum;
+            BeskrivningÄndraTextBox.Text = GLOBALS.AktuellAktivitet.Beskrivning;
 
         }
 
@@ -63,6 +76,23 @@ namespace PresentationLayer
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ComboBoxChoosActivity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GLOBALS.AktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            ÄndraTitelTxtBox.Text = GLOBALS.AktuellAktivitet.Titel;
+            AnsvarigPersonComboBox.Text = GLOBALS.AktuellAktivitet.Ansvarig;
+            KontaktpersonComboBox.Text = GLOBALS.AktuellAktivitet.Kontaktperson;
+            PlatsÄndraTxtBox.Text = GLOBALS.AktuellAktivitet.Plats;
+            StarttidDateTime.Value = GLOBALS.AktuellAktivitet.Startdatum;
+            SlutdatumÄndraDateTime.Value = GLOBALS.AktuellAktivitet.Slutdatum;
+            BeskrivningÄndraTextBox.Text = GLOBALS.AktuellAktivitet.Beskrivning;
         }
     }
 }

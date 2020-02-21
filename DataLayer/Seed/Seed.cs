@@ -60,6 +60,20 @@ namespace DataLayer.Seed
                 Efternamn = "Andersson",
             };
             dbContext.Add(personal1);
+            //Aktivitet
+            Aktivitet aktivitet1 = new Aktivitet()
+            {
+                Titel = "Företagsmässa för nyexaminerade",
+                Ansvarig = "Milla Trop",
+                Kontaktperson = "Loki Foi",
+                Plats = "Högskolan i Borås",
+                Startdatum = new DateTime (2020, 08, 01),
+                Slutdatum = new DateTime(2020, 08, 02),
+                Beskrivning = "Träffa företag som är i behov av just dig! Knyt kontakter och maxa dina möjligheter",
+                InformationsutskickAktivitet = new List<InformationsutskickAktivitet>(),
+                AlumnAktivitet = new List<AlumnAktivitet>()
+            };
+            dbContext.Add(aktivitet1);
 
             dbContext.SaveChanges();
 

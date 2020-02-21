@@ -11,5 +11,7 @@ namespace PresentationLayer
     {
         public static Alumn AktuellAlumn { get; set; }
         public static Personal AktuellPersonal { get; set; }
+        public static Aktivitet AktuellAktivitet { get; set; }
+
     }
 }
