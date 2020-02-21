@@ -83,6 +83,7 @@
             this.LösenordTxtBox.PasswordChar = '*';
             this.LösenordTxtBox.Size = new System.Drawing.Size(156, 20);
             this.LösenordTxtBox.TabIndex = 5;
+            this.LösenordTxtBox.Text = "pers";
             // 
             // labelCreateAccount
             // 
@@ -102,6 +103,7 @@
             this.AnvändarnamnTextBox.Name = "AnvändarnamnTextBox";
             this.AnvändarnamnTextBox.Size = new System.Drawing.Size(156, 20);
             this.AnvändarnamnTextBox.TabIndex = 7;
+            this.AnvändarnamnTextBox.Text = "P5500";
             this.AnvändarnamnTextBox.TextChanged += new System.EventHandler(this.AnvändarnamnTextBox_TextChanged);
             // 
             // FelInlogLabel

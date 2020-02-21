@@ -13,6 +13,10 @@ namespace DataLayer.UnitOfWork
     {
         public IAlumnRepository AlumnRepository { get; set; }
         public IPersonalRepository PersonalRepository { get; set; }
+        public IAktivitetRepository AktivitetRepository { get; set; }
+        public IInformationsutskickRepository InformationsutskickRepository { get; set; }
+        public IKompetensRepository KompetensRepository { get; set; }
+        public IProgramRepository ProgramRepository { get; set; }
 
         private readonly DatabaseContext _context;
         public UnitOfWork(DatabaseContext databaseContext)
@@ -20,6 +24,10 @@ namespace DataLayer.UnitOfWork
             _context = databaseContext;
             AlumnRepository = new AlumnRepository(_context);
             PersonalRepository = new PersonalRepository(_context);
+            AktivitetRepository = new AktivitetRepository(_context);
+            InformationsutskickRepository = new InformationsutskickRepository(_context);
+            KompetensRepository = new KompetensRepository(_context);
+            ProgramRepository = new ProgramRepository(_context);
         }
         public void Commit()
         {

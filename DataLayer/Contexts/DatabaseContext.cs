@@ -19,7 +19,7 @@ namespace DataLayer.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //AlumnKompetens
+            //AlumnProgram
             modelBuilder.Entity<AlumnProgram>()
                 .HasKey(a => new { a.AlumnID, a.ProgramID });
 

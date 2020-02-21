@@ -43,7 +43,8 @@ namespace PresentationLayer
                         Efternamn = EfternamnTxtBox.Text
                     };
                     bm.unitOfWork.AlumnRepository.Add(alumn);
-                    MessageBox.Show("Account was created");
+                    bm.unitOfWork.Commit();
+                    MessageBox.Show("Alumnkonto har skapats");
 
                     DialogResult = DialogResult.OK;
 
@@ -58,31 +59,13 @@ namespace PresentationLayer
                         Efternamn = EfternamnTxtBox.Text
                     };
                     bm.unitOfWork.PersonalRepository.Add(personal);
-                    MessageBox.Show("Account was created");
+                    bm.unitOfWork.Commit();
+                    MessageBox.Show("Personalkonto har skapats");
 
                     DialogResult = DialogResult.OK;
                 }
 
             }
-
-
-            //if (txtEmail.Text == "" || txtUsername.Text == "" || txtPassword.Text == "" || txtVerifyPassword.Text == "")
-            //    MessageBox.Show("Please fill in all required values");
-            //else if (txtPassword.Text != txtVerifyPassword.Text && txtPassword.Text.Count() > 3)
-            //    MessageBox.Show("Password must match Verified Password and be longer than 2 letters.");
-            //else
-            //{
-            //    Account account = new Account()
-            //    {
-            //        Email = txtEmail.Text,
-            //        Username = txtUsername.Text,
-            //        Password = txtPassword.Text
-            //    };
-            //    businessManager.CreateAccount(account);
-            //    MessageBox.Show("Account was created");
-
-            //    DialogResult = DialogResult.OK;
-            //}
         }
 
         private void TillbakaKnapp_Click(object sender, EventArgs e)
