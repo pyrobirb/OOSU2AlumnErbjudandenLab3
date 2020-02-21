@@ -64,9 +64,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.tabPageMakeEmailList = new System.Windows.Forms.TabPage();
             this.label18 = new System.Windows.Forms.Label();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.AktivitetCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.AlumnCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.comboBoxFilterAlumns = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btnCreateAlumnCSV = new System.Windows.Forms.Button();
@@ -409,9 +409,9 @@
             // tabPageMakeEmailList
             // 
             this.tabPageMakeEmailList.Controls.Add(this.label18);
-            this.tabPageMakeEmailList.Controls.Add(this.checkedListBox2);
+            this.tabPageMakeEmailList.Controls.Add(this.AktivitetCheckedListBox);
             this.tabPageMakeEmailList.Controls.Add(this.comboBox1);
-            this.tabPageMakeEmailList.Controls.Add(this.checkedListBox1);
+            this.tabPageMakeEmailList.Controls.Add(this.AlumnCheckedListBox);
             this.tabPageMakeEmailList.Controls.Add(this.comboBoxFilterAlumns);
             this.tabPageMakeEmailList.Controls.Add(this.label17);
             this.tabPageMakeEmailList.Controls.Add(this.btnCreateAlumnCSV);
@@ -432,13 +432,13 @@
             this.label18.TabIndex = 8;
             this.label18.Text = "Välj aktivitet";
             // 
-            // checkedListBox2
+            // AktivitetCheckedListBox
             // 
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(208, 72);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(158, 199);
-            this.checkedListBox2.TabIndex = 7;
+            this.AktivitetCheckedListBox.FormattingEnabled = true;
+            this.AktivitetCheckedListBox.Location = new System.Drawing.Point(208, 72);
+            this.AktivitetCheckedListBox.Name = "AktivitetCheckedListBox";
+            this.AktivitetCheckedListBox.Size = new System.Drawing.Size(158, 199);
+            this.AktivitetCheckedListBox.TabIndex = 7;
             // 
             // comboBox1
             // 
@@ -450,13 +450,14 @@
             this.comboBox1.TabIndex = 6;
             this.comboBox1.Text = "Välj filter";
             // 
-            // checkedListBox1
+            // AlumnCheckedListBox
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(22, 72);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(168, 199);
-            this.checkedListBox1.TabIndex = 5;
+            this.AlumnCheckedListBox.FormattingEnabled = true;
+            this.AlumnCheckedListBox.Location = new System.Drawing.Point(22, 72);
+            this.AlumnCheckedListBox.Name = "AlumnCheckedListBox";
+            this.AlumnCheckedListBox.Size = new System.Drawing.Size(168, 199);
+            this.AlumnCheckedListBox.TabIndex = 5;
+            this.AlumnCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.AlumnCheckedListBox_SelectedIndexChanged);
             // 
             // comboBoxFilterAlumns
             // 
@@ -577,9 +578,9 @@
         private System.Windows.Forms.Button btnCreateAlumnCSV;
         private System.Windows.Forms.RichTextBox BeskrivningTextBox;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox AlumnCheckedListBox;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.CheckedListBox AktivitetCheckedListBox;
         private System.Windows.Forms.RichTextBox BeskrivningÄndraTextBox;
     }
 }

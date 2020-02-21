@@ -25,6 +25,7 @@ namespace PresentationLayer
 
         private void tabControlMainAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Fyll Redigera aktivitet
             VäljAktivitetComboBox.DataSource = bm.unitOfWork.AktivitetRepository.GetAll();
             VäljAktivitetComboBox.DisplayMember = "Titel";
             VäljAktivitetComboBox.ValueMember = "AktivitetsID";
@@ -38,6 +39,17 @@ namespace PresentationLayer
             StarttidDateTime.Value = GLOBALS.AktuellAktivitet.Startdatum;
             SlutdatumÄndraDateTime.Value = GLOBALS.AktuellAktivitet.Slutdatum;
             BeskrivningÄndraTextBox.Text = GLOBALS.AktuellAktivitet.Beskrivning;
+
+            //Fyll alumner och aktivitet på Skapa utskickslista
+            AlumnCheckedListBox.DataSource = bm.unitOfWork.AlumnRepository.GetAll();
+            VäljAktivitetComboBox.ValueMember = "AnvändarID";
+            VäljAktivitetComboBox.DisplayMember = "Förnamn";
+            
+
+            //Här och när man byter aktivitet i drop downen
+            //GLOBALS.AktuellaAlumner = bm.unitOfWork.AlumnRepository.GetById(((ICollection<Alumn>)AlumnCheckedListBox.SelectedItems).AnvändarID);
+            
+
 
         }
 
@@ -93,6 +105,11 @@ namespace PresentationLayer
             StarttidDateTime.Value = GLOBALS.AktuellAktivitet.Startdatum;
             SlutdatumÄndraDateTime.Value = GLOBALS.AktuellAktivitet.Slutdatum;
             BeskrivningÄndraTextBox.Text = GLOBALS.AktuellAktivitet.Beskrivning;
+        }
+
+        private void AlumnCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

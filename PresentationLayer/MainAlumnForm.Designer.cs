@@ -177,9 +177,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(285, 17);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 13);
+            this.label4.Size = new System.Drawing.Size(101, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Aktivitets information";
+            this.label4.Text = "Aktivitetsinformation";
             // 
             // listBoxBookedActivityInfo
             // 
