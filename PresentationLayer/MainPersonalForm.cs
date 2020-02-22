@@ -30,7 +30,7 @@ namespace PresentationLayer
             VäljAktivitetComboBox.DisplayMember = "Titel";
             VäljAktivitetComboBox.ValueMember = "AktivitetsID";
 
-            //Här och när man byter aktivitet i drop downen
+
             GLOBALS.AktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
             ÄndraTitelTxtBox.Text = GLOBALS.AktuellAktivitet.Titel;
             AnsvarigPersonComboBox.Text = GLOBALS.AktuellAktivitet.Ansvarig;
@@ -41,14 +41,25 @@ namespace PresentationLayer
             BeskrivningÄndraTextBox.Text = GLOBALS.AktuellAktivitet.Beskrivning;
 
             //Fyll alumner och aktivitet på Skapa utskickslista
-            AlumnCheckedListBox.DataSource = bm.unitOfWork.AlumnRepository.GetAll();
-            VäljAktivitetComboBox.ValueMember = "AnvändarID";
-            VäljAktivitetComboBox.DisplayMember = "Förnamn";
-            
 
-            //Här och när man byter aktivitet i drop downen
-            //GLOBALS.AktuellaAlumner = bm.unitOfWork.AlumnRepository.GetById(((ICollection<Alumn>)AlumnCheckedListBox.SelectedItems).AnvändarID);
-            
+            foreach (Alumn alumn in bm.unitOfWork.AlumnRepository.GetAll())
+            {
+                AlumnCheckedListBox.Items.Add(alumn);
+
+            }
+            AlumnCheckedListBox.ValueMember = "AnvändarID";
+            AlumnCheckedListBox.DisplayMember = "Förnamn";
+
+            foreach (Aktivitet aktivitet in bm.unitOfWork.AktivitetRepository.GetAll())
+            {
+                AktivitetCheckedListBox.Items.Add(aktivitet);
+            }
+            AktivitetCheckedListBox.ValueMember = "AktivitetID";
+            AktivitetCheckedListBox.DisplayMember = "Titel";
+
+            //AktuellaAlumner ska vara de valda 
+            //AktuellaAktiviteter är valda aktiviteter
+
 
 
         }
@@ -74,7 +85,7 @@ namespace PresentationLayer
                     Slutdatum = SluttidDateTimePicker.Value,
                     Beskrivning = BeskrivningTextBox.Text,
                     InformationsutskickAktivitet = new List<InformationsutskickAktivitet>(),
-                    AlumnAktivitet = new List<AlumnAktivitet>()
+                    AlumnAktivitet = new List<AlumnAktivitetBokning>()
 
                 };
 

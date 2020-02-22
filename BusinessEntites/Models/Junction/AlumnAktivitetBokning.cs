@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Junction
 {
-    public class AlumnAktivitet
+    public class AlumnAktivitetBokning
     {
         public int AlumnID { get; set; }
         public virtual Alumn Alumn { get; set; }

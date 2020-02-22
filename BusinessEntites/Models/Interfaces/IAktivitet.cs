@@ -18,7 +18,7 @@ namespace BusinessEntites.Models.Interfaces
         DateTime Slutdatum { get; set; }
         string Beskrivning { get; set; }
         ICollection<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }
-        ICollection<AlumnAktivitet> AlumnAktivitet { get; set; }
+        ICollection<AlumnAktivitetBokning> AlumnAktivitet { get; set; }
 
     }
 }

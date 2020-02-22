@@ -71,7 +71,7 @@ namespace DataLayer.Seed
                 Slutdatum = new DateTime(2020, 08, 02),
                 Beskrivning = "Träffa företag som är i behov av just dig! Knyt kontakter och maxa dina möjligheter",
                 InformationsutskickAktivitet = new List<InformationsutskickAktivitet>(),
-                AlumnAktivitet = new List<AlumnAktivitet>()
+                AlumnAktivitet = new List<AlumnAktivitetBokning>()
             };
             dbContext.Add(aktivitet1);
 
