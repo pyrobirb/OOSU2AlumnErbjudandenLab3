@@ -59,7 +59,7 @@ namespace DataLayer.Seed
                 Förnamn = "Jan",
                 Efternamn = "Andersson",
             };
-            dbContext.Add(personal1);
+            dbContext.Personal.Add(personal1);
             //Aktivitet
             Aktivitet aktivitet1 = new Aktivitet()
             {
@@ -73,7 +73,7 @@ namespace DataLayer.Seed
                 InformationsutskickAktivitet = new List<InformationsutskickAktivitet>(),
                 AlumnAktivitet = new List<AlumnAktivitetBokning>()
             };
-            dbContext.Add(aktivitet1);
+            dbContext.Aktiviteter.Add(aktivitet1);
 
             dbContext.SaveChanges();
 

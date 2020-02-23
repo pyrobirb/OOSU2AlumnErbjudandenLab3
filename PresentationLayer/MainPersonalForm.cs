@@ -31,16 +31,18 @@ namespace PresentationLayer
             VäljAktivitetComboBox.ValueMember = "AktivitetsID";
 
 
-            GLOBALS.AktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
-            ÄndraTitelTxtBox.Text = GLOBALS.AktuellAktivitet.Titel;
-            AnsvarigPersonComboBox.Text = GLOBALS.AktuellAktivitet.Ansvarig;
-            KontaktpersonComboBox.Text = GLOBALS.AktuellAktivitet.Kontaktperson;
-            PlatsÄndraTxtBox.Text = GLOBALS.AktuellAktivitet.Plats;
-            StarttidDateTime.Value = GLOBALS.AktuellAktivitet.Startdatum;
-            SlutdatumÄndraDateTime.Value = GLOBALS.AktuellAktivitet.Slutdatum;
-            BeskrivningÄndraTextBox.Text = GLOBALS.AktuellAktivitet.Beskrivning;
+            var AktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            ÄndraTitelTxtBox.Text = AktuellAktivitet.Titel;
+            AnsvarigPersonComboBox.Text = AktuellAktivitet.Ansvarig;
+            KontaktpersonComboBox.Text = AktuellAktivitet.Kontaktperson;
+            PlatsÄndraTxtBox.Text = AktuellAktivitet.Plats;
+            StarttidDateTime.Value = AktuellAktivitet.Startdatum;
+            SlutdatumÄndraDateTime.Value = AktuellAktivitet.Slutdatum;
+            BeskrivningÄndraTextBox.Text = AktuellAktivitet.Beskrivning;
 
             //Fyll alumner och aktivitet på Skapa utskickslista
+            AlumnCheckedListBox.Items.Clear();
+            AktivitetCheckedListBox.Items.Clear();
 
             foreach (Alumn alumn in bm.unitOfWork.AlumnRepository.GetAll())
             {
@@ -103,19 +105,38 @@ namespace PresentationLayer
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
+            Aktivitet uppdateradAktivitet = new Aktivitet()
+            {
+                Titel = ÄndraTitelTxtBox.Text,
+                Ansvarig = AnsvarigPersonComboBox.Text,
+                Kontaktperson = KontaktpersonComboBox.Text,
+                Plats = PlatsÄndraTxtBox.Text,
+                Startdatum = StarttidDateTime.Value,
+                Slutdatum = SlutdatumÄndraDateTime.Value,
+                Beskrivning = BeskrivningÄndraTextBox.Text,
+                InformationsutskickAktivitet = new List<InformationsutskickAktivitet>(),
+                AlumnAktivitet = new List<AlumnAktivitetBokning>()
+            };
 
+            Aktivitet aktivitetAttTaBort = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+
+
+            bm.UpdateAktivitet(aktivitetAttTaBort, uppdateradAktivitet);
+            bm.unitOfWork.Commit();
+            
+            MessageBox.Show("Aktiviteten " + TitelAktivitetTxtBox.Text + " har Redigerats");
         }
 
         private void ComboBoxChoosActivity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GLOBALS.AktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
-            ÄndraTitelTxtBox.Text = GLOBALS.AktuellAktivitet.Titel;
-            AnsvarigPersonComboBox.Text = GLOBALS.AktuellAktivitet.Ansvarig;
-            KontaktpersonComboBox.Text = GLOBALS.AktuellAktivitet.Kontaktperson;
-            PlatsÄndraTxtBox.Text = GLOBALS.AktuellAktivitet.Plats;
-            StarttidDateTime.Value = GLOBALS.AktuellAktivitet.Startdatum;
-            SlutdatumÄndraDateTime.Value = GLOBALS.AktuellAktivitet.Slutdatum;
-            BeskrivningÄndraTextBox.Text = GLOBALS.AktuellAktivitet.Beskrivning;
+            var AktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            ÄndraTitelTxtBox.Text = AktuellAktivitet.Titel;
+            AnsvarigPersonComboBox.Text = AktuellAktivitet.Ansvarig;
+            KontaktpersonComboBox.Text = AktuellAktivitet.Kontaktperson;
+            PlatsÄndraTxtBox.Text = AktuellAktivitet.Plats;
+            StarttidDateTime.Value = AktuellAktivitet.Startdatum;
+            SlutdatumÄndraDateTime.Value = AktuellAktivitet.Slutdatum;
+            BeskrivningÄndraTextBox.Text = AktuellAktivitet.Beskrivning;
         }
 
         private void AlumnCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -14,6 +14,7 @@ namespace BusinessLayer
     {
         public UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext());
 
+
         public Alumn HämtaAlumnKonto(string användarnamn, string lösenord)
         {
             return unitOfWork.AlumnRepository.HämtaAlumnKonto(användarnamn, lösenord);
@@ -22,6 +23,10 @@ namespace BusinessLayer
         public Personal HämtaPersonalKonto(string användarnamn, string lösenord)
         {
             return unitOfWork.PersonalRepository.HämtaPersonalKonto(användarnamn, lösenord);
+        }
+        public void UpdateAktivitet(Aktivitet aktivitet, Aktivitet nyaktivitet)
+        {
+            unitOfWork.AktivitetRepository.UpdateAktivitet(aktivitet, nyaktivitet);
         }
 
     }
