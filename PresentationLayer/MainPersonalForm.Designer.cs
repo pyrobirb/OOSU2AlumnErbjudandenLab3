@@ -76,6 +76,7 @@
             this.valdaAlumnerListBox = new System.Windows.Forms.ListBox();
             this.label19 = new System.Windows.Forms.Label();
             this.flyttaAlumner = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabControlMainAdmin.SuspendLayout();
             this.tabPageCreateActivity.SuspendLayout();
             this.tabPageEditActivity.SuspendLayout();
@@ -419,6 +420,7 @@
             // 
             // tabPageMakeEmailList
             // 
+            this.tabPageMakeEmailList.Controls.Add(this.label20);
             this.tabPageMakeEmailList.Controls.Add(this.flyttaAlumner);
             this.tabPageMakeEmailList.Controls.Add(this.label19);
             this.tabPageMakeEmailList.Controls.Add(this.valdaAlumnerListBox);
@@ -493,6 +495,7 @@
             this.btnCreateAlumnCSV.TabIndex = 2;
             this.btnCreateAlumnCSV.Text = "Skapa utskickslista och generera .CSV fil ";
             this.btnCreateAlumnCSV.UseVisualStyleBackColor = true;
+            this.btnCreateAlumnCSV.Click += new System.EventHandler(this.btnCreateAlumnCSV_Click);
             // 
             // label16
             // 
@@ -546,6 +549,16 @@
             this.flyttaAlumner.TabIndex = 13;
             this.flyttaAlumner.Text = "Välj";
             this.flyttaAlumner.UseVisualStyleBackColor = true;
+            this.flyttaAlumner.Click += new System.EventHandler(this.flyttaAlumner_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(99, 8);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(46, 13);
+            this.label20.TabIndex = 14;
+            this.label20.Text = "Program";
             // 
             // MainPersonalForm
             // 
@@ -618,5 +631,6 @@
         private System.Windows.Forms.ListBox valdaAlumnerListBox;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button flyttaAlumner;
+        private System.Windows.Forms.Label label20;
     }
 }

@@ -12,7 +12,8 @@ namespace BusinessEntites.Models.Interfaces
         int UtskicksID { get; set; }
         DateTime UtskickDatum { get; set; }
 
-        ICollection<Alumn> Utskickslista { get; set; }
+        ICollection<Alumn> Alumner { get; set; }
+        Aktivitet Aktiviteten { get; set; }
         ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
         ICollection<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }
         ICollection<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }

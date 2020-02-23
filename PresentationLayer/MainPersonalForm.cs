@@ -123,7 +123,7 @@ namespace PresentationLayer
 
             bm.UpdateAktivitet(aktivitetAttTaBort, uppdateradAktivitet);
             bm.unitOfWork.Commit();
-            
+
             MessageBox.Show("Aktiviteten " + TitelAktivitetTxtBox.Text + " har Redigerats");
         }
 
@@ -147,6 +147,65 @@ namespace PresentationLayer
         private void tabPageMakeEmailList_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void flyttaAlumner_Click(object sender, EventArgs e)
+        {
+            foreach (Alumn alumn in alumnCheckedListBox.CheckedItems)
+            {
+                if (!valdaAlumnerListBox.Items.Contains(alumn))
+                {
+                    List<Alumn> alumner = new List<Alumn>();
+                    foreach (Alumn alumn1 in valdaAlumnerListBox.Items)
+                    {
+                        alumner.Add(alumn1);
+                    }
+                    alumner.Add(alumn);
+                    valdaAlumnerListBox.DataSource = alumner;
+                    valdaAlumnerListBox.DisplayMember = "Förnamn";
+                    valdaAlumnerListBox.ValueMember = "AnvändarID";
+                }
+            }
+            foreach (Alumn alumn1 in valdaAlumnerListBox.Items)
+            {
+                if (!alumnCheckedListBox.CheckedItems.Contains(alumn1))
+                {
+                    List<Alumn> valdaAlumner = new List<Alumn>();
+                    foreach (Alumn alumn in valdaAlumnerListBox.Items)
+                    {
+                        valdaAlumner.Add(alumn);
+                    }
+
+                    valdaAlumner.Remove(alumn1);
+
+                    valdaAlumnerListBox.DataSource = valdaAlumner;
+
+                }
+            }
+
+            valdaAlumnerListBox.ValueMember = "AnvändarID";
+            valdaAlumnerListBox.DisplayMember = "Förnamn";
+
+        }
+
+        private void btnCreateAlumnCSV_Click(object sender, EventArgs e)
+        {
+            List<Alumn> valdaAlumner = new List<Alumn>();
+            foreach (Alumn alumn in valdaAlumnerListBox.Items)
+            {
+                valdaAlumner.Add(alumn);
+            }
+
+            Informationsutskick informationsutskick = new Informationsutskick()
+            {
+                UtskickDatum = DateTime.Now,
+                Alumner = valdaAlumner,
+                Aktiviteten = (Aktivitet)aktivitetComboBox.SelectedItem
+            };
+
+            bm.unitOfWork.InformationsutskickRepository.Add(informationsutskick);
+            bm.unitOfWork.Commit();
+            MessageBox.Show("Informationsutskicket har skapats");
         }
     }
 }
