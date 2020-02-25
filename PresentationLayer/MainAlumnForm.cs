@@ -34,9 +34,10 @@ namespace PresentationLayer
             informationsutskickListBox.Items.Clear();
             aktivitetsBeskrivningTextBox.Text = "";
 
-            foreach (Aktivitet aktivitet in bm.HämtaInformationsutskickAktiviteterFörAlumn(GLOBALS.AktuellAlumn))
+            foreach (Informationsutskick informationsutskick in bm.HämtaInformationsutskickFörAlumn(GLOBALS.AktuellAlumn))
             {
-                informationsutskickListBox.Items.Add(aktivitet);
+                //ta fram aktivitet från infoutskick
+                informationsutskickListBox.Items.Add(informationsutskick);
             }
 
             //alumnCheckedListBox.Items.Clear();
@@ -52,6 +53,11 @@ namespace PresentationLayer
         }
 
         private void btnBookActivity_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void informationsutskickListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

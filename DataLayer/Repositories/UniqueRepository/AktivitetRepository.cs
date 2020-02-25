@@ -1,4 +1,5 @@
 ﻿using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
 using DataLayer.Contexts;
 using DataLayer.Repositories.UniqueRepositoryInterface;
 using System;
@@ -24,6 +25,8 @@ namespace DataLayer.Repositories.UniqueRepository
 
             this.Context.SaveChanges();
         }
+
+        
 
         public AktivitetRepository(DatabaseContext context) : base(context)
         {

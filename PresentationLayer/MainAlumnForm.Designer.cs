@@ -131,6 +131,7 @@
             this.informationsutskickListBox.Name = "informationsutskickListBox";
             this.informationsutskickListBox.Size = new System.Drawing.Size(251, 290);
             this.informationsutskickListBox.TabIndex = 1;
+            this.informationsutskickListBox.SelectedIndexChanged += new System.EventHandler(this.informationsutskickListBox_SelectedIndexChanged);
             // 
             // label1
             // 

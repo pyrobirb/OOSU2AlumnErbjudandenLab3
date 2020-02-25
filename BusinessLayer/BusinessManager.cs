@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
 using DataLayer;
 using DataLayer.Contexts;
 using DataLayer.UnitOfWork;
@@ -44,9 +45,15 @@ namespace BusinessLayer
             unitOfWork.AktivitetRepository.UpdateAktivitet(aktivitet, nyaktivitet);
         }
 
-        public Aktivitet HämtaInformationsutskickAktiviteterFörAlumn(Alumn inloggadAlumn)
-        {
+        public IQueryable<Informationsutskick> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn)
+        {   
+            var b = unitOfWork.InformationsutskickRepository.HämtaInformationsutskickFörAlumn(inloggadAlumn);
 
+            foreach (Alumn alumn in b)
+            {
+
+            }
+            return b;
         }
 
         public void Commit()
