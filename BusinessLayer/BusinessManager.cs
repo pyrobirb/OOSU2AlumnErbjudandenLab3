@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,20 @@ namespace BusinessLayer
         public UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext());
 
 
+        public void SkrivaAlumnAktivitetTillCSVFil(string Aktivitettitel, List<Alumn> alumner)
+        {
+            using (TextWriter sw = new StreamWriter($"{Aktivitettitel}.csv"))
+            {
+
+                sw.WriteLine(Aktivitettitel);
+
+                foreach (Alumn alumn in alumner)
+                {
+                    sw.WriteLine($"{alumn.Användarnamn},");
+                }
+                sw.Close();
+            }
+        }
         public Alumn HämtaAlumnKonto(string användarnamn, string lösenord)
         {
             return unitOfWork.AlumnRepository.HämtaAlumnKonto(användarnamn, lösenord);
@@ -29,5 +44,14 @@ namespace BusinessLayer
             unitOfWork.AktivitetRepository.UpdateAktivitet(aktivitet, nyaktivitet);
         }
 
+        public Aktivitet HämtaInformationsutskickAktiviteterFörAlumn(Alumn inloggadAlumn)
+        {
+
+        }
+
+        public void Commit()
+        {
+            unitOfWork.Commit();
+        }
     }
 }

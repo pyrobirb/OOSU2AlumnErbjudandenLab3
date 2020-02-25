@@ -64,19 +64,18 @@
             this.ÄndraTitelTxtBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPageMakeEmailList = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.flyttaAlumner = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.valdaAlumnerListBox = new System.Windows.Forms.ListBox();
+            this.AktivitetComboBox = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.alumnCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.comboBoxFilterAlumns = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.btnCreateAlumnCSV = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
-            this.aktivitetComboBox = new System.Windows.Forms.ComboBox();
-            this.valdaAlumnerListBox = new System.Windows.Forms.ListBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.flyttaAlumner = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
             this.tabControlMainAdmin.SuspendLayout();
             this.tabPageCreateActivity.SuspendLayout();
             this.tabPageEditActivity.SuspendLayout();
@@ -119,6 +118,7 @@
             this.tabPageCreateActivity.TabIndex = 0;
             this.tabPageCreateActivity.Text = "Skapa aktivitet";
             this.tabPageCreateActivity.UseVisualStyleBackColor = true;
+            this.tabPageCreateActivity.Click += new System.EventHandler(this.tabPageCreateActivity_Click);
             // 
             // BeskrivningTextBox
             // 
@@ -195,6 +195,7 @@
             this.KontaktPersonTxtBox.Name = "KontaktPersonTxtBox";
             this.KontaktPersonTxtBox.Size = new System.Drawing.Size(208, 21);
             this.KontaktPersonTxtBox.TabIndex = 6;
+            this.KontaktPersonTxtBox.SelectedIndexChanged += new System.EventHandler(this.KontaktPersonTxtBox_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -424,9 +425,8 @@
             this.tabPageMakeEmailList.Controls.Add(this.flyttaAlumner);
             this.tabPageMakeEmailList.Controls.Add(this.label19);
             this.tabPageMakeEmailList.Controls.Add(this.valdaAlumnerListBox);
-            this.tabPageMakeEmailList.Controls.Add(this.aktivitetComboBox);
+            this.tabPageMakeEmailList.Controls.Add(this.AktivitetComboBox);
             this.tabPageMakeEmailList.Controls.Add(this.label18);
-            this.tabPageMakeEmailList.Controls.Add(this.comboBox1);
             this.tabPageMakeEmailList.Controls.Add(this.alumnCheckedListBox);
             this.tabPageMakeEmailList.Controls.Add(this.comboBoxFilterAlumns);
             this.tabPageMakeEmailList.Controls.Add(this.label17);
@@ -440,6 +440,50 @@
             this.tabPageMakeEmailList.UseVisualStyleBackColor = true;
             this.tabPageMakeEmailList.Click += new System.EventHandler(this.tabPageMakeEmailList_Click);
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(99, 8);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(46, 13);
+            this.label20.TabIndex = 14;
+            this.label20.Text = "Program";
+            // 
+            // flyttaAlumner
+            // 
+            this.flyttaAlumner.Location = new System.Drawing.Point(173, 141);
+            this.flyttaAlumner.Name = "flyttaAlumner";
+            this.flyttaAlumner.Size = new System.Drawing.Size(37, 23);
+            this.flyttaAlumner.TabIndex = 13;
+            this.flyttaAlumner.Text = "Välj";
+            this.flyttaAlumner.UseVisualStyleBackColor = true;
+            this.flyttaAlumner.Click += new System.EventHandler(this.flyttaAlumner_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(213, 109);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(74, 13);
+            this.label19.TabIndex = 12;
+            this.label19.Text = "Valda alumner";
+            // 
+            // valdaAlumnerListBox
+            // 
+            this.valdaAlumnerListBox.FormattingEnabled = true;
+            this.valdaAlumnerListBox.Location = new System.Drawing.Point(216, 125);
+            this.valdaAlumnerListBox.Name = "valdaAlumnerListBox";
+            this.valdaAlumnerListBox.Size = new System.Drawing.Size(120, 147);
+            this.valdaAlumnerListBox.TabIndex = 11;
+            // 
+            // AktivitetComboBox
+            // 
+            this.AktivitetComboBox.FormattingEnabled = true;
+            this.AktivitetComboBox.Location = new System.Drawing.Point(216, 72);
+            this.AktivitetComboBox.Name = "AktivitetComboBox";
+            this.AktivitetComboBox.Size = new System.Drawing.Size(121, 21);
+            this.AktivitetComboBox.TabIndex = 10;
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -448,16 +492,6 @@
             this.label18.Size = new System.Drawing.Size(64, 13);
             this.label18.TabIndex = 8;
             this.label18.Text = "Välj aktivitet";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(290, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(165, 21);
-            this.comboBox1.TabIndex = 6;
-            this.comboBox1.Text = "Välj filter";
             // 
             // alumnCheckedListBox
             // 
@@ -474,7 +508,7 @@
             this.comboBoxFilterAlumns.FormattingEnabled = true;
             this.comboBoxFilterAlumns.Location = new System.Drawing.Point(102, 24);
             this.comboBoxFilterAlumns.Name = "comboBoxFilterAlumns";
-            this.comboBoxFilterAlumns.Size = new System.Drawing.Size(165, 21);
+            this.comboBoxFilterAlumns.Size = new System.Drawing.Size(108, 21);
             this.comboBoxFilterAlumns.TabIndex = 4;
             this.comboBoxFilterAlumns.Text = "Välj filter";
             // 
@@ -489,7 +523,7 @@
             // 
             // btnCreateAlumnCSV
             // 
-            this.btnCreateAlumnCSV.Location = new System.Drawing.Point(381, 153);
+            this.btnCreateAlumnCSV.Location = new System.Drawing.Point(369, 124);
             this.btnCreateAlumnCSV.Name = "btnCreateAlumnCSV";
             this.btnCreateAlumnCSV.Size = new System.Drawing.Size(116, 56);
             this.btnCreateAlumnCSV.TabIndex = 2;
@@ -515,50 +549,6 @@
             this.btnLogOut.Text = "Logga ut";
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
-            // aktivitetComboBox
-            // 
-            this.aktivitetComboBox.FormattingEnabled = true;
-            this.aktivitetComboBox.Location = new System.Drawing.Point(216, 72);
-            this.aktivitetComboBox.Name = "aktivitetComboBox";
-            this.aktivitetComboBox.Size = new System.Drawing.Size(121, 21);
-            this.aktivitetComboBox.TabIndex = 10;
-            // 
-            // valdaAlumnerListBox
-            // 
-            this.valdaAlumnerListBox.FormattingEnabled = true;
-            this.valdaAlumnerListBox.Location = new System.Drawing.Point(216, 125);
-            this.valdaAlumnerListBox.Name = "valdaAlumnerListBox";
-            this.valdaAlumnerListBox.Size = new System.Drawing.Size(120, 147);
-            this.valdaAlumnerListBox.TabIndex = 11;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(213, 109);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(74, 13);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "Valda alumner";
-            // 
-            // flyttaAlumner
-            // 
-            this.flyttaAlumner.Location = new System.Drawing.Point(173, 141);
-            this.flyttaAlumner.Name = "flyttaAlumner";
-            this.flyttaAlumner.Size = new System.Drawing.Size(37, 23);
-            this.flyttaAlumner.TabIndex = 13;
-            this.flyttaAlumner.Text = "Välj";
-            this.flyttaAlumner.UseVisualStyleBackColor = true;
-            this.flyttaAlumner.Click += new System.EventHandler(this.flyttaAlumner_Click);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(99, 8);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(46, 13);
-            this.label20.TabIndex = 14;
-            this.label20.Text = "Program";
             // 
             // MainPersonalForm
             // 
@@ -623,11 +613,10 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnCreateAlumnCSV;
         private System.Windows.Forms.RichTextBox BeskrivningTextBox;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckedListBox alumnCheckedListBox;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.RichTextBox BeskrivningÄndraTextBox;
-        private System.Windows.Forms.ComboBox aktivitetComboBox;
+        private System.Windows.Forms.ComboBox AktivitetComboBox;
         private System.Windows.Forms.ListBox valdaAlumnerListBox;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button flyttaAlumner;

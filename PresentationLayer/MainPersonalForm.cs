@@ -42,7 +42,7 @@ namespace PresentationLayer
 
             //Fyll alumner och aktivitet på Skapa utskickslista
             alumnCheckedListBox.Items.Clear();
-            aktivitetComboBox.Items.Clear();
+            AktivitetComboBox.Items.Clear();
 
             foreach (Alumn alumn in bm.unitOfWork.AlumnRepository.GetAll())
             {
@@ -54,10 +54,10 @@ namespace PresentationLayer
 
             foreach (Aktivitet aktivitet in bm.unitOfWork.AktivitetRepository.GetAll())
             {
-                aktivitetComboBox.Items.Add(aktivitet);
+                AktivitetComboBox.Items.Add(aktivitet);
             }
-            aktivitetComboBox.ValueMember = "AktivitetID";
-            aktivitetComboBox.DisplayMember = "Titel";
+            AktivitetComboBox.ValueMember = "AktivitetID";
+            AktivitetComboBox.DisplayMember = "Titel";
 
             //AktuellaAlumner ska vara de valda 
             //AktuellaAktiviteter är valda aktiviteter
@@ -190,22 +190,52 @@ namespace PresentationLayer
 
         private void btnCreateAlumnCSV_Click(object sender, EventArgs e)
         {
-            List<Alumn> valdaAlumner = new List<Alumn>();
-            foreach (Alumn alumn in valdaAlumnerListBox.Items)
-            {
-                valdaAlumner.Add(alumn);
-            }
-
             Informationsutskick informationsutskick = new Informationsutskick()
             {
-                UtskickDatum = DateTime.Now,
-                Alumner = valdaAlumner,
-                Aktiviteten = (Aktivitet)aktivitetComboBox.SelectedItem
+                UtskickDatum = DateTime.Now
             };
-
             bm.unitOfWork.InformationsutskickRepository.Add(informationsutskick);
-            bm.unitOfWork.Commit();
-            MessageBox.Show("Informationsutskicket har skapats");
+            bm.Commit();
+
+            InformationsutskickAktivitet informationsutskickAktivitet = new InformationsutskickAktivitet()
+            {
+                AktivitetID = (bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)AktivitetComboBox.SelectedItem).AktivitetsID)).AktivitetsID,
+                InformationsutskickID = informationsutskick.UtskicksID
+            };
+            dbContext.InformationsutskickAktivitet.Add(informationsutskickAktivitet);
+            dbContext.SaveChanges();
+
+            foreach (Alumn alumn in valdaAlumnerListBox.Items)
+            {
+                InformationsutskickAlumn informationsutskickAlumn = new InformationsutskickAlumn()
+                {
+                    AlumnID = (bm.unitOfWork.AlumnRepository.GetById(alumn.AnvändarID)).AnvändarID,
+                    InformationsutskickID = (bm.unitOfWork.InformationsutskickRepository.GetById(informationsutskick.UtskicksID)).UtskicksID
+                };
+                dbContext.InformationsutskickAlumn.Add(informationsutskickAlumn);
+            }
+
+            bm.Commit();
+            dbContext.SaveChanges();
+
+            List<Alumn> alumner = new List<Alumn>();
+            foreach (Alumn alumn in valdaAlumnerListBox.Items)
+            {
+                alumner.Add(alumn);
+            }
+
+            bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)AktivitetComboBox.SelectedItem).Titel, alumner);
+            MessageBox.Show("Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!");
+        }
+
+        private void KontaktPersonTxtBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPageCreateActivity_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
