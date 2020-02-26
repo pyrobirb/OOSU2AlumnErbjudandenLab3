@@ -39,15 +39,16 @@ namespace PresentationLayer
             {
                 int Id = informationsutskickAlumn.InformationsutskickID;
                 Informationsutskick informationsutskick = bm.unitOfWork.InformationsutskickRepository.GetById(Id);
+                int hämtad = -1;
                 foreach (InformationsutskickAktivitet informationsutskickAktivitet in bm.HämtaAktivitetMedInformationsutskick(informationsutskick))
                 {
-                    int hämtad = informationsutskickAktivitet.AktivitetID;
+                    hämtad = informationsutskickAktivitet.AktivitetID;
                 }
-                
-                var aktuellAktivitet = bm.unitOfWork.AktivitetRepository
 
-                //ta fram aktivitet från infoutskick
-                //informationsutskickListBox.Items.Add(informationsutskick);
+                var aktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(hämtad);
+                informationsutskickListBox.Items.Add(aktuellAktivitet);
+                informationsutskickListBox.DisplayMember = "Titel";
+
             }
 
             //alumnCheckedListBox.Items.Clear();

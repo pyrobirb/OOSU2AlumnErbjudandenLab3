@@ -15,10 +15,10 @@ namespace DataLayer.Repositories.UniqueRepository
     {
         public IQueryable<InformationsutskickAlumn> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn)
         {
-            using (var db = new DatabaseContext())
-            {
-                return db.InformationsutskickAlumn.Where(x => x.Alumn == inloggadAlumn).Include(x => x.Informationsutskick).AsQueryable();
-            }
+            var db = new DatabaseContext();
+
+            return db.InformationsutskickAlumn.Where(x => x.Alumn == inloggadAlumn).Include(x => x.Informationsutskick).AsQueryable();
+
 
 
         }
