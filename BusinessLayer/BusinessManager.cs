@@ -57,6 +57,11 @@ namespace BusinessLayer
             
         }
 
+        public IQueryable<AlumnAktivitetBokning> HämtaBokningFörAlumn (Alumn inloggadAlumn)
+        {
+            return unitOfWork.AktivitetRepository.HämtaBokningFörAlumn(inloggadAlumn);
+        }
+
         public void Commit()
         {
             unitOfWork.Commit();

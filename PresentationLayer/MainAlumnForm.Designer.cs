@@ -30,6 +30,7 @@
         {
             this.tabControlAlumn = new System.Windows.Forms.TabControl();
             this.tabPageUpcommingActivities = new System.Windows.Forms.TabPage();
+            this.aktivitetsBeskrivningTextBox = new System.Windows.Forms.RichTextBox();
             this.btnBookActivity = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.informationsutskickListBox = new System.Windows.Forms.ListBox();
@@ -38,7 +39,7 @@
             this.btnCancelBookedActivity = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.listBoxBookedActivityInfo = new System.Windows.Forms.ListBox();
-            this.listBoxBookedActivity = new System.Windows.Forms.ListBox();
+            this.bokadeAktiviteterListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageAlumnFacts = new System.Windows.Forms.TabPage();
             this.btnRemoveAlumnData = new System.Windows.Forms.Button();
@@ -69,7 +70,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.aktivitetsBeskrivningTextBox = new System.Windows.Forms.RichTextBox();
             this.tabControlAlumn.SuspendLayout();
             this.tabPageUpcommingActivities.SuspendLayout();
             this.tabPageBookedActivities.SuspendLayout();
@@ -104,6 +104,14 @@
             this.tabPageUpcommingActivities.TabIndex = 0;
             this.tabPageUpcommingActivities.Text = "Aktuella händelser";
             this.tabPageUpcommingActivities.UseVisualStyleBackColor = true;
+            // 
+            // aktivitetsBeskrivningTextBox
+            // 
+            this.aktivitetsBeskrivningTextBox.Location = new System.Drawing.Point(300, 36);
+            this.aktivitetsBeskrivningTextBox.Name = "aktivitetsBeskrivningTextBox";
+            this.aktivitetsBeskrivningTextBox.Size = new System.Drawing.Size(247, 290);
+            this.aktivitetsBeskrivningTextBox.TabIndex = 5;
+            this.aktivitetsBeskrivningTextBox.Text = "";
             // 
             // btnBookActivity
             // 
@@ -147,7 +155,7 @@
             this.tabPageBookedActivities.Controls.Add(this.btnCancelBookedActivity);
             this.tabPageBookedActivities.Controls.Add(this.label4);
             this.tabPageBookedActivities.Controls.Add(this.listBoxBookedActivityInfo);
-            this.tabPageBookedActivities.Controls.Add(this.listBoxBookedActivity);
+            this.tabPageBookedActivities.Controls.Add(this.bokadeAktiviteterListBox);
             this.tabPageBookedActivities.Controls.Add(this.label3);
             this.tabPageBookedActivities.Location = new System.Drawing.Point(4, 22);
             this.tabPageBookedActivities.Name = "tabPageBookedActivities";
@@ -183,13 +191,13 @@
             this.listBoxBookedActivityInfo.Size = new System.Drawing.Size(266, 290);
             this.listBoxBookedActivityInfo.TabIndex = 2;
             // 
-            // listBoxBookedActivity
+            // bokadeAktiviteterListBox
             // 
-            this.listBoxBookedActivity.FormattingEnabled = true;
-            this.listBoxBookedActivity.Location = new System.Drawing.Point(15, 33);
-            this.listBoxBookedActivity.Name = "listBoxBookedActivity";
-            this.listBoxBookedActivity.Size = new System.Drawing.Size(257, 290);
-            this.listBoxBookedActivity.TabIndex = 1;
+            this.bokadeAktiviteterListBox.FormattingEnabled = true;
+            this.bokadeAktiviteterListBox.Location = new System.Drawing.Point(15, 33);
+            this.bokadeAktiviteterListBox.Name = "bokadeAktiviteterListBox";
+            this.bokadeAktiviteterListBox.Size = new System.Drawing.Size(257, 290);
+            this.bokadeAktiviteterListBox.TabIndex = 1;
             // 
             // label3
             // 
@@ -471,14 +479,6 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Ändra förnamn";
             // 
-            // aktivitetsBeskrivningTextBox
-            // 
-            this.aktivitetsBeskrivningTextBox.Location = new System.Drawing.Point(300, 36);
-            this.aktivitetsBeskrivningTextBox.Name = "aktivitetsBeskrivningTextBox";
-            this.aktivitetsBeskrivningTextBox.Size = new System.Drawing.Size(247, 290);
-            this.aktivitetsBeskrivningTextBox.TabIndex = 5;
-            this.aktivitetsBeskrivningTextBox.Text = "";
-            // 
             // MainAlumnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,7 +513,7 @@
         private System.Windows.Forms.Button btnCancelBookedActivity;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox listBoxBookedActivityInfo;
-        private System.Windows.Forms.ListBox listBoxBookedActivity;
+        private System.Windows.Forms.ListBox bokadeAktiviteterListBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPageAlumnFacts;
         private System.Windows.Forms.TabPage tabPageUserData;

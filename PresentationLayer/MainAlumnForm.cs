@@ -25,7 +25,20 @@ namespace PresentationLayer
 
         private void tabControlAlumn_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Visa bokade aktiviteter
 
+            foreach (AlumnAktivitetBokning alumnBokning in bm.HämtaBokningFörAlumn(GLOBALS.AktuellAlumn))
+            {
+                int aktivitetID = alumnBokning.AktivitetID;
+                Aktivitet aktivitet = bm.unitOfWork.AktivitetRepository.GetById(aktivitetID);
+
+                if (aktivitet != null)
+                {
+                    bokadeAktiviteterListBox.Items.Add(aktivitet);
+                    bokadeAktiviteterListBox.DisplayMember = "Titel";
+                    bokadeAktiviteterListBox.ValueMember = "AktivitetsID";
+                }
+            }
         }
 
         private void MainAlumnForm_Load(object sender, EventArgs e)
@@ -56,6 +69,18 @@ namespace PresentationLayer
             if (valdAktivitet != null)
             {
                 aktivitetsBeskrivningTextBox.Text = valdAktivitet.Beskrivning;
+
+            }
+
+            //Visa bokade aktiviteter
+
+            foreach (AlumnAktivitetBokning alumnBokning in bm.HämtaBokningFörAlumn(GLOBALS.AktuellAlumn))
+            {
+                Aktivitet aktivitet = alumnBokning.Aktivitet;
+
+                bokadeAktiviteterListBox.Items.Add(aktivitet);
+                bokadeAktiviteterListBox.DisplayMember = "Titel";
+                bokadeAktiviteterListBox.ValueMember = "AktivitetsID";
 
             }
 
