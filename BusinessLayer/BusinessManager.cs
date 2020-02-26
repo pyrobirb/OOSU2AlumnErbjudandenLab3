@@ -45,6 +45,12 @@ namespace BusinessLayer
             unitOfWork.AktivitetRepository.UpdateAktivitet(aktivitet, nyaktivitet);
         }
 
+        public Alumn HämtaAlumnMedID(int användarID)
+        {
+            return unitOfWork.AlumnRepository.GetById(användarID);
+
+        }
+
         public IQueryable<InformationsutskickAlumn> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn)
         {   
             var b = unitOfWork.InformationsutskickRepository.HämtaInformationsutskickFörAlumn(inloggadAlumn);
@@ -65,6 +71,11 @@ namespace BusinessLayer
         public void Commit()
         {
             unitOfWork.Commit();
+        }
+
+        public void UppdateraAlumn(int id, string förnamn, string efternamn, string epostadress)
+        {
+            unitOfWork.AlumnRepository.UppdateraAlumnKonto(id, förnamn, efternamn, epostadress);
         }
     }
 }

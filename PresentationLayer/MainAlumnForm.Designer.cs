@@ -49,17 +49,17 @@
             this.textBoxWorkLifeExperience = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnAddEducation = new System.Windows.Forms.Button();
-            this.comboBoxExamsAtUniversityOfBorås = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageUserData = new System.Windows.Forms.TabPage();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnSaveChanges = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.ändraEpostTxtBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ändraEfternamnTxtBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ändraFörnamnTxtBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.tabControlAlumn.SuspendLayout();
             this.tabPageUpcommingActivities.SuspendLayout();
             this.tabPageBookedActivities.SuspendLayout();
@@ -201,6 +201,7 @@
             // 
             // tabPageAlumnFacts
             // 
+            this.tabPageAlumnFacts.Controls.Add(this.textBox4);
             this.tabPageAlumnFacts.Controls.Add(this.btnRemoveAlumnData);
             this.tabPageAlumnFacts.Controls.Add(this.label11);
             this.tabPageAlumnFacts.Controls.Add(this.listBoxListedAlumnData);
@@ -208,7 +209,6 @@
             this.tabPageAlumnFacts.Controls.Add(this.textBoxWorkLifeExperience);
             this.tabPageAlumnFacts.Controls.Add(this.label8);
             this.tabPageAlumnFacts.Controls.Add(this.btnAddEducation);
-            this.tabPageAlumnFacts.Controls.Add(this.comboBoxExamsAtUniversityOfBorås);
             this.tabPageAlumnFacts.Controls.Add(this.label5);
             this.tabPageAlumnFacts.Location = new System.Drawing.Point(4, 22);
             this.tabPageAlumnFacts.Name = "tabPageAlumnFacts";
@@ -278,14 +278,6 @@
             this.btnAddEducation.Text = "Lägg till utbildning";
             this.btnAddEducation.UseVisualStyleBackColor = true;
             // 
-            // comboBoxExamsAtUniversityOfBorås
-            // 
-            this.comboBoxExamsAtUniversityOfBorås.FormattingEnabled = true;
-            this.comboBoxExamsAtUniversityOfBorås.Location = new System.Drawing.Point(6, 116);
-            this.comboBoxExamsAtUniversityOfBorås.Name = "comboBoxExamsAtUniversityOfBorås";
-            this.comboBoxExamsAtUniversityOfBorås.Size = new System.Drawing.Size(233, 21);
-            this.comboBoxExamsAtUniversityOfBorås.TabIndex = 1;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -299,11 +291,11 @@
             // 
             this.tabPageUserData.Controls.Add(this.btnDeleteAccount);
             this.tabPageUserData.Controls.Add(this.btnSaveChanges);
-            this.tabPageUserData.Controls.Add(this.textBox3);
+            this.tabPageUserData.Controls.Add(this.ändraEpostTxtBox);
             this.tabPageUserData.Controls.Add(this.label14);
-            this.tabPageUserData.Controls.Add(this.textBox2);
+            this.tabPageUserData.Controls.Add(this.ändraEfternamnTxtBox);
             this.tabPageUserData.Controls.Add(this.label13);
-            this.tabPageUserData.Controls.Add(this.textBox1);
+            this.tabPageUserData.Controls.Add(this.ändraFörnamnTxtBox);
             this.tabPageUserData.Controls.Add(this.label12);
             this.tabPageUserData.Location = new System.Drawing.Point(4, 22);
             this.tabPageUserData.Name = "tabPageUserData";
@@ -329,13 +321,14 @@
             this.btnSaveChanges.TabIndex = 6;
             this.btnSaveChanges.Text = "Spara ändringar";
             this.btnSaveChanges.UseVisualStyleBackColor = true;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
-            // textBox3
+            // ändraEpostTxtBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(7, 99);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(202, 20);
-            this.textBox3.TabIndex = 5;
+            this.ändraEpostTxtBox.Location = new System.Drawing.Point(7, 99);
+            this.ändraEpostTxtBox.Name = "ändraEpostTxtBox";
+            this.ändraEpostTxtBox.Size = new System.Drawing.Size(202, 20);
+            this.ändraEpostTxtBox.TabIndex = 5;
             // 
             // label14
             // 
@@ -346,12 +339,12 @@
             this.label14.TabIndex = 4;
             this.label14.Text = "Ändra e-postadress";
             // 
-            // textBox2
+            // ändraEfternamnTxtBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(7, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(202, 20);
-            this.textBox2.TabIndex = 3;
+            this.ändraEfternamnTxtBox.Location = new System.Drawing.Point(7, 60);
+            this.ändraEfternamnTxtBox.Name = "ändraEfternamnTxtBox";
+            this.ändraEfternamnTxtBox.Size = new System.Drawing.Size(202, 20);
+            this.ändraEfternamnTxtBox.TabIndex = 3;
             // 
             // label13
             // 
@@ -362,12 +355,12 @@
             this.label13.TabIndex = 2;
             this.label13.Text = "Ändra efternamn";
             // 
-            // textBox1
+            // ändraFörnamnTxtBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(202, 20);
-            this.textBox1.TabIndex = 1;
+            this.ändraFörnamnTxtBox.Location = new System.Drawing.Point(7, 21);
+            this.ändraFörnamnTxtBox.Name = "ändraFörnamnTxtBox";
+            this.ändraFörnamnTxtBox.Size = new System.Drawing.Size(202, 20);
+            this.ändraFörnamnTxtBox.TabIndex = 1;
             // 
             // label12
             // 
@@ -377,6 +370,13 @@
             this.label12.Size = new System.Drawing.Size(76, 13);
             this.label12.TabIndex = 0;
             this.label12.Text = "Ändra förnamn";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(7, 117);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(233, 20);
+            this.textBox4.TabIndex = 20;
             // 
             // MainAlumnForm
             // 
@@ -422,17 +422,17 @@
         private System.Windows.Forms.TextBox textBoxWorkLifeExperience;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnAddEducation;
-        private System.Windows.Forms.ComboBox comboBoxExamsAtUniversityOfBorås;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnSaveChanges;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox ändraEpostTxtBox;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ändraEfternamnTxtBox;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox ändraFörnamnTxtBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RichTextBox aktivitetsBeskrivningTextBox;
         private System.Windows.Forms.RichTextBox aktivitetsinformationRichTextBox;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }

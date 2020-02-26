@@ -37,11 +37,17 @@ namespace PresentationLayer
                     bokadeAktiviteterListBox.Items.Add(aktivitet);
                     bokadeAktiviteterListBox.DisplayMember = "Titel";
                     bokadeAktiviteterListBox.ValueMember = "AktivitetsID";
-
                 }
-
-                
             }
+
+            //AnvändarUppgifter
+            var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
+            ändraFörnamnTxtBox.Text= InloggadAlumn.Förnamn;
+            ändraEfternamnTxtBox.Text = InloggadAlumn.Efternamn;
+            ändraEpostTxtBox.Text = InloggadAlumn.Användarnamn;
+
+
+
         }
 
         private void MainAlumnForm_Load(object sender, EventArgs e)
@@ -128,6 +134,22 @@ namespace PresentationLayer
 
         private void label8_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
+            var gammaltFörnamn = InloggadAlumn.Förnamn;
+            var gammaltEfternamn = InloggadAlumn.Efternamn;
+            var gammalepostadress = InloggadAlumn.Användarnamn;
+            bm.UppdateraAlumn(InloggadAlumn.AnvändarID, ändraFörnamnTxtBox.Text, ändraEfternamnTxtBox.Text, ändraEpostTxtBox.Text);
+            GLOBALS.AktuellAlumn = bm.HämtaAlumnMedID(InloggadAlumn.AnvändarID);
+            MessageBox.Show($"Dina uppgifter är nu uppdaterade: " +
+                $"\n{gammaltFörnamn} -> {GLOBALS.AktuellAlumn.Förnamn} " +
+                $"\n{gammaltEfternamn} -> {GLOBALS.AktuellAlumn.Efternamn} " +
+                $"\n{gammalepostadress} -> {GLOBALS.AktuellAlumn.Användarnamn}");
+
 
         }
     }
