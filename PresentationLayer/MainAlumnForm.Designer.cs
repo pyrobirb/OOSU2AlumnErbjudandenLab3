@@ -38,7 +38,6 @@
             this.tabPageBookedActivities = new System.Windows.Forms.TabPage();
             this.btnCancelBookedActivity = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.listBoxBookedActivityInfo = new System.Windows.Forms.ListBox();
             this.bokadeAktiviteterListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageAlumnFacts = new System.Windows.Forms.TabPage();
@@ -70,6 +69,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.aktivitetsinformationRichTextBox = new System.Windows.Forms.RichTextBox();
             this.tabControlAlumn.SuspendLayout();
             this.tabPageUpcommingActivities.SuspendLayout();
             this.tabPageBookedActivities.SuspendLayout();
@@ -152,9 +152,9 @@
             // 
             // tabPageBookedActivities
             // 
+            this.tabPageBookedActivities.Controls.Add(this.aktivitetsinformationRichTextBox);
             this.tabPageBookedActivities.Controls.Add(this.btnCancelBookedActivity);
             this.tabPageBookedActivities.Controls.Add(this.label4);
-            this.tabPageBookedActivities.Controls.Add(this.listBoxBookedActivityInfo);
             this.tabPageBookedActivities.Controls.Add(this.bokadeAktiviteterListBox);
             this.tabPageBookedActivities.Controls.Add(this.label3);
             this.tabPageBookedActivities.Location = new System.Drawing.Point(4, 22);
@@ -183,14 +183,6 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Aktivitetsinformation";
             // 
-            // listBoxBookedActivityInfo
-            // 
-            this.listBoxBookedActivityInfo.FormattingEnabled = true;
-            this.listBoxBookedActivityInfo.Location = new System.Drawing.Point(288, 33);
-            this.listBoxBookedActivityInfo.Name = "listBoxBookedActivityInfo";
-            this.listBoxBookedActivityInfo.Size = new System.Drawing.Size(266, 290);
-            this.listBoxBookedActivityInfo.TabIndex = 2;
-            // 
             // bokadeAktiviteterListBox
             // 
             this.bokadeAktiviteterListBox.FormattingEnabled = true;
@@ -198,6 +190,7 @@
             this.bokadeAktiviteterListBox.Name = "bokadeAktiviteterListBox";
             this.bokadeAktiviteterListBox.Size = new System.Drawing.Size(257, 290);
             this.bokadeAktiviteterListBox.TabIndex = 1;
+            this.bokadeAktiviteterListBox.SelectedIndexChanged += new System.EventHandler(this.bokadeAktiviteterListBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -479,6 +472,14 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Ändra förnamn";
             // 
+            // aktivitetsinformationRichTextBox
+            // 
+            this.aktivitetsinformationRichTextBox.Location = new System.Drawing.Point(288, 33);
+            this.aktivitetsinformationRichTextBox.Name = "aktivitetsinformationRichTextBox";
+            this.aktivitetsinformationRichTextBox.Size = new System.Drawing.Size(266, 290);
+            this.aktivitetsinformationRichTextBox.TabIndex = 5;
+            this.aktivitetsinformationRichTextBox.Text = "";
+            // 
             // MainAlumnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -512,7 +513,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelBookedActivity;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox listBoxBookedActivityInfo;
         private System.Windows.Forms.ListBox bokadeAktiviteterListBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPageAlumnFacts;
@@ -545,5 +545,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RichTextBox aktivitetsBeskrivningTextBox;
+        private System.Windows.Forms.RichTextBox aktivitetsinformationRichTextBox;
     }
 }

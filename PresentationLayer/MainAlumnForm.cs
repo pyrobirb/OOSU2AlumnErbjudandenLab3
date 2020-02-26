@@ -37,7 +37,10 @@ namespace PresentationLayer
                     bokadeAktiviteterListBox.Items.Add(aktivitet);
                     bokadeAktiviteterListBox.DisplayMember = "Titel";
                     bokadeAktiviteterListBox.ValueMember = "AktivitetsID";
+
                 }
+
+                
             }
         }
 
@@ -109,6 +112,16 @@ namespace PresentationLayer
             if (valdAktivitet != null)
             {
                 aktivitetsBeskrivningTextBox.Text = valdAktivitet.Beskrivning;
+
+            }
+        }
+
+        private void bokadeAktiviteterListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Aktivitet valdBokadAktivitet = (Aktivitet)bokadeAktiviteterListBox.SelectedItem;
+            if (valdBokadAktivitet != null)
+            {
+                aktivitetsinformationRichTextBox.Text = valdBokadAktivitet.Beskrivning;
 
             }
         }

@@ -13,9 +13,11 @@ namespace DataLayer.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=AlumnErbjudanden;Trusted_Connection=True;MultipleActiveResultSets=true;Integrated Security=True;");
+            optionsBuilder.UseSqlServer(@"Server=sqlutb2.hb.se,56077;Database=osu2015;user id=osu2015;password=wb9896;");
+            optionsBuilder.UseSqlServer(@"Server=sqlutb2.hb.se,56077;Database=osu2015;user id=osu2015;password=wb9896;");
             base.OnConfiguring(optionsBuilder);
         }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
