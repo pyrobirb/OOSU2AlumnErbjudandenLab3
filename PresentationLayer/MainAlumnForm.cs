@@ -48,6 +48,14 @@ namespace PresentationLayer
                 var aktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(hämtad);
                 informationsutskickListBox.Items.Add(aktuellAktivitet);
                 informationsutskickListBox.DisplayMember = "Titel";
+                informationsutskickListBox.ValueMember = "AktivitetsID";
+
+            }
+
+            Aktivitet valdAktivitet = (Aktivitet)informationsutskickListBox.SelectedItem;
+            if (valdAktivitet != null)
+            {
+                aktivitetsBeskrivningTextBox.Text = valdAktivitet.Beskrivning;
 
             }
 
@@ -70,7 +78,12 @@ namespace PresentationLayer
 
         private void informationsutskickListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Aktivitet valdAktivitet = (Aktivitet)informationsutskickListBox.SelectedItem;
+            if (valdAktivitet != null)
+            {
+                aktivitetsBeskrivningTextBox.Text = valdAktivitet.Beskrivning;
 
+            }
         }
     }
 }
