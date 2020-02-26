@@ -23,16 +23,14 @@ namespace BusinessEntites.Models
         public List<Aktivitet> Aktiviteter
         {
             get { return _Aktiviteter; }
-            set { _Aktiviteter = value; }
+            set { _Aktiviteter = bm.ListaAllaAktuellaAktiviteter();}
         }
 
         public AktivaAktiviteter()
         {
             _observers = new List<IObserver>();
         }
-
-
-
+        
         public List<Alumn> Alumner { get; set; }
 
         public void Add(IObserver observer)
@@ -51,23 +49,6 @@ namespace BusinessEntites.Models
         public List<Aktivitet> HämtaAktiviteter()
         {
             return _Aktiviteter;
-        }
-
-        public List<Aktivitet> GetAktivitets()
-        {
-            foreach (AlumnAktivitetBokning alumnBokning in bm.HämtaBokningFörAlumn(GLOBALS.AktuellAlumn))
-            {
-                int aktivitetID = alumnBokning.AktivitetID;
-                Aktivitet aktivitet = bm.unitOfWork.AktivitetRepository.GetById(aktivitetID);
-
-                if (aktivitet != null)
-                {
-                    bokadeAktiviteterListBox.Items.Add(aktivitet);
-                    bokadeAktiviteterListBox.DisplayMember = "Titel";
-                    bokadeAktiviteterListBox.ValueMember = "AktivitetsID";
-                }
-            }
-
-}
+        }        
     }
 }

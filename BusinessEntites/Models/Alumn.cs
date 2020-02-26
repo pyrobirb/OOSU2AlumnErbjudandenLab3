@@ -32,15 +32,9 @@ namespace BusinessEntites.Models
         //    this.AktivaAktiviteter = aktivaAktiviteter;
         //}
 
-        public Alumn(int AnvID)
-        {
-            AnvändarID = AnvID;
-        }
         
         public void Update(ISubject subject)
         {
-            
-
             if (subject is AktivaAktiviteter aktivaAktiviteter)
             {
                 MessageBox.Show("Nu finns det nya aktiteter att anmäla sig till.");

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessEntites;
 
 namespace DataLayer.Seed
 {
@@ -13,6 +14,8 @@ namespace DataLayer.Seed
     {
         public static void Populate(DatabaseContext dbContext)
         {
+            AktivaAktiviteter aktivaAktiviteter = new AktivaAktiviteter();
+
             //Alumn
             Alumn alumn1 = new Alumn()
             {
@@ -20,11 +23,10 @@ namespace DataLayer.Seed
                 Lösenord = "smiv",
                 Förnamn = "Vissla",
                 Efternamn = "Kvist",
-
-
             };
 
             dbContext.Alumner.Add(alumn1);
+            aktivaAktiviteter.Add(alumn1);
             
 
             //Program

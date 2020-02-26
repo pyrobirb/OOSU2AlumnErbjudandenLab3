@@ -39,6 +39,12 @@ namespace DataLayer.Repositories.UniqueRepository
             return db.AlumnAktivitet.Where(x => x.Alumn == inloggadAlumn);
         }
 
+        public IQueryable<Aktivitet> HämtaAllaAktuellaAktiviteter()
+        {
+            var db = new DatabaseContext();
+            return db.Aktiviteter.Where(x => x.Startdatum > DateTime.Now);
+        }
+
         public AktivitetRepository(DatabaseContext context) : base(context)
         {
 

@@ -41,6 +41,20 @@ namespace BusinessLayer
         {
             return unitOfWork.PersonalRepository.HämtaPersonalKonto(användarnamn, lösenord);
         }
+
+        List<Aktivitet> aktivitets;
+
+        public List<Aktivitet> ListaAllaAktuellaAktiviteter()
+        {
+            IQueryable temp = unitOfWork.AktivitetRepository.HämtaAllaAktuellaAktiviteter();
+            foreach (Aktivitet aktivitet in temp)
+            {
+                aktivitets.Add(aktivitet);
+            }
+
+            return aktivitets ;
+        }
+
         public void UpdateAktivitet(Aktivitet aktivitet, Aktivitet nyaktivitet)
         {
             unitOfWork.AktivitetRepository.UpdateAktivitet(aktivitet, nyaktivitet);

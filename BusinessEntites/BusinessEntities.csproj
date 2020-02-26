@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessEntities.cs" />
-    <Compile Include="Models\AktivaAktiviteter.cs" />
     <Compile Include="Models\Aktivitet.cs" />
     <Compile Include="Models\Alumn.cs" />
     <Compile Include="Models\Informationsutskick.cs" />
