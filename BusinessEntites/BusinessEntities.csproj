@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessEntities.cs" />
+    <Compile Include="Models\AktivaAktiviteter.cs" />
     <Compile Include="Models\Aktivitet.cs" />
     <Compile Include="Models\Alumn.cs" />
     <Compile Include="Models\Informationsutskick.cs" />
@@ -50,8 +52,10 @@
     <Compile Include="Models\Interfaces\IAlumn.cs" />
     <Compile Include="Models\Interfaces\IInformationsutskick.cs" />
     <Compile Include="Models\Interfaces\IKompetens.cs" />
+    <Compile Include="Models\Interfaces\IObserver.cs" />
     <Compile Include="Models\Interfaces\IPersonal.cs" />
     <Compile Include="Models\Interfaces\IProgram.cs" />
+    <Compile Include="Models\Interfaces\ISubject.cs" />
     <Compile Include="Models\Junction\AlumnAktivitetBokning.cs" />
     <Compile Include="Models\Junction\AlumnKompetens.cs" />
     <Compile Include="Models\Junction\AlumnProgram.cs" />

@@ -25,6 +25,7 @@ namespace DataLayer.Seed
             };
 
             dbContext.Alumner.Add(alumn1);
+            
 
             //Program
             Program program1 = new Program()
