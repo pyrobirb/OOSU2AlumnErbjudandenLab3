@@ -73,7 +73,7 @@ namespace PresentationLayer
 
         private void btnBookActivity_Click(object sender, EventArgs e)
         {
-
+            //informationsutskickListBox.SelectedItem;
         }
 
         private void informationsutskickListBox_SelectedIndexChanged(object sender, EventArgs e)
