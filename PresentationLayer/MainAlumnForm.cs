@@ -77,13 +77,8 @@ namespace PresentationLayer
             {
                 int Id = informationsutskickAlumn.InformationsutskickID;
                 Informationsutskick informationsutskick = bm.unitOfWork.InformationsutskickRepository.GetById(Id);
-                int hämtad = -1;
-                foreach (InformationsutskickAktivitet informationsutskickAktivitet in bm.HämtaAktivitetMedInformationsutskick(informationsutskick))
-                {
-                    hämtad = informationsutskickAktivitet.AktivitetID;
-                }
 
-                var aktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(hämtad);
+                var aktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(bm.HämtaAktivitetMedInformationsutskick(informationsutskick).AktivitetID);
                 informationsutskickListBox.Items.Add(aktuellAktivitet);
                 informationsutskickListBox.DisplayMember = "Titel";
                 informationsutskickListBox.ValueMember = "AktivitetsID";

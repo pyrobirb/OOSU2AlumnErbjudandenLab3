@@ -13,7 +13,7 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
     {
         void UpdateAktivitet(Aktivitet aktivitet, Aktivitet nyaktivitet);
 
-        IQueryable<InformationsutskickAktivitet> HämtaAktivitetMedInformationsutskick(Informationsutskick informationsutskick);
+        InformationsutskickAktivitet HämtaAktivitetMedInformationsutskick(Informationsutskick informationsutskick);
         IQueryable<AlumnAktivitetBokning> HämtaBokningFörAlumn(Alumn inloggadAlumn);
         void TaBortAktivitetFrånAlumn(Aktivitet aktivitet, Alumn aktuellAlumn);
     }

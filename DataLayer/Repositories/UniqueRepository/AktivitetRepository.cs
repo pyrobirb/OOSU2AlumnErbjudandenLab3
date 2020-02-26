@@ -26,10 +26,10 @@ namespace DataLayer.Repositories.UniqueRepository
             this.Context.SaveChanges();
         }
 
-        public IQueryable<InformationsutskickAktivitet> HämtaAktivitetMedInformationsutskick (Informationsutskick informationsutskick)
+        public InformationsutskickAktivitet HämtaAktivitetMedInformationsutskick (Informationsutskick informationsutskick)
         {
             var db = new DatabaseContext();
-            return db.InformationsutskickAktivitet.Where(x => x.Informationsutskick == informationsutskick);
+            return db.InformationsutskickAktivitet.Where(x => x.Informationsutskick == informationsutskick).SingleOrDefault();
 
         }
 

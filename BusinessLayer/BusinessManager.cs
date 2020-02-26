@@ -82,7 +82,7 @@ namespace BusinessLayer
             return programs;
         }
 
-        public IQueryable<InformationsutskickAktivitet> HämtaAktivitetMedInformationsutskick (Informationsutskick informationsutskick)
+        public InformationsutskickAktivitet HämtaAktivitetMedInformationsutskick (Informationsutskick informationsutskick)
         {
             return unitOfWork.AktivitetRepository.HämtaAktivitetMedInformationsutskick(informationsutskick);
             
