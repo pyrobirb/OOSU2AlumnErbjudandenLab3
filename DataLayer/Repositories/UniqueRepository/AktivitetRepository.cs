@@ -33,6 +33,12 @@ namespace DataLayer.Repositories.UniqueRepository
 
         }
 
+        public IQueryable<AlumnAktivitetBokning> HämtaBokningFörAlumn (Alumn inloggadAlumn)
+        {
+            var db = new DatabaseContext();
+            return db.AlumnAktivitet.Where(x => x.Alumn == inloggadAlumn);
+        }
+
         public AktivitetRepository(DatabaseContext context) : base(context)
         {
 
