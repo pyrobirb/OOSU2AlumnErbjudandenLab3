@@ -59,21 +59,23 @@ namespace PresentationLayer
 
             }
 
-            //alumnCheckedListBox.Items.Clear();
-            //AktivitetComboBox.Items.Clear();
-
-            //foreach (Alumn alumn in bm.unitOfWork.AlumnRepository.GetAll())
-            //{
-            //    alumnCheckedListBox.Items.Add(alumn);
-
-            //}
-            //alumnCheckedListBox.ValueMember = "AnvändarID";
-            //alumnCheckedListBox.DisplayMember = "Förnamn";
         }
 
         private void btnBookActivity_Click(object sender, EventArgs e)
         {
-            //informationsutskickListBox.SelectedItem;
+            Aktivitet bokadAktivitet = (Aktivitet)informationsutskickListBox.SelectedItem;
+
+            AlumnAktivitetBokning alumnAktivitetBokning = new AlumnAktivitetBokning()
+            {
+                AlumnID = GLOBALS.AktuellAlumn.AnvändarID,
+                //Alumn = GLOBALS.AktuellAlumn,
+                AktivitetID = bokadAktivitet.AktivitetsID,
+                //Aktivitet = bokadAktivitet
+            };
+            dbContext.AlumnAktivitet.Add(alumnAktivitetBokning);
+            dbContext.SaveChanges();
+            MessageBox.Show("Bokningen har skapats");
+
         }
 
         private void informationsutskickListBox_SelectedIndexChanged(object sender, EventArgs e)
