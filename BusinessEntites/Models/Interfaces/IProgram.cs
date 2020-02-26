@@ -11,7 +11,6 @@ namespace BusinessEntites.Models.Interfaces
     {
         int ProgramID { get; set; }
         string Namn { get; set; }
-
         ICollection<AlumnProgram> AlumnProgram { get; set; }
 
     }

@@ -45,15 +45,15 @@ namespace BusinessLayer
             unitOfWork.AktivitetRepository.UpdateAktivitet(aktivitet, nyaktivitet);
         }
 
-        public IQueryable<Informationsutskick> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn)
+        public IQueryable<InformationsutskickAlumn> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn)
         {   
             var b = unitOfWork.InformationsutskickRepository.HämtaInformationsutskickFörAlumn(inloggadAlumn);
-
-            foreach (Alumn alumn in b)
-            {
-
-            }
             return b;
+        }
+
+        public Aktivitet HämtaAktivitetMedInformationsutskick (Informationsutskick informationsutskick)
+        {
+
         }
 
         public void Commit()

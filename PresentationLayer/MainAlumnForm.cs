@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
 using BusinessLayer;
 using DataLayer.Contexts;
 
@@ -34,10 +35,15 @@ namespace PresentationLayer
             informationsutskickListBox.Items.Clear();
             aktivitetsBeskrivningTextBox.Text = "";
 
-            foreach (Informationsutskick informationsutskick in bm.HämtaInformationsutskickFörAlumn(GLOBALS.AktuellAlumn))
+            foreach (InformationsutskickAlumn informationsutskickAlumn in bm.HämtaInformationsutskickFörAlumn(GLOBALS.AktuellAlumn))
             {
+                int Id = informationsutskickAlumn.InformationsutskickID;
+                var informationsutskick = bm.unitOfWork.InformationsutskickRepository.GetById(Id);
+                bm.HämtaAktivitetMedInformationsutskick(Informationsutskick);
+                
+
                 //ta fram aktivitet från infoutskick
-                informationsutskickListBox.Items.Add(informationsutskick);
+                //informationsutskickListBox.Items.Add(informationsutskick);
             }
 
             //alumnCheckedListBox.Items.Clear();

@@ -17,7 +17,7 @@ namespace DataLayer.Repositories.UniqueRepository
         {
             using (var db = new DatabaseContext())
             {
-                return db.InformationsutskickAlumn.Where(x => x.Alumn == inloggadAlumn).Include(x => x.Informationsutskick);
+                return db.InformationsutskickAlumn.Where(x => x.Alumn == inloggadAlumn).Include(x => x.Informationsutskick).AsQueryable();
             }
 
 
