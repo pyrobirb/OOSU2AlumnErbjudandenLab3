@@ -51,9 +51,10 @@ namespace BusinessLayer
             return b;
         }
 
-        public Aktivitet HämtaAktivitetMedInformationsutskick (Informationsutskick informationsutskick)
+        public IQueryable<InformationsutskickAktivitet> HämtaAktivitetMedInformationsutskick (Informationsutskick informationsutskick)
         {
-
+            return unitOfWork.AktivitetRepository.HämtaAktivitetMedInformationsutskick(informationsutskick);
+            
         }
 
         public void Commit()

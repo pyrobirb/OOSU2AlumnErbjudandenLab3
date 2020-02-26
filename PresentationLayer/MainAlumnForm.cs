@@ -38,9 +38,13 @@ namespace PresentationLayer
             foreach (InformationsutskickAlumn informationsutskickAlumn in bm.HämtaInformationsutskickFörAlumn(GLOBALS.AktuellAlumn))
             {
                 int Id = informationsutskickAlumn.InformationsutskickID;
-                var informationsutskick = bm.unitOfWork.InformationsutskickRepository.GetById(Id);
-                bm.HämtaAktivitetMedInformationsutskick(Informationsutskick);
+                Informationsutskick informationsutskick = bm.unitOfWork.InformationsutskickRepository.GetById(Id);
+                foreach (InformationsutskickAktivitet informationsutskickAktivitet in bm.HämtaAktivitetMedInformationsutskick(informationsutskick))
+                {
+                    int hämtad = informationsutskickAktivitet.AktivitetID;
+                }
                 
+                var aktuellAktivitet = bm.unitOfWork.AktivitetRepository
 
                 //ta fram aktivitet från infoutskick
                 //informationsutskickListBox.Items.Add(informationsutskick);

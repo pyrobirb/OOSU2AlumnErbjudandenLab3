@@ -12,6 +12,7 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
     public interface IAktivitetRepository : IRepository<Aktivitet>
     {
         void UpdateAktivitet(Aktivitet aktivitet, Aktivitet nyaktivitet);
-        
+
+        IQueryable<InformationsutskickAktivitet> HämtaAktivitetMedInformationsutskick(Informationsutskick informationsutskick);
     }
 }
