@@ -123,5 +123,10 @@ namespace BusinessLayer
         {
             unitOfWork.KompetensRepository.TaBortKompetensFrånAlumn(selectedKompetensToRemove, aktuellAlumn);
         }
+
+        public void TaBortAktivitetFrånAlumn(Aktivitet aktivitet, Alumn aktuellAlumn)
+        {
+            unitOfWork.AktivitetRepository.TaBortAktivitetFrånAlumn(aktivitet, aktuellAlumn);
+        }
     }
 }

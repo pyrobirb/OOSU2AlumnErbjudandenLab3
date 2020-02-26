@@ -42,6 +42,9 @@
             this.bokadeAktiviteterListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageAlumnFacts = new System.Windows.Forms.TabPage();
+            this.taBortValtProgramBtn = new System.Windows.Forms.Button();
+            this.Kompetenser = new System.Windows.Forms.Label();
+            this.kompetenserListBox = new System.Windows.Forms.ListBox();
             this.nyUtbildningTxtBox = new System.Windows.Forms.TextBox();
             this.taBortvaldKompetensBtn = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -60,9 +63,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.ändraFörnamnTxtBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.kompetenserListBox = new System.Windows.Forms.ListBox();
-            this.Kompetenser = new System.Windows.Forms.Label();
-            this.taBortValtProgramBtn = new System.Windows.Forms.Button();
             this.tabControlAlumn.SuspendLayout();
             this.tabPageUpcommingActivities.SuspendLayout();
             this.tabPageBookedActivities.SuspendLayout();
@@ -174,6 +174,7 @@
             this.btnCancelBookedActivity.TabIndex = 4;
             this.btnCancelBookedActivity.Text = "Avboka vald aktivitet";
             this.btnCancelBookedActivity.UseVisualStyleBackColor = true;
+            this.btnCancelBookedActivity.Click += new System.EventHandler(this.btnCancelBookedActivity_Click);
             // 
             // label4
             // 
@@ -222,6 +223,33 @@
             this.tabPageAlumnFacts.TabIndex = 2;
             this.tabPageAlumnFacts.Text = "Alumnuppgifter";
             this.tabPageAlumnFacts.UseVisualStyleBackColor = true;
+            // 
+            // taBortValtProgramBtn
+            // 
+            this.taBortValtProgramBtn.Location = new System.Drawing.Point(417, 156);
+            this.taBortValtProgramBtn.Name = "taBortValtProgramBtn";
+            this.taBortValtProgramBtn.Size = new System.Drawing.Size(135, 23);
+            this.taBortValtProgramBtn.TabIndex = 23;
+            this.taBortValtProgramBtn.Text = "Ta bort valt program";
+            this.taBortValtProgramBtn.UseVisualStyleBackColor = true;
+            this.taBortValtProgramBtn.Click += new System.EventHandler(this.taBortValtProgramBtn_Click);
+            // 
+            // Kompetenser
+            // 
+            this.Kompetenser.AutoSize = true;
+            this.Kompetenser.Location = new System.Drawing.Point(258, 187);
+            this.Kompetenser.Name = "Kompetenser";
+            this.Kompetenser.Size = new System.Drawing.Size(69, 13);
+            this.Kompetenser.TabIndex = 22;
+            this.Kompetenser.Text = "Kompetenser";
+            // 
+            // kompetenserListBox
+            // 
+            this.kompetenserListBox.FormattingEnabled = true;
+            this.kompetenserListBox.Location = new System.Drawing.Point(261, 203);
+            this.kompetenserListBox.Name = "kompetenserListBox";
+            this.kompetenserListBox.Size = new System.Drawing.Size(291, 121);
+            this.kompetenserListBox.TabIndex = 21;
             // 
             // nyUtbildningTxtBox
             // 
@@ -387,33 +415,6 @@
             this.label12.Size = new System.Drawing.Size(76, 13);
             this.label12.TabIndex = 0;
             this.label12.Text = "Ändra förnamn";
-            // 
-            // kompetenserListBox
-            // 
-            this.kompetenserListBox.FormattingEnabled = true;
-            this.kompetenserListBox.Location = new System.Drawing.Point(261, 203);
-            this.kompetenserListBox.Name = "kompetenserListBox";
-            this.kompetenserListBox.Size = new System.Drawing.Size(291, 121);
-            this.kompetenserListBox.TabIndex = 21;
-            // 
-            // Kompetenser
-            // 
-            this.Kompetenser.AutoSize = true;
-            this.Kompetenser.Location = new System.Drawing.Point(258, 187);
-            this.Kompetenser.Name = "Kompetenser";
-            this.Kompetenser.Size = new System.Drawing.Size(69, 13);
-            this.Kompetenser.TabIndex = 22;
-            this.Kompetenser.Text = "Kompetenser";
-            // 
-            // taBortValtProgramBtn
-            // 
-            this.taBortValtProgramBtn.Location = new System.Drawing.Point(417, 156);
-            this.taBortValtProgramBtn.Name = "taBortValtProgramBtn";
-            this.taBortValtProgramBtn.Size = new System.Drawing.Size(135, 23);
-            this.taBortValtProgramBtn.TabIndex = 23;
-            this.taBortValtProgramBtn.Text = "Ta bort valt program";
-            this.taBortValtProgramBtn.UseVisualStyleBackColor = true;
-            this.taBortValtProgramBtn.Click += new System.EventHandler(this.taBortValtProgramBtn_Click);
             // 
             // MainAlumnForm
             // 

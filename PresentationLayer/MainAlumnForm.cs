@@ -23,15 +23,28 @@ namespace PresentationLayer
         {
             InitializeComponent();
         }
+        public void UppdateraBokadeAktiviteter()
+        {
+            bokadeAktiviteterListBox.Items.Clear();
+            aktivitetsinformationRichTextBox.Text = "";
+            foreach (AlumnAktivitetBokning alumnBokning in bm.HämtaBokningFörAlumn(GLOBALS.AktuellAlumn))
+            {
+                Aktivitet aktiviteten = alumnBokning.Aktivitet;
 
-        private void tabControlAlumn_SelectedIndexChanged(object sender, EventArgs e)
+                bokadeAktiviteterListBox.Items.Add(aktiviteten);
+                bokadeAktiviteterListBox.DisplayMember = "Titel";
+                bokadeAktiviteterListBox.ValueMember = "AktivitetsID";
+            }
+        }
+
+    private void tabControlAlumn_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Visa bokade aktiviteter
 
             foreach (AlumnAktivitetBokning alumnBokning in bm.HämtaBokningFörAlumn(GLOBALS.AktuellAlumn))
             {
-                int aktivitetID = alumnBokning.AktivitetID;
-                Aktivitet aktivitet = bm.unitOfWork.AktivitetRepository.GetById(aktivitetID);
+                
+                Aktivitet aktivitet = bm.unitOfWork.AktivitetRepository.GetById(alumnBokning.AktivitetID);
 
                 if (aktivitet != null)
                 {
@@ -84,17 +97,8 @@ namespace PresentationLayer
 
             }
 
-            //Visa bokade aktiviteter
 
-            foreach (AlumnAktivitetBokning alumnBokning in bm.HämtaBokningFörAlumn(GLOBALS.AktuellAlumn))
-            {
-                Aktivitet aktivitet = alumnBokning.Aktivitet;
-
-                bokadeAktiviteterListBox.Items.Add(aktivitet);
-                bokadeAktiviteterListBox.DisplayMember = "Titel";
-                bokadeAktiviteterListBox.ValueMember = "AktivitetsID";
-
-            }
+            UppdateraBokadeAktiviteter();
 
         }
 
@@ -131,7 +135,6 @@ namespace PresentationLayer
             if (valdBokadAktivitet != null)
             {
                 aktivitetsinformationRichTextBox.Text = valdBokadAktivitet.Beskrivning;
-
             }
         }
 
@@ -199,6 +202,15 @@ namespace PresentationLayer
             var selectedKompetensToRemove = (Kompetens)programListBox.SelectedItem;
             bm.TaBortKompetensFrånAlumn(selectedKompetensToRemove, GLOBALS.AktuellAlumn);
             UppdateraKompetenserListBox();
+        }
+
+        private void btnCancelBookedActivity_Click(object sender, EventArgs e)
+        {
+            Aktivitet aktivitet = (Aktivitet)bokadeAktiviteterListBox.SelectedItem;
+            bm.TaBortAktivitetFrånAlumn(aktivitet, GLOBALS.AktuellAlumn);
+            UppdateraBokadeAktiviteter();
+            MessageBox.Show("Bokningen har raderats");
+            
         }
     }
 }

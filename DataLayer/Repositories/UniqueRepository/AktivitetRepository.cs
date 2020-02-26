@@ -39,6 +39,15 @@ namespace DataLayer.Repositories.UniqueRepository
             return db.AlumnAktivitet.Where(x => x.Alumn == inloggadAlumn);
         }
 
+        public void TaBortAktivitetFrånAlumn(Aktivitet aktivitet, Alumn aktuellAlumn)
+        {
+            var db = new DatabaseContext();
+
+            var query = db.AlumnAktivitet.Where(x => x.AlumnID == aktuellAlumn.AnvändarID && x.AktivitetID == aktivitet.AktivitetsID).Select(x => x).FirstOrDefault();
+            db.AlumnAktivitet.Remove(query);
+            db.SaveChanges();
+        }
+
         public AktivitetRepository(DatabaseContext context) : base(context)
         {
 
