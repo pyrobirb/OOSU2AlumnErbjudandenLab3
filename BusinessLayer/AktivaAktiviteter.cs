@@ -1,5 +1,6 @@
 ﻿using BusinessEntites.Models.Interfaces;
 using BusinessEntites.Models.Junction;
+using BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace BusinessEntites.Models
 {
     public class AktivaAktiviteter : ISubject
     {
+        BusinessManager bm = new BusinessManager();
+        
 
         private List<IObserver> _observers;
 
