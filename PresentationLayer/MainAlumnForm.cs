@@ -109,9 +109,7 @@ namespace PresentationLayer
             AlumnAktivitetBokning alumnAktivitetBokning = new AlumnAktivitetBokning()
             {
                 AlumnID = GLOBALS.AktuellAlumn.AnvändarID,
-                //Alumn = GLOBALS.AktuellAlumn,
                 AktivitetID = bokadAktivitet.AktivitetsID,
-                //Aktivitet = bokadAktivitet
             };
             dbContext.AlumnAktivitet.Add(alumnAktivitetBokning);
             dbContext.SaveChanges();
