@@ -9,5 +9,8 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
 {
     public interface IProgramRepository : IRepository<Program>
     {
+        void LäggTillUtbildningTillAlumn(int id, string text);
+        IQueryable<Program> HämtaProgramFörAlumn(Alumn aktuellAlumn);
+        void TaBortProgramFrånAlumn(Program selectedProgramToRemove, Alumn aktuellAlumn);
     }
 }

@@ -9,6 +9,7 @@ using BusinessEntites.Models.Junction;
 using DataLayer;
 using DataLayer.Contexts;
 using DataLayer.UnitOfWork;
+using ProgramClass = BusinessEntites.Models.Program;
 
 namespace BusinessLayer
 {
@@ -57,6 +58,30 @@ namespace BusinessLayer
             return b;
         }
 
+        public List<Kompetens> HämtaKompetenserFörAlumn(Alumn aktuellAlumn)
+        {
+            List<Kompetens> kompetenser = new List<Kompetens>();
+            var queryable = unitOfWork.KompetensRepository.HämtaKompetenserFörAlumn(aktuellAlumn);
+
+            foreach (Kompetens kompetens in queryable)
+            {
+                kompetenser.Add(kompetens);
+            }
+            return kompetenser;
+        }
+
+        public List<ProgramClass> HämtaProgramFörAlumn(Alumn aktuellAlumn)
+        {
+            List<ProgramClass> programs = new List<ProgramClass>();
+            var queryable = unitOfWork.ProgramRepository.HämtaProgramFörAlumn(aktuellAlumn);
+
+            foreach (ProgramClass program in queryable)
+            {
+                programs.Add(program);
+            }
+            return programs;
+        }
+
         public IQueryable<InformationsutskickAktivitet> HämtaAktivitetMedInformationsutskick (Informationsutskick informationsutskick)
         {
             return unitOfWork.AktivitetRepository.HämtaAktivitetMedInformationsutskick(informationsutskick);
@@ -76,6 +101,27 @@ namespace BusinessLayer
         public void UppdateraAlumn(int id, string förnamn, string efternamn, string epostadress)
         {
             unitOfWork.AlumnRepository.UppdateraAlumnKonto(id, förnamn, efternamn, epostadress);
+        }
+
+        public void LäggTillUtbildningTillAlumn(int id, string text)
+        {
+            unitOfWork.ProgramRepository.LäggTillUtbildningTillAlumn(id, text);
+        }
+
+        public void LäggTillKompetensTillAlumn(int id, string text)
+        {
+            unitOfWork.KompetensRepository.LäggTillUtbildningTillAlumn(id, text);
+        }
+
+        
+        public void TaBortProgramFrånAlumn(ProgramClass selectedProgramToRemove, Alumn aktuellAlumn)
+        {
+            unitOfWork.ProgramRepository.TaBortProgramFrånAlumn(selectedProgramToRemove, aktuellAlumn);
+        }
+
+        public void TaBortKompetensFrånAlumn(Kompetens selectedKompetensToRemove, Alumn aktuellAlumn)
+        {
+            unitOfWork.KompetensRepository.TaBortKompetensFrånAlumn(selectedKompetensToRemove, aktuellAlumn);
         }
     }
 }

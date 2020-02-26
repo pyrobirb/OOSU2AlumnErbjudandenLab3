@@ -42,13 +42,14 @@
             this.bokadeAktiviteterListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageAlumnFacts = new System.Windows.Forms.TabPage();
-            this.btnRemoveAlumnData = new System.Windows.Forms.Button();
+            this.nyUtbildningTxtBox = new System.Windows.Forms.TextBox();
+            this.taBortvaldKompetensBtn = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.listBoxListedAlumnData = new System.Windows.Forms.ListBox();
-            this.btnAddWorkLifeExperience = new System.Windows.Forms.Button();
-            this.textBoxWorkLifeExperience = new System.Windows.Forms.TextBox();
+            this.programListBox = new System.Windows.Forms.ListBox();
+            this.LäggTillArbetslivserfarenhetBtn = new System.Windows.Forms.Button();
+            this.nyArbetslivserfarenhetTxtBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnAddEducation = new System.Windows.Forms.Button();
+            this.läggTillUtbildningBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageUserData = new System.Windows.Forms.TabPage();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
@@ -59,7 +60,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.ändraFörnamnTxtBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.kompetenserListBox = new System.Windows.Forms.ListBox();
+            this.Kompetenser = new System.Windows.Forms.Label();
+            this.taBortValtProgramBtn = new System.Windows.Forms.Button();
             this.tabControlAlumn.SuspendLayout();
             this.tabPageUpcommingActivities.SuspendLayout();
             this.tabPageBookedActivities.SuspendLayout();
@@ -201,14 +204,17 @@
             // 
             // tabPageAlumnFacts
             // 
-            this.tabPageAlumnFacts.Controls.Add(this.textBox4);
-            this.tabPageAlumnFacts.Controls.Add(this.btnRemoveAlumnData);
+            this.tabPageAlumnFacts.Controls.Add(this.taBortValtProgramBtn);
+            this.tabPageAlumnFacts.Controls.Add(this.Kompetenser);
+            this.tabPageAlumnFacts.Controls.Add(this.kompetenserListBox);
+            this.tabPageAlumnFacts.Controls.Add(this.nyUtbildningTxtBox);
+            this.tabPageAlumnFacts.Controls.Add(this.taBortvaldKompetensBtn);
             this.tabPageAlumnFacts.Controls.Add(this.label11);
-            this.tabPageAlumnFacts.Controls.Add(this.listBoxListedAlumnData);
-            this.tabPageAlumnFacts.Controls.Add(this.btnAddWorkLifeExperience);
-            this.tabPageAlumnFacts.Controls.Add(this.textBoxWorkLifeExperience);
+            this.tabPageAlumnFacts.Controls.Add(this.programListBox);
+            this.tabPageAlumnFacts.Controls.Add(this.LäggTillArbetslivserfarenhetBtn);
+            this.tabPageAlumnFacts.Controls.Add(this.nyArbetslivserfarenhetTxtBox);
             this.tabPageAlumnFacts.Controls.Add(this.label8);
-            this.tabPageAlumnFacts.Controls.Add(this.btnAddEducation);
+            this.tabPageAlumnFacts.Controls.Add(this.läggTillUtbildningBtn);
             this.tabPageAlumnFacts.Controls.Add(this.label5);
             this.tabPageAlumnFacts.Location = new System.Drawing.Point(4, 22);
             this.tabPageAlumnFacts.Name = "tabPageAlumnFacts";
@@ -217,71 +223,81 @@
             this.tabPageAlumnFacts.Text = "Alumnuppgifter";
             this.tabPageAlumnFacts.UseVisualStyleBackColor = true;
             // 
-            // btnRemoveAlumnData
+            // nyUtbildningTxtBox
             // 
-            this.btnRemoveAlumnData.Location = new System.Drawing.Point(405, 329);
-            this.btnRemoveAlumnData.Name = "btnRemoveAlumnData";
-            this.btnRemoveAlumnData.Size = new System.Drawing.Size(147, 23);
-            this.btnRemoveAlumnData.TabIndex = 19;
-            this.btnRemoveAlumnData.Text = "Ta bort vald information";
-            this.btnRemoveAlumnData.UseVisualStyleBackColor = true;
+            this.nyUtbildningTxtBox.Location = new System.Drawing.Point(7, 55);
+            this.nyUtbildningTxtBox.Name = "nyUtbildningTxtBox";
+            this.nyUtbildningTxtBox.Size = new System.Drawing.Size(233, 20);
+            this.nyUtbildningTxtBox.TabIndex = 20;
+            // 
+            // taBortvaldKompetensBtn
+            // 
+            this.taBortvaldKompetensBtn.Location = new System.Drawing.Point(417, 330);
+            this.taBortvaldKompetensBtn.Name = "taBortvaldKompetensBtn";
+            this.taBortvaldKompetensBtn.Size = new System.Drawing.Size(135, 23);
+            this.taBortvaldKompetensBtn.TabIndex = 19;
+            this.taBortvaldKompetensBtn.Text = "Ta bort vald kompetens";
+            this.taBortvaldKompetensBtn.UseVisualStyleBackColor = true;
+            this.taBortvaldKompetensBtn.Click += new System.EventHandler(this.taBortvaldKompetensBtn_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(258, 4);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 13);
+            this.label11.Size = new System.Drawing.Size(46, 13);
             this.label11.TabIndex = 18;
-            this.label11.Text = "Alumnuppgifter";
+            this.label11.Text = "Program";
             // 
-            // listBoxListedAlumnData
+            // programListBox
             // 
-            this.listBoxListedAlumnData.FormattingEnabled = true;
-            this.listBoxListedAlumnData.Location = new System.Drawing.Point(261, 20);
-            this.listBoxListedAlumnData.Name = "listBoxListedAlumnData";
-            this.listBoxListedAlumnData.Size = new System.Drawing.Size(291, 303);
-            this.listBoxListedAlumnData.TabIndex = 17;
+            this.programListBox.FormattingEnabled = true;
+            this.programListBox.Location = new System.Drawing.Point(261, 29);
+            this.programListBox.Name = "programListBox";
+            this.programListBox.Size = new System.Drawing.Size(291, 121);
+            this.programListBox.TabIndex = 17;
             // 
-            // btnAddWorkLifeExperience
+            // LäggTillArbetslivserfarenhetBtn
             // 
-            this.btnAddWorkLifeExperience.Location = new System.Drawing.Point(6, 234);
-            this.btnAddWorkLifeExperience.Name = "btnAddWorkLifeExperience";
-            this.btnAddWorkLifeExperience.Size = new System.Drawing.Size(233, 23);
-            this.btnAddWorkLifeExperience.TabIndex = 11;
-            this.btnAddWorkLifeExperience.Text = "Lägg till arbetslivserfarenhet";
-            this.btnAddWorkLifeExperience.UseVisualStyleBackColor = true;
+            this.LäggTillArbetslivserfarenhetBtn.Location = new System.Drawing.Point(7, 253);
+            this.LäggTillArbetslivserfarenhetBtn.Name = "LäggTillArbetslivserfarenhetBtn";
+            this.LäggTillArbetslivserfarenhetBtn.Size = new System.Drawing.Size(233, 23);
+            this.LäggTillArbetslivserfarenhetBtn.TabIndex = 11;
+            this.LäggTillArbetslivserfarenhetBtn.Text = "Lägg till arbetslivserfarenhet ->";
+            this.LäggTillArbetslivserfarenhetBtn.UseVisualStyleBackColor = true;
+            this.LäggTillArbetslivserfarenhetBtn.Click += new System.EventHandler(this.LäggTillArbetslivserfarenhetBtn_Click);
             // 
-            // textBoxWorkLifeExperience
+            // nyArbetslivserfarenhetTxtBox
             // 
-            this.textBoxWorkLifeExperience.Location = new System.Drawing.Point(7, 208);
-            this.textBoxWorkLifeExperience.Name = "textBoxWorkLifeExperience";
-            this.textBoxWorkLifeExperience.Size = new System.Drawing.Size(233, 20);
-            this.textBoxWorkLifeExperience.TabIndex = 10;
+            this.nyArbetslivserfarenhetTxtBox.Location = new System.Drawing.Point(8, 227);
+            this.nyArbetslivserfarenhetTxtBox.Name = "nyArbetslivserfarenhetTxtBox";
+            this.nyArbetslivserfarenhetTxtBox.Size = new System.Drawing.Size(233, 20);
+            this.nyArbetslivserfarenhetTxtBox.TabIndex = 10;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 192);
+            this.label8.Location = new System.Drawing.Point(4, 211);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 13);
+            this.label8.Size = new System.Drawing.Size(167, 13);
             this.label8.TabIndex = 9;
-            this.label8.Text = "Arbetslivserfarenhet ";
+            this.label8.Text = "Kompetenser/Arbetslivserfarenhet";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // btnAddEducation
+            // läggTillUtbildningBtn
             // 
-            this.btnAddEducation.Location = new System.Drawing.Point(6, 143);
-            this.btnAddEducation.Name = "btnAddEducation";
-            this.btnAddEducation.Size = new System.Drawing.Size(233, 23);
-            this.btnAddEducation.TabIndex = 5;
-            this.btnAddEducation.Text = "Lägg till utbildning";
-            this.btnAddEducation.UseVisualStyleBackColor = true;
+            this.läggTillUtbildningBtn.Location = new System.Drawing.Point(6, 81);
+            this.läggTillUtbildningBtn.Name = "läggTillUtbildningBtn";
+            this.läggTillUtbildningBtn.Size = new System.Drawing.Size(233, 23);
+            this.läggTillUtbildningBtn.TabIndex = 5;
+            this.läggTillUtbildningBtn.Text = "Lägg till utbildning ->";
+            this.läggTillUtbildningBtn.UseVisualStyleBackColor = true;
+            this.läggTillUtbildningBtn.Click += new System.EventHandler(this.läggTillUtbildningBtn_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 91);
+            this.label5.Location = new System.Drawing.Point(3, 29);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(195, 13);
             this.label5.TabIndex = 0;
@@ -312,6 +328,7 @@
             this.btnDeleteAccount.TabIndex = 7;
             this.btnDeleteAccount.Text = "Radera konto";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // btnSaveChanges
             // 
@@ -371,12 +388,32 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Ändra förnamn";
             // 
-            // textBox4
+            // kompetenserListBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(7, 117);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(233, 20);
-            this.textBox4.TabIndex = 20;
+            this.kompetenserListBox.FormattingEnabled = true;
+            this.kompetenserListBox.Location = new System.Drawing.Point(261, 203);
+            this.kompetenserListBox.Name = "kompetenserListBox";
+            this.kompetenserListBox.Size = new System.Drawing.Size(291, 121);
+            this.kompetenserListBox.TabIndex = 21;
+            // 
+            // Kompetenser
+            // 
+            this.Kompetenser.AutoSize = true;
+            this.Kompetenser.Location = new System.Drawing.Point(258, 187);
+            this.Kompetenser.Name = "Kompetenser";
+            this.Kompetenser.Size = new System.Drawing.Size(69, 13);
+            this.Kompetenser.TabIndex = 22;
+            this.Kompetenser.Text = "Kompetenser";
+            // 
+            // taBortValtProgramBtn
+            // 
+            this.taBortValtProgramBtn.Location = new System.Drawing.Point(417, 156);
+            this.taBortValtProgramBtn.Name = "taBortValtProgramBtn";
+            this.taBortValtProgramBtn.Size = new System.Drawing.Size(135, 23);
+            this.taBortValtProgramBtn.TabIndex = 23;
+            this.taBortValtProgramBtn.Text = "Ta bort valt program";
+            this.taBortValtProgramBtn.UseVisualStyleBackColor = true;
+            this.taBortValtProgramBtn.Click += new System.EventHandler(this.taBortValtProgramBtn_Click);
             // 
             // MainAlumnForm
             // 
@@ -415,13 +452,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPageAlumnFacts;
         private System.Windows.Forms.TabPage tabPageUserData;
-        private System.Windows.Forms.Button btnRemoveAlumnData;
+        private System.Windows.Forms.Button taBortvaldKompetensBtn;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ListBox listBoxListedAlumnData;
-        private System.Windows.Forms.Button btnAddWorkLifeExperience;
-        private System.Windows.Forms.TextBox textBoxWorkLifeExperience;
+        private System.Windows.Forms.ListBox programListBox;
+        private System.Windows.Forms.Button LäggTillArbetslivserfarenhetBtn;
+        private System.Windows.Forms.TextBox nyArbetslivserfarenhetTxtBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btnAddEducation;
+        private System.Windows.Forms.Button läggTillUtbildningBtn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnSaveChanges;
@@ -433,6 +470,9 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RichTextBox aktivitetsBeskrivningTextBox;
         private System.Windows.Forms.RichTextBox aktivitetsinformationRichTextBox;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox nyUtbildningTxtBox;
+        private System.Windows.Forms.Label Kompetenser;
+        private System.Windows.Forms.ListBox kompetenserListBox;
+        private System.Windows.Forms.Button taBortValtProgramBtn;
     }
 }

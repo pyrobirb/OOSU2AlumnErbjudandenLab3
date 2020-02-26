@@ -11,6 +11,7 @@ using BusinessEntites.Models;
 using BusinessEntites.Models.Junction;
 using BusinessLayer;
 using DataLayer.Contexts;
+using ProgramClass = BusinessEntites.Models.Program;
 
 namespace PresentationLayer
 {
@@ -42,11 +43,13 @@ namespace PresentationLayer
 
             //AnvändarUppgifter
             var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
-            ändraFörnamnTxtBox.Text= InloggadAlumn.Förnamn;
+            ändraFörnamnTxtBox.Text = InloggadAlumn.Förnamn;
             ändraEfternamnTxtBox.Text = InloggadAlumn.Efternamn;
             ändraEpostTxtBox.Text = InloggadAlumn.Användarnamn;
 
-
+            //Alumnuppgifter
+            UppdateraProgramListBox();
+            UppdateraKompetenserListBox();
 
         }
 
@@ -149,8 +152,53 @@ namespace PresentationLayer
                 $"\n{gammaltFörnamn} -> {GLOBALS.AktuellAlumn.Förnamn} " +
                 $"\n{gammaltEfternamn} -> {GLOBALS.AktuellAlumn.Efternamn} " +
                 $"\n{gammalepostadress} -> {GLOBALS.AktuellAlumn.Användarnamn}");
+        }
 
+        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void läggTillUtbildningBtn_Click(object sender, EventArgs e)
+        {
+            bm.LäggTillUtbildningTillAlumn(GLOBALS.AktuellAlumn.AnvändarID, nyUtbildningTxtBox.Text);
+            UppdateraProgramListBox();
+
+        }
+
+        private void UppdateraProgramListBox()
+        {
+            programListBox.DataSource = bm.HämtaProgramFörAlumn(GLOBALS.AktuellAlumn);
+            programListBox.DisplayMember = "Namn";
+            programListBox.ValueMember = "ProgramID";
+        }
+
+        private void LäggTillArbetslivserfarenhetBtn_Click(object sender, EventArgs e)
+        {
+            bm.LäggTillKompetensTillAlumn(GLOBALS.AktuellAlumn.AnvändarID, nyArbetslivserfarenhetTxtBox.Text);
+            UppdateraKompetenserListBox();
+           
+        }
+
+        private void UppdateraKompetenserListBox()
+        {
+            kompetenserListBox.DataSource = bm.HämtaKompetenserFörAlumn(GLOBALS.AktuellAlumn);
+            kompetenserListBox.DisplayMember = "Beskrivning";
+            kompetenserListBox.ValueMember = "KompetensID";
+        }
+
+        private void taBortValtProgramBtn_Click(object sender, EventArgs e)
+        {
+            var selectedProgramToRemove = (ProgramClass)programListBox.SelectedItem;
+            bm.TaBortProgramFrånAlumn(selectedProgramToRemove, GLOBALS.AktuellAlumn);
+            UppdateraProgramListBox();
+        }
+
+        private void taBortvaldKompetensBtn_Click(object sender, EventArgs e)
+        {
+            var selectedKompetensToRemove = (Kompetens)programListBox.SelectedItem;
+            bm.TaBortKompetensFrånAlumn(selectedKompetensToRemove, GLOBALS.AktuellAlumn);
+            UppdateraKompetenserListBox();
         }
     }
 }

@@ -9,5 +9,8 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
 {
     public interface IKompetensRepository : IRepository<Kompetens>
     {
+        IQueryable<Kompetens> HämtaKompetenserFörAlumn(Alumn aktuellAlumn);
+        void LäggTillUtbildningTillAlumn(int id, string text);
+        void TaBortKompetensFrånAlumn(Kompetens selectedKompetensToRemove, Alumn aktuellAlumn);
     }
 }
