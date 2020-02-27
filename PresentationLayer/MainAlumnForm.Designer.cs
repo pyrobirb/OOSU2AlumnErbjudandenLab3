@@ -63,6 +63,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.ändraFörnamnTxtBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.tabControlAlumn.SuspendLayout();
             this.tabPageUpcommingActivities.SuspendLayout();
             this.tabPageBookedActivities.SuspendLayout();
@@ -416,11 +417,22 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Ändra förnamn";
             // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Location = new System.Drawing.Point(512, 408);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(75, 23);
+            this.btnLogOut.TabIndex = 2;
+            this.btnLogOut.Text = "Logga ut";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // MainAlumnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 426);
+            this.ClientSize = new System.Drawing.Size(608, 434);
+            this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.tabControlAlumn);
             this.Name = "MainAlumnForm";
             this.Text = "Alumn";
@@ -475,5 +487,6 @@
         private System.Windows.Forms.Label Kompetenser;
         private System.Windows.Forms.ListBox kompetenserListBox;
         private System.Windows.Forms.Button taBortValtProgramBtn;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

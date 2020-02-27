@@ -11,5 +11,7 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
     public interface IInformationsutskickRepository : IRepository<Informationsutskick>
     {
         IQueryable<InformationsutskickAlumn> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn);
+        void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitet informationsutskickAktivitet);
+        void LäggTillInformationsutskickAlumn(InformationsutskickAlumn informationsutskickAlumn);
     }
 }

@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessEntities.cs" />
     <Compile Include="Models\Aktivitet.cs" />
     <Compile Include="Models\Alumn.cs" />
     <Compile Include="Models\Informationsutskick.cs" />
@@ -57,6 +56,12 @@
     <Compile Include="Models\Junction\AlumnProgram.cs" />
     <Compile Include="Models\Junction\InformationsutskickAktivitet.cs" />
     <Compile Include="Models\Junction\InformationsutskickAlumn.cs" />
+    <Compile Include="Models\Junction\JunctionInterfaces\IAlumnAktivitetBokning.cs" />
+    <Compile Include="Models\Junction\JunctionInterfaces\IAlumnKompetens.cs" />
+    <Compile Include="Models\Junction\JunctionInterfaces\IAlumnProgram.cs" />
+    <Compile Include="Models\Junction\JunctionInterfaces\IInformationsutskickAktivitet.cs" />
+    <Compile Include="Models\Junction\JunctionInterfaces\IInformationsutskickAlumn.cs" />
+    <Compile Include="Models\Junction\JunctionInterfaces\IPersonalInformationsutskick.cs" />
     <Compile Include="Models\Junction\PersonalInformationsutskick.cs" />
     <Compile Include="Models\Kompetens.cs" />
     <Compile Include="Models\Personal.cs" />

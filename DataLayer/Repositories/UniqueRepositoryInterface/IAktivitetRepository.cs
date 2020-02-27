@@ -16,5 +16,7 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
         InformationsutskickAktivitet HämtaAktivitetMedInformationsutskick(Informationsutskick informationsutskick);
         IQueryable<AlumnAktivitetBokning> HämtaBokningFörAlumn(Alumn inloggadAlumn);
         void TaBortAktivitetFrånAlumn(Aktivitet aktivitet, Alumn aktuellAlumn);
+        void LäggTillAlumnAktivitetBokning(AlumnAktivitetBokning alumnAktivitetBokning);
+        IQueryable<int> HämtaAktiviteterGenomAlumn(Alumn inloggadAlumn);
     }
 }

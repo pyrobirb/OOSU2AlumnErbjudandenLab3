@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessEntites.Models.Junction.JunctionInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Junction
 {
-    public class PersonalInformationsutskick
+    public class PersonalInformationsutskick : IPersonalInformationsutskick
     {
         public int PersonalID { get; set; }
         public virtual Personal Personal { get; set; }

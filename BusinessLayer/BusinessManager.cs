@@ -16,25 +16,32 @@ namespace BusinessLayer
     public class BusinessManager
     {
         public UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext());
+        public IOFileSystem iof = new IOFileSystem();
 
-
-        public void SkrivaAlumnAktivitetTillCSVFil(string Aktivitettitel, List<Alumn> alumner)
+        
+        public IEnumerable<Aktivitet> HämtaAllaAktiviteter()
         {
-            using (TextWriter sw = new StreamWriter($"{Aktivitettitel}.csv"))
-            {
-
-                sw.WriteLine(Aktivitettitel);
-
-                foreach (Alumn alumn in alumner)
-                {
-                    sw.WriteLine($"{alumn.Användarnamn},");
-                }
-                sw.Close();
-            }
+            return unitOfWork.AktivitetRepository.GetAll();
         }
+
         public Alumn HämtaAlumnKonto(string användarnamn, string lösenord)
         {
             return unitOfWork.AlumnRepository.HämtaAlumnKonto(användarnamn, lösenord);
+        }
+
+        public List<Aktivitet> HämtaAktiviteterGenomAktivitetID(IQueryable<int> queryable)
+        {
+            List<Aktivitet> Aktiviteter = new List<Aktivitet>();
+            foreach (var id in queryable)
+            {
+                Aktiviteter.Add(unitOfWork.AktivitetRepository.GetById(id));
+            }
+            return Aktiviteter;
+        }
+
+        public IQueryable<int> HämtaAktiviteterGenomAlumn(Alumn inloggadAlumn)
+        {
+            return unitOfWork.AktivitetRepository.HämtaAktiviteterGenomAlumn(inloggadAlumn);
         }
 
         public Personal HämtaPersonalKonto(string användarnamn, string lösenord)
@@ -57,10 +64,27 @@ namespace BusinessLayer
             return unitOfWork.AktivitetRepository.GetById(aktivitetID);
         }
 
+        public void LäggTillAlumn(Alumn alumn)
+        {
+            unitOfWork.AlumnRepository.Add(alumn);
+            unitOfWork.Commit();
+        }
+
         public IQueryable<InformationsutskickAlumn> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn)
         {   
             var b = unitOfWork.InformationsutskickRepository.HämtaInformationsutskickFörAlumn(inloggadAlumn);
             return b;
+        }
+
+        public IEnumerable<Alumn> HämtaAllaAlumner()
+        {
+            return unitOfWork.AlumnRepository.GetAll();
+        }
+
+        public void LäggTillPersonal(Personal personal)
+        {
+            unitOfWork.PersonalRepository.Add(personal);
+            unitOfWork.Commit();
         }
 
         public List<Kompetens> HämtaKompetenserFörAlumn(Alumn aktuellAlumn)
@@ -73,6 +97,11 @@ namespace BusinessLayer
                 kompetenser.Add(kompetens);
             }
             return kompetenser;
+        }
+
+        public IEnumerable<ProgramClass> HämtaAllaProgram()
+        {
+            return unitOfWork.ProgramRepository.GetAll();
         }
 
         public List<ProgramClass> HämtaProgramFörAlumn(Alumn aktuellAlumn)
@@ -108,6 +137,11 @@ namespace BusinessLayer
             unitOfWork.AlumnRepository.UppdateraAlumnKonto(id, förnamn, efternamn, epostadress);
         }
 
+        public void LäggTillAktivitet(Aktivitet aktivitet)
+        {
+            unitOfWork.AktivitetRepository.Add(aktivitet);
+        }
+
         public List<Alumn> HämtaAlumnerMedProgram(Program program)
         {
             List<Alumn> alumnerMedProgram = new List<Alumn>();
@@ -121,6 +155,11 @@ namespace BusinessLayer
         public void LäggTillUtbildningTillAlumn(int id, string text)
         {
             unitOfWork.ProgramRepository.LäggTillUtbildningTillAlumn(id, text);
+        }
+
+        public void LäggTillAlumnAktivitet(AlumnAktivitetBokning alumnAktivitetBokning)
+        {
+            unitOfWork.AktivitetRepository.LäggTillAlumnAktivitetBokning(alumnAktivitetBokning);
         }
 
         public void LäggTillKompetensTillAlumn(int id, string text)
@@ -142,6 +181,37 @@ namespace BusinessLayer
         public void TaBortAktivitetFrånAlumn(Aktivitet aktivitet, Alumn aktuellAlumn)
         {
             unitOfWork.AktivitetRepository.TaBortAktivitetFrånAlumn(aktivitet, aktuellAlumn);
+        }
+
+        public void LäggTillInformationsutskick(Informationsutskick informationsutskick)
+        {
+            unitOfWork.InformationsutskickRepository.Add(informationsutskick);
+        }
+
+        public void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitet informationsutskickAktivitet)
+        {
+            unitOfWork.InformationsutskickRepository.LäggTillInformationsutskickAktivitet(informationsutskickAktivitet);
+        }
+
+        public Informationsutskick HämtaInformationsutskickMedID(int utskicksID)
+        {
+            return unitOfWork.InformationsutskickRepository.GetById(utskicksID);
+        }
+
+        public void LäggTillInformationsutskickAlumn(InformationsutskickAlumn informationsutskickAlumn)
+        {
+            unitOfWork.InformationsutskickRepository.LäggTillInformationsutskickAlumn(informationsutskickAlumn);
+        }
+
+        public void SkrivaAlumnAktivitetTillCSVFil(string titel, List<Alumn> alumner)
+        {
+            iof.SkrivaAlumnAktivitetTillCSVFil(titel, alumner);
+        }
+
+        public void TaBortAlumn(Alumn alumnatttabort)
+        {
+            unitOfWork.AlumnRepository.Remove(alumnatttabort);
+            unitOfWork.Commit();
         }
     }
 }

@@ -27,12 +27,15 @@ namespace PresentationLayer
         private void tabControlMainAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Fyll Redigera aktivitet
-            VäljAktivitetComboBox.DataSource = bm.unitOfWork.AktivitetRepository.GetAll();
+            VäljAktivitetComboBox.DataSource = bm.HämtaAllaAktiviteter();
+                //bm.unitOfWork.AktivitetRepository.GetAll();
             VäljAktivitetComboBox.DisplayMember = "Titel";
             VäljAktivitetComboBox.ValueMember = "AktivitetsID";
 
 
-            var AktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            var AktuellAktivitet = bm.HämtaAktivitetGenomID(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);          
+            //bm.unitOfWork.AktivitetRepository.GetById();
+            
             ÄndraTitelTxtBox.Text = AktuellAktivitet.Titel;
             AnsvarigPersonComboBox.Text = AktuellAktivitet.Ansvarig;
             KontaktpersonComboBox.Text = AktuellAktivitet.Kontaktperson;
@@ -43,9 +46,10 @@ namespace PresentationLayer
 
             //Fyll alumner och aktivitet på Skapa utskickslista
             alumnCheckedListBox.Items.Clear();
-            comboBoxFilterAlumns.Items.Clear();
+            //comboBoxFilterAlumns.Items.Clear();
 
-            foreach (Alumn alumn in bm.unitOfWork.AlumnRepository.GetAll())
+            //bm.unitOfWork.AlumnRepository.GetAll())
+            foreach (Alumn alumn in bm.HämtaAllaAlumner())
             {
                 alumnCheckedListBox.Items.Add(alumn);
 
@@ -53,14 +57,13 @@ namespace PresentationLayer
             alumnCheckedListBox.ValueMember = "AnvändarID";
             alumnCheckedListBox.DisplayMember = "Förnamn";
 
-            foreach (Aktivitet aktivitet in bm.unitOfWork.AktivitetRepository.GetAll())
-            {
-                AktivitetComboBox.Items.Add(aktivitet);
-            }
-            AktivitetComboBox.ValueMember = "AktivitetID";
+            
+            AktivitetComboBox.DataSource = bm.HämtaAllaAktiviteter();
+            AktivitetComboBox.ValueMember = "AktivitetsID";
             AktivitetComboBox.DisplayMember = "Titel";
 
-            comboBoxFilterAlumns.DataSource = bm.unitOfWork.ProgramRepository.GetAll();
+            //bm.unitOfWork.ProgramRepository.GetAll();
+            comboBoxFilterAlumns.DataSource = bm.HämtaAllaProgram();
             comboBoxFilterAlumns.DisplayMember = "Titel";
             comboBoxFilterAlumns.ValueMember = "Namn";
 
@@ -92,8 +95,10 @@ namespace PresentationLayer
 
                 };
 
-                bm.unitOfWork.AktivitetRepository.Add(aktivitet);
-                bm.unitOfWork.Commit();
+                //bm.unitOfWork.AktivitetRepository.Add(aktivitet);
+                bm.LäggTillAktivitet(aktivitet);
+                //bm.unitOfWork.Commit();
+                bm.Commit();
                 MessageBox.Show("Aktiviteten har skapats");
 
             }
@@ -119,18 +124,21 @@ namespace PresentationLayer
                 AlumnAktivitet = new List<AlumnAktivitetBokning>()
             };
 
-            Aktivitet aktivitetAttTaBort = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            //bm.unitOfWork.AktivitetRepository.GetById();
+            Aktivitet aktivitetAttTaBort = bm.HämtaAktivitetGenomID(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
 
 
             bm.UpdateAktivitet(aktivitetAttTaBort, uppdateradAktivitet);
-            bm.unitOfWork.Commit();
+            //bm.unitOfWork.Commit();
+            bm.Commit();
 
             MessageBox.Show("Aktiviteten " + TitelAktivitetTxtBox.Text + " har Redigerats");
         }
 
         private void ComboBoxChoosActivity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var AktuellAktivitet = bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            //bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            var AktuellAktivitet = bm.HämtaAktivitetGenomID(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
             ÄndraTitelTxtBox.Text = AktuellAktivitet.Titel;
             AnsvarigPersonComboBox.Text = AktuellAktivitet.Ansvarig;
             KontaktpersonComboBox.Text = AktuellAktivitet.Kontaktperson;
@@ -195,29 +203,35 @@ namespace PresentationLayer
             {
                 UtskickDatum = DateTime.Now
             };
-            bm.unitOfWork.InformationsutskickRepository.Add(informationsutskick);
+            //bm.unitOfWork.InformationsutskickRepository.Add(informationsutskick);
+            bm.LäggTillInformationsutskick(informationsutskick);
             bm.Commit();
 
             InformationsutskickAktivitet informationsutskickAktivitet = new InformationsutskickAktivitet()
             {
-                AktivitetID = (bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)AktivitetComboBox.SelectedItem).AktivitetsID)).AktivitetsID,
+                //(bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)AktivitetComboBox.SelectedItem).AktivitetsID)).AktivitetsID
+                AktivitetID = (bm.HämtaAktivitetGenomID(((Aktivitet)AktivitetComboBox.SelectedItem).AktivitetsID)).AktivitetsID,
                 InformationsutskickID = informationsutskick.UtskicksID
             };
-            dbContext.InformationsutskickAktivitet.Add(informationsutskickAktivitet);
-            dbContext.SaveChanges();
+            //dbContext.InformationsutskickAktivitet.Add(informationsutskickAktivitet);
+            bm.LäggTillInformationsutskickAktivitet(informationsutskickAktivitet);
+            
 
             foreach (Alumn alumn in valdaAlumnerListBox.Items)
             {
                 InformationsutskickAlumn informationsutskickAlumn = new InformationsutskickAlumn()
                 {
-                    AlumnID = (bm.unitOfWork.AlumnRepository.GetById(alumn.AnvändarID)).AnvändarID,
-                    InformationsutskickID = (bm.unitOfWork.InformationsutskickRepository.GetById(informationsutskick.UtskicksID)).UtskicksID
+                    //(bm.unitOfWork.AlumnRepository.GetById(alumn.AnvändarID)).AnvändarID
+                    AlumnID = (bm.HämtaAlumnMedID(alumn.AnvändarID)).AnvändarID,
+                    //(bm.unitOfWork.InformationsutskickRepository.GetById(informationsutskick.UtskicksID)).UtskicksID
+                    InformationsutskickID = (bm.HämtaInformationsutskickMedID(informationsutskick.UtskicksID)).UtskicksID
                 };
-                dbContext.InformationsutskickAlumn.Add(informationsutskickAlumn);
+                //dbContext.InformationsutskickAlumn.Add(informationsutskickAlumn);
+                bm.LäggTillInformationsutskickAlumn(informationsutskickAlumn);
             }
 
             bm.Commit();
-            dbContext.SaveChanges();
+            //dbContext.SaveChanges();
 
             List<Alumn> alumner = new List<Alumn>();
             foreach (Alumn alumn in valdaAlumnerListBox.Items)
@@ -226,7 +240,9 @@ namespace PresentationLayer
             }
 
             bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)AktivitetComboBox.SelectedItem).Titel, alumner);
-            MessageBox.Show("Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!");
+            MessageBox.Show("Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
+                "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug");
+
         }
 
         private void KontaktPersonTxtBox_SelectedIndexChanged(object sender, EventArgs e)

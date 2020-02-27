@@ -15,7 +15,6 @@ namespace PresentationLayer
 {
     public partial class CreateUserForm : Form
     {
-        DatabaseContext dbContext = new DatabaseContext();
         BusinessManager bm = new BusinessManager();
         public CreateUserForm()
         {
@@ -42,8 +41,9 @@ namespace PresentationLayer
                         Förnamn = FörnamnTxtBox.Text,
                         Efternamn = EfternamnTxtBox.Text
                     };
-                    bm.unitOfWork.AlumnRepository.Add(alumn);
-                    bm.unitOfWork.Commit();
+                    //bm.unitOfWork.AlumnRepository.Add(alumn);
+                    //bm.unitOfWork.Commit();
+                    bm.LäggTillAlumn(alumn);
                     MessageBox.Show("Alumnkonto har skapats");
 
                     DialogResult = DialogResult.OK;
@@ -58,8 +58,9 @@ namespace PresentationLayer
                         Förnamn = FörnamnTxtBox.Text,
                         Efternamn = EfternamnTxtBox.Text
                     };
-                    bm.unitOfWork.PersonalRepository.Add(personal);
-                    bm.unitOfWork.Commit();
+                    //bm.unitOfWork.PersonalRepository.Add(personal);
+                    //bm.unitOfWork.Commit();
+                    bm.LäggTillPersonal(personal);
                     MessageBox.Show("Personalkonto har skapats");
 
                     DialogResult = DialogResult.OK;

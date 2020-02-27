@@ -18,9 +18,20 @@ namespace DataLayer.Repositories.UniqueRepository
             var db = new DatabaseContext();
 
             return db.InformationsutskickAlumn.Where(x => x.Alumn == inloggadAlumn).Include(x => x.Informationsutskick).AsQueryable();
+        }
 
+        public void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitet informationsutskickAktivitet)
+        {
+            var db = new DatabaseContext();
+            db.InformationsutskickAktivitet.Add(informationsutskickAktivitet);
+            db.SaveChanges();
+        }
 
-
+        public void LäggTillInformationsutskickAlumn(InformationsutskickAlumn informationsutskickAlumn)
+        {
+            var db = new DatabaseContext();
+            db.InformationsutskickAlumn.Add(informationsutskickAlumn);
+            db.SaveChanges();
         }
 
         public InformationsutskickRepository(DatabaseContext context) : base(context)
