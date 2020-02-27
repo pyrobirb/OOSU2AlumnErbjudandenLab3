@@ -10,6 +10,7 @@ using DataLayer;
 using DataLayer.Contexts;
 using DataLayer.UnitOfWork;
 using ProgramClass = BusinessEntites.Models.Program;
+using BusinessEntites;
 
 namespace BusinessLayer
 {
@@ -141,6 +142,12 @@ namespace BusinessLayer
         public void TaBortKompetensFrånAlumn(Kompetens selectedKompetensToRemove, Alumn aktuellAlumn)
         {
             unitOfWork.KompetensRepository.TaBortKompetensFrånAlumn(selectedKompetensToRemove, aktuellAlumn);
+        }
+
+        public List<Alumn> GetObserverList()
+        {
+            AktivaAktiviteter aktivaAktiviteter = new AktivaAktiviteter();
+            return aktivaAktiviteter.Alumner;
         }
     }
 }

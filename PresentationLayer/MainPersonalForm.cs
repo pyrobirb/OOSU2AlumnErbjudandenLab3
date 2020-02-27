@@ -232,6 +232,21 @@ namespace PresentationLayer
 
             bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)AktivitetComboBox.SelectedItem).Titel, alumner);
             MessageBox.Show("Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!");
+
+            //observerpattern notify
+            List<Alumn> AlumnObservers = bm.GetObserverList();
+
+
+            foreach (Alumn A in AlumnObservers)
+            {
+                foreach (Alumn B in alumner)
+                {
+                    if (A.AnvändarID == B.AnvändarID)
+                    {
+                        B.Update(B.AnvändarID);
+                    }
+                }
+            }
         }
 
         private void KontaktPersonTxtBox_SelectedIndexChanged(object sender, EventArgs e)

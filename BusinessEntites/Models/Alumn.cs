@@ -36,15 +36,10 @@ namespace BusinessEntites.Models
         //    this.AktivaAktiviteter = aktivaAktiviteter;
         //}
 
-        public void Update(ISubject subject)
-        {
-            if (subject != null)
-            {
-                this.newMessages = true;
-                
-                //MessageBox.Show("Nu finns det nya aktiteter att anmäla sig till.");
-            }
 
+        public void Update(int AnvID)
+        {
+            newMessages = true;
         }
     }
 }
