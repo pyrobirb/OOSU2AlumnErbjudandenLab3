@@ -24,6 +24,7 @@ namespace DataLayer.Seed
                 Lösenord = "smiv",
                 Förnamn = "Vissla",
                 Efternamn = "Kvist",
+                newMessages = false
             };
 
             dbContext.Alumner.Add(alumn1);

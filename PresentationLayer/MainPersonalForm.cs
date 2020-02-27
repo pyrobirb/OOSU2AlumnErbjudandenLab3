@@ -97,6 +97,7 @@ namespace PresentationLayer
                 aktivaAktiviteter.Aktiviteter.Add(aktivitet);
                 aktivaAktiviteter.Notify();
                 bm.unitOfWork.Commit();
+                
 
                 MessageBox.Show("Aktiviteten har skapats");
 

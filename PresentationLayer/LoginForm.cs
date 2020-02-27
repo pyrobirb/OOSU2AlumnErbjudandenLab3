@@ -36,7 +36,8 @@ namespace PresentationLayer
         private void FyllAktivaAktiviteter()
         {
             AktivaAktiviteter aktivaAktiviteter = new AktivaAktiviteter();
-            aktivaAktiviteter.Aktiviteter = bm.ListaAllaAktuellaAktiviteter();
+            aktivaAktiviteter.Aktiviteter = 
+            bm.ListaAllaAktuellaAktiviteter();
         }
 
         private void ShowForm(Form form)

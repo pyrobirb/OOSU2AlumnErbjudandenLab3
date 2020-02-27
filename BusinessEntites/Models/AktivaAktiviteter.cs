@@ -16,7 +16,8 @@ namespace BusinessEntites.Models
 
         private List<IObserver> _observers;
 
-        private List<Aktivitet> _Aktiviteter;
+        private List<Aktivitet> _Aktiviteter = new List<Aktivitet>();
+
 
         public List<Aktivitet> Aktiviteter
         {

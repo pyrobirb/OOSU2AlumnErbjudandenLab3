@@ -41,8 +41,18 @@ namespace PresentationLayer
                 }
             }
 
-            //AnvändarUppgifter
+            //Kolla om det finns nytt meddelande
             var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
+
+            InloggadAlumn.newMessages = true; //Fulfix för att testa.
+
+            if (InloggadAlumn.newMessages)
+            {
+                MessageBox.Show("Nu finns det nya aktiteter att anmäla sig till.");
+            }
+
+            //AnvändarUppgifter
+            //var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
             ändraFörnamnTxtBox.Text = InloggadAlumn.Förnamn;
             ändraEfternamnTxtBox.Text = InloggadAlumn.Efternamn;
             ändraEpostTxtBox.Text = InloggadAlumn.Användarnamn;
@@ -51,7 +61,17 @@ namespace PresentationLayer
             UppdateraProgramListBox();
             UppdateraKompetenserListBox();
 
+            ////Kolla om det finns nytt meddelande
+            //InloggadAlumn.newMessages = true;
+
+            //if (InloggadAlumn.newMessages)
+            //{
+            //    MessageBox.Show("Nu finns det nya aktiteter att anmäla sig till.");
+            //}
+
         }
+
+
 
         private void MainAlumnForm_Load(object sender, EventArgs e)
         {
