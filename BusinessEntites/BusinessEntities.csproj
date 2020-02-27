@@ -47,6 +47,7 @@
     <Compile Include="Models\AktivaAktiviteter.cs" />
     <Compile Include="Models\Aktivitet.cs" />
     <Compile Include="Models\Alumn.cs" />
+    <Compile Include="Models\Interfaces\IAktivaAktiviteter.cs" />
     <Compile Include="Models\Informationsutskick.cs" />
     <Compile Include="Models\Interfaces\IAktivitet.cs" />
     <Compile Include="Models\Interfaces\IAlumn.cs" />

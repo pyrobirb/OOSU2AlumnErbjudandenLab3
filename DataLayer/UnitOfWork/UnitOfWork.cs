@@ -18,6 +18,7 @@ namespace DataLayer.UnitOfWork
         public IKompetensRepository KompetensRepository { get; set; }
         public IProgramRepository ProgramRepository { get; set; }
 
+
         private readonly DatabaseContext _context;
         public UnitOfWork(DatabaseContext databaseContext)
         {

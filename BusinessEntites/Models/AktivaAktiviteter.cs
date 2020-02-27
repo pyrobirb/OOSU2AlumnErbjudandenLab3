@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models
 {
-    public class AktivaAktiviteter : ISubject
+    public class AktivaAktiviteter : ISubject, IAktivaAktiviteter
     {
 
         private List<IObserver> _observers;

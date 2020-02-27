@@ -18,6 +18,8 @@ namespace PresentationLayer
     {
         DatabaseContext dbContext = new DatabaseContext();
         BusinessManager bm = new BusinessManager();
+        AktivaAktiviteter aktivaAktiviteter = new AktivaAktiviteter();
+
         public MainPersonalForm()
         {
             InitializeComponent();
@@ -92,7 +94,10 @@ namespace PresentationLayer
                 };
 
                 bm.unitOfWork.AktivitetRepository.Add(aktivitet);
+                aktivaAktiviteter.Aktiviteter.Add(aktivitet);
+                aktivaAktiviteter.Notify();
                 bm.unitOfWork.Commit();
+
                 MessageBox.Show("Aktiviteten har skapats");
 
             }
