@@ -14,6 +14,7 @@ namespace DataLayer.Seed
     {
         public static void Populate(DatabaseContext dbContext)
         {
+
             AktivaAktiviteter aktivaAktiviteter = new AktivaAktiviteter();
 
             //Alumn

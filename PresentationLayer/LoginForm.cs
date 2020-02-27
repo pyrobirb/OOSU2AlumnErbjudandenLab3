@@ -11,6 +11,7 @@ using BusinessLayer;
 using DataLayer.Contexts;
 using DataLayer;
 using DataLayer.Seed;
+using BusinessEntites;
 
 namespace PresentationLayer
 {
@@ -18,6 +19,7 @@ namespace PresentationLayer
     {
         DatabaseContext dbContext = new DatabaseContext();
         BusinessManager bm = new BusinessManager();
+        BusinessEntities businessEntities = new BusinessEntities();
 
         public LoginForm()
         {
@@ -26,6 +28,13 @@ namespace PresentationLayer
             dbContext.Database.EnsureCreated();
 
             Seed.Populate(dbContext);
+            FyllAktivaAktiviteter();
+        }
+
+        private void FyllAktivaAktiviteter()
+        {
+            
+            bm.ListaAllaAktuellaAktiviteter();
         }
 
         private void ShowForm(Form form)

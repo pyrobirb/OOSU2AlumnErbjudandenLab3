@@ -1,6 +1,6 @@
 ﻿using BusinessEntites.Models.Interfaces;
 using BusinessEntites.Models.Junction;
-using BusinessLayer;
+//using BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +13,6 @@ namespace BusinessEntites.Models
 {
     public class AktivaAktiviteter : ISubject
     {
-        BusinessManager bm = new BusinessManager();
-        
 
         private List<IObserver> _observers;
 
@@ -23,14 +21,14 @@ namespace BusinessEntites.Models
         public List<Aktivitet> Aktiviteter
         {
             get { return _Aktiviteter; }
-            set { _Aktiviteter = bm.ListaAllaAktuellaAktiviteter();}
+            set { _Aktiviteter = value; }
         }
 
         public AktivaAktiviteter()
         {
             _observers = new List<IObserver>();
         }
-        
+
         public List<Alumn> Alumner { get; set; }
 
         public void Add(IObserver observer)
@@ -49,6 +47,6 @@ namespace BusinessEntites.Models
         public List<Aktivitet> HämtaAktiviteter()
         {
             return _Aktiviteter;
-        }        
+        }
     }
 }

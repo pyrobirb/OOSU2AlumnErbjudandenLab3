@@ -17,7 +17,6 @@ namespace BusinessLayer
     {
         public UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext());
 
-
         public void SkrivaAlumnAktivitetTillCSVFil(string Aktivitettitel, List<Alumn> alumner)
         {
             using (TextWriter sw = new StreamWriter($"{Aktivitettitel}.csv"))

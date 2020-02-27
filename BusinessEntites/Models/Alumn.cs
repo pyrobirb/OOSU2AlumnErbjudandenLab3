@@ -35,10 +35,11 @@ namespace BusinessEntites.Models
         
         public void Update(ISubject subject)
         {
-            if (subject is AktivaAktiviteter aktivaAktiviteter)
+            if (subject != null)
             {
                 MessageBox.Show("Nu finns det nya aktiteter att anmäla sig till.");
             }
+
         }
     }
 }
