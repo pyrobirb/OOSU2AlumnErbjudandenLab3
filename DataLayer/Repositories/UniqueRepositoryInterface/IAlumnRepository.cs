@@ -1,4 +1,5 @@
 ﻿using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
     {
         Alumn HämtaAlumnKonto(string användarnamn, string lösenord);
         void UppdateraAlumnKonto(int id, string förnamn, string efternamn, string epostadress);
+        IQueryable<AlumnProgram> HämtaAlumnerMedProgram(Program program);
     }
 }

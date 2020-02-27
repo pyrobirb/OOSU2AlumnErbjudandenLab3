@@ -11,6 +11,7 @@ using BusinessEntites.Models;
 using BusinessEntites.Models.Junction;
 using BusinessLayer;
 using DataLayer.Contexts;
+using ProgramClass = BusinessEntites.Models.Program;
 
 namespace PresentationLayer
 {
@@ -42,7 +43,7 @@ namespace PresentationLayer
 
             //Fyll alumner och aktivitet på Skapa utskickslista
             alumnCheckedListBox.Items.Clear();
-            AktivitetComboBox.Items.Clear();
+            comboBoxFilterAlumns.Items.Clear();
 
             foreach (Alumn alumn in bm.unitOfWork.AlumnRepository.GetAll())
             {
@@ -54,14 +55,14 @@ namespace PresentationLayer
 
             foreach (Aktivitet aktivitet in bm.unitOfWork.AktivitetRepository.GetAll())
             {
-                AktivitetComboBox.Items.Add(aktivitet);
+                comboBoxFilterAlumns.Items.Add(aktivitet);
             }
-            AktivitetComboBox.ValueMember = "AktivitetID";
-            AktivitetComboBox.DisplayMember = "Titel";
+            comboBoxFilterAlumns.ValueMember = "AktivitetID";
+            comboBoxFilterAlumns.DisplayMember = "Titel";
 
-            //AktuellaAlumner ska vara de valda 
-            //AktuellaAktiviteter är valda aktiviteter
-
+            comboBoxFilterAlumns.DataSource = bm.unitOfWork.ProgramRepository.GetAll();
+            comboBoxFilterAlumns.DisplayMember = "Titel";
+            comboBoxFilterAlumns.ValueMember = "Namn";
 
 
         }
@@ -199,7 +200,7 @@ namespace PresentationLayer
 
             InformationsutskickAktivitet informationsutskickAktivitet = new InformationsutskickAktivitet()
             {
-                AktivitetID = (bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)AktivitetComboBox.SelectedItem).AktivitetsID)).AktivitetsID,
+                AktivitetID = (bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)comboBoxFilterAlumns.SelectedItem).AktivitetsID)).AktivitetsID,
                 InformationsutskickID = informationsutskick.UtskicksID
             };
             dbContext.InformationsutskickAktivitet.Add(informationsutskickAktivitet);
@@ -224,7 +225,7 @@ namespace PresentationLayer
                 alumner.Add(alumn);
             }
 
-            bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)AktivitetComboBox.SelectedItem).Titel, alumner);
+            bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)comboBoxFilterAlumns.SelectedItem).Titel, alumner);
             MessageBox.Show("Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!");
         }
 
@@ -236,6 +237,26 @@ namespace PresentationLayer
         private void tabPageCreateActivity_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxFilterAlumns_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            alumnCheckedListBox.Items.Clear();
+            foreach (Alumn alumn in AlumnerMedProgramFilter())
+            {
+                if (alumn != null)
+                {
+
+                    alumnCheckedListBox.Items.Add(alumn);
+                }
+            }
+
+            alumnCheckedListBox.DisplayMember = "Förnamn";
+            alumnCheckedListBox.ValueMember = "AnvändarID";
+        }
+        public List<Alumn> AlumnerMedProgramFilter()
+        {
+            return bm.HämtaAlumnerMedProgram((ProgramClass)comboBoxFilterAlumns.SelectedItem);
         }
     }
 }

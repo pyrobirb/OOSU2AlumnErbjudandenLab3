@@ -103,6 +103,16 @@ namespace BusinessLayer
             unitOfWork.AlumnRepository.UppdateraAlumnKonto(id, förnamn, efternamn, epostadress);
         }
 
+        public List<Alumn> HämtaAlumnerMedProgram(Program program)
+        {
+            List<Alumn> alumnerMedProgram = new List<Alumn>();
+            foreach (AlumnProgram ap in unitOfWork.AlumnRepository.HämtaAlumnerMedProgram(program))
+            {
+                alumnerMedProgram.Add(unitOfWork.AlumnRepository.GetById(ap.AlumnID));
+            }
+            return alumnerMedProgram;
+        }
+
         public void LäggTillUtbildningTillAlumn(int id, string text)
         {
             unitOfWork.ProgramRepository.LäggTillUtbildningTillAlumn(id, text);

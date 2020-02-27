@@ -1,4 +1,5 @@
 ﻿using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
 using DataLayer.Contexts;
 using DataLayer.Repositories.UniqueRepositoryInterface;
 using System;
@@ -27,6 +28,13 @@ namespace DataLayer.Repositories.UniqueRepository
             alumn.Efternamn = efternamn;
             alumn.Användarnamn = epostadress;
             this.Context.SaveChanges();
+        }
+
+        public IQueryable<AlumnProgram> HämtaAlumnerMedProgram(Program program)
+        {
+            var db = new DatabaseContext();
+
+            return db.AlumnProgram.Where(x => x.Program == program);
         }
 
         public AlumnRepository(DatabaseContext context) : base(context)

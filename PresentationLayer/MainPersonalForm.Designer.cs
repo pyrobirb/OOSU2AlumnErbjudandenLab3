@@ -68,8 +68,6 @@
             this.flyttaAlumner = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.valdaAlumnerListBox = new System.Windows.Forms.ListBox();
-            this.AktivitetComboBox = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.alumnCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.comboBoxFilterAlumns = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -425,8 +423,6 @@
             this.tabPageMakeEmailList.Controls.Add(this.flyttaAlumner);
             this.tabPageMakeEmailList.Controls.Add(this.label19);
             this.tabPageMakeEmailList.Controls.Add(this.valdaAlumnerListBox);
-            this.tabPageMakeEmailList.Controls.Add(this.AktivitetComboBox);
-            this.tabPageMakeEmailList.Controls.Add(this.label18);
             this.tabPageMakeEmailList.Controls.Add(this.alumnCheckedListBox);
             this.tabPageMakeEmailList.Controls.Add(this.comboBoxFilterAlumns);
             this.tabPageMakeEmailList.Controls.Add(this.label17);
@@ -476,23 +472,6 @@
             this.valdaAlumnerListBox.Size = new System.Drawing.Size(120, 147);
             this.valdaAlumnerListBox.TabIndex = 11;
             // 
-            // AktivitetComboBox
-            // 
-            this.AktivitetComboBox.FormattingEnabled = true;
-            this.AktivitetComboBox.Location = new System.Drawing.Point(216, 72);
-            this.AktivitetComboBox.Name = "AktivitetComboBox";
-            this.AktivitetComboBox.Size = new System.Drawing.Size(121, 21);
-            this.AktivitetComboBox.TabIndex = 10;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(213, 56);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(64, 13);
-            this.label18.TabIndex = 8;
-            this.label18.Text = "Välj aktivitet";
-            // 
             // alumnCheckedListBox
             // 
             this.alumnCheckedListBox.FormattingEnabled = true;
@@ -504,13 +483,14 @@
             // 
             // comboBoxFilterAlumns
             // 
-            this.comboBoxFilterAlumns.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.comboBoxFilterAlumns.ForeColor = System.Drawing.SystemColors.Desktop;
             this.comboBoxFilterAlumns.FormattingEnabled = true;
             this.comboBoxFilterAlumns.Location = new System.Drawing.Point(102, 24);
             this.comboBoxFilterAlumns.Name = "comboBoxFilterAlumns";
             this.comboBoxFilterAlumns.Size = new System.Drawing.Size(108, 21);
             this.comboBoxFilterAlumns.TabIndex = 4;
             this.comboBoxFilterAlumns.Text = "Välj filter";
+            this.comboBoxFilterAlumns.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterAlumns_SelectedIndexChanged);
             // 
             // label17
             // 
@@ -614,9 +594,7 @@
         private System.Windows.Forms.Button btnCreateAlumnCSV;
         private System.Windows.Forms.RichTextBox BeskrivningTextBox;
         private System.Windows.Forms.CheckedListBox alumnCheckedListBox;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.RichTextBox BeskrivningÄndraTextBox;
-        private System.Windows.Forms.ComboBox AktivitetComboBox;
         private System.Windows.Forms.ListBox valdaAlumnerListBox;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button flyttaAlumner;
