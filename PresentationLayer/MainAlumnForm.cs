@@ -25,37 +25,18 @@ namespace PresentationLayer
         }
         public void UppdateraBokadeAktiviteter()
         {
-            bokadeAktiviteterListBox.Items.Clear();
-            aktivitetsinformationRichTextBox.Text = "";
-            foreach (AlumnAktivitetBokning alumnBokning in bm.HämtaBokningFörAlumn(GLOBALS.AktuellAlumn))
-            {
-                Aktivitet aktiviteten = alumnBokning.Aktivitet;
-
-                bokadeAktiviteterListBox.Items.Add(aktiviteten);
-                bokadeAktiviteterListBox.DisplayMember = "Titel";
-                bokadeAktiviteterListBox.ValueMember = "AktivitetsID";
-            }
+            bokadeAktiviteterListBox.DataSource = bm.HämtaAktiviteterGenomAktivitetID(bm.HämtaAktiviteterGenomAlumn(GLOBALS.AktuellAlumn));
+            bokadeAktiviteterListBox.DisplayMember = "Titel";
+            bokadeAktiviteterListBox.ValueMember = "AktivitetsID";
         }
-
+        public void UppdateraKommandeAktiviteter()
+        {
+            informationsutskickListBox.DataSource = bm.HämtaAktiviteterGenomInformationsutskickID(bm.HämtaInformationsutskickAlumnGenomAlumnID(GLOBALS.AktuellAlumn));
+            informationsutskickListBox.DisplayMember = "Titel";
+            informationsutskickListBox.ValueMember = "AktivitetsID";
+        }
         private void tabControlAlumn_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //Visa bokade aktiviteter
-            bokadeAktiviteterListBox.Items.Clear();
-
-            foreach (AlumnAktivitetBokning alumnBokning in bm.HämtaBokningFörAlumn(GLOBALS.AktuellAlumn))
-            {
-
-                Aktivitet aktivitet = bm.HämtaAktivitetGenomID(alumnBokning.AktivitetID);
-
-                if (aktivitet != null)
-                {
-                    bokadeAktiviteterListBox.Items.Add(aktivitet);
-                    bokadeAktiviteterListBox.DisplayMember = "Titel";
-                    bokadeAktiviteterListBox.ValueMember = "AktivitetsID";
-                }
-            }
-
             //AnvändarUppgifter
             var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
             ändraFörnamnTxtBox.Text = InloggadAlumn.Förnamn;
@@ -63,6 +44,8 @@ namespace PresentationLayer
             ändraEpostTxtBox.Text = InloggadAlumn.Användarnamn;
 
             //Alumnuppgifter
+            UppdateraKommandeAktiviteter();
+            UppdateraBokadeAktiviteter();
             UppdateraProgramListBox();
             UppdateraKompetenserListBox();
 
@@ -70,28 +53,8 @@ namespace PresentationLayer
 
         private void MainAlumnForm_Load(object sender, EventArgs e)
         {
-
-            informationsutskickListBox.DataSource = bm.HämtaAktiviteterGenomAktivitetID(bm.HämtaAktiviteterGenomAlumn(GLOBALS.AktuellAlumn));
-            informationsutskickListBox.DisplayMember = "Titel";
-            informationsutskickListBox.ValueMember = "AktivitetsID";
-            
-            //informationsutskickListBox.Items(bm.HämtaInformationsutskickAktiviteterFörAlumn(GLOBALS.AktuellAlumn));
-
-            //informationsutskickListBox.Items.Clear();
-
-            //foreach (InformationsutskickAlumn informationsutskickAlumn in bm.HämtaInformationsutskickFörAlumn(GLOBALS.AktuellAlumn))
-            //{
-            //    int Id = informationsutskickAlumn.InformationsutskickID;
-            //    //bm.unitOfWork.InformationsutskickRepository.GetById(Id)
-            //    Informationsutskick informationsutskick = bm.HämtaInformationsutskickMedID(Id);
-
-            //    //bm.unitOfWork.AktivitetRepository.GetById(bm.HämtaAktivitetMedInformationsutskick(informationsutskick).AktivitetID)
-            //    var aktuellAktivitet = bm.HämtaAktivitetGenomID(bm.HämtaAktivitetMedInformationsutskick(informationsutskick).AktivitetID);
-            //    informationsutskickListBox.Items.Add(aktuellAktivitet);
-            //    informationsutskickListBox.DisplayMember = "Titel";
-            //    informationsutskickListBox.ValueMember = "AktivitetsID";
-            //}
-
+            UppdateraKommandeAktiviteter();
+           
             aktivitetsBeskrivningTextBox.Text = "";
             
             Aktivitet valdAktivitet = (Aktivitet)informationsutskickListBox.SelectedItem;
@@ -114,7 +77,6 @@ namespace PresentationLayer
             };
             dbContext.AlumnAktivitet.Add(alumnAktivitetBokning);
             dbContext.SaveChanges();
-            //bm.LäggTillAlumnAktivitet(alumnAktivitetBokning);
             MessageBox.Show("Bokningen har skapats");
 
         }
@@ -159,8 +121,7 @@ namespace PresentationLayer
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
             var alumnatttabort = bm.HämtaAlumnMedID((GLOBALS.AktuellAlumn).AnvändarID);
-            //(Alumn)bm.uow.AlumnRepository.GetById((GLOBALS.AktuellAlumn).AnvändarID);
-            //bm.uow.AlumnRepository.Remove(alumnatttabort);
+          
             bm.TaBortAlumn(alumnatttabort);
             MessageBox.Show("Ditt konto är nu borttaget");
             bm.Commit();

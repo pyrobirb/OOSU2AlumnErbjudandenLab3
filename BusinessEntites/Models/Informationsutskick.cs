@@ -15,7 +15,6 @@ namespace BusinessEntites.Models
         public int UtskicksID { get; set; }
         public DateTime UtskickDatum { get; set; }
         public virtual ICollection<Alumn> Alumner { get; set; }
-        public virtual Aktivitet Aktiviteten { get; set; }
         public virtual ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
         public virtual ICollection<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }
         public virtual ICollection<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }

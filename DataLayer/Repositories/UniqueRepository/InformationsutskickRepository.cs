@@ -13,11 +13,11 @@ namespace DataLayer.Repositories.UniqueRepository
 {
     public class InformationsutskickRepository : Repository<Informationsutskick>, IInformationsutskickRepository
     {
-        public IQueryable<InformationsutskickAlumn> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn)
+        public IQueryable<int> HämtaInformationsutskickIDFörAlumn(Alumn inloggadAlumn)
         {
             var db = new DatabaseContext();
 
-            return db.InformationsutskickAlumn.Where(x => x.Alumn == inloggadAlumn).Include(x => x.Informationsutskick).AsQueryable();
+            return db.InformationsutskickAlumn.Where(x => x.AlumnID == inloggadAlumn.AnvändarID).Include(x => x.Informationsutskick).Select(x=> x.InformationsutskickID);
         }
 
         public void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitet informationsutskickAktivitet)
@@ -32,6 +32,12 @@ namespace DataLayer.Repositories.UniqueRepository
             var db = new DatabaseContext();
             db.InformationsutskickAlumn.Add(informationsutskickAlumn);
             db.SaveChanges();
+        }
+
+        public IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(Alumn aktuellAlumn)
+        {
+            var db = new DatabaseContext();
+            return db.InformationsutskickAlumn.Where(x => x.AlumnID == aktuellAlumn.AnvändarID).Select(x => x.Informationsutskick.UtskicksID);
         }
 
         public InformationsutskickRepository(DatabaseContext context) : base(context)

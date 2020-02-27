@@ -29,14 +29,15 @@ namespace BusinessLayer
             return unitOfWork.AlumnRepository.HämtaAlumnKonto(användarnamn, lösenord);
         }
 
-        public List<Aktivitet> HämtaAktiviteterGenomAktivitetID(IQueryable<int> queryable)
+        public List<Aktivitet> HämtaAktiviteterGenomAktivitetID(IQueryable<int> ids)
         {
-            List<Aktivitet> Aktiviteter = new List<Aktivitet>();
-            foreach (var id in queryable)
+            List<Aktivitet> aktiviteter = new List<Aktivitet>();
+            foreach (int id in ids)
             {
-                Aktiviteter.Add(unitOfWork.AktivitetRepository.GetById(id));
+                aktiviteter.Add(unitOfWork.AktivitetRepository.GetById(id));
             }
-            return Aktiviteter;
+            return aktiviteter;
+           
         }
 
         public IQueryable<int> HämtaAktiviteterGenomAlumn(Alumn inloggadAlumn)
@@ -51,6 +52,26 @@ namespace BusinessLayer
         public void UpdateAktivitet(Aktivitet aktivitet, Aktivitet nyaktivitet)
         {
             unitOfWork.AktivitetRepository.UpdateAktivitet(aktivitet, nyaktivitet);
+        }
+
+        public List<Aktivitet> HämtaAktiviteterGenomInformationsutskickID(IQueryable<int> utskicksID)
+        {
+            List<Aktivitet> aktiviteter = new List<Aktivitet>();
+            foreach (int id in utskicksID)
+            {
+                aktiviteter.Add(unitOfWork.AktivitetRepository.HämtaAktivitetIDGenomInformationsutskicksID(id));
+            }
+            return aktiviteter;
+        }
+
+        public IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(Alumn aktuellAlumn)
+        {
+            return unitOfWork.InformationsutskickRepository.HämtaInformationsutskickAlumnGenomAlumnID(aktuellAlumn);
+        }
+
+        public IQueryable<int> HämtaInformationsutskickIDGenomAlumn(Alumn aktuellAlumn)
+        {
+            return unitOfWork.InformationsutskickRepository.HämtaInformationsutskickIDFörAlumn(aktuellAlumn);
         }
 
         public Alumn HämtaAlumnMedID(int användarID)
@@ -70,10 +91,9 @@ namespace BusinessLayer
             unitOfWork.Commit();
         }
 
-        public IQueryable<InformationsutskickAlumn> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn)
+        public IQueryable<int> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn)
         {   
-            var b = unitOfWork.InformationsutskickRepository.HämtaInformationsutskickFörAlumn(inloggadAlumn);
-            return b;
+            return unitOfWork.InformationsutskickRepository.HämtaInformationsutskickIDFörAlumn(inloggadAlumn);
         }
 
         public IEnumerable<Alumn> HämtaAllaAlumner()
@@ -116,11 +136,7 @@ namespace BusinessLayer
             return programs;
         }
 
-        public InformationsutskickAktivitet HämtaAktivitetMedInformationsutskick (Informationsutskick informationsutskick)
-        {
-            return unitOfWork.AktivitetRepository.HämtaAktivitetMedInformationsutskick(informationsutskick);
-            
-        }
+        
 
         public IQueryable<AlumnAktivitetBokning> HämtaBokningFörAlumn (Alumn inloggadAlumn)
         {

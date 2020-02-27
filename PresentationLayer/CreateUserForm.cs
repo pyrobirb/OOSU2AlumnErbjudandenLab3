@@ -41,8 +41,6 @@ namespace PresentationLayer
                         Förnamn = FörnamnTxtBox.Text,
                         Efternamn = EfternamnTxtBox.Text
                     };
-                    //bm.unitOfWork.AlumnRepository.Add(alumn);
-                    //bm.unitOfWork.Commit();
                     bm.LäggTillAlumn(alumn);
                     MessageBox.Show("Alumnkonto har skapats");
 
@@ -58,8 +56,6 @@ namespace PresentationLayer
                         Förnamn = FörnamnTxtBox.Text,
                         Efternamn = EfternamnTxtBox.Text
                     };
-                    //bm.unitOfWork.PersonalRepository.Add(personal);
-                    //bm.unitOfWork.Commit();
                     bm.LäggTillPersonal(personal);
                     MessageBox.Show("Personalkonto har skapats");
 

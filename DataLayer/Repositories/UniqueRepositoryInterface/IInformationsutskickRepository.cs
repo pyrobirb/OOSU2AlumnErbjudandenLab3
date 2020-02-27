@@ -10,8 +10,9 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
 {
     public interface IInformationsutskickRepository : IRepository<Informationsutskick>
     {
-        IQueryable<InformationsutskickAlumn> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn);
+        IQueryable<int> HämtaInformationsutskickIDFörAlumn(Alumn inloggadAlumn);
         void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitet informationsutskickAktivitet);
         void LäggTillInformationsutskickAlumn(InformationsutskickAlumn informationsutskickAlumn);
+        IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(Alumn aktuellAlumn);
     }
 }

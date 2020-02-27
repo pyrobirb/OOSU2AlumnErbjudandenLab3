@@ -13,7 +13,6 @@ namespace BusinessEntites.Models.Interfaces
         DateTime UtskickDatum { get; set; }
 
         ICollection<Alumn> Alumner { get; set; }
-        Aktivitet Aktiviteten { get; set; }
         ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
         ICollection<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }
         ICollection<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }

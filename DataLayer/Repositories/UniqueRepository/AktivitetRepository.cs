@@ -42,12 +42,8 @@ namespace DataLayer.Repositories.UniqueRepository
             //this.Context.SaveChanges();
         }
 
-        public InformationsutskickAktivitet HämtaAktivitetMedInformationsutskick (Informationsutskick informationsutskick)
-        {
-            var db = new DatabaseContext();
-            return db.InformationsutskickAktivitet.Where(x => x.Informationsutskick == informationsutskick).SingleOrDefault();
-
-        }
+        
+        
 
         public IQueryable<AlumnAktivitetBokning> HämtaBokningFörAlumn (Alumn inloggadAlumn)
         {
@@ -77,6 +73,15 @@ namespace DataLayer.Repositories.UniqueRepository
 
             return db.AlumnAktivitet.Where(x => x.AlumnID == inloggadAlumn.AnvändarID)
                  .Select(x => x.AktivitetID);
+        }
+
+        public Aktivitet HämtaAktivitetIDGenomInformationsutskicksID(int utskicksID)
+        {
+            var db = new DatabaseContext();
+
+
+            var list = db.InformationsutskickAktivitet.Where(x => x.InformationsutskickID.Equals(utskicksID)).Select(x => x.Aktivitet).SingleOrDefault();
+            return list;
         }
 
         public AktivitetRepository(DatabaseContext context) : base(context)
