@@ -72,6 +72,11 @@ namespace PresentationLayer
 
         private void BtnCreateActivity_Click(object sender, EventArgs e)
         {
+            SkapaAktivitet();
+        }
+
+        private void SkapaAktivitet()
+        {
             if (TitelAktivitetTxtBox.Text == "" || AnsvarigPersonTxtBox.Text == "" || KontaktPersonTxtBox.Text == "" || PlatsTxtBox.Text == "" || BeskrivningTextBox.Text == "")
                 MessageBox.Show("Var vänlig fyll i alla textrutor");
             else
