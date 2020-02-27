@@ -22,12 +22,13 @@ namespace PresentationLayer
         public MainAlumnForm()
         {
             InitializeComponent();
+            kollaNyaMeddelanden();
         }
 
         private void tabControlAlumn_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Visa bokade aktiviteter
-
+            bokadeAktiviteterListBox.Items.Clear();
             foreach (AlumnAktivitetBokning alumnBokning in bm.HämtaBokningFörAlumn(GLOBALS.AktuellAlumn))
             {
                 int aktivitetID = alumnBokning.AktivitetID;
@@ -41,18 +42,10 @@ namespace PresentationLayer
                 }
             }
 
-            //Kolla om det finns nytt meddelande
-            var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
-
-            InloggadAlumn.newMessages = true; //Fulfix för att testa.
-
-            if (InloggadAlumn.newMessages)
-            {
-                MessageBox.Show("Nu finns det nya aktiteter att anmäla sig till.");
-            }
+            kollaNyaMeddelanden();
 
             //AnvändarUppgifter
-            //var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
+            var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
             ändraFörnamnTxtBox.Text = InloggadAlumn.Förnamn;
             ändraEfternamnTxtBox.Text = InloggadAlumn.Efternamn;
             ändraEpostTxtBox.Text = InloggadAlumn.Användarnamn;
@@ -71,7 +64,19 @@ namespace PresentationLayer
 
         }
 
+        public void kollaNyaMeddelanden()
+        {
+            //Kolla om det finns nytt meddelande
+            var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
 
+            if (InloggadAlumn.newMessages)
+            {
+                MessageBox.Show("Nu finns det nya aktiteter att anmäla sig till.");
+                InloggadAlumn.newMessages = false;
+                bm.updateNewMessage(InloggadAlumn.AnvändarID, false);
+                //dbContext.SaveChanges();
+            }
+        }
 
         private void MainAlumnForm_Load(object sender, EventArgs e)
         {

@@ -11,5 +11,6 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
     {
         Alumn HämtaAlumnKonto(string användarnamn, string lösenord);
         void UppdateraAlumnKonto(int id, string förnamn, string efternamn, string epostadress);
+        void UppdateNewMessage(int id, bool v);
     }
 }

@@ -29,6 +29,14 @@ namespace DataLayer.Repositories.UniqueRepository
             this.Context.SaveChanges();
         }
 
+        public void UppdateNewMessage(int id, bool v)
+        {
+            var alumn = this.GetById(id);
+            this.Context.Alumner.Attach(alumn);
+            alumn.newMessages = v;
+            this.Context.SaveChanges();
+        }
+
         public AlumnRepository(DatabaseContext context) : base(context)
         {
 

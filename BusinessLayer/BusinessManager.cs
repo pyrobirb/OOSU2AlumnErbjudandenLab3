@@ -84,6 +84,11 @@ namespace BusinessLayer
             return kompetenser;
         }
 
+        public void updateNewMessage(int id, bool v)
+        {
+            unitOfWork.AlumnRepository.UppdateNewMessage(id, v);
+        }
+
         public List<ProgramClass> HämtaProgramFörAlumn(Alumn aktuellAlumn)
         {
             List<ProgramClass> programs = new List<ProgramClass>();
