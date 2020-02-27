@@ -1,4 +1,5 @@
 ﻿using BusinessEntites.Models;
+using BusinessEntites.Models.Interfaces;
 using DataLayer.Contexts;
 using DataLayer.Repositories.UniqueRepositoryInterface;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepository
 {
-    public class AlumnRepository : Repository<Alumn>, IAlumnRepository
+    public class AlumnRepository : Repository<Alumn>, IAlumnRepository, IObserver
     {
         public Alumn HämtaAlumnKonto(string användarnamn, string lösenord)
         {
@@ -29,13 +30,15 @@ namespace DataLayer.Repositories.UniqueRepository
             this.Context.SaveChanges();
         }
 
-        public void UppdateNewMessage(int id, bool v)
+        public void UpdateNewMessage(int id, bool v)
         {
             var alumn = this.GetById(id);
             this.Context.Alumner.Attach(alumn);
             alumn.newMessages = v;
             this.Context.SaveChanges();
         }
+
+
 
         public AlumnRepository(DatabaseContext context) : base(context)
         {

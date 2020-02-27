@@ -14,7 +14,7 @@ namespace BusinessEntites.Models
     public class AktivaAktiviteter : ISubject, IAktivaAktiviteter
     {
 
-        private List<IObserver> _observers;
+        private List<IObserver> _observers = new List<IObserver>();
 
         private List<Aktivitet> _Aktiviteter = new List<Aktivitet>();
 
@@ -42,7 +42,8 @@ namespace BusinessEntites.Models
 
         public void Notify()
         {
-            _observers.ForEach(o => o.Update(this));
+            //behöver få tag på användar ID för de som är lagrade i _observers. 
+            _observers.ForEach(o => o.UpdateNewMessage(ID, true));
         }
 
         public List<Aktivitet> HämtaAktiviteter()

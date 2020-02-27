@@ -235,15 +235,13 @@ namespace PresentationLayer
 
             //observerpattern notify
             List<Alumn> AlumnObservers = bm.GetObserverList();
-
-
             foreach (Alumn A in AlumnObservers)
             {
                 foreach (Alumn B in alumner)
                 {
                     if (A.AnvändarID == B.AnvändarID)
                     {
-                        B.Update(B.AnvändarID);
+                        bm.updateNewMessage(B.AnvändarID, true);
                     }
                 }
             }

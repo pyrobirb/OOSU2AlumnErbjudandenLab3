@@ -2,6 +2,7 @@
 {
     public interface IObserver//<TEntity> where TEntity : class
     {
-        void Update(int AnvID);
+        void UpdateNewMessage(int AnvID, bool newMessage);
+
     }
 }

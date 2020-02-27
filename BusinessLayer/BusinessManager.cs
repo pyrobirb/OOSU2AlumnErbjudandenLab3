@@ -87,7 +87,7 @@ namespace BusinessLayer
 
         public void updateNewMessage(int id, bool v)
         {
-            unitOfWork.AlumnRepository.UppdateNewMessage(id, v);
+            unitOfWork.AlumnRepository.UpdateNewMessage(id, v);
         }
 
         public List<ProgramClass> HämtaProgramFörAlumn(Alumn aktuellAlumn)

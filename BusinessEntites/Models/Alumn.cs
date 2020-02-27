@@ -11,7 +11,7 @@ using BusinessEntites.Models.Junction;
 namespace BusinessEntites.Models
 {
     
-    public class Alumn : IAlumn, IObserver
+    public class Alumn : IAlumn
     {  
 
         [Key]
@@ -37,9 +37,6 @@ namespace BusinessEntites.Models
         //}
 
 
-        public void Update(int AnvID)
-        {
-            newMessages = true;
-        }
+
     }
 }
