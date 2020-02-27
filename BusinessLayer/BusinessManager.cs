@@ -52,6 +52,11 @@ namespace BusinessLayer
 
         }
 
+        public Aktivitet HämtaAktivitetGenomID(int aktivitetID)
+        {
+            return unitOfWork.AktivitetRepository.GetById(aktivitetID);
+        }
+
         public IQueryable<InformationsutskickAlumn> HämtaInformationsutskickFörAlumn(Alumn inloggadAlumn)
         {   
             var b = unitOfWork.InformationsutskickRepository.HämtaInformationsutskickFörAlumn(inloggadAlumn);

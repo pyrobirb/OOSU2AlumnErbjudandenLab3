@@ -489,6 +489,8 @@
             // 
             this.comboBoxFilterAlumns.ForeColor = System.Drawing.SystemColors.Desktop;
             this.comboBoxFilterAlumns.FormattingEnabled = true;
+            this.comboBoxFilterAlumns.Items.AddRange(new object[] {
+            ""});
             this.comboBoxFilterAlumns.Location = new System.Drawing.Point(102, 24);
             this.comboBoxFilterAlumns.Name = "comboBoxFilterAlumns";
             this.comboBoxFilterAlumns.Size = new System.Drawing.Size(108, 21);

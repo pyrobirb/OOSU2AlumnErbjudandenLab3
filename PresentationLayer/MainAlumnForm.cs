@@ -40,11 +40,12 @@ namespace PresentationLayer
     private void tabControlAlumn_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Visa bokade aktiviteter
+            bokadeAktiviteterListBox.Items.Clear();
 
             foreach (AlumnAktivitetBokning alumnBokning in bm.HämtaBokningFörAlumn(GLOBALS.AktuellAlumn))
             {
                 
-                Aktivitet aktivitet = bm.unitOfWork.AktivitetRepository.GetById(alumnBokning.AktivitetID);
+                Aktivitet aktivitet = bm.HämtaAktivitetGenomID(alumnBokning.AktivitetID);
 
                 if (aktivitet != null)
                 {
