@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Interfaces
 {
-    interface IProgram
+    public interface IProgram
     {
         int ProgramID { get; set; }
         string Namn { get; set; }

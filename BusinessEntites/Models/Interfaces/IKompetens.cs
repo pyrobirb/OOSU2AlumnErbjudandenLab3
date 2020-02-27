@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Interfaces
 {
-    interface IKompetens
+    public interface IKompetens
     {
         int KompetensID { get; set; }
         string Beskrivning { get; set; }
