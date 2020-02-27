@@ -74,6 +74,8 @@
             this.btnCreateAlumnCSV = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.AktivitetComboBox = new System.Windows.Forms.ComboBox();
             this.tabControlMainAdmin.SuspendLayout();
             this.tabPageCreateActivity.SuspendLayout();
             this.tabPageEditActivity.SuspendLayout();
@@ -423,6 +425,8 @@
             this.tabPageMakeEmailList.Controls.Add(this.flyttaAlumner);
             this.tabPageMakeEmailList.Controls.Add(this.label19);
             this.tabPageMakeEmailList.Controls.Add(this.valdaAlumnerListBox);
+            this.tabPageMakeEmailList.Controls.Add(this.AktivitetComboBox);
+            this.tabPageMakeEmailList.Controls.Add(this.label18);
             this.tabPageMakeEmailList.Controls.Add(this.alumnCheckedListBox);
             this.tabPageMakeEmailList.Controls.Add(this.comboBoxFilterAlumns);
             this.tabPageMakeEmailList.Controls.Add(this.label17);
@@ -530,6 +534,24 @@
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(213, 56);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(64, 13);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "Välj aktivitet";
+            // 
+            // AktivitetComboBox
+            // 
+            this.AktivitetComboBox.FormattingEnabled = true;
+            this.AktivitetComboBox.Location = new System.Drawing.Point(216, 72);
+            this.AktivitetComboBox.Name = "AktivitetComboBox";
+            this.AktivitetComboBox.Size = new System.Drawing.Size(121, 21);
+            this.AktivitetComboBox.TabIndex = 10;
+            this.AktivitetComboBox.SelectedIndexChanged += new System.EventHandler(this.AktivitetComboBox_SelectedIndexChanged);
+            // 
             // MainPersonalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,5 +621,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button flyttaAlumner;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ComboBox AktivitetComboBox;
+        private System.Windows.Forms.Label label18;
     }
 }

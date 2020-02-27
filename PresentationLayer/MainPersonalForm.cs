@@ -55,10 +55,10 @@ namespace PresentationLayer
 
             foreach (Aktivitet aktivitet in bm.unitOfWork.AktivitetRepository.GetAll())
             {
-                comboBoxFilterAlumns.Items.Add(aktivitet);
+                AktivitetComboBox.Items.Add(aktivitet);
             }
-            comboBoxFilterAlumns.ValueMember = "AktivitetID";
-            comboBoxFilterAlumns.DisplayMember = "Titel";
+            AktivitetComboBox.ValueMember = "AktivitetID";
+            AktivitetComboBox.DisplayMember = "Titel";
 
             comboBoxFilterAlumns.DataSource = bm.unitOfWork.ProgramRepository.GetAll();
             comboBoxFilterAlumns.DisplayMember = "Titel";
@@ -200,7 +200,7 @@ namespace PresentationLayer
 
             InformationsutskickAktivitet informationsutskickAktivitet = new InformationsutskickAktivitet()
             {
-                AktivitetID = (bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)comboBoxFilterAlumns.SelectedItem).AktivitetsID)).AktivitetsID,
+                AktivitetID = (bm.unitOfWork.AktivitetRepository.GetById(((Aktivitet)AktivitetComboBox.SelectedItem).AktivitetsID)).AktivitetsID,
                 InformationsutskickID = informationsutskick.UtskicksID
             };
             dbContext.InformationsutskickAktivitet.Add(informationsutskickAktivitet);
@@ -225,7 +225,7 @@ namespace PresentationLayer
                 alumner.Add(alumn);
             }
 
-            bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)comboBoxFilterAlumns.SelectedItem).Titel, alumner);
+            bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)AktivitetComboBox.SelectedItem).Titel, alumner);
             MessageBox.Show("Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!");
         }
 
@@ -257,6 +257,11 @@ namespace PresentationLayer
         public List<Alumn> AlumnerMedProgramFilter()
         {
             return bm.HämtaAlumnerMedProgram((ProgramClass)comboBoxFilterAlumns.SelectedItem);
+        }
+
+        private void AktivitetComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
