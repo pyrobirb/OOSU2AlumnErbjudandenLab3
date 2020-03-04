@@ -37,6 +37,12 @@ namespace DataLayer.Repositories.UniqueRepository
             return db.AlumnProgram.Where(x => x.Program == program);
         }
 
+        public Alumn HämtaAlumnGenomID(int AlumnID)
+        {
+            var db = new DatabaseContext();
+            return db.Alumner.Where(x => x.AnvändarID == AlumnID).FirstOrDefault();
+        }
+
         public AlumnRepository(DatabaseContext context) : base(context)
         {
 

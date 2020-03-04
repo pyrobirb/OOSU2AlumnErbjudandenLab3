@@ -40,6 +40,39 @@ namespace BusinessLayer
            
         }
 
+        public List<Alumn> HämtaAnmälningarGenomAktivitetsID(int aktivitetsID)
+        {
+            List<Alumn> AnmäldaAlumner = new List<Alumn>();
+            List<int> UtskicksID = new List<int>();
+            List<int> AnmäldaAlumnerID = new List<int>();
+
+
+            //Hämtar alla utskick som är gjorda till en inskickade aktiviteten
+            IQueryable<InformationsutskickAktivitet> informationsutskick = unitOfWork.InformationsutskickRepository.HämtaUtskicksIDGenomAktivitetsID(aktivitetsID);
+            
+            foreach (var item in informationsutskick)
+            {
+                UtskicksID.Add(item.InformationsutskickID);             
+            }
+
+            //Hämtar alla alumner kopplade till utskicken som hämtades ovanför.
+            foreach (int id in UtskicksID)
+            {
+                IQueryable<InformationsutskickAlumn> alumner = unitOfWork.InformationsutskickRepository.HämtaAlumnIdGenomUtskicksId(id);
+                foreach (var item in alumner)
+                {
+                    AnmäldaAlumnerID.Add(item.AlumnID);
+                }
+            }
+
+            foreach (int id in AnmäldaAlumnerID)
+            {
+                AnmäldaAlumner.Add(unitOfWork.AlumnRepository.HämtaAlumnGenomID(id));
+            }
+
+            return AnmäldaAlumner;
+        }
+
         public IQueryable<int> HämtaAktiviteterGenomAlumn(Alumn inloggadAlumn)
         {
             return unitOfWork.AktivitetRepository.HämtaAktiviteterGenomAlumn(inloggadAlumn);
@@ -63,6 +96,8 @@ namespace BusinessLayer
             }
             return aktiviteter;
         }
+
+
 
         public IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(Alumn aktuellAlumn)
         {

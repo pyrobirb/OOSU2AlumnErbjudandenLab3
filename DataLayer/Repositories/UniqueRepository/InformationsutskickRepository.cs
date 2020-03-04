@@ -40,6 +40,20 @@ namespace DataLayer.Repositories.UniqueRepository
             return db.InformationsutskickAlumn.Where(x => x.AlumnID == aktuellAlumn.AnvändarID).Select(x => x.Informationsutskick.UtskicksID);
         }
 
+        public IQueryable<InformationsutskickAktivitet> HämtaUtskicksIDGenomAktivitetsID(int aktivitetsID)
+        {
+            var db = new DatabaseContext();
+            //return db.InformationsutskickAktivitet.Where(x => x.AktivitetID == AktivitetsID);
+            return db.InformationsutskickAktivitet.Where(x => x.AktivitetID == aktivitetsID);
+        }
+
+        public IQueryable<InformationsutskickAlumn> HämtaAlumnIdGenomUtskicksId(int UtskicksId)
+        {
+            var db = new DatabaseContext();
+            return db.InformationsutskickAlumn.Where(x => x.InformationsutskickID == UtskicksId);
+
+        }
+
         public InformationsutskickRepository(DatabaseContext context) : base(context)
         {
 

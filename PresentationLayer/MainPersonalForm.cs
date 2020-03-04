@@ -31,7 +31,6 @@ namespace PresentationLayer
             VäljAktivitetComboBox.DisplayMember = "Titel";
             VäljAktivitetComboBox.ValueMember = "AktivitetsID";
 
-
             var AktuellAktivitet = bm.HämtaAktivitetGenomID(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);          
             
             ÄndraTitelTxtBox.Text = AktuellAktivitet.Titel;
@@ -41,6 +40,15 @@ namespace PresentationLayer
             StarttidDateTime.Value = AktuellAktivitet.Startdatum;
             SlutdatumÄndraDateTime.Value = AktuellAktivitet.Slutdatum;
             BeskrivningÄndraTextBox.Text = AktuellAktivitet.Beskrivning;
+
+            //Fyll se anmälningar
+            VäljAktivitetSeAnmälancomboBox.DataSource = bm.HämtaAllaAktiviteter();
+            VäljAktivitetSeAnmälancomboBox.DisplayMember = "Titel";
+            VäljAktivitetSeAnmälancomboBox.ValueMember = "AktivitetsID";
+
+            List<Alumn> AktuellaAnmälningar = bm.HämtaAnmälningarGenomAktivitetsID(((Aktivitet)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
+
+            AnmäldaAlumnerDataGridView.DataSource = AktuellaAnmälningar;
 
             //Fyll alumner och aktivitet på Skapa utskickslista
             alumnCheckedListBox.Items.Clear();
@@ -264,6 +272,11 @@ namespace PresentationLayer
         }
 
         private void AktivitetComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void VäljAktivitetSeAnmälancomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
