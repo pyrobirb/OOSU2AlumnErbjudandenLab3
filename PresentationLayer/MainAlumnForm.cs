@@ -19,9 +19,32 @@ namespace PresentationLayer
     {
         BusinessManager bm = new BusinessManager();
         DatabaseContext dbContext = new DatabaseContext();
+        WarningLabel WarningLabel = new WarningLabel();
+        btnDeleteAccountOP btnDeleteAccountOP = new btnDeleteAccountOP();
+
         public MainAlumnForm()
         {
             InitializeComponent();
+
+            //Observer
+            this.tabControlAlumn.TabPages[3].Controls.Add(WarningLabel);
+            this.tabControlAlumn.TabPages[3].Controls.Add(btnDeleteAccountOP);
+            //this.Controls.Add(btnDeleteAccountOP);
+            WarningLabel.Location = placeHolderWarningLabel.Location;
+            btnDeleteAccountOP.Location = btnDeleteAccount.Location;
+            btnDeleteAccountOP.Click += btnDeleteAccount_Click;
+            btnDeleteAccount.Hide();// = false;
+            placeHolderWarningLabel.Hide();
+
+            WarningLabel.Text = placeHolderWarningLabel.Text;
+            WarningLabel.Width = placeHolderWarningLabel.Width;
+            WarningLabel.ForeColor = Color.Crimson;
+
+            WarningLabel.Hide();
+            btnDeleteAccountOP.Text = btnDeleteAccount.Text;
+            btnDeleteAccountOP.Size = btnDeleteAccount.Size;
+            btnDeleteAccountOP.subject.register(WarningLabel);
+
         }
         public void UppdateraBokadeAktiviteter()
         {
@@ -129,6 +152,7 @@ namespace PresentationLayer
             GLOBALS.AktuellAlumn = null;
         }
 
+
         private void läggTillUtbildningBtn_Click(object sender, EventArgs e)
         {
             bm.LäggTillUtbildningTillAlumn(GLOBALS.AktuellAlumn.AnvändarID, nyUtbildningTxtBox.Text);
@@ -183,6 +207,11 @@ namespace PresentationLayer
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        private void btnDeleteAccount_MouseEnter(object sender, EventArgs e)
+        {
+
         }
     }
 }

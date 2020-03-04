@@ -64,6 +64,7 @@
             this.ändraFörnamnTxtBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.placeHolderWarningLabel = new System.Windows.Forms.Label();
             this.tabControlAlumn.SuspendLayout();
             this.tabPageUpcommingActivities.SuspendLayout();
             this.tabPageBookedActivities.SuspendLayout();
@@ -334,6 +335,7 @@
             // 
             // tabPageUserData
             // 
+            this.tabPageUserData.Controls.Add(this.placeHolderWarningLabel);
             this.tabPageUserData.Controls.Add(this.btnDeleteAccount);
             this.tabPageUserData.Controls.Add(this.btnSaveChanges);
             this.tabPageUserData.Controls.Add(this.ändraEpostTxtBox);
@@ -358,6 +360,7 @@
             this.btnDeleteAccount.Text = "Radera konto";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
             this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
+            this.btnDeleteAccount.MouseEnter += new System.EventHandler(this.btnDeleteAccount_MouseEnter);
             // 
             // btnSaveChanges
             // 
@@ -427,6 +430,15 @@
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
+            // placeHolderWarningLabel
+            // 
+            this.placeHolderWarningLabel.AutoSize = true;
+            this.placeHolderWarningLabel.Location = new System.Drawing.Point(4, 298);
+            this.placeHolderWarningLabel.Name = "placeHolderWarningLabel";
+            this.placeHolderWarningLabel.Size = new System.Drawing.Size(257, 13);
+            this.placeHolderWarningLabel.TabIndex = 8;
+            this.placeHolderWarningLabel.Text = "Varning! Det går inte att återställa ett borttaget konto.";
+            // 
             // MainAlumnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -488,5 +500,6 @@
         private System.Windows.Forms.ListBox kompetenserListBox;
         private System.Windows.Forms.Button taBortValtProgramBtn;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Label placeHolderWarningLabel;
     }
 }

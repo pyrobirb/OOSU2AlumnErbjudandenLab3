@@ -144,6 +144,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="btnDeleteAccountOP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="btnDeleteAccountOP.Designer.cs">
+      <DependentUpon>btnDeleteAccountOP.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,8 +175,16 @@
     <Compile Include="MainAlumnForm.Designer.cs">
       <DependentUpon>MainAlumnForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Observer\IObserver.cs" />
+    <Compile Include="Observer\Subject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WarningLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WarningLabel.Designer.cs">
+      <DependentUpon>WarningLabel.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CreateUserForm.resx">
       <DependentUpon>CreateUserForm.cs</DependentUpon>
     </EmbeddedResource>
