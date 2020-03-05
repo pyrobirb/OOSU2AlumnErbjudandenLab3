@@ -187,22 +187,23 @@ namespace PresentationLayer
                     valdaAlumnerListBox.ValueMember = "AnvändarID";
                 }
             }
-            foreach (Alumn alumn1 in valdaAlumnerListBox.Items)
-            {
-                if (!alumnCheckedListBox.CheckedItems.Contains(alumn1))
-                {
-                    List<Alumn> valdaAlumner = new List<Alumn>();
-                    foreach (Alumn alumn in valdaAlumnerListBox.Items)
-                    {
-                        valdaAlumner.Add(alumn);
-                    }
+            //Vad gör det här bortkommenterade stycket??
+            //foreach (Alumn alumn1 in valdaAlumnerListBox.Items)
+            //{
+            //    if (!alumnCheckedListBox.CheckedItems.Contains(alumn1))
+            //    {
+            //        List<Alumn> valdaAlumner = new List<Alumn>();
+            //        foreach (Alumn alumn in valdaAlumnerListBox.Items)
+            //        {
+            //            valdaAlumner.Add(alumn);
+            //        }
 
-                    valdaAlumner.Remove(alumn1);
+            //        valdaAlumner.Remove(alumn1);
 
-                    valdaAlumnerListBox.DataSource = valdaAlumner;
+            //        valdaAlumnerListBox.DataSource = valdaAlumner;
 
-                }
-            }
+            //    }
+            //}
 
             valdaAlumnerListBox.ValueMember = "AnvändarID";
             valdaAlumnerListBox.DisplayMember = "Förnamn";
