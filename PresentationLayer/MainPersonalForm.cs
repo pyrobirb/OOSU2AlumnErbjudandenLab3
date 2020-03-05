@@ -46,9 +46,9 @@ namespace PresentationLayer
             VäljAktivitetSeAnmälancomboBox.DisplayMember = "Titel";
             VäljAktivitetSeAnmälancomboBox.ValueMember = "AktivitetsID";
 
-            List<Alumn> AktuellaAnmälningar = bm.HämtaAnmälningarGenomAktivitetsID(((Aktivitet)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
+            List<Alumn> AktuellaAnmälda = bm.HämtaAnmälningarGenomAktivitetsID(((Aktivitet)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
 
-            AnmäldaAlumnerDataGridView.DataSource = AktuellaAnmälningar;
+            AnmäldaAlumnerDataGridView.DataSource = AktuellaAnmälda;
             if (AnmäldaAlumnerDataGridView.ColumnCount > 0)
             {
                 AnmäldaAlumnerDataGridView.Columns[0].Visible = false;

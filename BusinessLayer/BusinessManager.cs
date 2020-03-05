@@ -46,23 +46,11 @@ namespace BusinessLayer
             List<int> UtskicksID = new List<int>();
             List<int> AnmäldaAlumnerID = new List<int>();
 
-
-            //Hämtar alla utskick som är gjorda till en inskickade aktiviteten
-            IQueryable<InformationsutskickAktivitet> informationsutskick = unitOfWork.InformationsutskickRepository.HämtaUtskicksIDGenomAktivitetsID(aktivitetsID);
-            
-            foreach (var item in informationsutskick)
+            //Hämtar alla alumner som har bokat aktivitet
+            IQueryable<AlumnAktivitetBokning> alumnAktivitetBoknings = unitOfWork.AktivitetRepository.HämtaAlumnGenomAktivitetsID(aktivitetsID);
+            foreach (var item in alumnAktivitetBoknings)
             {
-                UtskicksID.Add(item.InformationsutskickID);             
-            }
-
-            //Hämtar alla alumner kopplade till utskicken som hämtades ovanför.
-            foreach (int id in UtskicksID)
-            {
-                IQueryable<InformationsutskickAlumn> alumner = unitOfWork.InformationsutskickRepository.HämtaAlumnIdGenomUtskicksId(id);
-                foreach (var item in alumner)
-                {
-                    AnmäldaAlumnerID.Add(item.AlumnID);
-                }
+                AnmäldaAlumnerID.Add(item.AlumnID);
             }
 
             foreach (int id in AnmäldaAlumnerID)

@@ -84,6 +84,12 @@ namespace DataLayer.Repositories.UniqueRepository
             return list;
         }
 
+        public IQueryable<AlumnAktivitetBokning> HämtaAlumnGenomAktivitetsID(int aktivitetsID)
+        {
+            var db = new DatabaseContext();
+            return db.AlumnAktivitet.Where(x => x.AktivitetID == aktivitetsID);
+        }
+
         public AktivitetRepository(DatabaseContext context) : base(context)
         {
 

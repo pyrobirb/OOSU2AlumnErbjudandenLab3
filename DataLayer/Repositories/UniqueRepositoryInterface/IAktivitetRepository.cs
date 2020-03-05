@@ -18,5 +18,6 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
         void LäggTillAlumnAktivitetBokning(AlumnAktivitetBokning alumnAktivitetBokning);
         IQueryable<int> HämtaAktiviteterGenomAlumn(Alumn inloggadAlumn);
         Aktivitet HämtaAktivitetIDGenomInformationsutskicksID(int utskicksID);
+        IQueryable<AlumnAktivitetBokning> HämtaAlumnGenomAktivitetsID(int aktivitetsID);
     }
 }
