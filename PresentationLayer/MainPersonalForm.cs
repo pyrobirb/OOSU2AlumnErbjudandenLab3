@@ -49,6 +49,15 @@ namespace PresentationLayer
             List<Alumn> AktuellaAnmälningar = bm.HämtaAnmälningarGenomAktivitetsID(((Aktivitet)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
 
             AnmäldaAlumnerDataGridView.DataSource = AktuellaAnmälningar;
+            if (AnmäldaAlumnerDataGridView.ColumnCount > 0)
+            {
+                AnmäldaAlumnerDataGridView.Columns[0].Visible = false;
+                AnmäldaAlumnerDataGridView.Columns[1].Visible = false;
+                AnmäldaAlumnerDataGridView.Columns[2].Visible = false;
+                AnmäldaAlumnerDataGridView.Columns[7].Visible = false;
+                AnmäldaAlumnerDataGridView.Columns[8].Visible = false;
+            }
+
 
             //Fyll alumner och aktivitet på Skapa utskickslista
             alumnCheckedListBox.Items.Clear();
