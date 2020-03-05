@@ -91,6 +91,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.VäljGammalUtskicksListacomboBox = new System.Windows.Forms.ComboBox();
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.LaddaGamlaAlumnerFrånListabtn = new System.Windows.Forms.Button();
             this.tabControlMainAdmin.SuspendLayout();
             this.tabPageCreateActivity.SuspendLayout();
             this.tabPageEditActivity.SuspendLayout();
@@ -492,6 +493,7 @@
             // 
             // tabPageMakeEmailList
             // 
+            this.tabPageMakeEmailList.Controls.Add(this.LaddaGamlaAlumnerFrånListabtn);
             this.tabPageMakeEmailList.Controls.Add(this.TaBortAlumnBtn);
             this.tabPageMakeEmailList.Controls.Add(this.GamlaListorComboBox);
             this.tabPageMakeEmailList.Controls.Add(this.label22);
@@ -725,6 +727,15 @@
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
+            // LaddaGamlaAlumnerFrånListabtn
+            // 
+            this.LaddaGamlaAlumnerFrånListabtn.Location = new System.Drawing.Point(405, 20);
+            this.LaddaGamlaAlumnerFrånListabtn.Name = "LaddaGamlaAlumnerFrånListabtn";
+            this.LaddaGamlaAlumnerFrånListabtn.Size = new System.Drawing.Size(92, 23);
+            this.LaddaGamlaAlumnerFrånListabtn.TabIndex = 21;
+            this.LaddaGamlaAlumnerFrånListabtn.Text = "Hämta alumner";
+            this.LaddaGamlaAlumnerFrånListabtn.UseVisualStyleBackColor = true;
+            // 
             // MainPersonalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -817,5 +828,6 @@
         private System.Windows.Forms.DataGridView utskickslistaAlumner;
         private System.Windows.Forms.ComboBox GamlaListorComboBox;
         private System.Windows.Forms.Button TaBortAlumnBtn;
+        private System.Windows.Forms.Button LaddaGamlaAlumnerFrånListabtn;
     }
 }

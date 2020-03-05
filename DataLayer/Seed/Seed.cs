@@ -51,6 +51,12 @@ namespace DataLayer.Seed
             dbContext.Alumner.Add(alumn4);
 
             //Program
+            Program program0 = new Program()
+            {
+                Namn = "Alla"
+            };
+            dbContext.Program.Add(program0);
+
             Program program1 = new Program()
             {
                 Namn = "Systemarkitekt"

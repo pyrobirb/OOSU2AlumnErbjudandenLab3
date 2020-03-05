@@ -287,13 +287,29 @@ namespace PresentationLayer
 
         private void comboBoxFilterAlumns_SelectedIndexChanged(object sender, EventArgs e)
         {
-            alumnCheckedListBox.Items.Clear();
-            foreach (Alumn alumn in AlumnerMedProgramFilter())
+            if (comboBoxFilterAlumns.SelectedIndex == 0 )
             {
-                if (alumn != null)
+                alumnCheckedListBox.Items.Clear();
+                IEnumerable<Alumn> hämtadeAlumner = bm.HämtaAllaAlumner();
+                foreach (Alumn alumn in hämtadeAlumner)
                 {
+                    if (alumn != null)
+                    {
 
-                    alumnCheckedListBox.Items.Add(alumn);
+                        alumnCheckedListBox.Items.Add(alumn);
+                    }
+                }
+            }
+            else
+            {
+                alumnCheckedListBox.Items.Clear();
+                foreach (Alumn alumn in AlumnerMedProgramFilter())
+                {
+                    if (alumn != null)
+                    {
+
+                        alumnCheckedListBox.Items.Add(alumn);
+                    }
                 }
             }
 
