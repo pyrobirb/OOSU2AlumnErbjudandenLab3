@@ -109,7 +109,7 @@
             this.tabControlMainAdmin.Controls.Add(this.tabPageViewActivityAtendence);
             this.tabControlMainAdmin.Controls.Add(this.tabPageMakeEmailList);
             this.tabControlMainAdmin.Controls.Add(this.tabPageGamlaUtskicksListor);
-            this.tabControlMainAdmin.Location = new System.Drawing.Point(12, 12);
+            this.tabControlMainAdmin.Location = new System.Drawing.Point(11, 12);
             this.tabControlMainAdmin.Multiline = true;
             this.tabControlMainAdmin.Name = "tabControlMainAdmin";
             this.tabControlMainAdmin.SelectedIndex = 0;
@@ -495,8 +495,8 @@
             this.tabPageMakeEmailList.Controls.Add(this.TaBortAlumnBtn);
             this.tabPageMakeEmailList.Controls.Add(this.GamlaListorComboBox);
             this.tabPageMakeEmailList.Controls.Add(this.label22);
-            this.tabPageMakeEmailList.Controls.Add(this.NamnUtskicksListaTextBox);
             this.tabPageMakeEmailList.Controls.Add(this.label20);
+            this.tabPageMakeEmailList.Controls.Add(this.NamnUtskicksListaTextBox);
             this.tabPageMakeEmailList.Controls.Add(this.flyttaAlumner);
             this.tabPageMakeEmailList.Controls.Add(this.label19);
             this.tabPageMakeEmailList.Controls.Add(this.valdaAlumnerListBox);
@@ -531,7 +531,7 @@
             this.GamlaListorComboBox.FormattingEnabled = true;
             this.GamlaListorComboBox.Items.AddRange(new object[] {
             ""});
-            this.GamlaListorComboBox.Location = new System.Drawing.Point(22, 23);
+            this.GamlaListorComboBox.Location = new System.Drawing.Point(254, 21);
             this.GamlaListorComboBox.Name = "GamlaListorComboBox";
             this.GamlaListorComboBox.Size = new System.Drawing.Size(145, 21);
             this.GamlaListorComboBox.TabIndex = 19;
@@ -540,7 +540,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(251, 5);
+            this.label22.Location = new System.Drawing.Point(19, 6);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(107, 13);
             this.label22.TabIndex = 18;
@@ -548,7 +548,7 @@
             // 
             // NamnUtskicksListaTextBox
             // 
-            this.NamnUtskicksListaTextBox.Location = new System.Drawing.Point(254, 21);
+            this.NamnUtskicksListaTextBox.Location = new System.Drawing.Point(22, 22);
             this.NamnUtskicksListaTextBox.Name = "NamnUtskicksListaTextBox";
             this.NamnUtskicksListaTextBox.Size = new System.Drawing.Size(142, 20);
             this.NamnUtskicksListaTextBox.TabIndex = 17;
@@ -568,7 +568,7 @@
             this.flyttaAlumner.Name = "flyttaAlumner";
             this.flyttaAlumner.Size = new System.Drawing.Size(75, 23);
             this.flyttaAlumner.TabIndex = 13;
-            this.flyttaAlumner.Text = "Välj";
+            this.flyttaAlumner.Text = "Välj ";
             this.flyttaAlumner.UseVisualStyleBackColor = true;
             this.flyttaAlumner.Click += new System.EventHandler(this.flyttaAlumner_Click);
             // 
@@ -632,7 +632,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(19, 8);
+            this.label17.Location = new System.Drawing.Point(251, 6);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(111, 13);
             this.label17.TabIndex = 3;

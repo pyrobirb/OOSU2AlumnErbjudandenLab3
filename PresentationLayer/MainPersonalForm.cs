@@ -80,10 +80,18 @@ namespace PresentationLayer
             comboBoxFilterAlumns.DisplayMember = "Titel";
             comboBoxFilterAlumns.ValueMember = "Namn";
 
+            //Fyll på utgå från gamla utskickslistor
+
+            GamlaListorComboBox.DataSource = bm.HämtaAllaInformationsutskick();
+            GamlaListorComboBox.DisplayMember = "UtskicksNamn";
+            GamlaListorComboBox.ValueMember = "UtskicksID";
+
+
             //Fyll på utskickslistor på gamla utskickslistor
 
             VäljGammalUtskicksListacomboBox.DataSource = bm.HämtaAllaInformationsutskick();
             VäljGammalUtskicksListacomboBox.DisplayMember = "UtskicksNamn";
+            VäljGammalUtskicksListacomboBox.ValueMember = "UtskicksID";
 
 
         }
@@ -214,6 +222,11 @@ namespace PresentationLayer
             valdaAlumnerListBox.ValueMember = "AnvändarID";
             valdaAlumnerListBox.DisplayMember = "Förnamn";
 
+            foreach (int i in alumnCheckedListBox.CheckedIndices)
+            {
+                alumnCheckedListBox.SetItemCheckState(i, CheckState.Unchecked);
+            }
+
         }
 
         private void btnCreateAlumnCSV_Click(object sender, EventArgs e)
@@ -255,7 +268,11 @@ namespace PresentationLayer
             bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)AktivitetComboBox.SelectedItem).Titel, alumner);
             MessageBox.Show("Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
                 "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug");
-
+            //Tömmer sätt namn på Utskicksboxen och fyller i gamla listorboxen. 
+            NamnUtskicksListaTextBox.Clear();
+            GamlaListorComboBox.DataSource = bm.HämtaAllaInformationsutskick();
+            GamlaListorComboBox.DisplayMember = "UtskicksNamn";
+            GamlaListorComboBox.ValueMember = "UtskicksID";
         }
 
         private void KontaktPersonTxtBox_SelectedIndexChanged(object sender, EventArgs e)
