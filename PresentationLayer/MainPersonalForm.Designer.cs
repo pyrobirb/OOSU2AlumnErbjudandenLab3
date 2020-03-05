@@ -64,10 +64,13 @@
             this.ÄndraTitelTxtBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPageViewActivityAtendence = new System.Windows.Forms.TabPage();
+            this.AnmäldaAlumnerDataGridView = new System.Windows.Forms.DataGridView();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.VäljAktivitetSeAnmälancomboBox = new System.Windows.Forms.ComboBox();
             this.tabPageMakeEmailList = new System.Windows.Forms.TabPage();
+            this.TaBortAlumnBtn = new System.Windows.Forms.Button();
+            this.GamlaListorComboBox = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.NamnUtskicksListaTextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -82,20 +85,19 @@
             this.btnCreateAlumnCSV = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPageGamlaUtskicksListor = new System.Windows.Forms.TabPage();
+            this.SkapaCSVFrånGammalListaBtn = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.VäljGammalUtskicksListacomboBox = new System.Windows.Forms.ComboBox();
             this.btnLogOut = new System.Windows.Forms.Button();
-            this.AnmäldaAlumnerDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.SkapaCSVFrånGammalListaBtn = new System.Windows.Forms.Button();
             this.tabControlMainAdmin.SuspendLayout();
             this.tabPageCreateActivity.SuspendLayout();
             this.tabPageEditActivity.SuspendLayout();
             this.tabPageViewActivityAtendence.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AnmäldaAlumnerDataGridView)).BeginInit();
             this.tabPageMakeEmailList.SuspendLayout();
             this.tabPageGamlaUtskicksListor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AnmäldaAlumnerDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -453,6 +455,14 @@
             this.tabPageViewActivityAtendence.Text = "Se anmälningar";
             this.tabPageViewActivityAtendence.UseVisualStyleBackColor = true;
             // 
+            // AnmäldaAlumnerDataGridView
+            // 
+            this.AnmäldaAlumnerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AnmäldaAlumnerDataGridView.Location = new System.Drawing.Point(12, 83);
+            this.AnmäldaAlumnerDataGridView.Name = "AnmäldaAlumnerDataGridView";
+            this.AnmäldaAlumnerDataGridView.Size = new System.Drawing.Size(484, 204);
+            this.AnmäldaAlumnerDataGridView.TabIndex = 4;
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -482,6 +492,8 @@
             // 
             // tabPageMakeEmailList
             // 
+            this.tabPageMakeEmailList.Controls.Add(this.TaBortAlumnBtn);
+            this.tabPageMakeEmailList.Controls.Add(this.GamlaListorComboBox);
             this.tabPageMakeEmailList.Controls.Add(this.label22);
             this.tabPageMakeEmailList.Controls.Add(this.NamnUtskicksListaTextBox);
             this.tabPageMakeEmailList.Controls.Add(this.label20);
@@ -503,10 +515,32 @@
             this.tabPageMakeEmailList.UseVisualStyleBackColor = true;
             this.tabPageMakeEmailList.Click += new System.EventHandler(this.tabPageMakeEmailList_Click);
             // 
+            // TaBortAlumnBtn
+            // 
+            this.TaBortAlumnBtn.Location = new System.Drawing.Point(173, 196);
+            this.TaBortAlumnBtn.Name = "TaBortAlumnBtn";
+            this.TaBortAlumnBtn.Size = new System.Drawing.Size(75, 23);
+            this.TaBortAlumnBtn.TabIndex = 20;
+            this.TaBortAlumnBtn.Text = "Ta bort";
+            this.TaBortAlumnBtn.UseVisualStyleBackColor = true;
+            this.TaBortAlumnBtn.Click += new System.EventHandler(this.TaBortAlumnBtn_Click);
+            // 
+            // GamlaListorComboBox
+            // 
+            this.GamlaListorComboBox.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.GamlaListorComboBox.FormattingEnabled = true;
+            this.GamlaListorComboBox.Items.AddRange(new object[] {
+            ""});
+            this.GamlaListorComboBox.Location = new System.Drawing.Point(22, 23);
+            this.GamlaListorComboBox.Name = "GamlaListorComboBox";
+            this.GamlaListorComboBox.Size = new System.Drawing.Size(145, 21);
+            this.GamlaListorComboBox.TabIndex = 19;
+            this.GamlaListorComboBox.Text = "Välj gammal lista";
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(213, 8);
+            this.label22.Location = new System.Drawing.Point(251, 5);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(107, 13);
             this.label22.TabIndex = 18;
@@ -514,7 +548,7 @@
             // 
             // NamnUtskicksListaTextBox
             // 
-            this.NamnUtskicksListaTextBox.Location = new System.Drawing.Point(216, 24);
+            this.NamnUtskicksListaTextBox.Location = new System.Drawing.Point(254, 21);
             this.NamnUtskicksListaTextBox.Name = "NamnUtskicksListaTextBox";
             this.NamnUtskicksListaTextBox.Size = new System.Drawing.Size(142, 20);
             this.NamnUtskicksListaTextBox.TabIndex = 17;
@@ -524,15 +558,15 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(19, 49);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(46, 13);
+            this.label20.Size = new System.Drawing.Size(94, 13);
             this.label20.TabIndex = 14;
-            this.label20.Text = "Program";
+            this.label20.Text = "Filtrera på program";
             // 
             // flyttaAlumner
             // 
-            this.flyttaAlumner.Location = new System.Drawing.Point(173, 177);
+            this.flyttaAlumner.Location = new System.Drawing.Point(173, 167);
             this.flyttaAlumner.Name = "flyttaAlumner";
-            this.flyttaAlumner.Size = new System.Drawing.Size(37, 23);
+            this.flyttaAlumner.Size = new System.Drawing.Size(75, 23);
             this.flyttaAlumner.TabIndex = 13;
             this.flyttaAlumner.Text = "Välj";
             this.flyttaAlumner.UseVisualStyleBackColor = true;
@@ -541,7 +575,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(215, 95);
+            this.label19.Location = new System.Drawing.Point(253, 92);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(74, 13);
             this.label19.TabIndex = 12;
@@ -550,7 +584,7 @@
             // valdaAlumnerListBox
             // 
             this.valdaAlumnerListBox.FormattingEnabled = true;
-            this.valdaAlumnerListBox.Location = new System.Drawing.Point(216, 109);
+            this.valdaAlumnerListBox.Location = new System.Drawing.Point(254, 106);
             this.valdaAlumnerListBox.Name = "valdaAlumnerListBox";
             this.valdaAlumnerListBox.Size = new System.Drawing.Size(142, 173);
             this.valdaAlumnerListBox.TabIndex = 11;
@@ -558,7 +592,7 @@
             // AktivitetComboBox
             // 
             this.AktivitetComboBox.FormattingEnabled = true;
-            this.AktivitetComboBox.Location = new System.Drawing.Point(216, 66);
+            this.AktivitetComboBox.Location = new System.Drawing.Point(254, 63);
             this.AktivitetComboBox.Name = "AktivitetComboBox";
             this.AktivitetComboBox.Size = new System.Drawing.Size(142, 21);
             this.AktivitetComboBox.TabIndex = 10;
@@ -567,7 +601,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(213, 49);
+            this.label18.Location = new System.Drawing.Point(251, 46);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(64, 13);
             this.label18.TabIndex = 8;
@@ -592,23 +626,23 @@
             this.comboBoxFilterAlumns.Name = "comboBoxFilterAlumns";
             this.comboBoxFilterAlumns.Size = new System.Drawing.Size(145, 21);
             this.comboBoxFilterAlumns.TabIndex = 4;
-            this.comboBoxFilterAlumns.Text = "Välj filter";
+            this.comboBoxFilterAlumns.Text = "Välj program";
             this.comboBoxFilterAlumns.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilterAlumns_SelectedIndexChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(19, 24);
+            this.label17.Location = new System.Drawing.Point(19, 8);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 13);
+            this.label17.Size = new System.Drawing.Size(111, 13);
             this.label17.TabIndex = 3;
-            this.label17.Text = "Filtrera lista";
+            this.label17.Text = "Utgå från gammal lista";
             // 
             // btnCreateAlumnCSV
             // 
-            this.btnCreateAlumnCSV.Location = new System.Drawing.Point(373, 167);
+            this.btnCreateAlumnCSV.Location = new System.Drawing.Point(406, 151);
             this.btnCreateAlumnCSV.Name = "btnCreateAlumnCSV";
-            this.btnCreateAlumnCSV.Size = new System.Drawing.Size(121, 43);
+            this.btnCreateAlumnCSV.Size = new System.Drawing.Size(92, 79);
             this.btnCreateAlumnCSV.TabIndex = 2;
             this.btnCreateAlumnCSV.Text = "Skapa utskickslista och generera .CSV fil ";
             this.btnCreateAlumnCSV.UseVisualStyleBackColor = true;
@@ -636,6 +670,23 @@
             this.tabPageGamlaUtskicksListor.TabIndex = 4;
             this.tabPageGamlaUtskicksListor.Text = "Gamla utskickslistor";
             this.tabPageGamlaUtskicksListor.UseVisualStyleBackColor = true;
+            // 
+            // SkapaCSVFrånGammalListaBtn
+            // 
+            this.SkapaCSVFrånGammalListaBtn.Location = new System.Drawing.Point(365, 264);
+            this.SkapaCSVFrånGammalListaBtn.Name = "SkapaCSVFrånGammalListaBtn";
+            this.SkapaCSVFrånGammalListaBtn.Size = new System.Drawing.Size(120, 23);
+            this.SkapaCSVFrånGammalListaBtn.TabIndex = 9;
+            this.SkapaCSVFrånGammalListaBtn.Text = "Generera .CSV-fil";
+            this.SkapaCSVFrånGammalListaBtn.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 94);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(473, 164);
+            this.dataGridView1.TabIndex = 8;
             // 
             // label25
             // 
@@ -673,31 +724,6 @@
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
-            // AnmäldaAlumnerDataGridView
-            // 
-            this.AnmäldaAlumnerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AnmäldaAlumnerDataGridView.Location = new System.Drawing.Point(12, 83);
-            this.AnmäldaAlumnerDataGridView.Name = "AnmäldaAlumnerDataGridView";
-            this.AnmäldaAlumnerDataGridView.Size = new System.Drawing.Size(484, 204);
-            this.AnmäldaAlumnerDataGridView.TabIndex = 4;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 94);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(473, 164);
-            this.dataGridView1.TabIndex = 8;
-            // 
-            // SkapaCSVFrånGammalListaBtn
-            // 
-            this.SkapaCSVFrånGammalListaBtn.Location = new System.Drawing.Point(365, 264);
-            this.SkapaCSVFrånGammalListaBtn.Name = "SkapaCSVFrånGammalListaBtn";
-            this.SkapaCSVFrånGammalListaBtn.Size = new System.Drawing.Size(120, 23);
-            this.SkapaCSVFrånGammalListaBtn.TabIndex = 9;
-            this.SkapaCSVFrånGammalListaBtn.Text = "Generera .CSV-fil";
-            this.SkapaCSVFrånGammalListaBtn.UseVisualStyleBackColor = true;
-            // 
             // MainPersonalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -715,11 +741,11 @@
             this.tabPageEditActivity.PerformLayout();
             this.tabPageViewActivityAtendence.ResumeLayout(false);
             this.tabPageViewActivityAtendence.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AnmäldaAlumnerDataGridView)).EndInit();
             this.tabPageMakeEmailList.ResumeLayout(false);
             this.tabPageMakeEmailList.PerformLayout();
             this.tabPageGamlaUtskicksListor.ResumeLayout(false);
             this.tabPageGamlaUtskicksListor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AnmäldaAlumnerDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -788,5 +814,7 @@
         private System.Windows.Forms.DataGridView AnmäldaAlumnerDataGridView;
         private System.Windows.Forms.Button SkapaCSVFrånGammalListaBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox GamlaListorComboBox;
+        private System.Windows.Forms.Button TaBortAlumnBtn;
     }
 }

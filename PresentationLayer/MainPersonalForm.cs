@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -291,6 +292,21 @@ namespace PresentationLayer
             List<Alumn> AktuellaAnmälningar = bm.HämtaAnmälningarGenomAktivitetsID(((Aktivitet)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
 
             AnmäldaAlumnerDataGridView.DataSource = AktuellaAnmälningar;
+        }
+
+        private void TaBortAlumnBtn_Click(object sender, EventArgs e)
+        {
+            valdaAlumnerListBox.BeginUpdate();
+            ArrayList vSelectedItems = new ArrayList(valdaAlumnerListBox.SelectedItems);
+            ArrayList itemsToStore = new ArrayList(valdaAlumnerListBox.Items);
+            foreach (Alumn item in vSelectedItems)
+            {
+                itemsToStore.Remove(item);
+            }
+            valdaAlumnerListBox.DataSource = itemsToStore;
+            valdaAlumnerListBox.DisplayMember = "Förnamn";
+            valdaAlumnerListBox.ValueMember = "AnvändarID";
+            valdaAlumnerListBox.EndUpdate();
         }
     }
 }

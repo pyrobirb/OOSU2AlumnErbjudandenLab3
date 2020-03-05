@@ -10,8 +10,8 @@ namespace BusinessEntites.Models.Interfaces
     public interface IInformationsutskick
     {
         int UtskicksID { get; set; }
+        string UtskicksNamn { get; set; }
         DateTime UtskickDatum { get; set; }
-
         ICollection<Alumn> Alumner { get; set; }
         ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
         ICollection<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }

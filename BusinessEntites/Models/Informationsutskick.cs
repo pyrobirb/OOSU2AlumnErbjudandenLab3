@@ -13,6 +13,7 @@ namespace BusinessEntites.Models
     {
         [Key]
         public int UtskicksID { get; set; }
+        public string UtskicksNamn { get; set; }
         public DateTime UtskickDatum { get; set; }
         public virtual ICollection<Alumn> Alumner { get; set; }
         public virtual ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
