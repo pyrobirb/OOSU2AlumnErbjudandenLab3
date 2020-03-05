@@ -86,7 +86,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.tabPageGamlaUtskicksListor = new System.Windows.Forms.TabPage();
             this.SkapaCSVFrånGammalListaBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.utskickslistaAlumner = new System.Windows.Forms.DataGridView();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.VäljGammalUtskicksListacomboBox = new System.Windows.Forms.ComboBox();
@@ -98,7 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AnmäldaAlumnerDataGridView)).BeginInit();
             this.tabPageMakeEmailList.SuspendLayout();
             this.tabPageGamlaUtskicksListor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.utskickslistaAlumner)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMainAdmin
@@ -660,7 +660,7 @@
             // tabPageGamlaUtskicksListor
             // 
             this.tabPageGamlaUtskicksListor.Controls.Add(this.SkapaCSVFrånGammalListaBtn);
-            this.tabPageGamlaUtskicksListor.Controls.Add(this.dataGridView1);
+            this.tabPageGamlaUtskicksListor.Controls.Add(this.utskickslistaAlumner);
             this.tabPageGamlaUtskicksListor.Controls.Add(this.label25);
             this.tabPageGamlaUtskicksListor.Controls.Add(this.label26);
             this.tabPageGamlaUtskicksListor.Controls.Add(this.VäljGammalUtskicksListacomboBox);
@@ -680,13 +680,13 @@
             this.SkapaCSVFrånGammalListaBtn.Text = "Generera .CSV-fil";
             this.SkapaCSVFrånGammalListaBtn.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // utskickslistaAlumner
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 94);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(473, 164);
-            this.dataGridView1.TabIndex = 8;
+            this.utskickslistaAlumner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.utskickslistaAlumner.Location = new System.Drawing.Point(12, 94);
+            this.utskickslistaAlumner.Name = "utskickslistaAlumner";
+            this.utskickslistaAlumner.Size = new System.Drawing.Size(473, 164);
+            this.utskickslistaAlumner.TabIndex = 8;
             // 
             // label25
             // 
@@ -713,6 +713,7 @@
             this.VäljGammalUtskicksListacomboBox.Name = "VäljGammalUtskicksListacomboBox";
             this.VäljGammalUtskicksListacomboBox.Size = new System.Drawing.Size(197, 21);
             this.VäljGammalUtskicksListacomboBox.TabIndex = 4;
+            this.VäljGammalUtskicksListacomboBox.SelectedIndexChanged += new System.EventHandler(this.VäljGammalUtskicksListacomboBox_SelectedIndexChanged);
             // 
             // btnLogOut
             // 
@@ -746,7 +747,7 @@
             this.tabPageMakeEmailList.PerformLayout();
             this.tabPageGamlaUtskicksListor.ResumeLayout(false);
             this.tabPageGamlaUtskicksListor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.utskickslistaAlumner)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -813,7 +814,7 @@
         private System.Windows.Forms.ComboBox VäljGammalUtskicksListacomboBox;
         private System.Windows.Forms.DataGridView AnmäldaAlumnerDataGridView;
         private System.Windows.Forms.Button SkapaCSVFrånGammalListaBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView utskickslistaAlumner;
         private System.Windows.Forms.ComboBox GamlaListorComboBox;
         private System.Windows.Forms.Button TaBortAlumnBtn;
     }

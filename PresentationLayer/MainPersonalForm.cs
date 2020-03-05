@@ -80,6 +80,11 @@ namespace PresentationLayer
             comboBoxFilterAlumns.DisplayMember = "Titel";
             comboBoxFilterAlumns.ValueMember = "Namn";
 
+            //Fyll på utskickslistor på gamla utskickslistor
+
+            VäljGammalUtskicksListacomboBox.DataSource = bm.HämtaAllaInformationsutskick();
+            VäljGammalUtskicksListacomboBox.DisplayMember = "UtskicksNamn";
+
 
         }
 
@@ -215,6 +220,7 @@ namespace PresentationLayer
         {
             Informationsutskick informationsutskick = new Informationsutskick()
             {
+                UtskicksNamn = NamnUtskicksListaTextBox.Text,
                 UtskickDatum = DateTime.Now
             };
             bm.LäggTillInformationsutskick(informationsutskick);
@@ -289,9 +295,11 @@ namespace PresentationLayer
 
         private void VäljAktivitetSeAnmälancomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Alumn> AktuellaAnmälningar = bm.HämtaAnmälningarGenomAktivitetsID(((Aktivitet)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
+            
 
-            AnmäldaAlumnerDataGridView.DataSource = AktuellaAnmälningar;
+            AnmäldaAlumnerDataGridView.DataSource = bm.HämtaAnmälningarGenomAktivitetsID(((Aktivitet)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
+
+
         }
 
         private void TaBortAlumnBtn_Click(object sender, EventArgs e)
@@ -307,6 +315,11 @@ namespace PresentationLayer
             valdaAlumnerListBox.DisplayMember = "Förnamn";
             valdaAlumnerListBox.ValueMember = "AnvändarID";
             valdaAlumnerListBox.EndUpdate();
+        }
+
+        private void VäljGammalUtskicksListacomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

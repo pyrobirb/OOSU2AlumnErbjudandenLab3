@@ -75,6 +75,12 @@ namespace BusinessLayer
             unitOfWork.AktivitetRepository.UpdateAktivitet(aktivitet, nyaktivitet);
         }
 
+
+        public IEnumerable<Informationsutskick> HämtaAllaInformationsutskick()
+        {
+            return unitOfWork.InformationsutskickRepository.GetAll();
+        }
+
         public List<Aktivitet> HämtaAktiviteterGenomInformationsutskickID(IQueryable<int> utskicksID)
         {
             List<Aktivitet> aktiviteter = new List<Aktivitet>();
