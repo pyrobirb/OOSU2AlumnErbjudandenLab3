@@ -278,7 +278,9 @@ namespace PresentationLayer
 
         private void VäljAktivitetSeAnmälancomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            List<Alumn> AktuellaAnmälningar = bm.HämtaAnmälningarGenomAktivitetsID(((Aktivitet)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
 
+            AnmäldaAlumnerDataGridView.DataSource = AktuellaAnmälningar;
         }
     }
 }
