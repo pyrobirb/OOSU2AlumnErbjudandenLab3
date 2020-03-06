@@ -13,6 +13,11 @@ namespace DataLayer.Seed
     {
         public static void Populate(DatabaseContext dbContext)
         {
+            if (dbContext.Alumner.Count() == 0)
+            {
+
+
+
             //Alumn
             Alumn alumn1 = new Alumn()
             {
@@ -25,7 +30,7 @@ namespace DataLayer.Seed
 
             Alumn alumn2 = new Alumn()
             {
-                Användarnamn = "Palle",
+                Användarnamn = "Palle@mail.com",
                 Lösenord = "123",
                 Förnamn = "Palle",
                 Efternamn = "Kuling",
@@ -34,7 +39,7 @@ namespace DataLayer.Seed
 
             Alumn alumn3 = new Alumn()
             {
-                Användarnamn = "Banan",
+                Användarnamn = "Banan@mail.com",
                 Lösenord = "123",
                 Förnamn = "Jan",
                 Efternamn = "Banan",
@@ -43,7 +48,7 @@ namespace DataLayer.Seed
 
             Alumn alumn4 = new Alumn()
             {
-                Användarnamn = "Tony",
+                Användarnamn = "Tony@mail.com",
                 Lösenord = "123",
                 Förnamn = "Tony",
                 Efternamn = "Stark",
@@ -151,6 +156,7 @@ namespace DataLayer.Seed
             dbContext.Aktiviteter.Add(aktivitet2);
 
             dbContext.SaveChanges();
+            }
 
         }
 

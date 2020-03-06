@@ -22,6 +22,7 @@ namespace PresentationLayer
         WarningLabel WarningLabel = new WarningLabel();
         btnDeleteAccountOP btnDeleteAccountOP = new btnDeleteAccountOP();
 
+
         public MainAlumnForm()
         {
             InitializeComponent();
@@ -129,6 +130,9 @@ namespace PresentationLayer
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
+            if (RegexUtilities.IsValidEmail(ändraEpostTxtBox.Text) == true)
+            {
+
             var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALS.AktuellAlumn.AnvändarID);
             var gammaltFörnamn = InloggadAlumn.Förnamn;
             var gammaltEfternamn = InloggadAlumn.Efternamn;
@@ -139,6 +143,11 @@ namespace PresentationLayer
                 $"\n{gammaltFörnamn} -> {GLOBALS.AktuellAlumn.Förnamn} " +
                 $"\n{gammaltEfternamn} -> {GLOBALS.AktuellAlumn.Efternamn} " +
                 $"\n{gammalepostadress} -> {GLOBALS.AktuellAlumn.Användarnamn}");
+            }
+            else
+            {
+                MessageBox.Show("Var vänlig fyll i en giltig mailadress");
+            }
         }
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)

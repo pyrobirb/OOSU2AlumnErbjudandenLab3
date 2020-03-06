@@ -16,6 +16,7 @@ namespace PresentationLayer
     public partial class CreateUserForm : Form
     {
         BusinessManager bm = new BusinessManager();
+        
         public CreateUserForm()
         {
             InitializeComponent();
@@ -32,20 +33,28 @@ namespace PresentationLayer
                 MessageBox.Show("Var vänlig fyll i alla textrutor");
             else
             {
-                if(radioButtonAlumn.Checked == true)
+                if (RegexUtilities.IsValidEmail(AnvändarnamnTxtBox.Text) == true)
                 {
-                    Alumn alumn = new Alumn()
+
+                    if (radioButtonAlumn.Checked == true)
                     {
-                        Användarnamn = AnvändarnamnTxtBox.Text,
-                        Lösenord = LösenordTxtBox.Text,
-                        Förnamn = FörnamnTxtBox.Text,
-                        Efternamn = EfternamnTxtBox.Text
-                    };
-                    bm.LäggTillAlumn(alumn);
-                    MessageBox.Show("Alumnkonto har skapats");
+                        Alumn alumn = new Alumn()
+                        {
+                            Användarnamn = AnvändarnamnTxtBox.Text,
+                            Lösenord = LösenordTxtBox.Text,
+                            Förnamn = FörnamnTxtBox.Text,
+                            Efternamn = EfternamnTxtBox.Text
+                        };
+                        bm.LäggTillAlumn(alumn);
+                        MessageBox.Show("Alumnkonto har skapats");
 
-                    DialogResult = DialogResult.OK;
+                        DialogResult = DialogResult.OK;
 
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Var vänlig fyll i en giltig mailadress");
                 }
                 if (radioButtonPersonal.Checked == true)
                 {
