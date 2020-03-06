@@ -86,12 +86,12 @@
             this.label16 = new System.Windows.Forms.Label();
             this.tabPageGamlaUtskicksListor = new System.Windows.Forms.TabPage();
             this.SkapaCSVFrånGammalListaBtn = new System.Windows.Forms.Button();
-            this.utskickslistaAlumner = new System.Windows.Forms.DataGridView();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.VäljGammalUtskicksListacomboBox = new System.Windows.Forms.ComboBox();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.LaddaGamlaAlumnerFrånListabtn = new System.Windows.Forms.Button();
+            this.GammalListaMedALumnerlistBox = new System.Windows.Forms.ListBox();
             this.tabControlMainAdmin.SuspendLayout();
             this.tabPageCreateActivity.SuspendLayout();
             this.tabPageEditActivity.SuspendLayout();
@@ -99,7 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AnmäldaAlumnerDataGridView)).BeginInit();
             this.tabPageMakeEmailList.SuspendLayout();
             this.tabPageGamlaUtskicksListor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.utskickslistaAlumner)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMainAdmin
@@ -590,6 +589,7 @@
             this.valdaAlumnerListBox.Name = "valdaAlumnerListBox";
             this.valdaAlumnerListBox.Size = new System.Drawing.Size(142, 173);
             this.valdaAlumnerListBox.TabIndex = 11;
+            this.valdaAlumnerListBox.SelectedIndexChanged += new System.EventHandler(this.valdaAlumnerListBox_SelectedIndexChanged);
             // 
             // AktivitetComboBox
             // 
@@ -661,8 +661,8 @@
             // 
             // tabPageGamlaUtskicksListor
             // 
+            this.tabPageGamlaUtskicksListor.Controls.Add(this.GammalListaMedALumnerlistBox);
             this.tabPageGamlaUtskicksListor.Controls.Add(this.SkapaCSVFrånGammalListaBtn);
-            this.tabPageGamlaUtskicksListor.Controls.Add(this.utskickslistaAlumner);
             this.tabPageGamlaUtskicksListor.Controls.Add(this.label25);
             this.tabPageGamlaUtskicksListor.Controls.Add(this.label26);
             this.tabPageGamlaUtskicksListor.Controls.Add(this.VäljGammalUtskicksListacomboBox);
@@ -675,20 +675,12 @@
             // 
             // SkapaCSVFrånGammalListaBtn
             // 
-            this.SkapaCSVFrånGammalListaBtn.Location = new System.Drawing.Point(365, 264);
+            this.SkapaCSVFrånGammalListaBtn.Location = new System.Drawing.Point(232, 148);
             this.SkapaCSVFrånGammalListaBtn.Name = "SkapaCSVFrånGammalListaBtn";
             this.SkapaCSVFrånGammalListaBtn.Size = new System.Drawing.Size(120, 23);
             this.SkapaCSVFrånGammalListaBtn.TabIndex = 9;
             this.SkapaCSVFrånGammalListaBtn.Text = "Generera .CSV-fil";
             this.SkapaCSVFrånGammalListaBtn.UseVisualStyleBackColor = true;
-            // 
-            // utskickslistaAlumner
-            // 
-            this.utskickslistaAlumner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.utskickslistaAlumner.Location = new System.Drawing.Point(12, 94);
-            this.utskickslistaAlumner.Name = "utskickslistaAlumner";
-            this.utskickslistaAlumner.Size = new System.Drawing.Size(473, 164);
-            this.utskickslistaAlumner.TabIndex = 8;
             // 
             // label25
             // 
@@ -735,6 +727,15 @@
             this.LaddaGamlaAlumnerFrånListabtn.TabIndex = 21;
             this.LaddaGamlaAlumnerFrånListabtn.Text = "Hämta alumner";
             this.LaddaGamlaAlumnerFrånListabtn.UseVisualStyleBackColor = true;
+            this.LaddaGamlaAlumnerFrånListabtn.Click += new System.EventHandler(this.LaddaGamlaAlumnerFrånListabtn_Click);
+            // 
+            // GammalListaMedALumnerlistBox
+            // 
+            this.GammalListaMedALumnerlistBox.FormattingEnabled = true;
+            this.GammalListaMedALumnerlistBox.Location = new System.Drawing.Point(14, 81);
+            this.GammalListaMedALumnerlistBox.Name = "GammalListaMedALumnerlistBox";
+            this.GammalListaMedALumnerlistBox.Size = new System.Drawing.Size(195, 186);
+            this.GammalListaMedALumnerlistBox.TabIndex = 10;
             // 
             // MainPersonalForm
             // 
@@ -758,7 +759,6 @@
             this.tabPageMakeEmailList.PerformLayout();
             this.tabPageGamlaUtskicksListor.ResumeLayout(false);
             this.tabPageGamlaUtskicksListor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.utskickslistaAlumner)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -825,9 +825,9 @@
         private System.Windows.Forms.ComboBox VäljGammalUtskicksListacomboBox;
         private System.Windows.Forms.DataGridView AnmäldaAlumnerDataGridView;
         private System.Windows.Forms.Button SkapaCSVFrånGammalListaBtn;
-        private System.Windows.Forms.DataGridView utskickslistaAlumner;
         private System.Windows.Forms.ComboBox GamlaListorComboBox;
         private System.Windows.Forms.Button TaBortAlumnBtn;
         private System.Windows.Forms.Button LaddaGamlaAlumnerFrånListabtn;
+        private System.Windows.Forms.ListBox GammalListaMedALumnerlistBox;
     }
 }

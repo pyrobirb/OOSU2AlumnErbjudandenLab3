@@ -268,11 +268,19 @@ namespace PresentationLayer
             bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)AktivitetComboBox.SelectedItem).Titel, alumner);
             MessageBox.Show("Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
                 "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug");
-            //Tömmer sätt namn på Utskicksboxen och fyller i gamla listorboxen. 
+            //Tömmer sätt namn på Utskicksboxen och ValdaAlumner samt fyller i gamla listorboxen. 
             NamnUtskicksListaTextBox.Clear();
+
             GamlaListorComboBox.DataSource = bm.HämtaAllaInformationsutskick();
             GamlaListorComboBox.DisplayMember = "UtskicksNamn";
             GamlaListorComboBox.ValueMember = "UtskicksID";
+
+            valdaAlumnerListBox.BeginUpdate();
+            valdaAlumnerListBox.DataSource = new ArrayList();
+            valdaAlumnerListBox.DisplayMember = "Förnamn";
+            valdaAlumnerListBox.ValueMember = "AnvändarID";
+            valdaAlumnerListBox.EndUpdate();
+
         }
 
         private void KontaktPersonTxtBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -351,6 +359,28 @@ namespace PresentationLayer
         }
 
         private void VäljGammalUtskicksListacomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (VäljGammalUtskicksListacomboBox.SelectedItem != null)
+            {
+                List<Alumn> Alumner = bm.HämtaAlumnerFrånLista(((Informationsutskick)VäljGammalUtskicksListacomboBox.SelectedItem).UtskicksID);
+                GammalListaMedALumnerlistBox.DataSource = Alumner;
+                GammalListaMedALumnerlistBox.DisplayMember = "Förnamn";
+                GammalListaMedALumnerlistBox.ValueMember = "AnvändarID";
+            }
+        }
+
+        private void LaddaGamlaAlumnerFrånListabtn_Click(object sender, EventArgs e)
+        {
+            if (GamlaListorComboBox.SelectedItem != null)
+            {
+                List<Alumn> Alumner2 = bm.HämtaAlumnerFrånLista(((Informationsutskick)GamlaListorComboBox.SelectedItem).UtskicksID);
+                valdaAlumnerListBox.DataSource = Alumner2;
+                valdaAlumnerListBox.DisplayMember = "Förnamn";
+                valdaAlumnerListBox.ValueMember = "AnvändarID";              
+            }
+        }
+
+        private void valdaAlumnerListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

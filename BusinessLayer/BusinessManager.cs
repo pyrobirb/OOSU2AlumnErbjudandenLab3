@@ -258,5 +258,17 @@ namespace BusinessLayer
             unitOfWork.AlumnRepository.Remove(alumnatttabort);
             unitOfWork.Commit();
         }
+
+        public List<Alumn> HämtaAlumnerFrånLista(int ListID)
+        {
+            IQueryable<InformationsutskickAlumn> hämtadeAlumnID = unitOfWork.InformationsutskickRepository.HämtaAlumnIdGenomUtskicksId(ListID);
+            List<Alumn> AlumnerAttSkicka = new List<Alumn>();
+            foreach (InformationsutskickAlumn A in hämtadeAlumnID)
+            {
+                AlumnerAttSkicka.Add(HämtaAlumnMedID(A.AlumnID));               
+            }
+
+            return AlumnerAttSkicka;
+        }
     }
 }
