@@ -80,6 +80,22 @@ namespace PresentationLayer
             comboBoxFilterAlumns.DisplayMember = "Titel";
             comboBoxFilterAlumns.ValueMember = "Namn";
 
+            //Fyll på alumner i mailinglistan
+
+            AlumnMaillistCheckedListBox.Items.Clear();
+
+            foreach (Alumn alumn in bm.HämtaAllaAlumner())
+            {
+                AlumnMaillistCheckedListBox.Items.Add(alumn);
+
+            }
+            AlumnMaillistCheckedListBox.ValueMember = "AnvändarID";
+            AlumnMaillistCheckedListBox.DisplayMember = "Förnamn";
+
+            FilterAlumnMailComboBox.DataSource = bm.HämtaAllaProgram();
+            FilterAlumnMailComboBox.DisplayMember = "Titel";
+            FilterAlumnMailComboBox.ValueMember = "Namn";
+
             //Fyll på utgå från gamla utskickslistor
 
             GamlaListorComboBox.DataSource = bm.HämtaAllaInformationsutskick();
@@ -89,9 +105,9 @@ namespace PresentationLayer
 
             //Fyll på utskickslistor på gamla utskickslistor
 
-            VäljGammalUtskicksListacomboBox.DataSource = bm.HämtaAllaInformationsutskick();
-            VäljGammalUtskicksListacomboBox.DisplayMember = "UtskicksNamn";
-            VäljGammalUtskicksListacomboBox.ValueMember = "UtskicksID";
+            MailingListaALumnerlistBox.DataSource = bm.HämtaAllaInformationsutskick();
+            MailingListaALumnerlistBox.DisplayMember = "UtskicksNamn";
+            MailingListaALumnerlistBox.ValueMember = "UtskicksID";
 
 
         }
@@ -247,7 +263,7 @@ namespace PresentationLayer
         {
             Informationsutskick informationsutskick = new Informationsutskick()
             {
-                UtskicksNamn = NamnUtskicksListaTextBox.Text,
+                UtskicksNamn = NamnMailListaTextBox.Text,
                 UtskickDatum = DateTime.Now
             };
             bm.LäggTillInformationsutskick(informationsutskick);
@@ -279,11 +295,12 @@ namespace PresentationLayer
                 alumner.Add(alumn);
             }
 
-            bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)AktivitetComboBox.SelectedItem).Titel, alumner);
-            MessageBox.Show("Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
-                "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug");
+            //bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)AktivitetComboBox.SelectedItem).Titel, alumner);
+            MessageBox.Show("Aktiviteten har nu blivit publicerad hos alumnerna."//"Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
+                //"Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug"
+                );
             //Tömmer sätt namn på Utskicksboxen och ValdaAlumner samt fyller i gamla listorboxen. 
-            NamnUtskicksListaTextBox.Clear();
+            NamnMailListaTextBox.Clear();
 
             GamlaListorComboBox.DataSource = bm.HämtaAllaInformationsutskick();
             GamlaListorComboBox.DisplayMember = "UtskicksNamn";
@@ -374,13 +391,14 @@ namespace PresentationLayer
 
         private void VäljGammalUtskicksListacomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (VäljGammalUtskicksListacomboBox.SelectedItem != null)
+            if (GamlaListorComboBox.SelectedItem != null)
             {
-                List<Alumn> Alumner = bm.HämtaAlumnerFrånLista(((Informationsutskick)VäljGammalUtskicksListacomboBox.SelectedItem).UtskicksID);
-                GammalListaMedALumnerlistBox.DataSource = Alumner;
-                GammalListaMedALumnerlistBox.DisplayMember = "Förnamn";
-                GammalListaMedALumnerlistBox.ValueMember = "AnvändarID";
+                List<Alumn> Alumner = bm.HämtaAlumnerFrånLista(((Informationsutskick)GamlaListorComboBox.SelectedItem).UtskicksID);
+                MailingListaALumnerlistBox.DataSource = Alumner;
+                MailingListaALumnerlistBox.DisplayMember = "Förnamn";
+                MailingListaALumnerlistBox.ValueMember = "AnvändarID";
             }
+
         }
 
         private void LaddaGamlaAlumnerFrånListabtn_Click(object sender, EventArgs e)
@@ -397,6 +415,162 @@ namespace PresentationLayer
         private void valdaAlumnerListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void VäljALumnMailBtn_Click(object sender, EventArgs e)
+        {
+            foreach (Alumn alumn in AlumnMaillistCheckedListBox.CheckedItems)
+            {
+                if (!MailingListaALumnerlistBox.Items.Contains(alumn))
+                {
+                    List<Alumn> alumner = new List<Alumn>();
+                    foreach (Alumn alumn1 in MailingListaALumnerlistBox.Items)
+                    {
+                        alumner.Add(alumn1);
+                    }
+                    alumner.Add(alumn);
+                    MailingListaALumnerlistBox.DataSource = alumner;
+                    MailingListaALumnerlistBox.DisplayMember = "Förnamn";
+                    MailingListaALumnerlistBox.ValueMember = "AnvändarID";
+                }
+            }
+
+            MailingListaALumnerlistBox.ValueMember = "AnvändarID";
+            MailingListaALumnerlistBox.DisplayMember = "Förnamn";
+
+            foreach (int i in AlumnMaillistCheckedListBox.CheckedIndices)
+            {
+                AlumnMaillistCheckedListBox.SetItemCheckState(i, CheckState.Unchecked);
+            }
+        }
+
+        private void FilterAlumnMailComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FilterAlumnMailComboBox.SelectedIndex == 0)
+            {
+                AlumnMaillistCheckedListBox.Items.Clear();
+                IEnumerable<Alumn> hämtadeAlumner = bm.HämtaAllaAlumner();
+                foreach (Alumn alumn in hämtadeAlumner)
+                {
+                    if (alumn != null)
+                    {
+
+                        AlumnMaillistCheckedListBox.Items.Add(alumn);
+                    }
+                }
+            }
+            else
+            {
+                AlumnMaillistCheckedListBox.Items.Clear();
+                foreach (Alumn alumn in AlumnerMedProgramFilterMail())
+                {
+                    if (alumn != null)
+                    {
+
+                        AlumnMaillistCheckedListBox.Items.Add(alumn);
+                    }
+                }
+            }
+
+            AlumnMaillistCheckedListBox.DisplayMember = "Förnamn";
+            AlumnMaillistCheckedListBox.ValueMember = "AnvändarID";
+        }
+        public List<Alumn> AlumnerMedProgramFilterMail()
+        {
+            return bm.HämtaAlumnerMedProgram((ProgramClass)FilterAlumnMailComboBox.SelectedItem);
+        }
+
+        private void SkapaCSVochMailListaBtn_Click(object sender, EventArgs e)
+        {
+            SkapaMaillista();
+        }
+
+        private void SkapaMaillista()
+        {
+            if (NamnMailListaTextBox.Text == "")
+            {
+                MessageBox.Show("Du måste namnge listan.");
+            }                
+            else if (MailingListaALumnerlistBox.Items.Count < 1)
+            {
+                MessageBox.Show("Du måste lägga till minst en alumn i listan valda alumner.");
+            }
+            else
+            {
+
+                Maillista maillista = new Maillista()
+                {
+                    MaillistaNamn = NamnMailListaTextBox.Text,
+                    AlumnMaillistor = new List<AlumnMaillista>()
+                };
+
+                bm.LäggTillMaillista(maillista);
+                bm.Commit();
+
+                foreach (Alumn alumn in MailingListaALumnerlistBox.Items)
+                {
+                    AlumnMaillista alumnMaillista = new AlumnMaillista()
+                    {
+                        MaillistaID = bm.HämtaSenasteMaillista().MaillistaID,
+                        AlumnID = (bm.HämtaAlumnMedID(alumn.AnvändarID)).AnvändarID
+                    };
+                    bm.LäggTillAlumnMaillista(alumnMaillista);
+                }
+
+                bm.Commit();
+
+                List<Alumn> alumner = new List<Alumn>();
+                foreach (Alumn alumn in valdaAlumnerListBox.Items)
+                {
+                    alumner.Add(alumn);
+                }
+
+                bm.SkrivaAlumnAktivitetTillCSVFil(NamnMailListaTextBox.Text, alumner);
+                MessageBox.Show("Maillistans namn och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
+                                 "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug");
+                //Tömmer sätt namn på Utskicksboxen och ValdaAlumner samt fyller i gamla listorboxen. 
+                NamnMailListaTextBox.Clear();
+
+
+                GamlaListorComboBox.DataSource = bm.HämtaAllaMaillistor();
+                GamlaListorComboBox.DisplayMember = "Maillistanamn";
+                GamlaListorComboBox.ValueMember = "MaillistaID";
+
+                MailingListaALumnerlistBox.BeginUpdate();
+                MailingListaALumnerlistBox.DataSource = new ArrayList();
+                MailingListaALumnerlistBox.DisplayMember = "Förnamn";
+                MailingListaALumnerlistBox.ValueMember = "AnvändarID";
+                MailingListaALumnerlistBox.EndUpdate();
+
+                MessageBox.Show("Maillistan har skapats");
+                
+            }
+        }
+
+        private void TaBortAlumnMailBtn_Click(object sender, EventArgs e)
+        {
+            MailingListaALumnerlistBox.BeginUpdate();
+            ArrayList vSelectedItems = new ArrayList(MailingListaALumnerlistBox.SelectedItems);
+            ArrayList itemsToStore = new ArrayList(MailingListaALumnerlistBox.Items);
+            foreach (Alumn item in vSelectedItems)
+            {
+                itemsToStore.Remove(item);
+            }
+            MailingListaALumnerlistBox.DataSource = itemsToStore;
+            MailingListaALumnerlistBox.DisplayMember = "Förnamn";
+            MailingListaALumnerlistBox.ValueMember = "AnvändarID";
+            MailingListaALumnerlistBox.EndUpdate();
+        }
+
+        private void LaddaGamlaAlumnerFrånListabtn_Click_1(object sender, EventArgs e)
+        {
+            if (GamlaListorComboBox.SelectedItem != null)
+            {
+                List<Alumn> Alumner3 = bm.HämtaAlumnerFrånMailLista(((Maillista)GamlaListorComboBox.SelectedItem).MaillistaID);
+                MailingListaALumnerlistBox.DataSource = Alumner3;
+                MailingListaALumnerlistBox.DisplayMember = "Förnamn";
+                MailingListaALumnerlistBox.ValueMember = "AnvändarID";
+            }
         }
     }
 }

@@ -109,6 +109,20 @@ namespace DataLayer.Contexts
                 .WithMany(i => i.AlumnAktivitet)
                 .HasForeignKey(pi => pi.AktivitetID);
 
+            //AlumnMaillista
+            modelBuilder.Entity<AlumnMaillista>()
+                .HasKey(i => new { i.AlumnID, i.MaillistaID });
+
+            modelBuilder.Entity<AlumnMaillista>()
+                .HasOne(aa => aa.Alumn)
+                .WithMany(i => i.AlumnMaillistor)
+                .HasForeignKey(aa => aa.AlumnID);
+
+            modelBuilder.Entity<AlumnMaillista>()
+                .HasOne(pi => pi.Maillista)
+                .WithMany(i => i.AlumnMaillistor)
+                .HasForeignKey(pi => pi.MaillistaID);
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -120,10 +134,12 @@ namespace DataLayer.Contexts
         public DbSet<Program> Program { get; set; }
         public DbSet<AlumnProgram> AlumnProgram { get; set; }
         public DbSet<AlumnKompetens> AlumnKompetens { get; set; }
+        public DbSet<Maillista> Maillistor { get; set; }
         public DbSet<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
         public DbSet<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }
         public DbSet<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }
         public DbSet<AlumnAktivitetBokning> AlumnAktivitet { get; set; }
+        public DbSet<AlumnMaillista> AlumnMaillist { get; set; }
 
 
 

@@ -22,9 +22,11 @@ namespace DataLayer.Contexts
         DbSet<Program> Program { get; set; }
         DbSet<AlumnProgram> AlumnProgram { get; set; }
         DbSet<AlumnKompetens> AlumnKompetens { get; set; }
+        DbSet<Maillista> Maillistor { get; set; }
         DbSet<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
         DbSet<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }
         DbSet<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }
         DbSet<AlumnAktivitetBokning> AlumnAktivitet { get; set; }
+        DbSet<AlumnMaillista> AlumnMaillist { get; set; }
     }
 }
