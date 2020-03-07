@@ -171,12 +171,6 @@
     <Compile Include="btnDeleteAccountOP.Designer.cs">
       <DependentUpon>btnDeleteAccountOP.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreatePersonalForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreatePersonalForm.Designer.cs">
-      <DependentUpon>CreatePersonalForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="CreateUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,9 +206,6 @@
     <Compile Include="WarningLabel.Designer.cs">
       <DependentUpon>WarningLabel.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CreatePersonalForm.resx">
-      <DependentUpon>CreatePersonalForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CreateUserForm.resx">
       <DependentUpon>CreateUserForm.cs</DependentUpon>
     </EmbeddedResource>

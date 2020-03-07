@@ -35,6 +35,9 @@ namespace PresentationLayer
             {
                 if (RegexUtilities.IsValidEmail(AnvändarnamnTxtBox.Text) == true)
                 {
+
+                    if (radioButtonAlumn.Checked == true)
+                    {
                         Alumn alumn = new Alumn()
                         {
                             Användarnamn = AnvändarnamnTxtBox.Text,
@@ -47,25 +50,26 @@ namespace PresentationLayer
 
                         DialogResult = DialogResult.OK;
 
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Var vänlig fyll i en giltig mailadress");
                 }
-                //if (radioButtonPersonal.Checked == true)
-                //{
-                //    Personal personal = new Personal()
-                //    {
-                //        Användarnamn = AnvändarnamnTxtBox.Text,
-                //        Lösenord = LösenordTxtBox.Text,
-                //        Förnamn = FörnamnTxtBox.Text,
-                //        Efternamn = EfternamnTxtBox.Text
-                //    };
-                //    bm.LäggTillPersonal(personal);
-                //    MessageBox.Show("Personalkonto har skapats");
+                if (radioButtonPersonal.Checked == true)
+                {
+                    Personal personal = new Personal()
+                    {
+                        Användarnamn = AnvändarnamnTxtBox.Text,
+                        Lösenord = LösenordTxtBox.Text,
+                        Förnamn = FörnamnTxtBox.Text,
+                        Efternamn = EfternamnTxtBox.Text
+                    };
+                    bm.LäggTillPersonal(personal);
+                    MessageBox.Show("Personalkonto har skapats");
 
-                //    DialogResult = DialogResult.OK;
-                //}
+                    DialogResult = DialogResult.OK;
+                }
 
             }
         }

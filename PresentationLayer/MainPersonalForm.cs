@@ -23,13 +23,6 @@ namespace PresentationLayer
         public MainPersonalForm()
         {
             InitializeComponent();
-
-
-            if (!(GLOBALS.AktuellPersonal.PersonalID == 1 && GLOBALS.AktuellPersonal.Användarnamn == "SuperAdmin"))
-            {
-                skapaPersonalBtn.Visible = false;
-                skapaPersonalLabel.Visible = false;
-            }
         }
 
         private void tabControlMainAdmin_SelectedIndexChanged(object sender, EventArgs e)
@@ -404,17 +397,6 @@ namespace PresentationLayer
         private void valdaAlumnerListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }
-        private void ShowForm(Form form)
-        {
-            Visible = !Visible;
-            if (form.ShowDialog() == DialogResult.OK)
-                Visible = !Visible;
-        }
-
-        private void skapaPersonalBtn_Click(object sender, EventArgs e)
-        {
-            ShowForm(new CreatePersonalForm());
         }
     }
 }
