@@ -116,18 +116,29 @@ namespace DataLayer.Seed
                 Alumn = alumn1,
                 Kompetens = kompetens1
             });
-            //Personal
-            Personal personal1 = new Personal()
-            {
-                Användarnamn = "P5500",
-                Lösenord = "pers",
-                Förnamn = "Jan",
-                Efternamn = "Andersson",
-            };
-            dbContext.Personal.Add(personal1);
+                //Personal
 
-            //Aktivitet
-            Aktivitet aktivitet1 = new Aktivitet()
+                //SuperAdmin
+                Personal personal = new Personal()
+                {
+                    Användarnamn = "SuperAdmin",
+                    Lösenord = "123",
+                    Förnamn = "Super",
+                    Efternamn = "Admin",
+                };
+                dbContext.Personal.Add(personal); 
+                
+                Personal personal1 = new Personal()
+                {
+                    Användarnamn = "P5500",
+                    Lösenord = "pers",
+                    Förnamn = "Jan",
+                    Efternamn = "Andersson",
+                };
+                dbContext.Personal.Add(personal1);
+
+                //Aktivitet
+                Aktivitet aktivitet1 = new Aktivitet()
             {
                 Titel = "Företagsmässa för nyexaminerade",
                 Ansvarig = "Milla Trop",

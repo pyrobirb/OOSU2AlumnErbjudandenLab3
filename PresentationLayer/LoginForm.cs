@@ -27,6 +27,8 @@ namespace PresentationLayer
             dbContext.Database.EnsureCreated();
 
             Seed.Populate(dbContext);
+
+
         }
 
         private void ShowForm(Form form)
