@@ -314,7 +314,7 @@
             this.VäljAktivitetComboBox.Name = "VäljAktivitetComboBox";
             this.VäljAktivitetComboBox.Size = new System.Drawing.Size(475, 21);
             this.VäljAktivitetComboBox.TabIndex = 16;
-            this.VäljAktivitetComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBoxChoosActivity_SelectedIndexChanged);
+            this.VäljAktivitetComboBox.SelectedIndexChanged += new System.EventHandler(this.VäljAktivitetComboBox_SelectedIndexChanged);
             // 
             // label15
             // 

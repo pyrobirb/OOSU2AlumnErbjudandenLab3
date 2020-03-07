@@ -15,31 +15,31 @@ namespace DataLayer.Repositories.UniqueRepository
         public void UpdateAktivitet(Aktivitet aktivitet, Aktivitet nyaktivitet)
         {
 
-            var db = new DatabaseContext();
-            var akt = db.Aktiviteter.Find(aktivitet.AktivitetsID);
+            //var db = new DatabaseContext();
+            //var akt = db.Aktiviteter.Find(aktivitet.AktivitetsID);
 
 
-            akt.Titel = nyaktivitet.Titel;
-            akt.Ansvarig = nyaktivitet.Ansvarig;
-            akt.Kontaktperson = nyaktivitet.Kontaktperson;
-            akt.Plats = nyaktivitet.Plats;
-            akt.Startdatum = nyaktivitet.Startdatum;
-            akt.Slutdatum = nyaktivitet.Slutdatum;
-            akt.Beskrivning = nyaktivitet.Beskrivning;
+            //akt.Titel = nyaktivitet.Titel;
+            //akt.Ansvarig = nyaktivitet.Ansvarig;
+            //akt.Kontaktperson = nyaktivitet.Kontaktperson;
+            //akt.Plats = nyaktivitet.Plats;
+            //akt.Startdatum = nyaktivitet.Startdatum;
+            //akt.Slutdatum = nyaktivitet.Slutdatum;
+            //akt.Beskrivning = nyaktivitet.Beskrivning;
 
-            db.SaveChanges();
+            //db.SaveChanges();
 
 
-            //this.Context.Aktiviteter.Attach(aktivitet);
-            //aktivitet.Titel = nyaktivitet.Titel;
-            //aktivitet.Ansvarig = nyaktivitet.Ansvarig;
-            //aktivitet.Kontaktperson = nyaktivitet.Kontaktperson;
-            //aktivitet.Plats = nyaktivitet.Plats;
-            //aktivitet.Startdatum = nyaktivitet.Startdatum;
-            //aktivitet.Slutdatum = nyaktivitet.Slutdatum;
-            //aktivitet.Beskrivning = nyaktivitet.Beskrivning;
+            this.Context.Aktiviteter.Attach(aktivitet);
+            aktivitet.Titel = nyaktivitet.Titel;
+            aktivitet.Ansvarig = nyaktivitet.Ansvarig;
+            aktivitet.Kontaktperson = nyaktivitet.Kontaktperson;
+            aktivitet.Plats = nyaktivitet.Plats;
+            aktivitet.Startdatum = nyaktivitet.Startdatum;
+            aktivitet.Slutdatum = nyaktivitet.Slutdatum;
+            aktivitet.Beskrivning = nyaktivitet.Beskrivning;
 
-            //this.Context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         

@@ -160,9 +160,23 @@ namespace PresentationLayer
             bm.Commit();
 
             MessageBox.Show("Aktiviteten " + TitelAktivitetTxtBox.Text + " har Redigerats");
+            //Fyll Redigera aktivitet
+            VäljAktivitetComboBox.DataSource = bm.HämtaAllaAktiviteter();
+            VäljAktivitetComboBox.DisplayMember = "Titel";
+            VäljAktivitetComboBox.ValueMember = "AktivitetsID";
+
+            var AktuellAktivitet = bm.HämtaAktivitetGenomID(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+
+            ÄndraTitelTxtBox.Text = AktuellAktivitet.Titel;
+            AnsvarigPersonComboBox.Text = AktuellAktivitet.Ansvarig;
+            KontaktpersonComboBox.Text = AktuellAktivitet.Kontaktperson;
+            PlatsÄndraTxtBox.Text = AktuellAktivitet.Plats;
+            StarttidDateTime.Value = AktuellAktivitet.Startdatum;
+            SlutdatumÄndraDateTime.Value = AktuellAktivitet.Slutdatum;
+            BeskrivningÄndraTextBox.Text = AktuellAktivitet.Beskrivning;
         }
 
-        private void ComboBoxChoosActivity_SelectedIndexChanged(object sender, EventArgs e)
+        private void VäljAktivitetComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var AktuellAktivitet = bm.HämtaAktivitetGenomID(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
             ÄndraTitelTxtBox.Text = AktuellAktivitet.Titel;
