@@ -166,12 +166,14 @@
     <Compile Include="Repositories\UniqueRepositoryInterface\IAlumnRepository.cs" />
     <Compile Include="Repositories\UniqueRepositoryInterface\IInformationsutskickRepository.cs" />
     <Compile Include="Repositories\UniqueRepositoryInterface\IKompetensRepository.cs" />
+    <Compile Include="Repositories\UniqueRepositoryInterface\IMaillistRepository.cs" />
     <Compile Include="Repositories\UniqueRepositoryInterface\IPersonalRepository.cs" />
     <Compile Include="Repositories\UniqueRepositoryInterface\IProgramRepository.cs" />
     <Compile Include="Repositories\UniqueRepository\AktivitetRepository.cs" />
     <Compile Include="Repositories\UniqueRepository\AlumnRepository.cs" />
     <Compile Include="Repositories\UniqueRepository\InformationsutskickRepository.cs" />
     <Compile Include="Repositories\UniqueRepository\KompetensRepository.cs" />
+    <Compile Include="Repositories\UniqueRepository\MaillistaRepository.cs" />
     <Compile Include="Repositories\UniqueRepository\PersonalRepository.cs" />
     <Compile Include="Repositories\UniqueRepository\ProgramRepository.cs" />
     <Compile Include="Seed\Seed.cs" />

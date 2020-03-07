@@ -14,5 +14,6 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
         void UppdateraAlumnKonto(int id, string förnamn, string efternamn, string epostadress);
         IQueryable<AlumnProgram> HämtaAlumnerMedProgram(Program program);
         Alumn HämtaAlumnGenomID(int AlumnID);
+        void LäggTillAlumnMaillista(AlumnMaillista alumnMaillista);
     }
 }

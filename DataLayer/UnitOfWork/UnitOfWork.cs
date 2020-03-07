@@ -17,6 +17,7 @@ namespace DataLayer.UnitOfWork
         public IInformationsutskickRepository InformationsutskickRepository { get; set; }
         public IKompetensRepository KompetensRepository { get; set; }
         public IProgramRepository ProgramRepository { get; set; }
+        public IMaillistRepository MaillistaRepository { get; set; }
 
         private readonly DatabaseContext _context;
         public UnitOfWork(DatabaseContext databaseContext)
@@ -28,6 +29,7 @@ namespace DataLayer.UnitOfWork
             InformationsutskickRepository = new InformationsutskickRepository(_context);
             KompetensRepository = new KompetensRepository(_context);
             ProgramRepository = new ProgramRepository(_context);
+            MaillistaRepository = new MaillistaRepository(_context);
         }
         public void Commit()
         {

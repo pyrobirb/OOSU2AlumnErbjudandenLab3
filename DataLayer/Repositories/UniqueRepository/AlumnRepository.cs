@@ -43,6 +43,13 @@ namespace DataLayer.Repositories.UniqueRepository
             return db.Alumner.Where(x => x.AnvändarID == AlumnID).FirstOrDefault();
         }
 
+        public void LäggTillAlumnMaillista(AlumnMaillista alumnMaillista)
+        {
+            var db = new DatabaseContext();
+            db.AlumnMaillist.Add(alumnMaillista);
+            db.SaveChanges();
+        }
+
         public AlumnRepository(DatabaseContext context) : base(context)
         {
 

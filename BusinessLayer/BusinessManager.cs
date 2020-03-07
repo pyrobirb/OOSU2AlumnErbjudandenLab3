@@ -270,5 +270,37 @@ namespace BusinessLayer
 
             return AlumnerAttSkicka;
         }
+
+        public void LäggTillMaillista(Maillista maillista)
+        {
+            unitOfWork.MaillistaRepository.Add(maillista);
+        }
+
+        public Maillista HämtaSenasteMaillista()
+        {
+            return unitOfWork.MaillistaRepository.GetLastList();
+        }
+
+        public void LäggTillAlumnMaillista(AlumnMaillista alumnMaillista)
+        {
+            unitOfWork.AlumnRepository.LäggTillAlumnMaillista(alumnMaillista);
+        }
+
+        public object HämtaAllaMaillistor()
+        {
+            return unitOfWork.MaillistaRepository.GetAll();
+        }
+
+        public List<Alumn> HämtaAlumnerFrånMailLista(int maillistaID)
+        {
+            IQueryable<AlumnMaillista> hämtadeAlumnID = unitOfWork.MaillistaRepository.HämtaAlumnIdGenomMaillistaID(maillistaID);
+            List<Alumn> AlumnerAttSkicka = new List<Alumn>();
+            foreach (AlumnMaillista A in hämtadeAlumnID)
+            {
+                AlumnerAttSkicka.Add(HämtaAlumnMedID(A.AlumnID));
+            }
+
+            return AlumnerAttSkicka;
+        }
     }
 }

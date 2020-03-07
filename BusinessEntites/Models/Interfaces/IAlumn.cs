@@ -21,7 +21,8 @@ namespace BusinessEntites.Models.Interfaces
 
         ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
 
-
         ICollection<AlumnAktivitetBokning> AlumnAktivitet { get; set; }
+
+        ICollection<AlumnMaillista> AlumnMaillistor { get; set; }
     }
 }
