@@ -23,6 +23,12 @@ namespace PresentationLayer
         public MainPersonalForm()
         {
             InitializeComponent();
+
+            if (!(GLOBALS.AktuellPersonal.Användarnamn == "SuperAdmin" && GLOBALS.AktuellPersonal.PersonalID == 1))
+            {
+                skapaPersKontoSupAdmLbel.Visible = false;
+                createPersonalAccBtn.Visible = false;
+            }
         }
 
         private void tabControlMainAdmin_SelectedIndexChanged(object sender, EventArgs e)
@@ -571,6 +577,23 @@ namespace PresentationLayer
                 MailingListaALumnerlistBox.DisplayMember = "Förnamn";
                 MailingListaALumnerlistBox.ValueMember = "AnvändarID";
             }
+        }
+
+        private void label33_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShowForm(Form form)
+        {
+            Visible = !Visible;
+            if (form.ShowDialog() == DialogResult.OK)
+                Visible = !Visible;
+        }
+
+        private void createPersonalAccBtn_Click(object sender, EventArgs e)
+        {
+            ShowForm(new CreatePersonalForm());
         }
     }
 }

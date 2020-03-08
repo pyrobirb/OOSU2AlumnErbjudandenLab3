@@ -16,7 +16,7 @@ namespace PresentationLayer
     public partial class CreateUserForm : Form
     {
         BusinessManager bm = new BusinessManager();
-        
+
         public CreateUserForm()
         {
             InitializeComponent();
@@ -35,48 +35,73 @@ namespace PresentationLayer
             {
                 if (RegexUtilities.IsValidEmail(AnvändarnamnTxtBox.Text) == true)
                 {
-
-                    if (radioButtonAlumn.Checked == true)
-                    {
-                        Alumn alumn = new Alumn()
-                        {
-                            Användarnamn = AnvändarnamnTxtBox.Text,
-                            Lösenord = LösenordTxtBox.Text,
-                            Förnamn = FörnamnTxtBox.Text,
-                            Efternamn = EfternamnTxtBox.Text
-                        };
-                        bm.LäggTillAlumn(alumn);
-                        MessageBox.Show("Alumnkonto har skapats");
-
-                        DialogResult = DialogResult.OK;
-
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Var vänlig fyll i en giltig mailadress");
-                }
-                if (radioButtonPersonal.Checked == true)
-                {
-                    Personal personal = new Personal()
+                    Alumn alumn = new Alumn()
                     {
                         Användarnamn = AnvändarnamnTxtBox.Text,
                         Lösenord = LösenordTxtBox.Text,
                         Förnamn = FörnamnTxtBox.Text,
                         Efternamn = EfternamnTxtBox.Text
                     };
-                    bm.LäggTillPersonal(personal);
-                    MessageBox.Show("Personalkonto har skapats");
+                    bm.LäggTillAlumn(alumn);
+                    MessageBox.Show("Alumnkonto har skapats");
 
                     DialogResult = DialogResult.OK;
                 }
-
+                else
+                {
+                    MessageBox.Show("Var vänlig fyll i en giltig mailadress");
+                }
             }
         }
 
         private void TillbakaKnapp_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EfternamnTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FörnamnTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LösenordTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AnvändarnamnTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

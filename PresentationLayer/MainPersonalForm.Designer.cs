@@ -102,6 +102,8 @@
             this.SkapaCSVFrånGammalListaBtn = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.skapaPersKontoSupAdmLbel = new System.Windows.Forms.Label();
+            this.createPersonalAccBtn = new System.Windows.Forms.Button();
             this.tabControlMainAdmin.SuspendLayout();
             this.tabPageCreateActivity.SuspendLayout();
             this.tabPageEditActivity.SuspendLayout();
@@ -862,11 +864,33 @@
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
+            // skapaPersKontoSupAdmLbel
+            // 
+            this.skapaPersKontoSupAdmLbel.AutoSize = true;
+            this.skapaPersKontoSupAdmLbel.Location = new System.Drawing.Point(15, 348);
+            this.skapaPersKontoSupAdmLbel.Name = "skapaPersKontoSupAdmLbel";
+            this.skapaPersKontoSupAdmLbel.Size = new System.Drawing.Size(307, 13);
+            this.skapaPersKontoSupAdmLbel.TabIndex = 2;
+            this.skapaPersKontoSupAdmLbel.Text = "Välkommen SuperAdmin! Här kan du skapa nytt Personalkonto:";
+            this.skapaPersKontoSupAdmLbel.Click += new System.EventHandler(this.label33_Click);
+            // 
+            // createPersonalAccBtn
+            // 
+            this.createPersonalAccBtn.Location = new System.Drawing.Point(328, 348);
+            this.createPersonalAccBtn.Name = "createPersonalAccBtn";
+            this.createPersonalAccBtn.Size = new System.Drawing.Size(90, 38);
+            this.createPersonalAccBtn.TabIndex = 3;
+            this.createPersonalAccBtn.Text = "Skapa nytt Personalkonto";
+            this.createPersonalAccBtn.UseVisualStyleBackColor = true;
+            this.createPersonalAccBtn.Click += new System.EventHandler(this.createPersonalAccBtn_Click);
+            // 
             // MainPersonalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 382);
+            this.ClientSize = new System.Drawing.Size(549, 398);
+            this.Controls.Add(this.createPersonalAccBtn);
+            this.Controls.Add(this.skapaPersKontoSupAdmLbel);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.tabControlMainAdmin);
             this.Name = "MainPersonalForm";
@@ -885,6 +909,7 @@
             this.tabCreateMailingList.ResumeLayout(false);
             this.tabCreateMailingList.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -964,5 +989,7 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label skapaPersKontoSupAdmLbel;
+        private System.Windows.Forms.Button createPersonalAccBtn;
     }
 }

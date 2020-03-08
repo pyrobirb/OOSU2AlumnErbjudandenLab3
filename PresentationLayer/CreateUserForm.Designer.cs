@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radioButtonAlumn = new System.Windows.Forms.RadioButton();
-            this.radioButtonPersonal = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.AnvändarnamnTxtBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,28 +41,6 @@
             this.TillbakaKnapp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // radioButtonAlumn
-            // 
-            this.radioButtonAlumn.AutoSize = true;
-            this.radioButtonAlumn.Location = new System.Drawing.Point(23, 24);
-            this.radioButtonAlumn.Name = "radioButtonAlumn";
-            this.radioButtonAlumn.Size = new System.Drawing.Size(54, 17);
-            this.radioButtonAlumn.TabIndex = 0;
-            this.radioButtonAlumn.TabStop = true;
-            this.radioButtonAlumn.Text = "Alumn";
-            this.radioButtonAlumn.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPersonal
-            // 
-            this.radioButtonPersonal.AutoSize = true;
-            this.radioButtonPersonal.Location = new System.Drawing.Point(95, 24);
-            this.radioButtonPersonal.Name = "radioButtonPersonal";
-            this.radioButtonPersonal.Size = new System.Drawing.Size(66, 17);
-            this.radioButtonPersonal.TabIndex = 1;
-            this.radioButtonPersonal.TabStop = true;
-            this.radioButtonPersonal.Text = "Personal";
-            this.radioButtonPersonal.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -73,6 +49,7 @@
             this.label1.Size = new System.Drawing.Size(117, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Användarnamn / Epost";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // AnvändarnamnTxtBox
             // 
@@ -81,6 +58,7 @@
             this.AnvändarnamnTxtBox.Name = "AnvändarnamnTxtBox";
             this.AnvändarnamnTxtBox.Size = new System.Drawing.Size(210, 20);
             this.AnvändarnamnTxtBox.TabIndex = 3;
+            this.AnvändarnamnTxtBox.TextChanged += new System.EventHandler(this.AnvändarnamnTxtBox_TextChanged);
             // 
             // label2
             // 
@@ -90,6 +68,7 @@
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Lösenord";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // LösenordTxtBox
             // 
@@ -98,6 +77,7 @@
             this.LösenordTxtBox.Name = "LösenordTxtBox";
             this.LösenordTxtBox.Size = new System.Drawing.Size(210, 20);
             this.LösenordTxtBox.TabIndex = 5;
+            this.LösenordTxtBox.TextChanged += new System.EventHandler(this.LösenordTxtBox_TextChanged);
             // 
             // btnCreateAccount
             // 
@@ -118,6 +98,7 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Alumner använder epost som användarnamn.\r\n Personal använder sitt Anställningsnum" +
     "mer.";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // FörnamnTxtBox
             // 
@@ -125,6 +106,7 @@
             this.FörnamnTxtBox.Name = "FörnamnTxtBox";
             this.FörnamnTxtBox.Size = new System.Drawing.Size(210, 20);
             this.FörnamnTxtBox.TabIndex = 8;
+            this.FörnamnTxtBox.TextChanged += new System.EventHandler(this.FörnamnTxtBox_TextChanged);
             // 
             // label4
             // 
@@ -134,6 +116,7 @@
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Förnamn";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // EfternamnTxtBox
             // 
@@ -141,6 +124,7 @@
             this.EfternamnTxtBox.Name = "EfternamnTxtBox";
             this.EfternamnTxtBox.Size = new System.Drawing.Size(210, 20);
             this.EfternamnTxtBox.TabIndex = 10;
+            this.EfternamnTxtBox.TextChanged += new System.EventHandler(this.EfternamnTxtBox_TextChanged);
             // 
             // label5
             // 
@@ -150,6 +134,7 @@
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Efternamn";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // TillbakaKnapp
             // 
@@ -177,8 +162,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.AnvändarnamnTxtBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.radioButtonPersonal);
-            this.Controls.Add(this.radioButtonAlumn);
             this.Name = "CreateUserForm";
             this.Text = "Skapa konto";
             this.Load += new System.EventHandler(this.CreateUserForm_Load);
@@ -188,9 +171,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.RadioButton radioButtonAlumn;
-        private System.Windows.Forms.RadioButton radioButtonPersonal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox AnvändarnamnTxtBox;
         private System.Windows.Forms.Label label2;
