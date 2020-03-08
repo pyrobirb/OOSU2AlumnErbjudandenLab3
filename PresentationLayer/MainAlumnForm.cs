@@ -207,6 +207,7 @@ namespace PresentationLayer
         private void btnCancelBookedActivity_Click(object sender, EventArgs e)
         {
             Aktivitet aktivitet = (Aktivitet)bokadeAktiviteterListBox.SelectedItem;
+            aktivitetsinformationRichTextBox.Clear();
             bm.TaBortAktivitetFrånAlumn(aktivitet, GLOBALS.AktuellAlumn);
             UppdateraBokadeAktiviteter();
             MessageBox.Show("Bokningen har raderats");

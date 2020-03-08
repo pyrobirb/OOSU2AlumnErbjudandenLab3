@@ -59,10 +59,13 @@ namespace PresentationLayer
             if (AnmäldaAlumnerDataGridView.ColumnCount > 0)
             {
                 AnmäldaAlumnerDataGridView.Columns[0].Visible = false;
-                AnmäldaAlumnerDataGridView.Columns[1].Visible = false;
+                AnmäldaAlumnerDataGridView.Columns[1].DisplayIndex = 5;
                 AnmäldaAlumnerDataGridView.Columns[2].Visible = false;
+                AnmäldaAlumnerDataGridView.Columns[5].Visible = false;
+                AnmäldaAlumnerDataGridView.Columns[6].Visible = false;
                 AnmäldaAlumnerDataGridView.Columns[7].Visible = false;
                 AnmäldaAlumnerDataGridView.Columns[8].Visible = false;
+                AnmäldaAlumnerDataGridView.Columns[9].Visible = false;
             }
 
 
