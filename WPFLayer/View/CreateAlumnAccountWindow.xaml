@@ -1,0 +1,40 @@
+﻿<Window x:Class="WPFLayer.View.CreateAlumnAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFLayer.View"
+        mc:Ignorable="d"
+        Title="CreateAlumnAccountWindow" Height="350" Width="410">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock HorizontalAlignment="Left" FontSize="18" Margin="5 10">Vänligen fyll i dina användaruppgifter:</TextBlock>
+
+            <StackPanel>
+                <StackPanel Margin="0 5" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label>Användarnamn/Epostadress:</Label>
+                    <TextBox Width="200" Text="{Binding Alumn.Användarnamn}"></TextBox>
+                </StackPanel>
+                <StackPanel  Margin="0 5" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label >Förnamn:</Label>
+                    <TextBox Width="200" Text="{Binding Alumn.Förnamn}" ></TextBox>
+                </StackPanel>
+                <StackPanel  Margin="0 5" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label >Efternamn:</Label>
+                    <TextBox Width="200" Text="{Binding Alumn.Efternamn}"></TextBox>
+                </StackPanel>
+                <StackPanel Margin="0 5"  Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label >Lösenord:</Label>
+                    <TextBox Width="200" Text="{Binding Alumn.Lösenord}"></TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            <Button Margin="23 10"  HorizontalAlignment="Right" Height="25" Width="150">Skapa alumn-konto</Button>
+            <TextBlock TextWrapping="Wrap" FontSize="8">Genom att trycka på "Skapa alumn-konto" godkänner du villkoren för GDPR och behandlingen av dina personuppgifter.</TextBlock>
+
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>
