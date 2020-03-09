@@ -5,11 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFLayer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="450">
     <Grid>
-        
-        
-        
-        
+        <StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Height="100" Margin="10">
+                <TextBlock Height="50" Width="300" FontSize="20" >
+                    Välkommen till AlumnSpammer!
+                <LineBreak/>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Left" Height="75">
+                    Vänligen ange din information för att Logga in
+                </TextBlock>
+            </StackPanel>
+            
+            <StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
+                <Label Width="100">Användarnamn:</Label>
+                <TextBox BorderBrush="Black" BorderThickness="1" Width="200"></TextBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
+                <Label Width="100">Lösenord:</Label>
+                <PasswordBox BorderBrush="Black" BorderThickness="1" Width="200"></PasswordBox>
+            </StackPanel>
+            </StackPanel>
+            <Button HorizontalAlignment="Center" Width="100" Height="25">Logga in</Button>
+
+            <StackPanel Margin="50" HorizontalAlignment="Stretch" Height="20"></StackPanel>
+            <TextBlock Height="25"   HorizontalAlignment="Center">Har du inget konto? Skapa ett här:</TextBlock>
+            <Button Width="150" Height="30">Skapa nytt alumnkonto</Button>
+        </StackPanel>
+
+
+
     </Grid>
 </Window>
