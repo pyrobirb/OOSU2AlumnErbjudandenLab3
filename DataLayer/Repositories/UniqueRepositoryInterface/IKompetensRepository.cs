@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepositoryInterface
 {
-    public interface IKompetensRepository : IRepository<Kompetens>
+    public interface IKompetensRepository : IRepository<KompetensDto>
     {
-        IQueryable<Kompetens> HämtaKompetenserFörAlumn(Alumn aktuellAlumn);
+        IQueryable<KompetensDto> HämtaKompetenserFörAlumn(AlumnDto aktuellAlumn);
         void LäggTillUtbildningTillAlumn(int id, string text);
-        void TaBortKompetensFrånAlumn(Kompetens selectedKompetensToRemove, Alumn aktuellAlumn);
+        void TaBortKompetensFrånAlumn(KompetensDto selectedKompetensToRemove, AlumnDto aktuellAlumn);
     }
 }

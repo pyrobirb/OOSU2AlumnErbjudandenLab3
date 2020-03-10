@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepositoryInterface
 {
-    public interface IPersonalRepository : IRepository<Personal>
+    public interface IPersonalRepository : IRepository<PersonalDto>
     {
-        Personal HämtaPersonalKonto(string användarnamn, string lösenord);
+        PersonalDto HämtaPersonalKonto(string användarnamn, string lösenord);
     }
 }

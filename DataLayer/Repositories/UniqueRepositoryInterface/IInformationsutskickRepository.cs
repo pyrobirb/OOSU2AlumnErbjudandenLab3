@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepositoryInterface
 {
-    public interface IInformationsutskickRepository : IRepository<Informationsutskick>
+    public interface IInformationsutskickRepository : IRepository<InformationsutskickDto>
     {
-        IQueryable<int> HämtaInformationsutskickIDFörAlumn(Alumn inloggadAlumn);
-        void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitet informationsutskickAktivitet);
-        void LäggTillInformationsutskickAlumn(InformationsutskickAlumn informationsutskickAlumn);
-        IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(Alumn aktuellAlumn);
-        IQueryable<InformationsutskickAktivitet> HämtaUtskicksIDGenomAktivitetsID(int aktivitetsID);
-        IQueryable<InformationsutskickAlumn> HämtaAlumnIdGenomUtskicksId(int UtskicksId);
+        IQueryable<int> HämtaInformationsutskickIDFörAlumn(AlumnDto inloggadAlumn);
+        void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitetDto informationsutskickAktivitet);
+        void LäggTillInformationsutskickAlumn(InformationsutskickAlumnDto informationsutskickAlumn);
+        IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(AlumnDto aktuellAlumn);
+        IQueryable<InformationsutskickAktivitetDto> HämtaUtskicksIDGenomAktivitetsID(int aktivitetsID);
+        IQueryable<InformationsutskickAlumnDto> HämtaAlumnIdGenomUtskicksId(int UtskicksId);
     }
 }

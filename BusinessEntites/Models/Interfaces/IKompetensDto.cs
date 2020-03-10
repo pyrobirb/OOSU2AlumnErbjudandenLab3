@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Interfaces
 {
-    public interface IProgram
+    public interface IKompetensDto
     {
-        int ProgramID { get; set; }
-        string Namn { get; set; }
-        ICollection<AlumnProgram> AlumnProgram { get; set; }
+        int KompetensID { get; set; }
+        string Beskrivning { get; set; }
+
+        ICollection<AlumnKompetensDto> AlumnKompetens { get; set; }
 
     }
 }

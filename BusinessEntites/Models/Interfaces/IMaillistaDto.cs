@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Interfaces
 {
-    public interface IKompetens
+    interface IMaillistaDto
     {
-        int KompetensID { get; set; }
-        string Beskrivning { get; set; }
-
-        ICollection<AlumnKompetens> AlumnKompetens { get; set; }
-
+        int MaillistaID { get; set; }
+        string MaillistaNamn { get; set; }
+        ICollection<AlumnMaillistaDto> AlumnMaillistor { get; set; }
     }
 }

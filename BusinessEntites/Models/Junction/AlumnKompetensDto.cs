@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Junction
 {
-    public class AlumnAktivitetBokning : IAlumnAktivitetBokning
+    public class AlumnKompetensDto : IAlumnKompetensDto
     {
         public int AlumnID { get; set; }
-        public virtual Alumn Alumn { get; set; }
+        public virtual AlumnDto Alumn { get; set; }
 
-        public int AktivitetID { get; set; }
-        public virtual Aktivitet Aktivitet { get; set; }
-
+        public int KompetensID { get; set; }
+        public virtual KompetensDto Kompetens { get; set; }
     }
 }

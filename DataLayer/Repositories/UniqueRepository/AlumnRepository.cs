@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepository
 {
-    public class AlumnRepository : Repository<Alumn>, IAlumnRepository
+    public class AlumnRepository : Repository<AlumnDto>, IAlumnRepository
     {
-        public Alumn HämtaAlumnKonto(string användarnamn, string lösenord)
+        public AlumnDto HämtaAlumnKonto(string användarnamn, string lösenord)
         {
             using (var db = new DatabaseContext())
             {
@@ -30,20 +30,20 @@ namespace DataLayer.Repositories.UniqueRepository
             this.Context.SaveChanges();
         }
 
-        public IQueryable<AlumnProgram> HämtaAlumnerMedProgram(Program program)
+        public IQueryable<AlumnProgramDto> HämtaAlumnerMedProgram(ProgramDto program)
         {
             var db = new DatabaseContext();
 
             return db.AlumnProgram.Where(x => x.Program == program);
         }
 
-        public Alumn HämtaAlumnGenomID(int AlumnID)
+        public AlumnDto HämtaAlumnGenomID(int AlumnID)
         {
             var db = new DatabaseContext();
             return db.Alumner.Where(x => x.AnvändarID == AlumnID).FirstOrDefault();
         }
 
-        public void LäggTillAlumnMaillista(AlumnMaillista alumnMaillista)
+        public void LäggTillAlumnMaillista(AlumnMaillistaDto alumnMaillista)
         {
             var db = new DatabaseContext();
             db.AlumnMaillist.Add(alumnMaillista);

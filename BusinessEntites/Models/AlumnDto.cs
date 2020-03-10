@@ -9,7 +9,7 @@ using BusinessEntites.Models.Junction;
 
 namespace BusinessEntites.Models
 {
-    public class Alumn : IAlumn
+    public class AlumnDto : IAlumnDto
     {   
         [Key]
         public int AnvändarID { get; set; }
@@ -19,10 +19,10 @@ namespace BusinessEntites.Models
         public string Förnamn { get; set; }
         public string Efternamn { get; set; }
 
-        public virtual ICollection<AlumnProgram> AlumnProgram { get; set; }
-        public virtual ICollection<AlumnKompetens> AlumnKompetens { get; set; }
-        public virtual ICollection<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
-        public virtual ICollection<AlumnAktivitetBokning> AlumnAktivitet { get; set; }
-        public virtual ICollection<AlumnMaillista> AlumnMaillistor { get; set; }
+        public virtual ICollection<AlumnProgramDto> AlumnProgram { get; set; }
+        public virtual ICollection<AlumnKompetensDto> AlumnKompetens { get; set; }
+        public virtual ICollection<InformationsutskickAlumnDto> InformationsutskickAlumn { get; set; }
+        public virtual ICollection<AlumnAktivitetBokningDto> AlumnAktivitet { get; set; }
+        public virtual ICollection<AlumnMaillistaDto> AlumnMaillistor { get; set; }
     }
 }

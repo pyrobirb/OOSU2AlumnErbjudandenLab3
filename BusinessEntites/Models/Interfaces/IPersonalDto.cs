@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Interfaces
 {
-    public interface IPersonal
+    public interface IPersonalDto
     {
         string Förnamn { get; set; }
         string Efternamn { get; set; }
@@ -15,7 +15,7 @@ namespace BusinessEntites.Models.Interfaces
         string Användarnamn { get; set; }
         string Lösenord { get; set; }
 
-        ICollection<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }
+        ICollection<PersonalInformationsutskickDto> PersonalInformationsutskick { get; set; }
 
     }
 }

@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepository
 {
-    public class ProgramRepository : Repository<Program>, IProgramRepository
+    public class ProgramRepository : Repository<ProgramDto>, IProgramRepository
     {
         public ProgramRepository(DatabaseContext context) : base(context)
         {
 
         }
 
-        public IQueryable<Program> HämtaProgramFörAlumn(Alumn aktuellAlumn)
+        public IQueryable<ProgramDto> HämtaProgramFörAlumn(AlumnDto aktuellAlumn)
         {
             var db = new DatabaseContext();
             
@@ -32,7 +32,7 @@ namespace DataLayer.Repositories.UniqueRepository
         {
             using (var db = new DatabaseContext())
             {
-                Program program = new Program()
+                ProgramDto program = new ProgramDto()
                 {
                     Namn = text
                 };
@@ -41,7 +41,7 @@ namespace DataLayer.Repositories.UniqueRepository
 
                 db.Program.Attach(program);
 
-                AlumnProgram ap = new AlumnProgram()
+                AlumnProgramDto ap = new AlumnProgramDto()
                 {
                     AlumnID = id,
                     ProgramID = program.ProgramID
@@ -52,7 +52,7 @@ namespace DataLayer.Repositories.UniqueRepository
             }
         }
 
-        public void TaBortProgramFrånAlumn(Program selectedProgramToRemove, Alumn aktuellAlumn)
+        public void TaBortProgramFrånAlumn(ProgramDto selectedProgramToRemove, AlumnDto aktuellAlumn)
         {
             var db = new DatabaseContext();
 

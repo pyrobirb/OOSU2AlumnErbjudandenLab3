@@ -11,43 +11,43 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepository
 {
-    public class InformationsutskickRepository : Repository<Informationsutskick>, IInformationsutskickRepository
+    public class InformationsutskickRepository : Repository<InformationsutskickDto>, IInformationsutskickRepository
     {
-        public IQueryable<int> HämtaInformationsutskickIDFörAlumn(Alumn inloggadAlumn)
+        public IQueryable<int> HämtaInformationsutskickIDFörAlumn(AlumnDto inloggadAlumn)
         {
             var db = new DatabaseContext();
 
             return db.InformationsutskickAlumn.Where(x => x.AlumnID == inloggadAlumn.AnvändarID).Include(x => x.Informationsutskick).Select(x=> x.InformationsutskickID);
         }
 
-        public void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitet informationsutskickAktivitet)
+        public void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitetDto informationsutskickAktivitet)
         {
             var db = new DatabaseContext();
             db.InformationsutskickAktivitet.Add(informationsutskickAktivitet);
             db.SaveChanges();
         }
 
-        public void LäggTillInformationsutskickAlumn(InformationsutskickAlumn informationsutskickAlumn)
+        public void LäggTillInformationsutskickAlumn(InformationsutskickAlumnDto informationsutskickAlumn)
         {
             var db = new DatabaseContext();
             db.InformationsutskickAlumn.Add(informationsutskickAlumn);
             db.SaveChanges();
         }
 
-        public IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(Alumn aktuellAlumn)
+        public IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(AlumnDto aktuellAlumn)
         {
             var db = new DatabaseContext();
             return db.InformationsutskickAlumn.Where(x => x.AlumnID == aktuellAlumn.AnvändarID).Select(x => x.Informationsutskick.UtskicksID);
         }
 
-        public IQueryable<InformationsutskickAktivitet> HämtaUtskicksIDGenomAktivitetsID(int aktivitetsID)
+        public IQueryable<InformationsutskickAktivitetDto> HämtaUtskicksIDGenomAktivitetsID(int aktivitetsID)
         {
             var db = new DatabaseContext();
             //return db.InformationsutskickAktivitet.Where(x => x.AktivitetID == AktivitetsID);
             return db.InformationsutskickAktivitet.Where(x => x.AktivitetID == aktivitetsID);
         }
 
-        public IQueryable<InformationsutskickAlumn> HämtaAlumnIdGenomUtskicksId(int UtskicksId)
+        public IQueryable<InformationsutskickAlumnDto> HämtaAlumnIdGenomUtskicksId(int UtskicksId)
         {
             var db = new DatabaseContext();
             return db.InformationsutskickAlumn.Where(x => x.InformationsutskickID == UtskicksId);

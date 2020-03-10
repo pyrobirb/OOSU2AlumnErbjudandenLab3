@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepositoryInterface
 {
-    public interface IMaillistRepository : IRepository<Maillista>
+    public interface IMaillistRepository : IRepository<MaillistaDto>
     {
-        Maillista GetLastList();
-        IQueryable<AlumnMaillista> HämtaAlumnIdGenomMaillistaID(int maillistaID);
+        MaillistaDto GetLastList();
+        IQueryable<AlumnMaillistaDto> HämtaAlumnIdGenomMaillistaID(int maillistaID);
     }
 }

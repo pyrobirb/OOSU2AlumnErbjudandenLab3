@@ -9,14 +9,14 @@ using BusinessEntites.Models.Junction;
 
 namespace BusinessEntites.Models
 {
-    public class Program : IProgram
+    public class ProgramDto : IProgramDto
     {
         [Key]
         public int ProgramID { get; set; }
         public string Namn { get; set; }
 
         
-        public virtual ICollection<AlumnProgram> AlumnProgram { get; set; }
+        public virtual ICollection<AlumnProgramDto> AlumnProgram { get; set; }
         
     }
 }

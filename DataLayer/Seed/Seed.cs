@@ -19,7 +19,7 @@ namespace DataLayer.Seed
 
 
                 //Alumn
-                Alumn alumn1 = new Alumn()
+                AlumnDto alumn1 = new AlumnDto()
                 {
                     Användarnamn = "abc",
                     Lösenord = "123",
@@ -28,7 +28,7 @@ namespace DataLayer.Seed
                 };
                 dbContext.Alumner.Add(alumn1);
 
-                Alumn alumn2 = new Alumn()
+                AlumnDto alumn2 = new AlumnDto()
                 {
                     Användarnamn = "Palle@mail.com",
                     Lösenord = "123",
@@ -37,7 +37,7 @@ namespace DataLayer.Seed
                 };
                 dbContext.Alumner.Add(alumn2);
 
-                Alumn alumn3 = new Alumn()
+                AlumnDto alumn3 = new AlumnDto()
                 {
                     Användarnamn = "Banan@mail.com",
                     Lösenord = "123",
@@ -46,7 +46,7 @@ namespace DataLayer.Seed
                 };
                 dbContext.Alumner.Add(alumn3);
 
-                Alumn alumn4 = new Alumn()
+                AlumnDto alumn4 = new AlumnDto()
                 {
                     Användarnamn = "Tony@mail.com",
                     Lösenord = "123",
@@ -56,49 +56,49 @@ namespace DataLayer.Seed
                 dbContext.Alumner.Add(alumn4);
 
                 //Program
-                Program program0 = new Program()
+                ProgramDto program0 = new ProgramDto()
                 {
                     Namn = "Alla"
                 };
                 dbContext.Program.Add(program0);
 
-                Program program1 = new Program()
+                ProgramDto program1 = new ProgramDto()
                 {
                     Namn = "Systemarkitekt"
                 };
                 dbContext.Program.Add(program1);
 
-                Program program2 = new Program()
+                ProgramDto program2 = new ProgramDto()
                 {
                     Namn = "Systemvetare"
                 };
                 dbContext.Program.Add(program2);
 
-                Program program3 = new Program()
+                ProgramDto program3 = new ProgramDto()
                 {
                     Namn = "Dataekonom"
                 };
                 dbContext.Program.Add(program3);
 
-                dbContext.AlumnProgram.Add(new AlumnProgram()
+                dbContext.AlumnProgram.Add(new AlumnProgramDto()
                 {
                     Alumn = alumn1,
                     Program = program1
                 });
 
-                dbContext.AlumnProgram.Add(new AlumnProgram()
+                dbContext.AlumnProgram.Add(new AlumnProgramDto()
                 {
                     Alumn = alumn2,
                     Program = program2
                 });
 
-                dbContext.AlumnProgram.Add(new AlumnProgram()
+                dbContext.AlumnProgram.Add(new AlumnProgramDto()
                 {
                     Alumn = alumn3,
                     Program = program3
                 });
 
-                dbContext.AlumnProgram.Add(new AlumnProgram()
+                dbContext.AlumnProgram.Add(new AlumnProgramDto()
                 {
                     Alumn = alumn4,
                     Program = program2
@@ -106,18 +106,18 @@ namespace DataLayer.Seed
 
 
                 //Kompetens
-                Kompetens kompetens1 = new Kompetens()
+                KompetensDto kompetens1 = new KompetensDto()
                 {
                     Beskrivning = "Har 3 års erfarenhet som utvecklare i C#"
                 };
 
-                dbContext.AlumnKompetens.Add(new AlumnKompetens()
+                dbContext.AlumnKompetens.Add(new AlumnKompetensDto()
                 {
                     Alumn = alumn1,
                     Kompetens = kompetens1
                 });
                 //Personal
-                Personal personal = new Personal()
+                PersonalDto personal = new PersonalDto()
                 {
                     Användarnamn = "SuperAdmin",
                     Lösenord = "123",
@@ -126,7 +126,7 @@ namespace DataLayer.Seed
                 };
                 dbContext.Personal.Add(personal);
 
-                Personal personal1 = new Personal()
+                PersonalDto personal1 = new PersonalDto()
                 {
                     Användarnamn = "P5500",
                     Lösenord = "pers",
@@ -136,7 +136,7 @@ namespace DataLayer.Seed
                 dbContext.Personal.Add(personal1);
 
                 //Aktivitet
-                Aktivitet aktivitet1 = new Aktivitet()
+                AktivitetDto aktivitet1 = new AktivitetDto()
                 {
                     Titel = "Företagsmässa för nyexaminerade",
                     Ansvarig = "Milla Trop",
@@ -145,12 +145,12 @@ namespace DataLayer.Seed
                     Startdatum = new DateTime(2020, 08, 01),
                     Slutdatum = new DateTime(2020, 08, 02),
                     Beskrivning = "Träffa företag som är i behov av just dig! Knyt kontakter och maxa dina möjligheter",
-                    InformationsutskickAktivitet = new List<InformationsutskickAktivitet>(),
-                    AlumnAktivitet = new List<AlumnAktivitetBokning>()
+                    InformationsutskickAktivitet = new List<InformationsutskickAktivitetDto>(),
+                    AlumnAktivitet = new List<AlumnAktivitetBokningDto>()
                 };
                 dbContext.Aktiviteter.Add(aktivitet1);
 
-                Aktivitet aktivitet2 = new Aktivitet()
+                AktivitetDto aktivitet2 = new AktivitetDto()
                 {
                     Titel = "Föreläsning av Elon Musk",
                     Ansvarig = "Henry Jons",
@@ -159,8 +159,8 @@ namespace DataLayer.Seed
                     Startdatum = new DateTime(2020, 09, 01),
                     Slutdatum = new DateTime(2020, 09, 02),
                     Beskrivning = "Elon Musk kommer och berättar om sin spännande resa från ung entreprenör i Sydafrika till en av världens mest kända företagsledare.",
-                    InformationsutskickAktivitet = new List<InformationsutskickAktivitet>(),
-                    AlumnAktivitet = new List<AlumnAktivitetBokning>()
+                    InformationsutskickAktivitet = new List<InformationsutskickAktivitetDto>(),
+                    AlumnAktivitet = new List<AlumnAktivitetBokningDto>()
                 };
                 dbContext.Aktiviteter.Add(aktivitet2);
 

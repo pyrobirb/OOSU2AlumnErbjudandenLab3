@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Interfaces
 {
-    interface IMaillista
+    public interface IProgramDto
     {
-        int MaillistaID { get; set; }
-        string MaillistaNamn { get; set; }
-        ICollection<AlumnMaillista> AlumnMaillistor { get; set; }
+        int ProgramID { get; set; }
+        string Namn { get; set; }
+        ICollection<AlumnProgramDto> AlumnProgram { get; set; }
+
     }
 }

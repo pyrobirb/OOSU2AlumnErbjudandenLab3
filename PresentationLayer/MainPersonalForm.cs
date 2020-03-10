@@ -12,7 +12,7 @@ using BusinessEntites.Models;
 using BusinessEntites.Models.Junction;
 using BusinessLayer;
 using DataLayer.Contexts;
-using ProgramClass = BusinessEntites.Models.Program;
+using ProgramClass = BusinessEntites.Models.ProgramDto;
 
 namespace PresentationLayer
 {
@@ -38,7 +38,7 @@ namespace PresentationLayer
             VäljAktivitetComboBox.DisplayMember = "Titel";
             VäljAktivitetComboBox.ValueMember = "AktivitetsID";
 
-            var AktuellAktivitet = bm.HämtaAktivitetGenomID(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);          
+            var AktuellAktivitet = bm.HämtaAktivitetGenomID(((AktivitetDto)VäljAktivitetComboBox.SelectedItem).AktivitetsID);          
             
             ÄndraTitelTxtBox.Text = AktuellAktivitet.Titel;
             AnsvarigPersonComboBox.Text = AktuellAktivitet.Ansvarig;
@@ -53,7 +53,7 @@ namespace PresentationLayer
             VäljAktivitetSeAnmälancomboBox.DisplayMember = "Titel";
             VäljAktivitetSeAnmälancomboBox.ValueMember = "AktivitetsID";
 
-            List<Alumn> AktuellaAnmälda = bm.HämtaAnmälningarGenomAktivitetsID(((Aktivitet)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
+            List<AlumnDto> AktuellaAnmälda = bm.HämtaAnmälningarGenomAktivitetsID(((AktivitetDto)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
 
             AnmäldaAlumnerDataGridView.DataSource = AktuellaAnmälda;
             if (AnmäldaAlumnerDataGridView.ColumnCount > 0)
@@ -72,7 +72,7 @@ namespace PresentationLayer
             //Fyll alumner och aktivitet på Skapa utskickslista
             alumnCheckedListBox.Items.Clear();
 
-            foreach (Alumn alumn in bm.HämtaAllaAlumner())
+            foreach (AlumnDto alumn in bm.HämtaAllaAlumner())
             {
                 alumnCheckedListBox.Items.Add(alumn);
 
@@ -93,7 +93,7 @@ namespace PresentationLayer
 
             AlumnMaillistCheckedListBox.Items.Clear();
 
-            foreach (Alumn alumn in bm.HämtaAllaAlumner())
+            foreach (AlumnDto alumn in bm.HämtaAllaAlumner())
             {
                 AlumnMaillistCheckedListBox.Items.Add(alumn);
 
@@ -137,7 +137,7 @@ namespace PresentationLayer
                 MessageBox.Show("Var vänlig fyll i alla textrutor");
             else
             {
-                Aktivitet aktivitet = new Aktivitet()
+                AktivitetDto aktivitet = new AktivitetDto()
                 {
                     Titel = TitelAktivitetTxtBox.Text,
                     Ansvarig = AnsvarigPersonTxtBox.Text,
@@ -146,8 +146,8 @@ namespace PresentationLayer
                     Startdatum = StarttidDateTimePicker.Value,
                     Slutdatum = SluttidDateTimePicker.Value,
                     Beskrivning = BeskrivningTextBox.Text,
-                    InformationsutskickAktivitet = new List<InformationsutskickAktivitet>(),
-                    AlumnAktivitet = new List<AlumnAktivitetBokning>()
+                    InformationsutskickAktivitet = new List<InformationsutskickAktivitetDto>(),
+                    AlumnAktivitet = new List<AlumnAktivitetBokningDto>()
 
                 };
 
@@ -165,7 +165,7 @@ namespace PresentationLayer
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            Aktivitet uppdateradAktivitet = new Aktivitet()
+            AktivitetDto uppdateradAktivitet = new AktivitetDto()
             {
                 Titel = ÄndraTitelTxtBox.Text,
                 Ansvarig = AnsvarigPersonComboBox.Text,
@@ -174,11 +174,11 @@ namespace PresentationLayer
                 Startdatum = StarttidDateTime.Value,
                 Slutdatum = SlutdatumÄndraDateTime.Value,
                 Beskrivning = BeskrivningÄndraTextBox.Text,
-                InformationsutskickAktivitet = new List<InformationsutskickAktivitet>(),
-                AlumnAktivitet = new List<AlumnAktivitetBokning>()
+                InformationsutskickAktivitet = new List<InformationsutskickAktivitetDto>(),
+                AlumnAktivitet = new List<AlumnAktivitetBokningDto>()
             };
 
-            Aktivitet aktivitetAttTaBort = bm.HämtaAktivitetGenomID(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            AktivitetDto aktivitetAttTaBort = bm.HämtaAktivitetGenomID(((AktivitetDto)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
 
 
             bm.UpdateAktivitet(aktivitetAttTaBort, uppdateradAktivitet);
@@ -190,7 +190,7 @@ namespace PresentationLayer
             VäljAktivitetComboBox.DisplayMember = "Titel";
             VäljAktivitetComboBox.ValueMember = "AktivitetsID";
 
-            var AktuellAktivitet = bm.HämtaAktivitetGenomID(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            var AktuellAktivitet = bm.HämtaAktivitetGenomID(((AktivitetDto)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
 
             ÄndraTitelTxtBox.Text = AktuellAktivitet.Titel;
             AnsvarigPersonComboBox.Text = AktuellAktivitet.Ansvarig;
@@ -203,7 +203,7 @@ namespace PresentationLayer
 
         private void VäljAktivitetComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var AktuellAktivitet = bm.HämtaAktivitetGenomID(((Aktivitet)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
+            var AktuellAktivitet = bm.HämtaAktivitetGenomID(((AktivitetDto)VäljAktivitetComboBox.SelectedItem).AktivitetsID);
             ÄndraTitelTxtBox.Text = AktuellAktivitet.Titel;
             AnsvarigPersonComboBox.Text = AktuellAktivitet.Ansvarig;
             KontaktpersonComboBox.Text = AktuellAktivitet.Kontaktperson;
@@ -225,12 +225,12 @@ namespace PresentationLayer
 
         private void flyttaAlumner_Click(object sender, EventArgs e)
         {
-            foreach (Alumn alumn in alumnCheckedListBox.CheckedItems)
+            foreach (AlumnDto alumn in alumnCheckedListBox.CheckedItems)
             {
                 if (!valdaAlumnerListBox.Items.Contains(alumn))
                 {
-                    List<Alumn> alumner = new List<Alumn>();
-                    foreach (Alumn alumn1 in valdaAlumnerListBox.Items)
+                    List<AlumnDto> alumner = new List<AlumnDto>();
+                    foreach (AlumnDto alumn1 in valdaAlumnerListBox.Items)
                     {
                         alumner.Add(alumn1);
                     }
@@ -270,7 +270,7 @@ namespace PresentationLayer
 
         private void btnCreateAlumnCSV_Click(object sender, EventArgs e)
         {
-            Informationsutskick informationsutskick = new Informationsutskick()
+            InformationsutskickDto informationsutskick = new InformationsutskickDto()
             {
                 UtskicksNamn = NamnMailListaTextBox.Text,
                 UtskickDatum = DateTime.Now
@@ -278,17 +278,17 @@ namespace PresentationLayer
             bm.LäggTillInformationsutskick(informationsutskick);
             bm.Commit();
 
-            InformationsutskickAktivitet informationsutskickAktivitet = new InformationsutskickAktivitet()
+            InformationsutskickAktivitetDto informationsutskickAktivitet = new InformationsutskickAktivitetDto()
             {
-                AktivitetID = (bm.HämtaAktivitetGenomID(((Aktivitet)AktivitetComboBox.SelectedItem).AktivitetsID)).AktivitetsID,
+                AktivitetID = (bm.HämtaAktivitetGenomID(((AktivitetDto)AktivitetComboBox.SelectedItem).AktivitetsID)).AktivitetsID,
                 InformationsutskickID = informationsutskick.UtskicksID
             };
             bm.LäggTillInformationsutskickAktivitet(informationsutskickAktivitet);
             
 
-            foreach (Alumn alumn in valdaAlumnerListBox.Items)
+            foreach (AlumnDto alumn in valdaAlumnerListBox.Items)
             {
-                InformationsutskickAlumn informationsutskickAlumn = new InformationsutskickAlumn()
+                InformationsutskickAlumnDto informationsutskickAlumn = new InformationsutskickAlumnDto()
                 {
                     AlumnID = (bm.HämtaAlumnMedID(alumn.AnvändarID)).AnvändarID,
                     InformationsutskickID = (bm.HämtaInformationsutskickMedID(informationsutskick.UtskicksID)).UtskicksID
@@ -298,8 +298,8 @@ namespace PresentationLayer
 
             bm.Commit();
 
-            List<Alumn> alumner = new List<Alumn>();
-            foreach (Alumn alumn in valdaAlumnerListBox.Items)
+            List<AlumnDto> alumner = new List<AlumnDto>();
+            foreach (AlumnDto alumn in valdaAlumnerListBox.Items)
             {
                 alumner.Add(alumn);
             }
@@ -338,8 +338,8 @@ namespace PresentationLayer
             if (comboBoxFilterAlumns.SelectedIndex == 0 )
             {
                 alumnCheckedListBox.Items.Clear();
-                IEnumerable<Alumn> hämtadeAlumner = bm.HämtaAllaAlumner();
-                foreach (Alumn alumn in hämtadeAlumner)
+                IEnumerable<AlumnDto> hämtadeAlumner = bm.HämtaAllaAlumner();
+                foreach (AlumnDto alumn in hämtadeAlumner)
                 {
                     if (alumn != null)
                     {
@@ -351,7 +351,7 @@ namespace PresentationLayer
             else
             {
                 alumnCheckedListBox.Items.Clear();
-                foreach (Alumn alumn in AlumnerMedProgramFilter())
+                foreach (AlumnDto alumn in AlumnerMedProgramFilter())
                 {
                     if (alumn != null)
                     {
@@ -364,7 +364,7 @@ namespace PresentationLayer
             alumnCheckedListBox.DisplayMember = "Förnamn";
             alumnCheckedListBox.ValueMember = "AnvändarID";
         }
-        public List<Alumn> AlumnerMedProgramFilter()
+        public List<AlumnDto> AlumnerMedProgramFilter()
         {
             return bm.HämtaAlumnerMedProgram((ProgramClass)comboBoxFilterAlumns.SelectedItem);
         }
@@ -378,7 +378,7 @@ namespace PresentationLayer
         {
             
 
-            AnmäldaAlumnerDataGridView.DataSource = bm.HämtaAnmälningarGenomAktivitetsID(((Aktivitet)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
+            AnmäldaAlumnerDataGridView.DataSource = bm.HämtaAnmälningarGenomAktivitetsID(((AktivitetDto)VäljAktivitetSeAnmälancomboBox.SelectedItem).AktivitetsID);
 
 
         }
@@ -388,7 +388,7 @@ namespace PresentationLayer
             valdaAlumnerListBox.BeginUpdate();
             ArrayList vSelectedItems = new ArrayList(valdaAlumnerListBox.SelectedItems);
             ArrayList itemsToStore = new ArrayList(valdaAlumnerListBox.Items);
-            foreach (Alumn item in vSelectedItems)
+            foreach (AlumnDto item in vSelectedItems)
             {
                 itemsToStore.Remove(item);
             }
@@ -402,7 +402,7 @@ namespace PresentationLayer
         {
             if (GamlaListorComboBox.SelectedItem != null)
             {
-                List<Alumn> Alumner = bm.HämtaAlumnerFrånLista(((Informationsutskick)GamlaListorComboBox.SelectedItem).UtskicksID);
+                List<AlumnDto> Alumner = bm.HämtaAlumnerFrånLista(((InformationsutskickDto)GamlaListorComboBox.SelectedItem).UtskicksID);
                 MailingListaALumnerlistBox.DataSource = Alumner;
                 MailingListaALumnerlistBox.DisplayMember = "Förnamn";
                 MailingListaALumnerlistBox.ValueMember = "AnvändarID";
@@ -414,7 +414,7 @@ namespace PresentationLayer
         {
             if (GamlaListorComboBox.SelectedItem != null)
             {
-                List<Alumn> Alumner2 = bm.HämtaAlumnerFrånLista(((Informationsutskick)GamlaListorComboBox.SelectedItem).UtskicksID);
+                List<AlumnDto> Alumner2 = bm.HämtaAlumnerFrånLista(((InformationsutskickDto)GamlaListorComboBox.SelectedItem).UtskicksID);
                 valdaAlumnerListBox.DataSource = Alumner2;
                 valdaAlumnerListBox.DisplayMember = "Förnamn";
                 valdaAlumnerListBox.ValueMember = "AnvändarID";              
@@ -428,12 +428,12 @@ namespace PresentationLayer
 
         private void VäljALumnMailBtn_Click(object sender, EventArgs e)
         {
-            foreach (Alumn alumn in AlumnMaillistCheckedListBox.CheckedItems)
+            foreach (AlumnDto alumn in AlumnMaillistCheckedListBox.CheckedItems)
             {
                 if (!MailingListaALumnerlistBox.Items.Contains(alumn))
                 {
-                    List<Alumn> alumner = new List<Alumn>();
-                    foreach (Alumn alumn1 in MailingListaALumnerlistBox.Items)
+                    List<AlumnDto> alumner = new List<AlumnDto>();
+                    foreach (AlumnDto alumn1 in MailingListaALumnerlistBox.Items)
                     {
                         alumner.Add(alumn1);
                     }
@@ -458,8 +458,8 @@ namespace PresentationLayer
             if (FilterAlumnMailComboBox.SelectedIndex == 0)
             {
                 AlumnMaillistCheckedListBox.Items.Clear();
-                IEnumerable<Alumn> hämtadeAlumner = bm.HämtaAllaAlumner();
-                foreach (Alumn alumn in hämtadeAlumner)
+                IEnumerable<AlumnDto> hämtadeAlumner = bm.HämtaAllaAlumner();
+                foreach (AlumnDto alumn in hämtadeAlumner)
                 {
                     if (alumn != null)
                     {
@@ -471,7 +471,7 @@ namespace PresentationLayer
             else
             {
                 AlumnMaillistCheckedListBox.Items.Clear();
-                foreach (Alumn alumn in AlumnerMedProgramFilterMail())
+                foreach (AlumnDto alumn in AlumnerMedProgramFilterMail())
                 {
                     if (alumn != null)
                     {
@@ -484,7 +484,7 @@ namespace PresentationLayer
             AlumnMaillistCheckedListBox.DisplayMember = "Förnamn";
             AlumnMaillistCheckedListBox.ValueMember = "AnvändarID";
         }
-        public List<Alumn> AlumnerMedProgramFilterMail()
+        public List<AlumnDto> AlumnerMedProgramFilterMail()
         {
             return bm.HämtaAlumnerMedProgram((ProgramClass)FilterAlumnMailComboBox.SelectedItem);
         }
@@ -507,18 +507,18 @@ namespace PresentationLayer
             else
             {
 
-                Maillista maillista = new Maillista()
+                MaillistaDto maillista = new MaillistaDto()
                 {
                     MaillistaNamn = NamnMailListaTextBox.Text,
-                    AlumnMaillistor = new List<AlumnMaillista>()
+                    AlumnMaillistor = new List<AlumnMaillistaDto>()
                 };
 
                 bm.LäggTillMaillista(maillista);
                 bm.Commit();
 
-                foreach (Alumn alumn in MailingListaALumnerlistBox.Items)
+                foreach (AlumnDto alumn in MailingListaALumnerlistBox.Items)
                 {
-                    AlumnMaillista alumnMaillista = new AlumnMaillista()
+                    AlumnMaillistaDto alumnMaillista = new AlumnMaillistaDto()
                     {
                         MaillistaID = bm.HämtaSenasteMaillista().MaillistaID,
                         AlumnID = (bm.HämtaAlumnMedID(alumn.AnvändarID)).AnvändarID
@@ -528,8 +528,8 @@ namespace PresentationLayer
 
                 bm.Commit();
 
-                List<Alumn> alumner = new List<Alumn>();
-                foreach (Alumn alumn in valdaAlumnerListBox.Items)
+                List<AlumnDto> alumner = new List<AlumnDto>();
+                foreach (AlumnDto alumn in valdaAlumnerListBox.Items)
                 {
                     alumner.Add(alumn);
                 }
@@ -561,7 +561,7 @@ namespace PresentationLayer
             MailingListaALumnerlistBox.BeginUpdate();
             ArrayList vSelectedItems = new ArrayList(MailingListaALumnerlistBox.SelectedItems);
             ArrayList itemsToStore = new ArrayList(MailingListaALumnerlistBox.Items);
-            foreach (Alumn item in vSelectedItems)
+            foreach (AlumnDto item in vSelectedItems)
             {
                 itemsToStore.Remove(item);
             }
@@ -575,7 +575,7 @@ namespace PresentationLayer
         {
             if (GamlaListorComboBox.SelectedItem != null)
             {
-                List<Alumn> Alumner3 = bm.HämtaAlumnerFrånMailLista(((Maillista)GamlaListorComboBox.SelectedItem).MaillistaID);
+                List<AlumnDto> Alumner3 = bm.HämtaAlumnerFrånMailLista(((MaillistaDto)GamlaListorComboBox.SelectedItem).MaillistaID);
                 MailingListaALumnerlistBox.DataSource = Alumner3;
                 MailingListaALumnerlistBox.DisplayMember = "Förnamn";
                 MailingListaALumnerlistBox.ValueMember = "AnvändarID";

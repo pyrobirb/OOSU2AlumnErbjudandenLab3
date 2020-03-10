@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 namespace DataLayer.Repositories.UniqueRepositoryInterface
 {
 
-    public interface IAktivitetRepository : IRepository<Aktivitet>
+    public interface IAktivitetRepository : IRepository<AktivitetDto>
     {
-        void UpdateAktivitet(Aktivitet aktivitet, Aktivitet nyaktivitet);
+        void UpdateAktivitet(AktivitetDto aktivitet, AktivitetDto nyaktivitet);
 
-        IQueryable<AlumnAktivitetBokning> HämtaBokningFörAlumn(Alumn inloggadAlumn);
-        void TaBortAktivitetFrånAlumn(Aktivitet aktivitet, Alumn aktuellAlumn);
-        void LäggTillAlumnAktivitetBokning(AlumnAktivitetBokning alumnAktivitetBokning);
-        IQueryable<int> HämtaAktiviteterGenomAlumn(Alumn inloggadAlumn);
-        Aktivitet HämtaAktivitetIDGenomInformationsutskicksID(int utskicksID);
-        IQueryable<AlumnAktivitetBokning> HämtaAlumnGenomAktivitetsID(int aktivitetsID);
+        IQueryable<AlumnAktivitetBokningDto> HämtaBokningFörAlumn(AlumnDto inloggadAlumn);
+        void TaBortAktivitetFrånAlumn(AktivitetDto aktivitet, AlumnDto aktuellAlumn);
+        void LäggTillAlumnAktivitetBokning(AlumnAktivitetBokningDto alumnAktivitetBokning);
+        IQueryable<int> HämtaAktiviteterGenomAlumn(AlumnDto inloggadAlumn);
+        AktivitetDto HämtaAktivitetIDGenomInformationsutskicksID(int utskicksID);
+        IQueryable<AlumnAktivitetBokningDto> HämtaAlumnGenomAktivitetsID(int aktivitetsID);
     }
 }

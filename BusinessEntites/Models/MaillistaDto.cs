@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models
 {
-    public class Maillista : IMaillista
+    public class MaillistaDto : IMaillistaDto
     {
         [Key]
         public int MaillistaID { get; set; }
         public string MaillistaNamn { get; set; }
-        public virtual ICollection<AlumnMaillista> AlumnMaillistor { get; set; }
+        public virtual ICollection<AlumnMaillistaDto> AlumnMaillistor { get; set; }
     }
 }

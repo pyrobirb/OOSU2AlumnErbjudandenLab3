@@ -25,100 +25,100 @@ namespace DataLayer.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //AlumnProgram
-            modelBuilder.Entity<AlumnProgram>()
+            modelBuilder.Entity<AlumnProgramDto>()
                 .HasKey(a => new { a.AlumnID, a.ProgramID });
 
-            modelBuilder.Entity<AlumnProgram>()
+            modelBuilder.Entity<AlumnProgramDto>()
                 .HasOne(ap => ap.Alumn)
                 .WithMany(a => a.AlumnProgram)
                 .HasForeignKey(ap => ap.AlumnID);
 
-            modelBuilder.Entity<AlumnProgram>()
+            modelBuilder.Entity<AlumnProgramDto>()
                 .HasOne(ap => ap.Program)
                 .WithMany(p => p.AlumnProgram)
                 .HasForeignKey(ap => ap.ProgramID);
 
 
             //AlumnKompetens
-            modelBuilder.Entity<AlumnKompetens>()
+            modelBuilder.Entity<AlumnKompetensDto>()
                 .HasKey(a => new { a.AlumnID, a.KompetensID });
 
-            modelBuilder.Entity<AlumnKompetens>()
+            modelBuilder.Entity<AlumnKompetensDto>()
                 .HasOne(ak => ak.Alumn)
                 .WithMany(a => a.AlumnKompetens)
                 .HasForeignKey(ak => ak.AlumnID);
 
-            modelBuilder.Entity<AlumnKompetens>()
+            modelBuilder.Entity<AlumnKompetensDto>()
                 .HasOne(ak => ak.Kompetens)
                 .WithMany(k => k.AlumnKompetens)
                 .HasForeignKey(ak => ak.KompetensID);
 
             //InformationsutskickAlumn
-            modelBuilder.Entity<InformationsutskickAlumn>()
+            modelBuilder.Entity<InformationsutskickAlumnDto>()
                 .HasKey(a => new { a.AlumnID, a.InformationsutskickID });
 
-            modelBuilder.Entity<InformationsutskickAlumn>()
+            modelBuilder.Entity<InformationsutskickAlumnDto>()
                 .HasOne(ia => ia.Alumn)
                 .WithMany(i => i.InformationsutskickAlumn)
                 .HasForeignKey(ia => ia.AlumnID);
 
-            modelBuilder.Entity<InformationsutskickAlumn>()
+            modelBuilder.Entity<InformationsutskickAlumnDto>()
                 .HasOne(ia => ia.Informationsutskick)
                 .WithMany(i => i.InformationsutskickAlumn)
                 .HasForeignKey(ia => ia.InformationsutskickID);
 
             //PersonalInformationsutskick
-            modelBuilder.Entity<PersonalInformationsutskick>()
+            modelBuilder.Entity<PersonalInformationsutskickDto>()
                 .HasKey(p => new { p.PersonalID, p.InformationsutskickID });
 
-            modelBuilder.Entity<PersonalInformationsutskick>()
+            modelBuilder.Entity<PersonalInformationsutskickDto>()
                 .HasOne(pi => pi.Personal)
                 .WithMany(i => i.PersonalInformationsutskick)
                 .HasForeignKey(pi => pi.PersonalID);
 
-            modelBuilder.Entity<PersonalInformationsutskick>()
+            modelBuilder.Entity<PersonalInformationsutskickDto>()
                 .HasOne(pi => pi.Informationsutskick)
                 .WithMany(i => i.PersonalInformationsutskick)
                 .HasForeignKey(pi => pi.InformationsutskickID);
 
             //InformationsutskickAktivitet
-            modelBuilder.Entity<InformationsutskickAktivitet>()
+            modelBuilder.Entity<InformationsutskickAktivitetDto>()
                 .HasKey(i => new { i.InformationsutskickID, i.AktivitetID });
 
-            modelBuilder.Entity<InformationsutskickAktivitet>()
+            modelBuilder.Entity<InformationsutskickAktivitetDto>()
                 .HasOne(ia => ia.Informationsutskick)
                 .WithMany(i => i.InformationsutskickAktivitet)
                 .HasForeignKey(ia => ia.InformationsutskickID);
 
-            modelBuilder.Entity<InformationsutskickAktivitet>()
+            modelBuilder.Entity<InformationsutskickAktivitetDto>()
                 .HasOne(pi => pi.Aktivitet)
                 .WithMany(i => i.InformationsutskickAktivitet)
                 .HasForeignKey(pi => pi.AktivitetID);
 
             //AlumnAktivitet
-            modelBuilder.Entity<AlumnAktivitetBokning>()
+            modelBuilder.Entity<AlumnAktivitetBokningDto>()
                 .HasKey(i => new { i.AlumnID, i.AktivitetID });
 
-            modelBuilder.Entity<AlumnAktivitetBokning>()
+            modelBuilder.Entity<AlumnAktivitetBokningDto>()
                 .HasOne(aa => aa.Alumn)
                 .WithMany(i => i.AlumnAktivitet)
                 .HasForeignKey(aa => aa.AlumnID);
 
-            modelBuilder.Entity<AlumnAktivitetBokning>()
+            modelBuilder.Entity<AlumnAktivitetBokningDto>()
                 .HasOne(pi => pi.Aktivitet)
                 .WithMany(i => i.AlumnAktivitet)
                 .HasForeignKey(pi => pi.AktivitetID);
 
             //AlumnMaillista
-            modelBuilder.Entity<AlumnMaillista>()
+            modelBuilder.Entity<AlumnMaillistaDto>()
                 .HasKey(i => new { i.AlumnID, i.MaillistaID });
 
-            modelBuilder.Entity<AlumnMaillista>()
+            modelBuilder.Entity<AlumnMaillistaDto>()
                 .HasOne(aa => aa.Alumn)
                 .WithMany(i => i.AlumnMaillistor)
                 .HasForeignKey(aa => aa.AlumnID);
 
-            modelBuilder.Entity<AlumnMaillista>()
+            modelBuilder.Entity<AlumnMaillistaDto>()
                 .HasOne(pi => pi.Maillista)
                 .WithMany(i => i.AlumnMaillistor)
                 .HasForeignKey(pi => pi.MaillistaID);
@@ -126,20 +126,20 @@ namespace DataLayer.Contexts
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Aktivitet> Aktiviteter { get; set; }
-        public DbSet<Alumn> Alumner { get; set; }
-        public DbSet<Informationsutskick> Informationsutskick { get; set; }
-        public DbSet<Kompetens> Kompetenser { get; set; }
-        public DbSet<Personal> Personal { get; set; }
-        public DbSet<Program> Program { get; set; }
-        public DbSet<AlumnProgram> AlumnProgram { get; set; }
-        public DbSet<AlumnKompetens> AlumnKompetens { get; set; }
-        public DbSet<Maillista> Maillistor { get; set; }
-        public DbSet<InformationsutskickAlumn> InformationsutskickAlumn { get; set; }
-        public DbSet<PersonalInformationsutskick> PersonalInformationsutskick { get; set; }
-        public DbSet<InformationsutskickAktivitet> InformationsutskickAktivitet { get; set; }
-        public DbSet<AlumnAktivitetBokning> AlumnAktivitet { get; set; }
-        public DbSet<AlumnMaillista> AlumnMaillist { get; set; }
+        public DbSet<AktivitetDto> Aktiviteter { get; set; }
+        public DbSet<AlumnDto> Alumner { get; set; }
+        public DbSet<InformationsutskickDto> Informationsutskick { get; set; }
+        public DbSet<KompetensDto> Kompetenser { get; set; }
+        public DbSet<PersonalDto> Personal { get; set; }
+        public DbSet<ProgramDto> Program { get; set; }
+        public DbSet<AlumnProgramDto> AlumnProgram { get; set; }
+        public DbSet<AlumnKompetensDto> AlumnKompetens { get; set; }
+        public DbSet<MaillistaDto> Maillistor { get; set; }
+        public DbSet<InformationsutskickAlumnDto> InformationsutskickAlumn { get; set; }
+        public DbSet<PersonalInformationsutskickDto> PersonalInformationsutskick { get; set; }
+        public DbSet<InformationsutskickAktivitetDto> InformationsutskickAktivitet { get; set; }
+        public DbSet<AlumnAktivitetBokningDto> AlumnAktivitet { get; set; }
+        public DbSet<AlumnMaillistaDto> AlumnMaillist { get; set; }
 
 
 

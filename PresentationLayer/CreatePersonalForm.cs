@@ -32,7 +32,7 @@ namespace PresentationLayer
                 MessageBox.Show("Var vänlig fyll i alla textrutor");
             else
             {
-                Personal personal = new Personal()
+                PersonalDto personal = new PersonalDto()
                 {
                     Användarnamn = AnvändarnamnTxtBox.Text,
                     Lösenord = LösenordTxtBox.Text,

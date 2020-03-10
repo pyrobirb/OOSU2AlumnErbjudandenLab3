@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepository
 {
-    public class PersonalRepository : Repository<Personal>, IPersonalRepository
+    public class PersonalRepository : Repository<PersonalDto>, IPersonalRepository
     {
-        public Personal HämtaPersonalKonto(string användarnamn, string lösenord)
+        public PersonalDto HämtaPersonalKonto(string användarnamn, string lösenord)
         {
             using (var db = new DatabaseContext())
             {
