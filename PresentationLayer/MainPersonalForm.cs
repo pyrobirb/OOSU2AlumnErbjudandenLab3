@@ -118,6 +118,12 @@ namespace PresentationLayer
             MailingListaALumnerlistBox.DisplayMember = "UtskicksNamn";
             MailingListaALumnerlistBox.ValueMember = "UtskicksID";
 
+            //Fyll på maillistor
+
+            GamlaListorComboBox.DataSource = bm.HämtaAllaMaillistor();
+            GamlaListorComboBox.DisplayMember = "Maillistanamn";
+            GamlaListorComboBox.ValueMember = "MaillistaID";
+
 
         }
 
@@ -597,6 +603,11 @@ namespace PresentationLayer
         private void createPersonalAccBtn_Click(object sender, EventArgs e)
         {
             ShowForm(new CreatePersonalForm());
+        }
+
+        private void tabCreateMailingList_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
