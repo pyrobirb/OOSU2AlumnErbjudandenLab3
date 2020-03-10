@@ -12,7 +12,7 @@
 
             <StackPanel>
                 <StackPanel Margin="0 5" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Label>Användarnamn/Epostadress:</Label>
+                    <Label>Epostadress:</Label>
                     <TextBox Width="200" Text="{Binding Alumn.Användarnamn}"></TextBox>
                 </StackPanel>
                 <StackPanel  Margin="0 5" Orientation="Horizontal" HorizontalAlignment="Right">

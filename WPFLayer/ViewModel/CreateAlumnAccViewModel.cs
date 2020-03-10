@@ -23,8 +23,6 @@ namespace WPFLayer.ViewModel
 
         public bool SkapaAlumnKonto()
         {
-
-
             if (SparaAlumn(Alumn))
             {
                 return true;
@@ -38,22 +36,29 @@ namespace WPFLayer.ViewModel
 
             var mapper = MapperConfig.GetMapper();
 
-            Alumn alumn = new Alumn()
+            if ((Alumn.Förnamn == null || Alumn.Förnamn == "" || Alumn.Efternamn == null || Alumn.Efternamn == "" || Alumn.Användarnamn == null || Alumn.Användarnamn == "" || Alumn.Lösenord == null || Alumn.Lösenord == "") || !(RegexUtilities.IsValidEmail(Alumn.Användarnamn)))
             {
-                Förnamn = Alumn.Förnamn,
-                Efternamn = Alumn.Efternamn,
-                Användarnamn = Alumn.Användarnamn,
-                Lösenord = Alumn.Lösenord
-            };
-            BusinessManager bm = new BusinessManager();
-                
-            bm.LäggTillAlumn(mapper.Map<Alumn, AlumnDTO>(alumn));
-
-            if (bm.HämtaAlumnKonto(alumn.Användarnamn, alumn.Lösenord).Användarnamn == alumn.Användarnamn)
-            {
-                return true;
+                return false;
             }
-            else return false;
+            else
+            {
+                Alumn alumn = new Alumn()
+                {
+                    Förnamn = Alumn.Förnamn,
+                    Efternamn = Alumn.Efternamn,
+                    Användarnamn = Alumn.Användarnamn,
+                    Lösenord = Alumn.Lösenord
+                };
+                BusinessManager bm = new BusinessManager();
+
+                bm.LäggTillAlumn(mapper.Map<Alumn, AlumnDTO>(alumn));
+
+                if (bm.HämtaAlumnKonto(alumn.Användarnamn, alumn.Lösenord).Användarnamn == alumn.Användarnamn)
+                {
+                    return true;
+                }
+                else return false;
+            }
 
         }
 

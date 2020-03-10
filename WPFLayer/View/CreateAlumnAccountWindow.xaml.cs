@@ -37,7 +37,7 @@ namespace WPFLayer.View
             }
             else
             {
-                MessageBox.Show("Något gick fel, vänligen försök igen!");
+                MessageBox.Show("Något gick fel, vänligen försök igen! Se till att alla rutor är ifyllda. Se även till att eposten är en giltig epostadress.");
 
             }
 
