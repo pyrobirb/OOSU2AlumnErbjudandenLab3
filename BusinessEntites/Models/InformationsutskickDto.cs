@@ -9,16 +9,16 @@ using BusinessEntites.Models.Junction;
 
 namespace BusinessEntites.Models
 {
-    public class InformationsutskickDto : IInformationsutskickDto
+    public class InformationsutskickDTO : IInformationsutskickDTO
     {
         [Key]
         public int UtskicksID { get; set; }
         public string UtskicksNamn { get; set; }
         public DateTime UtskickDatum { get; set; }
-        public virtual ICollection<AlumnDto> Alumner { get; set; }
-        public virtual ICollection<InformationsutskickAlumnDto> InformationsutskickAlumn { get; set; }
-        public virtual ICollection<PersonalInformationsutskickDto> PersonalInformationsutskick { get; set; }
-        public virtual ICollection<InformationsutskickAktivitetDto> InformationsutskickAktivitet { get; set; }
+        public virtual ICollection<AlumnDTO> Alumner { get; set; }
+        public virtual ICollection<InformationsutskickAlumnDTO> InformationsutskickAlumn { get; set; }
+        public virtual ICollection<PersonalInformationsutskickDTO> PersonalInformationsutskick { get; set; }
+        public virtual ICollection<InformationsutskickAktivitetDTO> InformationsutskickAktivitet { get; set; }
 
 
 

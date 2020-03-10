@@ -35,7 +35,7 @@ namespace PresentationLayer
             {
                 if (RegexUtilities.IsValidEmail(AnvändarnamnTxtBox.Text) == true)
                 {
-                    AlumnDto alumn = new AlumnDto()
+                    AlumnDTO alumn = new AlumnDTO()
                     {
                         Användarnamn = AnvändarnamnTxtBox.Text,
                         Lösenord = LösenordTxtBox.Text,

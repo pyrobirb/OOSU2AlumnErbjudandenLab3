@@ -9,7 +9,7 @@ namespace DataLayer
 {
     public interface IIOFileSystem
     {
-        void SkrivaAlumnAktivitetTillCSVFil(string Aktivitettitel, List<AlumnDto> alumner);
+        void SkrivaAlumnAktivitetTillCSVFil(string Aktivitettitel, List<AlumnDTO> alumner);
 
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepository
 {
-    public class MaillistaRepository : Repository<MaillistaDto>, IMaillistRepository
+    public class MaillistaRepository : Repository<MaillistaDTO>, IMaillistRepository
     {
 
         public MaillistaRepository(DatabaseContext context) : base(context)
@@ -18,7 +18,7 @@ namespace DataLayer.Repositories.UniqueRepository
 
         }
 
-        public MaillistaDto GetLastList()
+        public MaillistaDTO GetLastList()
         {
 
             var db = new DatabaseContext();
@@ -28,7 +28,7 @@ namespace DataLayer.Repositories.UniqueRepository
 
         }
 
-        public IQueryable<AlumnMaillistaDto> HämtaAlumnIdGenomMaillistaID(int maillistaID)
+        public IQueryable<AlumnMaillistaDTO> HämtaAlumnIdGenomMaillistaID(int maillistaID)
         {
             var db = new DatabaseContext();
             return db.AlumnMaillist.Where(x => x.MaillistaID == maillistaID);

@@ -11,7 +11,7 @@ using BusinessEntites.Models;
 using BusinessEntites.Models.Junction;
 using BusinessLayer;
 using DataLayer.Contexts;
-using ProgramClass = BusinessEntites.Models.ProgramDto;
+using ProgramClass = BusinessEntites.Models.ProgramDTO;
 
 namespace PresentationLayer
 {
@@ -81,7 +81,7 @@ namespace PresentationLayer
            
             aktivitetsBeskrivningTextBox.Text = "";
             
-            AktivitetDto valdAktivitet = (AktivitetDto)informationsutskickListBox.SelectedItem;
+            AktivitetDTO valdAktivitet = (AktivitetDTO)informationsutskickListBox.SelectedItem;
             if (valdAktivitet != null)
             {
                 aktivitetsBeskrivningTextBox.Text = valdAktivitet.Beskrivning;
@@ -92,9 +92,9 @@ namespace PresentationLayer
 
         private void btnBookActivity_Click(object sender, EventArgs e)
         {
-            AktivitetDto bokadAktivitet = (AktivitetDto)informationsutskickListBox.SelectedItem;
+            AktivitetDTO bokadAktivitet = (AktivitetDTO)informationsutskickListBox.SelectedItem;
 
-            AlumnAktivitetBokningDto alumnAktivitetBokning = new AlumnAktivitetBokningDto()
+            AlumnAktivitetBokningDTO alumnAktivitetBokning = new AlumnAktivitetBokningDTO()
             {
                 AlumnID = GLOBALS.AktuellAlumn.AnvändarID,
                 AktivitetID = bokadAktivitet.AktivitetsID,
@@ -107,7 +107,7 @@ namespace PresentationLayer
 
         private void informationsutskickListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AktivitetDto valdAktivitet = (AktivitetDto)informationsutskickListBox.SelectedItem;
+            AktivitetDTO valdAktivitet = (AktivitetDTO)informationsutskickListBox.SelectedItem;
             if (valdAktivitet != null)
             {
                 aktivitetsBeskrivningTextBox.Text = valdAktivitet.Beskrivning;
@@ -116,7 +116,7 @@ namespace PresentationLayer
 
         private void bokadeAktiviteterListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AktivitetDto valdBokadAktivitet = (AktivitetDto)bokadeAktiviteterListBox.SelectedItem;
+            AktivitetDTO valdBokadAktivitet = (AktivitetDTO)bokadeAktiviteterListBox.SelectedItem;
             if (valdBokadAktivitet != null)
             {
                 aktivitetsinformationRichTextBox.Text = valdBokadAktivitet.Beskrivning;
@@ -199,14 +199,14 @@ namespace PresentationLayer
 
         private void taBortvaldKompetensBtn_Click(object sender, EventArgs e)
         {
-            var selectedKompetensToRemove = (KompetensDto)kompetenserListBox.SelectedItem;
+            var selectedKompetensToRemove = (KompetensDTO)kompetenserListBox.SelectedItem;
             bm.TaBortKompetensFrånAlumn(selectedKompetensToRemove, GLOBALS.AktuellAlumn);
             UppdateraKompetenserListBox();
         }
 
         private void btnCancelBookedActivity_Click(object sender, EventArgs e)
         {
-            AktivitetDto aktivitet = (AktivitetDto)bokadeAktiviteterListBox.SelectedItem;
+            AktivitetDTO aktivitet = (AktivitetDTO)bokadeAktiviteterListBox.SelectedItem;
             aktivitetsinformationRichTextBox.Clear();
             bm.TaBortAktivitetFrånAlumn(aktivitet, GLOBALS.AktuellAlumn);
             UppdateraBokadeAktiviteter();

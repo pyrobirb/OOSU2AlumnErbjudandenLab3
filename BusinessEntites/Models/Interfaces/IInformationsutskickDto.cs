@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Interfaces
 {
-    public interface IInformationsutskickDto
+    public interface IInformationsutskickDTO
     {
         int UtskicksID { get; set; }
         string UtskicksNamn { get; set; }
         DateTime UtskickDatum { get; set; }
-        ICollection<AlumnDto> Alumner { get; set; }
-        ICollection<InformationsutskickAlumnDto> InformationsutskickAlumn { get; set; }
-        ICollection<PersonalInformationsutskickDto> PersonalInformationsutskick { get; set; }
-        ICollection<InformationsutskickAktivitetDto> InformationsutskickAktivitet { get; set; }
+        ICollection<AlumnDTO> Alumner { get; set; }
+        ICollection<InformationsutskickAlumnDTO> InformationsutskickAlumn { get; set; }
+        ICollection<PersonalInformationsutskickDTO> PersonalInformationsutskick { get; set; }
+        ICollection<InformationsutskickAktivitetDTO> InformationsutskickAktivitet { get; set; }
 
 
     }

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepository
 {
-    public class AktivitetRepository : Repository<AktivitetDto>, IAktivitetRepository
+    public class AktivitetRepository : Repository<AktivitetDTO>, IAktivitetRepository
     {
-        public void UpdateAktivitet(AktivitetDto aktivitet, AktivitetDto nyaktivitet)
+        public void UpdateAktivitet(AktivitetDTO aktivitet, AktivitetDTO nyaktivitet)
         {
 
             //var db = new DatabaseContext();
@@ -45,13 +45,13 @@ namespace DataLayer.Repositories.UniqueRepository
         
         
 
-        public IQueryable<AlumnAktivitetBokningDto> HämtaBokningFörAlumn (AlumnDto inloggadAlumn)
+        public IQueryable<AlumnAktivitetBokningDTO> HämtaBokningFörAlumn (AlumnDTO inloggadAlumn)
         {
             var db = new DatabaseContext();
             return db.AlumnAktivitet.Where(x => x.Alumn == inloggadAlumn);
         }
 
-        public void TaBortAktivitetFrånAlumn(AktivitetDto aktivitet, AlumnDto aktuellAlumn)
+        public void TaBortAktivitetFrånAlumn(AktivitetDTO aktivitet, AlumnDTO aktuellAlumn)
         {
             var db = new DatabaseContext();
 
@@ -60,14 +60,14 @@ namespace DataLayer.Repositories.UniqueRepository
             db.SaveChanges();
         }
 
-        public void LäggTillAlumnAktivitetBokning(AlumnAktivitetBokningDto alumnAktivitetBokning)
+        public void LäggTillAlumnAktivitetBokning(AlumnAktivitetBokningDTO alumnAktivitetBokning)
         {
             var db = new DatabaseContext();
             db.AlumnAktivitet.Add(alumnAktivitetBokning);
             db.SaveChanges();
         }
 
-        public IQueryable<int> HämtaAktiviteterGenomAlumn(AlumnDto inloggadAlumn)
+        public IQueryable<int> HämtaAktiviteterGenomAlumn(AlumnDTO inloggadAlumn)
         {
             var db = new DatabaseContext();
 
@@ -75,7 +75,7 @@ namespace DataLayer.Repositories.UniqueRepository
                  .Select(x => x.AktivitetID);
         }
 
-        public AktivitetDto HämtaAktivitetIDGenomInformationsutskicksID(int utskicksID)
+        public AktivitetDTO HämtaAktivitetIDGenomInformationsutskicksID(int utskicksID)
         {
             var db = new DatabaseContext();
 
@@ -84,7 +84,7 @@ namespace DataLayer.Repositories.UniqueRepository
             return list;
         }
 
-        public IQueryable<AlumnAktivitetBokningDto> HämtaAlumnGenomAktivitetsID(int aktivitetsID)
+        public IQueryable<AlumnAktivitetBokningDTO> HämtaAlumnGenomAktivitetsID(int aktivitetsID)
         {
             var db = new DatabaseContext();
             return db.AlumnAktivitet.Where(x => x.AktivitetID == aktivitetsID);

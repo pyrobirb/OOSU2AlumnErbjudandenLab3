@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace WPFLayer.Models
 {
     [DataContract]
-    public class Alumn
+    public class Personal
     {
         [DataMember]
-        public int AnvändarID { get; set; }
+        public int PersonalID { get; set; }
         [DataMember]
         public string Användarnamn { get; set; }
         [DataMember]
@@ -20,6 +20,5 @@ namespace WPFLayer.Models
         public string Förnamn { get; set; }
         [DataMember]
         public string Efternamn { get; set; }
-
     }
 }

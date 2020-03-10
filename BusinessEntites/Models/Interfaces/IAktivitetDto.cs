@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Interfaces
 {
-    public interface IAktivitetDto
+    public interface IAktivitetDTO
     {
         int AktivitetsID { get; set; }
         string Titel { get; set; }
@@ -17,8 +17,8 @@ namespace BusinessEntites.Models.Interfaces
         DateTime Startdatum { get; set; }
         DateTime Slutdatum { get; set; }
         string Beskrivning { get; set; }
-        ICollection<InformationsutskickAktivitetDto> InformationsutskickAktivitet { get; set; }
-        ICollection<AlumnAktivitetBokningDto> AlumnAktivitet { get; set; }
+        ICollection<InformationsutskickAktivitetDTO> InformationsutskickAktivitet { get; set; }
+        ICollection<AlumnAktivitetBokningDTO> AlumnAktivitet { get; set; }
 
     }
 }

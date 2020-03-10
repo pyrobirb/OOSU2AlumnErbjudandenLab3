@@ -9,7 +9,7 @@ using BusinessEntites.Models.Junction;
 
 namespace BusinessEntites.Models
 {
-    public class AktivitetDto : IAktivitetDto
+    public class AktivitetDTO : IAktivitetDTO
     {   [Key]
         public int AktivitetsID { get; set; }
         public string Titel { get; set; }
@@ -19,8 +19,8 @@ namespace BusinessEntites.Models
         public DateTime Startdatum { get; set; }
         public DateTime Slutdatum { get; set; }
         public string Beskrivning { get; set; }
-        public virtual ICollection<InformationsutskickAktivitetDto> InformationsutskickAktivitet { get; set; }
-        public virtual ICollection<AlumnAktivitetBokningDto> AlumnAktivitet { get; set; }
+        public virtual ICollection<InformationsutskickAktivitetDTO> InformationsutskickAktivitet { get; set; }
+        public virtual ICollection<AlumnAktivitetBokningDTO> AlumnAktivitet { get; set; }
 
     }
 }

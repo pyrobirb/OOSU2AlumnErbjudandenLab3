@@ -14,19 +14,19 @@ namespace DataLayer.Contexts
         void OnConfiguring(DbContextOptionsBuilder optionsBuilder);
         void OnModelCreating(ModelBuilder modelBuilder);
 
-        DbSet<AktivitetDto> Aktiviteter { get; set; }
-        DbSet<AlumnDto> Alumner { get; set; }
-        DbSet<InformationsutskickDto> Informationsutskick { get; set; }
-        DbSet<KompetensDto> Kompetenser { get; set; }
-        DbSet<PersonalDto> Personal { get; set; }
-        DbSet<ProgramDto> Program { get; set; }
-        DbSet<AlumnProgramDto> AlumnProgram { get; set; }
-        DbSet<AlumnKompetensDto> AlumnKompetens { get; set; }
-        DbSet<MaillistaDto> Maillistor { get; set; }
-        DbSet<InformationsutskickAlumnDto> InformationsutskickAlumn { get; set; }
-        DbSet<PersonalInformationsutskickDto> PersonalInformationsutskick { get; set; }
-        DbSet<InformationsutskickAktivitetDto> InformationsutskickAktivitet { get; set; }
-        DbSet<AlumnAktivitetBokningDto> AlumnAktivitet { get; set; }
-        DbSet<AlumnMaillistaDto> AlumnMaillist { get; set; }
+        DbSet<AktivitetDTO> Aktiviteter { get; set; }
+        DbSet<AlumnDTO> Alumner { get; set; }
+        DbSet<InformationsutskickDTO> Informationsutskick { get; set; }
+        DbSet<KompetensDTO> Kompetenser { get; set; }
+        DbSet<PersonalDTO> Personal { get; set; }
+        DbSet<ProgramDTO> Program { get; set; }
+        DbSet<AlumnProgramDTO> AlumnProgram { get; set; }
+        DbSet<AlumnKompetensDTO> AlumnKompetens { get; set; }
+        DbSet<MaillistaDTO> Maillistor { get; set; }
+        DbSet<InformationsutskickAlumnDTO> InformationsutskickAlumn { get; set; }
+        DbSet<PersonalInformationsutskickDTO> PersonalInformationsutskick { get; set; }
+        DbSet<InformationsutskickAktivitetDTO> InformationsutskickAktivitet { get; set; }
+        DbSet<AlumnAktivitetBokningDTO> AlumnAktivitet { get; set; }
+        DbSet<AlumnMaillistaDTO> AlumnMaillist { get; set; }
     }
 }

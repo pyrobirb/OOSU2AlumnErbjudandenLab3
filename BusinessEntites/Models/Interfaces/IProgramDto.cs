@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Interfaces
 {
-    public interface IProgramDto
+    public interface IProgramDTO
     {
         int ProgramID { get; set; }
         string Namn { get; set; }
-        ICollection<AlumnProgramDto> AlumnProgram { get; set; }
+        ICollection<AlumnProgramDTO> AlumnProgram { get; set; }
 
     }
 }

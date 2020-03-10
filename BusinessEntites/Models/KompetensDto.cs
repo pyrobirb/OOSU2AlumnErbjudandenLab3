@@ -9,13 +9,13 @@ using BusinessEntites.Models.Junction;
 
 namespace BusinessEntites.Models
 {
-    public class KompetensDto : IKompetensDto
+    public class KompetensDTO : IKompetensDTO
     {
         [Key]
         public int KompetensID { get; set; }
         public string Beskrivning { get; set; }
 
-        public virtual ICollection<AlumnKompetensDto> AlumnKompetens { get; set; }
+        public virtual ICollection<AlumnKompetensDTO> AlumnKompetens { get; set; }
 
     }
 }

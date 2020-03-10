@@ -10,14 +10,14 @@ namespace DataLayer
 {
     public class IOFileSystem : IIOFileSystem
     {
-        public void SkrivaAlumnAktivitetTillCSVFil(string Aktivitettitel, List<AlumnDto> alumner)
+        public void SkrivaAlumnAktivitetTillCSVFil(string Aktivitettitel, List<AlumnDTO> alumner)
         {
             using (TextWriter sw = new StreamWriter($"{Aktivitettitel}.csv"))
             {
 
                 sw.WriteLine(Aktivitettitel);
 
-                foreach (AlumnDto alumn in alumner)
+                foreach (AlumnDTO alumn in alumner)
                 {
                     sw.WriteLine($"{alumn.Användarnamn},");
                 }

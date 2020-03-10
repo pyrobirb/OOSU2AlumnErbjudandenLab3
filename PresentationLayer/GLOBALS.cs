@@ -9,8 +9,8 @@ namespace PresentationLayer
 {
     public static class GLOBALS
     {
-        public static AlumnDto AktuellAlumn { get; set; }
-        public static PersonalDto AktuellPersonal { get; set; }
+        public static AlumnDTO AktuellAlumn { get; set; }
+        public static PersonalDTO AktuellPersonal { get; set; }
 
 
     }

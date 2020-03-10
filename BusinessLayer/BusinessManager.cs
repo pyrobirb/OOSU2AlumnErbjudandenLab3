@@ -9,7 +9,7 @@ using BusinessEntites.Models.Junction;
 using DataLayer;
 using DataLayer.Contexts;
 using DataLayer.UnitOfWork;
-using ProgramClass = BusinessEntites.Models.ProgramDto;
+using ProgramClass = BusinessEntites.Models.ProgramDTO;
 
 namespace BusinessLayer
 {
@@ -19,19 +19,19 @@ namespace BusinessLayer
         public IOFileSystem iof = new IOFileSystem();
 
         
-        public IEnumerable<AktivitetDto> HämtaAllaAktiviteter()
+        public IEnumerable<AktivitetDTO> HämtaAllaAktiviteter()
         {
             return unitOfWork.AktivitetRepository.GetAll();
         }
 
-        public AlumnDto HämtaAlumnKonto(string användarnamn, string lösenord)
+        public AlumnDTO HämtaAlumnKonto(string användarnamn, string lösenord)
         {
             return unitOfWork.AlumnRepository.HämtaAlumnKonto(användarnamn, lösenord);
         }
 
-        public List<AktivitetDto> HämtaAktiviteterGenomAktivitetID(IQueryable<int> ids)
+        public List<AktivitetDTO> HämtaAktiviteterGenomAktivitetID(IQueryable<int> ids)
         {
-            List<AktivitetDto> aktiviteter = new List<AktivitetDto>();
+            List<AktivitetDTO> aktiviteter = new List<AktivitetDTO>();
             foreach (int id in ids)
             {
                 aktiviteter.Add(unitOfWork.AktivitetRepository.GetById(id));
@@ -40,14 +40,14 @@ namespace BusinessLayer
            
         }
 
-        public List<AlumnDto> HämtaAnmälningarGenomAktivitetsID(int aktivitetsID)
+        public List<AlumnDTO> HämtaAnmälningarGenomAktivitetsID(int aktivitetsID)
         {
-            List<AlumnDto> AnmäldaAlumner = new List<AlumnDto>();
+            List<AlumnDTO> AnmäldaAlumner = new List<AlumnDTO>();
             List<int> UtskicksID = new List<int>();
             List<int> AnmäldaAlumnerID = new List<int>();
 
             //Hämtar alla alumner som har bokat aktivitet
-            IQueryable<AlumnAktivitetBokningDto> alumnAktivitetBoknings = unitOfWork.AktivitetRepository.HämtaAlumnGenomAktivitetsID(aktivitetsID);
+            IQueryable<AlumnAktivitetBokningDTO> alumnAktivitetBoknings = unitOfWork.AktivitetRepository.HämtaAlumnGenomAktivitetsID(aktivitetsID);
             foreach (var item in alumnAktivitetBoknings)
             {
                 AnmäldaAlumnerID.Add(item.AlumnID);
@@ -61,29 +61,29 @@ namespace BusinessLayer
             return AnmäldaAlumner;
         }
 
-        public IQueryable<int> HämtaAktiviteterGenomAlumn(AlumnDto inloggadAlumn)
+        public IQueryable<int> HämtaAktiviteterGenomAlumn(AlumnDTO inloggadAlumn)
         {
             return unitOfWork.AktivitetRepository.HämtaAktiviteterGenomAlumn(inloggadAlumn);
         }
 
-        public PersonalDto HämtaPersonalKonto(string användarnamn, string lösenord)
+        public PersonalDTO HämtaPersonalKonto(string användarnamn, string lösenord)
         {
             return unitOfWork.PersonalRepository.HämtaPersonalKonto(användarnamn, lösenord);
         }
-        public void UpdateAktivitet(AktivitetDto aktivitet, AktivitetDto nyaktivitet)
+        public void UpdateAktivitet(AktivitetDTO aktivitet, AktivitetDTO nyaktivitet)
         {
             unitOfWork.AktivitetRepository.UpdateAktivitet(aktivitet, nyaktivitet);
         }
 
 
-        public IEnumerable<InformationsutskickDto> HämtaAllaInformationsutskick()
+        public IEnumerable<InformationsutskickDTO> HämtaAllaInformationsutskick()
         {
             return unitOfWork.InformationsutskickRepository.GetAll();
         }
 
-        public List<AktivitetDto> HämtaAktiviteterGenomInformationsutskickID(IQueryable<int> utskicksID)
+        public List<AktivitetDTO> HämtaAktiviteterGenomInformationsutskickID(IQueryable<int> utskicksID)
         {
-            List<AktivitetDto> aktiviteter = new List<AktivitetDto>();
+            List<AktivitetDTO> aktiviteter = new List<AktivitetDTO>();
             foreach (int id in utskicksID)
             {
                 aktiviteter.Add(unitOfWork.AktivitetRepository.HämtaAktivitetIDGenomInformationsutskicksID(id));
@@ -93,55 +93,55 @@ namespace BusinessLayer
 
 
 
-        public IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(AlumnDto aktuellAlumn)
+        public IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(AlumnDTO aktuellAlumn)
         {
             return unitOfWork.InformationsutskickRepository.HämtaInformationsutskickAlumnGenomAlumnID(aktuellAlumn);
         }
 
-        public IQueryable<int> HämtaInformationsutskickIDGenomAlumn(AlumnDto aktuellAlumn)
+        public IQueryable<int> HämtaInformationsutskickIDGenomAlumn(AlumnDTO aktuellAlumn)
         {
             return unitOfWork.InformationsutskickRepository.HämtaInformationsutskickIDFörAlumn(aktuellAlumn);
         }
 
-        public AlumnDto HämtaAlumnMedID(int användarID)
+        public AlumnDTO HämtaAlumnMedID(int användarID)
         {
             return unitOfWork.AlumnRepository.GetById(användarID);
 
         }
 
-        public AktivitetDto HämtaAktivitetGenomID(int aktivitetID)
+        public AktivitetDTO HämtaAktivitetGenomID(int aktivitetID)
         {
             return unitOfWork.AktivitetRepository.GetById(aktivitetID);
         }
 
-        public void LäggTillAlumn(AlumnDto alumn)
+        public void LäggTillAlumn(AlumnDTO alumn)
         {
             unitOfWork.AlumnRepository.Add(alumn);
             unitOfWork.Commit();
         }
 
-        public IQueryable<int> HämtaInformationsutskickFörAlumn(AlumnDto inloggadAlumn)
+        public IQueryable<int> HämtaInformationsutskickFörAlumn(AlumnDTO inloggadAlumn)
         {   
             return unitOfWork.InformationsutskickRepository.HämtaInformationsutskickIDFörAlumn(inloggadAlumn);
         }
 
-        public IEnumerable<AlumnDto> HämtaAllaAlumner()
+        public IEnumerable<AlumnDTO> HämtaAllaAlumner()
         {
             return unitOfWork.AlumnRepository.GetAll();
         }
 
-        public void LäggTillPersonal(PersonalDto personal)
+        public void LäggTillPersonal(PersonalDTO personal)
         {
             unitOfWork.PersonalRepository.Add(personal);
             unitOfWork.Commit();
         }
 
-        public List<KompetensDto> HämtaKompetenserFörAlumn(AlumnDto aktuellAlumn)
+        public List<KompetensDTO> HämtaKompetenserFörAlumn(AlumnDTO aktuellAlumn)
         {
-            List<KompetensDto> kompetenser = new List<KompetensDto>();
+            List<KompetensDTO> kompetenser = new List<KompetensDTO>();
             var queryable = unitOfWork.KompetensRepository.HämtaKompetenserFörAlumn(aktuellAlumn);
 
-            foreach (KompetensDto kompetens in queryable)
+            foreach (KompetensDTO kompetens in queryable)
             {
                 kompetenser.Add(kompetens);
             }
@@ -153,7 +153,7 @@ namespace BusinessLayer
             return unitOfWork.ProgramRepository.GetAll();
         }
 
-        public List<ProgramClass> HämtaProgramFörAlumn(AlumnDto aktuellAlumn)
+        public List<ProgramClass> HämtaProgramFörAlumn(AlumnDTO aktuellAlumn)
         {
             List<ProgramClass> programs = new List<ProgramClass>();
             var queryable = unitOfWork.ProgramRepository.HämtaProgramFörAlumn(aktuellAlumn);
@@ -167,7 +167,7 @@ namespace BusinessLayer
 
         
 
-        public IQueryable<AlumnAktivitetBokningDto> HämtaBokningFörAlumn (AlumnDto inloggadAlumn)
+        public IQueryable<AlumnAktivitetBokningDTO> HämtaBokningFörAlumn (AlumnDTO inloggadAlumn)
         {
             return unitOfWork.AktivitetRepository.HämtaBokningFörAlumn(inloggadAlumn);
         }
@@ -182,15 +182,15 @@ namespace BusinessLayer
             unitOfWork.AlumnRepository.UppdateraAlumnKonto(id, förnamn, efternamn, epostadress);
         }
 
-        public void LäggTillAktivitet(AktivitetDto aktivitet)
+        public void LäggTillAktivitet(AktivitetDTO aktivitet)
         {
             unitOfWork.AktivitetRepository.Add(aktivitet);
         }
 
-        public List<AlumnDto> HämtaAlumnerMedProgram(ProgramDto program)
+        public List<AlumnDTO> HämtaAlumnerMedProgram(ProgramDTO program)
         {
-            List<AlumnDto> alumnerMedProgram = new List<AlumnDto>();
-            foreach (AlumnProgramDto ap in unitOfWork.AlumnRepository.HämtaAlumnerMedProgram(program))
+            List<AlumnDTO> alumnerMedProgram = new List<AlumnDTO>();
+            foreach (AlumnProgramDTO ap in unitOfWork.AlumnRepository.HämtaAlumnerMedProgram(program))
             {
                 alumnerMedProgram.Add(unitOfWork.AlumnRepository.GetById(ap.AlumnID));
             }
@@ -202,7 +202,7 @@ namespace BusinessLayer
             unitOfWork.ProgramRepository.LäggTillUtbildningTillAlumn(id, text);
         }
 
-        public void LäggTillAlumnAktivitet(AlumnAktivitetBokningDto alumnAktivitetBokning)
+        public void LäggTillAlumnAktivitet(AlumnAktivitetBokningDTO alumnAktivitetBokning)
         {
             unitOfWork.AktivitetRepository.LäggTillAlumnAktivitetBokning(alumnAktivitetBokning);
         }
@@ -213,57 +213,57 @@ namespace BusinessLayer
         }
 
         
-        public void TaBortProgramFrånAlumn(ProgramClass selectedProgramToRemove, AlumnDto aktuellAlumn)
+        public void TaBortProgramFrånAlumn(ProgramClass selectedProgramToRemove, AlumnDTO aktuellAlumn)
         {
             unitOfWork.ProgramRepository.TaBortProgramFrånAlumn(selectedProgramToRemove, aktuellAlumn);
         }
 
-        public void TaBortKompetensFrånAlumn(KompetensDto selectedKompetensToRemove, AlumnDto aktuellAlumn)
+        public void TaBortKompetensFrånAlumn(KompetensDTO selectedKompetensToRemove, AlumnDTO aktuellAlumn)
         {
             unitOfWork.KompetensRepository.TaBortKompetensFrånAlumn(selectedKompetensToRemove, aktuellAlumn);
         }
 
-        public void TaBortAktivitetFrånAlumn(AktivitetDto aktivitet, AlumnDto aktuellAlumn)
+        public void TaBortAktivitetFrånAlumn(AktivitetDTO aktivitet, AlumnDTO aktuellAlumn)
         {
             unitOfWork.AktivitetRepository.TaBortAktivitetFrånAlumn(aktivitet, aktuellAlumn);
         }
 
-        public void LäggTillInformationsutskick(InformationsutskickDto informationsutskick)
+        public void LäggTillInformationsutskick(InformationsutskickDTO informationsutskick)
         {
             unitOfWork.InformationsutskickRepository.Add(informationsutskick);
         }
 
-        public void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitetDto informationsutskickAktivitet)
+        public void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitetDTO informationsutskickAktivitet)
         {
             unitOfWork.InformationsutskickRepository.LäggTillInformationsutskickAktivitet(informationsutskickAktivitet);
         }
 
-        public InformationsutskickDto HämtaInformationsutskickMedID(int utskicksID)
+        public InformationsutskickDTO HämtaInformationsutskickMedID(int utskicksID)
         {
             return unitOfWork.InformationsutskickRepository.GetById(utskicksID);
         }
 
-        public void LäggTillInformationsutskickAlumn(InformationsutskickAlumnDto informationsutskickAlumn)
+        public void LäggTillInformationsutskickAlumn(InformationsutskickAlumnDTO informationsutskickAlumn)
         {
             unitOfWork.InformationsutskickRepository.LäggTillInformationsutskickAlumn(informationsutskickAlumn);
         }
 
-        public void SkrivaAlumnAktivitetTillCSVFil(string titel, List<AlumnDto> alumner)
+        public void SkrivaAlumnAktivitetTillCSVFil(string titel, List<AlumnDTO> alumner)
         {
             iof.SkrivaAlumnAktivitetTillCSVFil(titel, alumner);
         }
 
-        public void TaBortAlumn(AlumnDto alumnatttabort)
+        public void TaBortAlumn(AlumnDTO alumnatttabort)
         {
             unitOfWork.AlumnRepository.Remove(alumnatttabort);
             unitOfWork.Commit();
         }
 
-        public List<AlumnDto> HämtaAlumnerFrånLista(int ListID)
+        public List<AlumnDTO> HämtaAlumnerFrånLista(int ListID)
         {
-            IQueryable<InformationsutskickAlumnDto> hämtadeAlumnID = unitOfWork.InformationsutskickRepository.HämtaAlumnIdGenomUtskicksId(ListID);
-            List<AlumnDto> AlumnerAttSkicka = new List<AlumnDto>();
-            foreach (InformationsutskickAlumnDto A in hämtadeAlumnID)
+            IQueryable<InformationsutskickAlumnDTO> hämtadeAlumnID = unitOfWork.InformationsutskickRepository.HämtaAlumnIdGenomUtskicksId(ListID);
+            List<AlumnDTO> AlumnerAttSkicka = new List<AlumnDTO>();
+            foreach (InformationsutskickAlumnDTO A in hämtadeAlumnID)
             {
                 AlumnerAttSkicka.Add(HämtaAlumnMedID(A.AlumnID));               
             }
@@ -271,17 +271,17 @@ namespace BusinessLayer
             return AlumnerAttSkicka;
         }
 
-        public void LäggTillMaillista(MaillistaDto maillista)
+        public void LäggTillMaillista(MaillistaDTO maillista)
         {
             unitOfWork.MaillistaRepository.Add(maillista);
         }
 
-        public MaillistaDto HämtaSenasteMaillista()
+        public MaillistaDTO HämtaSenasteMaillista()
         {
             return unitOfWork.MaillistaRepository.GetLastList();
         }
 
-        public void LäggTillAlumnMaillista(AlumnMaillistaDto alumnMaillista)
+        public void LäggTillAlumnMaillista(AlumnMaillistaDTO alumnMaillista)
         {
             unitOfWork.AlumnRepository.LäggTillAlumnMaillista(alumnMaillista);
         }
@@ -291,11 +291,11 @@ namespace BusinessLayer
             return unitOfWork.MaillistaRepository.GetAll();
         }
 
-        public List<AlumnDto> HämtaAlumnerFrånMailLista(int maillistaID)
+        public List<AlumnDTO> HämtaAlumnerFrånMailLista(int maillistaID)
         {
-            IQueryable<AlumnMaillistaDto> hämtadeAlumnID = unitOfWork.MaillistaRepository.HämtaAlumnIdGenomMaillistaID(maillistaID);
-            List<AlumnDto> AlumnerAttSkicka = new List<AlumnDto>();
-            foreach (AlumnMaillistaDto A in hämtadeAlumnID)
+            IQueryable<AlumnMaillistaDTO> hämtadeAlumnID = unitOfWork.MaillistaRepository.HämtaAlumnIdGenomMaillistaID(maillistaID);
+            List<AlumnDTO> AlumnerAttSkicka = new List<AlumnDTO>();
+            foreach (AlumnMaillistaDTO A in hämtadeAlumnID)
             {
                 AlumnerAttSkicka.Add(HämtaAlumnMedID(A.AlumnID));
             }

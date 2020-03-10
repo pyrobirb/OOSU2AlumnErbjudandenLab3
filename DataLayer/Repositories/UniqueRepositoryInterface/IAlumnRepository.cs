@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepositoryInterface
 {
-    public interface IAlumnRepository : IRepository<AlumnDto>
+    public interface IAlumnRepository : IRepository<AlumnDTO>
     {
-        AlumnDto HämtaAlumnKonto(string användarnamn, string lösenord);
+        AlumnDTO HämtaAlumnKonto(string användarnamn, string lösenord);
         void UppdateraAlumnKonto(int id, string förnamn, string efternamn, string epostadress);
-        IQueryable<AlumnProgramDto> HämtaAlumnerMedProgram(ProgramDto program);
-        AlumnDto HämtaAlumnGenomID(int AlumnID);
-        void LäggTillAlumnMaillista(AlumnMaillistaDto alumnMaillista);
+        IQueryable<AlumnProgramDTO> HämtaAlumnerMedProgram(ProgramDTO program);
+        AlumnDTO HämtaAlumnGenomID(int AlumnID);
+        void LäggTillAlumnMaillista(AlumnMaillistaDTO alumnMaillista);
     }
 }

@@ -9,7 +9,7 @@ using BusinessEntites.Models.Junction;
 
 namespace BusinessEntites.Models
 {
-    public class PersonalDto : IPersonalDto
+    public class PersonalDTO : IPersonalDTO
     {
         [Key]
         public int PersonalID { get; set; }
@@ -17,6 +17,6 @@ namespace BusinessEntites.Models
         public string Lösenord { get; set; }
         public string Förnamn { get; set; }
         public string Efternamn { get; set; }
-        public virtual ICollection<PersonalInformationsutskickDto> PersonalInformationsutskick { get; set; }
+        public virtual ICollection<PersonalInformationsutskickDTO> PersonalInformationsutskick { get; set; }
     }
 }

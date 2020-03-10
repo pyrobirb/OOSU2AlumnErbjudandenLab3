@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -71,6 +72,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Alumn.cs" />
+    <Compile Include="Models\Personal.cs" />
+    <Compile Include="ViewModel\CreateAlumnAccViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="View\CreateAlumnAccountWindow.xaml.cs">
       <DependentUpon>CreateAlumnAccountWindow.xaml</DependentUpon>
     </Compile>
@@ -106,8 +110,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

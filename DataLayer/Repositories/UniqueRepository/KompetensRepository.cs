@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.UniqueRepository
 {
-    public class KompetensRepository : Repository<KompetensDto>, IKompetensRepository
+    public class KompetensRepository : Repository<KompetensDTO>, IKompetensRepository
     {
 
         public KompetensRepository(DatabaseContext context) : base(context)
@@ -19,7 +19,7 @@ namespace DataLayer.Repositories.UniqueRepository
 
         }
 
-        public IQueryable<KompetensDto> HämtaKompetenserFörAlumn(AlumnDto aktuellAlumn)
+        public IQueryable<KompetensDTO> HämtaKompetenserFörAlumn(AlumnDTO aktuellAlumn)
         {
             var db = new DatabaseContext();
 
@@ -32,7 +32,7 @@ namespace DataLayer.Repositories.UniqueRepository
         {
             using (var db = new DatabaseContext())
             {
-                KompetensDto kompetens = new KompetensDto()
+                KompetensDTO kompetens = new KompetensDTO()
                 {
                     Beskrivning = text
                 };
@@ -40,7 +40,7 @@ namespace DataLayer.Repositories.UniqueRepository
                 db.SaveChanges();
                 db.Kompetenser.Attach(kompetens);
 
-                AlumnKompetensDto ak = new AlumnKompetensDto()
+                AlumnKompetensDTO ak = new AlumnKompetensDTO()
                 {
                     AlumnID = id,
                     KompetensID = kompetens.KompetensID
@@ -51,7 +51,7 @@ namespace DataLayer.Repositories.UniqueRepository
             }
         }
 
-        public void TaBortKompetensFrånAlumn(KompetensDto selectedKompetensToRemove, AlumnDto aktuellAlumn)
+        public void TaBortKompetensFrånAlumn(KompetensDTO selectedKompetensToRemove, AlumnDTO aktuellAlumn)
         {
             var db = new DatabaseContext();
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Interfaces
 {
-    public interface IAlumnDto
+    public interface IAlumnDTO
     {
         int AnvändarID { get; set; }
         string Förnamn { get; set; }
@@ -15,14 +15,14 @@ namespace BusinessEntites.Models.Interfaces
         string Användarnamn { get; set; }
         string Lösenord { get; set; }
 
-        ICollection<AlumnProgramDto> AlumnProgram { get; set; }
+        ICollection<AlumnProgramDTO> AlumnProgram { get; set; }
 
-        ICollection<AlumnKompetensDto> AlumnKompetens { get; set; }
+        ICollection<AlumnKompetensDTO> AlumnKompetens { get; set; }
 
-        ICollection<InformationsutskickAlumnDto> InformationsutskickAlumn { get; set; }
+        ICollection<InformationsutskickAlumnDTO> InformationsutskickAlumn { get; set; }
 
-        ICollection<AlumnAktivitetBokningDto> AlumnAktivitet { get; set; }
+        ICollection<AlumnAktivitetBokningDTO> AlumnAktivitet { get; set; }
 
-        ICollection<AlumnMaillistaDto> AlumnMaillistor { get; set; }
+        ICollection<AlumnMaillistaDTO> AlumnMaillistor { get; set; }
     }
 }

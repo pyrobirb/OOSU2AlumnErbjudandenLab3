@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BusinessEntites.Models.Junction.JunctionInterfaces
 {
-    public interface IAlumnAktivitetBokningDto
+    public interface IAlumnAktivitetBokningDTO
     {
         int AlumnID { get; set; }
-        AlumnDto Alumn { get; set; }
+        AlumnDTO Alumn { get; set; }
 
         int AktivitetID { get; set; }
-        AktivitetDto Aktivitet { get; set; }
+        AktivitetDTO Aktivitet { get; set; }
     }
 }
