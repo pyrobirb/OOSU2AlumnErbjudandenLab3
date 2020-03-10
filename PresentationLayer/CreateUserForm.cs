@@ -43,6 +43,9 @@ namespace PresentationLayer
                         Efternamn = EfternamnTxtBox.Text
                     };
                     bm.LäggTillAlumn(alumn);
+                    
+                    
+                    
                     MessageBox.Show("Alumnkonto har skapats");
 
                     DialogResult = DialogResult.OK;

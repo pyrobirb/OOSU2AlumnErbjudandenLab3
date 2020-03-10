@@ -29,7 +29,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <Button Margin="23 10"  HorizontalAlignment="Right" Height="25" Width="150">Skapa alumn-konto</Button>
+            <Button Margin="23 10"  HorizontalAlignment="Right" Height="25" Width="150" Click="SkapaAlumnKonto">Skapa alumn-konto</Button>
             <TextBlock TextWrapping="Wrap" FontSize="8">Genom att trycka på "Skapa alumn-konto" godkänner du villkoren för GDPR och behandlingen av dina personuppgifter.</TextBlock>
 
         </StackPanel>

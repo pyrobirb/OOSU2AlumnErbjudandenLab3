@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFLayer.ViewModel;
 
 namespace WPFLayer.View
 {
@@ -19,9 +20,27 @@ namespace WPFLayer.View
     /// </summary>
     public partial class CreateAlumnAccountWindow : Window
     {
+        CreateAlumnAccViewModel createAlumnAccViewModel = new CreateAlumnAccViewModel();
+
         public CreateAlumnAccountWindow()
         {
             InitializeComponent();
+            DataContext = createAlumnAccViewModel;
+        }
+
+
+        private void SkapaAlumnKonto(object sender, RoutedEventArgs e)
+        {
+            if (createAlumnAccViewModel.SkapaAlumnKonto())
+            {
+                MessageBox.Show("Ditt Alumn-konto är nu skapat! Var god logga in.");
+            }
+            else
+            {
+                MessageBox.Show("Något gick fel, vänligen försök igen!");
+
+            }
+
         }
     }
 }

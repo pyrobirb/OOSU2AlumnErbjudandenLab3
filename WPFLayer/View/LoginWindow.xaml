@@ -32,7 +32,7 @@
 
             <StackPanel Margin="50" HorizontalAlignment="Stretch" Height="20"></StackPanel>
             <TextBlock Height="25"   HorizontalAlignment="Center">Har du inget konto? Skapa ett här:</TextBlock>
-            <Button Width="150" Height="30">Skapa nytt alumnkonto</Button>
+            <Button Width="150" Height="30" Click="CreateAlumnAccBtn_Click">Skapa nytt alumnkonto</Button>
         </StackPanel>
 
 
