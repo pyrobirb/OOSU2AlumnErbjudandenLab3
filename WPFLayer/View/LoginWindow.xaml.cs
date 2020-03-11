@@ -26,22 +26,24 @@ namespace WPFLayer
     /// </summary>
     public partial class MainWindow : Window
     {
-        AlumnContextProfile acp = new AlumnContextProfile();
         public MainWindow()
         {
             InitializeComponent();
-            acp.AlumnContextProfileConfig();
 
             //Automapper Initialization
             var config = new MapperConfiguration(cfg =>
             {
                 //cfg.AddProfile<AlumnContextProfile>();
                 cfg.CreateMap<AlumnDTO, Alumn>().ReverseMap();
+                cfg.CreateMap<Personal, PersonalDTO>().ReverseMap();
+
             });
             var mapper = config.CreateMapper();
             MapperConfig.SetMapper(mapper);
 
         }
+
+        
 
         private void CreateAlumnAccBtn_Click(object sender, RoutedEventArgs e)
         {
