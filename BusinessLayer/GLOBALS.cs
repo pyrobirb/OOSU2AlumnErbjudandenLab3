@@ -5,13 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PresentationLayer
+namespace BusinessLayer
 {
     public static class GLOBALS
     {
         public static AlumnDTO AktuellAlumn { get; set; }
         public static PersonalDTO AktuellPersonal { get; set; }
-
-
     }
 }
