@@ -11,6 +11,7 @@ namespace WPFLayer.ViewModel
 {
     public class CreateAlumnAccViewModel
     {
+        BusinessManager bm = new BusinessManager();
 
         private Alumn alumn = new Alumn();
 
@@ -49,7 +50,6 @@ namespace WPFLayer.ViewModel
                     Användarnamn = Alumn.Användarnamn,
                     Lösenord = Alumn.Lösenord
                 };
-                BusinessManager bm = new BusinessManager();
 
                 bm.LäggTillAlumn(mapper.Map<Alumn, AlumnDTO>(alumn));
 

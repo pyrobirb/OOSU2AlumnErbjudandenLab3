@@ -50,5 +50,40 @@ namespace WPFLayer
             CreateAlumnAccountWindow createAlumnAccountWindow = new CreateAlumnAccountWindow();
             createAlumnAccountWindow.ShowDialog();
         }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if ((User.Text == null) || (User.Text == ""))
+            {
+                MessageBox.Show("Vänligen en typ av användare att logga in som");
+            }
+            if (User.Text == "Personal")
+            {
+                if (!(loginViewModel.KontrolleraInloggningPersonal(Användarnamn.Text, Lösenord.Password)))
+                {
+                    MessageBox.Show("Fel användarnamn eller lösenord");
+                }
+                else
+                {
+                    MessageBox.Show("MainPersonalWindow shows");
+                    //Visa MainPersonalWindow
+
+                }
+            }
+            if (User.Text == "Alumn")
+            {
+                if (!(loginViewModel.KontrolleraInloggningAlumn(Användarnamn.Text, Lösenord.Password)))
+                {
+                    MessageBox.Show("Fel användarnamn eller lösenord");
+                }
+                else
+                {
+                    MessageBox.Show("MainAlumnWindow shows");
+                    //Visa MainAlumnWindow
+
+                }
+            }
+            
+        }
     }
 }

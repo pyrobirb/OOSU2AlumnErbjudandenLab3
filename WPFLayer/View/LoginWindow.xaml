@@ -21,7 +21,7 @@
             </StackPanel>
             <StackPanel Width="300"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                 <TextBlock HorizontalAlignment="Left" Width="84" Margin="6 0 0 0">Logga in som:</TextBlock>
-                <ComboBox Margin="10 0"  Width="100">
+                <ComboBox Name="User" Margin="10 0"  Width="100">
                     <ComboBoxItem Content="Alumn" HorizontalAlignment="Left" Width="98"/>
                     <ComboBoxItem Content="Personal" HorizontalAlignment="Left" Width="98"/>
                 </ComboBox>
@@ -31,16 +31,16 @@
             <StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
                     <Label Width="100">Användarnamn:</Label>
-                    <TextBox BorderBrush="Black" BorderThickness="1" Width="200"></TextBox>
+                    <TextBox Name="Användarnamn" BorderBrush="Black" BorderThickness="1" Width="200"></TextBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
                     <Label Width="100">Lösenord:</Label>
-                    <PasswordBox BorderBrush="Black" BorderThickness="1" Width="200"></PasswordBox>
+                    <PasswordBox Name="Lösenord" BorderBrush="Black" BorderThickness="1" Width="200"></PasswordBox>
                 </StackPanel>
             </StackPanel>
-            <Button HorizontalAlignment="Center" Width="100" Height="25">Logga in</Button>
+            <Button HorizontalAlignment="Center" Width="100" Height="25" Click="LoginBtn_Click">Logga in</Button>
 
-            <StackPanel Margin="40" HorizontalAlignment="Stretch" Height="20"></StackPanel>
+            <StackPanel Margin="30" HorizontalAlignment="Stretch" Height="20"></StackPanel>
             <TextBlock Height="25"   HorizontalAlignment="Center">Har du inget konto? Skapa ett här:</TextBlock>
             <Button Width="150" Height="30" Click="CreateAlumnAccBtn_Click">Skapa nytt alumnkonto</Button>
         </StackPanel>
