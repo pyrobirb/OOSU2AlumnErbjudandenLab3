@@ -173,6 +173,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\MainAlumnViewModel.cs" />
+    <Compile Include="ViewModel\MainPersonalViewModel.cs" />
+    <Compile Include="View\MainAlumnWindow.xaml.cs">
+      <DependentUpon>MainAlumnWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainPersonalWindow.xaml.cs">
+      <DependentUpon>MainPersonalWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\CreateAlumnAccountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -197,6 +205,14 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\MainAlumnWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainPersonalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
