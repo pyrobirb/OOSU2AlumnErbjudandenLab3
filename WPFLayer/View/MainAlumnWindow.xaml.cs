@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,13 @@ namespace WPFLayer.View
         {
             InitializeComponent();
             DataContext = mainAlumnViewModel;
+        }
+
+        private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GLOBALSWPF.AktuellAlumn = null;
+            this.Close();
+            Application.Current.MainWindow.Show();
         }
     }
 }

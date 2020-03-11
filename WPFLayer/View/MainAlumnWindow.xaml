@@ -23,7 +23,24 @@
             </TabItem>
             <TabItem Header="Bokade Aktiviteter"></TabItem>
             <TabItem Header="Alumnuppgifter"></TabItem>
-            <TabItem Header="Användaruppgifter"></TabItem>
+            <TabItem Header="Användaruppgifter">
+
+                <StackPanel Orientation="Vertical" Height="500" VerticalAlignment="Top">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Width="400" Height="200">
+                    <Label Margin="5 0">Ändra Förnamn</Label>
+                    <TextBox Height="25" Width="250" HorizontalAlignment="Left" Margin="10 0" Name="ÄndraFörnamn"></TextBox>
+                    <Label Margin="5 0">Ändra Efternamn</Label>
+                    <TextBox Height="25" Width="250" HorizontalAlignment="Left" Margin="10 0" Name="ÄndraEfternamn"></TextBox>
+                    <Label Margin="5 0">Ändra Epostadress</Label>
+                    <TextBox Height="25" Width="250" HorizontalAlignment="Left" Margin="10 0" Name="ÄndraEpostadress"></TextBox>
+                    <Button Name="SparaÄndringarBtn" HorizontalAlignment="Left" Width="150" Height="25" Margin="10">Spara ändringar</Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="400" Height="150" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10 100">
+                    <Label FontSize="14" Name="WarningLabel">Varning! Det går inte att återställa ett borttaget konto</Label>
+                        <Button Height="25" Width="100" HorizontalAlignment="Left">Radera konto</Button>
+                </StackPanel>
+                </StackPanel>
+            </TabItem>
         </TabControl>
 
 
