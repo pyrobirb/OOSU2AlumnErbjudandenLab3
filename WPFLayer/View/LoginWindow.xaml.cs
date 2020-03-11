@@ -65,9 +65,9 @@ namespace WPFLayer
                 }
                 else
                 {
-                    MessageBox.Show("MainPersonalWindow shows");
-                    //Visa MainPersonalWindow
-
+                    MainPersonalWindow mainPersonalWindow = new MainPersonalWindow();
+                    this.Hide();
+                    mainPersonalWindow.Show();
                 }
             }
             if (User.Text == "Alumn")
@@ -78,9 +78,9 @@ namespace WPFLayer
                 }
                 else
                 {
-                    MessageBox.Show("MainAlumnWindow shows");
-                    //Visa MainAlumnWindow
-
+                    MainAlumnWindow mainAlumnWindow = new MainAlumnWindow();
+                    this.Hide();
+                    mainAlumnWindow.Show();
                 }
             }
             

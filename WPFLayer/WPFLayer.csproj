@@ -173,8 +173,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\CreatePersonalAccountViewModel.cs" />
     <Compile Include="ViewModel\MainAlumnViewModel.cs" />
     <Compile Include="ViewModel\MainPersonalViewModel.cs" />
+    <Compile Include="View\CreatePersonalAccountWindow.xaml.cs">
+      <DependentUpon>CreatePersonalAccountWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainAlumnWindow.xaml.cs">
       <DependentUpon>MainAlumnWindow.xaml</DependentUpon>
     </Compile>
@@ -182,6 +186,10 @@
       <DependentUpon>MainPersonalWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="View\CreateAlumnAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreatePersonalAccountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

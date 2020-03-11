@@ -26,6 +26,11 @@ namespace WPFLayer.View
         {
             InitializeComponent();
             DataContext = mainPersonalViewModel;
+
+            if (!(GLOBALSWPF.AktuellPersonal.Användarnamn == "SuperAdmin" && GLOBALSWPF.AktuellPersonal.PersonalID == 1))
+            {
+                SuperAdminPanel.Visibility = Visibility.Hidden;
+            }
         }
 
         private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
