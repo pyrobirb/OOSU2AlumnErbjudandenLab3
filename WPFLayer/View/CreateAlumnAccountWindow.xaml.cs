@@ -34,6 +34,8 @@ namespace WPFLayer.View
             if (createAlumnAccViewModel.SkapaAlumnKonto())
             {
                 MessageBox.Show("Ditt Alumn-konto är nu skapat! Var god logga in.");
+                this.Close();
+                Application.Current.MainWindow.Show();
             }
             else
             {

@@ -8,7 +8,7 @@
         Title="CreateAlumnAccountWindow" Height="370" Width="410">
     <Grid>
         <StackPanel Margin="20">
-            <TextBlock HorizontalAlignment="Left" FontSize="18" Margin="5 10">Vänligen fyll i dina användaruppgifter:</TextBlock>
+            <TextBlock HorizontalAlignment="Right" FontSize="18" Margin="0">Vänligen fyll i dina användaruppgifter:</TextBlock>
 
             <StackPanel>
                 <StackPanel Margin="0 5" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -29,7 +29,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <Button Margin="25 10"  HorizontalAlignment="Right" Height="25" Width="150" Click="SkapaAlumnKonto">Skapa alumn-konto</Button>
+            <Button Margin="0 10"  HorizontalAlignment="Right" Height="25" Width="150" Click="SkapaAlumnKonto">Skapa alumn-konto</Button>
             <TextBlock TextWrapping="Wrap" FontSize="8">Genom att trycka på "Skapa alumn-konto" godkänner du villkoren för GDPR och behandlingen av dina personuppgifter.</TextBlock>
             <Button Width="80" Height="20" HorizontalAlignment="Right" Margin="0 10" Click="Button_Click">Tillbaka</Button>
         </StackPanel>
