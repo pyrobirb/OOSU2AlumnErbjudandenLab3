@@ -8,29 +8,39 @@
         Title="MainWindow" Height="450" Width="450">
     <Grid>
         <StackPanel>
+            
             <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Height="100" Margin="10">
                 <TextBlock Height="50" Width="300" FontSize="20" >
                     Välkommen till AlumnSpammer!
                 <LineBreak/>
                 </TextBlock>
-                <TextBlock HorizontalAlignment="Left" Height="75">
+                
+                <TextBlock HorizontalAlignment="Left" Height="35" Margin="4 20">
                     Vänligen ange din information för att Logga in
                 </TextBlock>
             </StackPanel>
+            <StackPanel Width="300"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <TextBlock HorizontalAlignment="Left" Width="84" Margin="6 0 0 0">Logga in som:</TextBlock>
+                <ComboBox Margin="10 0"  Width="100">
+                    <ComboBoxItem Content="Alumn" HorizontalAlignment="Left" Width="98"/>
+                    <ComboBoxItem Content="Personal" HorizontalAlignment="Left" Width="98"/>
+                </ComboBox>
+            </StackPanel>
             
+
             <StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
-                <Label Width="100">Användarnamn:</Label>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
+                    <Label Width="100">Användarnamn:</Label>
                     <TextBox BorderBrush="Black" BorderThickness="1" Width="200"></TextBox>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
-                <Label Width="100">Lösenord:</Label>
-                <PasswordBox BorderBrush="Black" BorderThickness="1" Width="200"></PasswordBox>
-            </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
+                    <Label Width="100">Lösenord:</Label>
+                    <PasswordBox BorderBrush="Black" BorderThickness="1" Width="200"></PasswordBox>
+                </StackPanel>
             </StackPanel>
             <Button HorizontalAlignment="Center" Width="100" Height="25">Logga in</Button>
 
-            <StackPanel Margin="50" HorizontalAlignment="Stretch" Height="20"></StackPanel>
+            <StackPanel Margin="40" HorizontalAlignment="Stretch" Height="20"></StackPanel>
             <TextBlock Height="25"   HorizontalAlignment="Center">Har du inget konto? Skapa ett här:</TextBlock>
             <Button Width="150" Height="30" Click="CreateAlumnAccBtn_Click">Skapa nytt alumnkonto</Button>
         </StackPanel>

@@ -26,6 +26,7 @@ namespace WPFLayer
     /// </summary>
     public partial class MainWindow : Window
     {
+        LoginViewModel loginViewModel = new LoginViewModel();
         public MainWindow()
         {
             InitializeComponent();
@@ -40,10 +41,8 @@ namespace WPFLayer
             });
             var mapper = config.CreateMapper();
             MapperConfig.SetMapper(mapper);
-
+            DataContext = loginViewModel;
         }
-
-        
 
         private void CreateAlumnAccBtn_Click(object sender, RoutedEventArgs e)
         {

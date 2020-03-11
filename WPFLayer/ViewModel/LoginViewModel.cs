@@ -10,6 +10,11 @@ namespace WPFLayer.ViewModel
     public class LoginViewModel
     {
 
+
+
+
+
+
         
     }
 }
