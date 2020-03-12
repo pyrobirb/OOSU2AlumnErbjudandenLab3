@@ -62,7 +62,22 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Publicera Aktivitet"></TabItem>
+            <TabItem Header="Publicera Aktivitet">
+                <StackPanel Orientation="Vertical" Width="780" Height="500" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <StackPanel>
+                        
+                    </StackPanel>
+                    <StackPanel>
+                        
+                    </StackPanel>
+                    <StackPanel>
+                        
+                    </StackPanel>
+                    <StackPanel>
+                        
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
             <TabItem Header="Se Anmälningar"></TabItem>
             <TabItem Header="Skapa Utskickslistor"></TabItem>
         </TabControl>
