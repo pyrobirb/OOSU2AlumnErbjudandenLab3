@@ -63,12 +63,23 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="Publicera Aktivitet">
-                <StackPanel Orientation="Vertical" Width="780" Height="500" VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <StackPanel>
-                        
+                <StackPanel Orientation="Horizontal" Width="760" Height="500" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" Width="300">
+                        <Label FontSize="20">1.</Label>
+                        <Label>Filtrera på program</Label>
+                        <ComboBox Height="25"></ComboBox>
+                        <Label>Välj alumn</Label>
+                        <ListBox Height="250" ItemsSource="{Binding AvailablePresentationObjects}" >
+                            <ListBox.ItemTemplate>
+                                <HierarchicalDataTemplate>
+                                    <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
+                                </HierarchicalDataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </StackPanel>
-                    <StackPanel>
-                        
+                    <StackPanel Orientation="Vertical" Width="100">
+                        <Button Margin="10 210 10 5">Välj</Button>
+                        <Button Margin="10">Ta bort</Button>
                     </StackPanel>
                     <StackPanel>
                         
