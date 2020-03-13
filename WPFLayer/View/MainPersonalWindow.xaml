@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="MainPersonalWindow" Height="600" Width="800">
     <Grid>
-        <TabControl>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="677*"/>
+            <ColumnDefinition Width="115*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.ColumnSpan="2">
             <TabItem Header="Skapa Aktivitet">
                 <StackPanel Orientation="Horizontal" Width="780" Height="500" VerticalAlignment="Top" HorizontalAlignment="Center">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="380" Height="500">
@@ -31,7 +35,7 @@
                         <Button Name="SkapaAktivitet" Height="25" Width="360" Margin="5">Skapa Aktivitet</Button>
                     </StackPanel>
                 </StackPanel>
-                
+
             </TabItem>
             <TabItem Header="Redigera Aktivitet">
                 <StackPanel Orientation="Vertical" Width="780" Height="500" VerticalAlignment="Top" HorizontalAlignment="Center">
@@ -95,13 +99,20 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Se Anmälningar"></TabItem>
+            <TabItem Header="Se Anmälningar">
+                <StackPanel Orientation="Vertical" Width="760" Height="500" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <Label Margin="0 20 0 0">Välj aktivitet</Label>
+                    <ComboBox Height="25" Width="300" HorizontalAlignment="Left"></ComboBox>
+                    <Label>Anmälda alumner</Label>
+                    <DataGrid VerticalAlignment="Stretch" Height="250"></DataGrid>
+                </StackPanel>
+            </TabItem>
             <TabItem Header="Skapa Utskickslistor"></TabItem>
         </TabControl>
         <StackPanel Name="SuperAdminPanel" Height="45" Width="600" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal">
-            <TextBlock Margin="10">Välkommen SuperAdmin! Här kan du skapa nytt personalkonto: </TextBlock>
+            <TextBlock Margin="10">Välkommen SuperAdmin! Här kan du skapa nytt personalkonto:</TextBlock>
             <Button Name="SkapaPersonalKonto" Height="25" Width="180">Skapa nytt personalkonto</Button>
         </StackPanel>
-        <Button Name="LoggaUtBtn" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="100" Margin="10" Click="LoggaUtBtn_Click">Logga ut</Button>
+        <Button Name="LoggaUtBtn" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="100" Margin="0,0,10,10" Click="LoggaUtBtn_Click" Grid.Column="1">Logga ut</Button>
     </Grid>
 </Window>
