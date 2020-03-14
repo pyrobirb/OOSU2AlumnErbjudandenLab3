@@ -14,6 +14,9 @@
                         <Label Margin="10 0">Kommande Aktiviteter</Label>
                         <ListBox Name="KommandeAktiviteterListBox"  Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top"></ListBox>
                     </StackPanel>
+                    <Grid>
+                        
+                    </Grid>
                     <StackPanel Orientation="Vertical" Width="390" Height="500" HorizontalAlignment="Right" VerticalAlignment="Top">
                         <Label>Aktivitetsinformation</Label>
                         <RichTextBox Name="AktivitetInfoRichTxtBox" Width="350" Height="400"></RichTextBox>
@@ -21,7 +24,34 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Bokade Aktiviteter"></TabItem>
+            <TabItem Header="Bokade Aktiviteter">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="1" Grid.Row="1"  Text="Event" FontSize="18" />
+                    <ListBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" />
+                    <TextBlock Grid.Column="4" Grid.Row="1"  Text="Eventinformation" FontSize="18" />
+                    <ListBox Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" />
+                    <Button Grid.Column="5" Grid.Row="3" Content="Anmäl till event" Margin="0,10,0,0" FontSize="18"/>
+                </Grid>
+
+            </TabItem>
             <TabItem Header="Alumnuppgifter"></TabItem>
             <TabItem Header="Användaruppgifter">
 
