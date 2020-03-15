@@ -4,25 +4,49 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFLayer.View"
-        mc:Ignorable="d"
+        mc:Ignorable="d" FontSize="15"
         Title="MainAlumnWindow" Height="600" Width="800">
     <Grid>
-        <TabControl>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+            
+        </Grid.RowDefinitions>
+        <TabControl Grid.Column="1" Grid.Row="1">
             <TabItem Header="Aktuella Händelser">
-                <StackPanel Orientation="Horizontal" Height="500" Width="780" HorizontalAlignment="Center" VerticalAlignment='Top'>
-                    <StackPanel Width="390" Height="500" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical">
-                        <Label Margin="10 0">Kommande Aktiviteter</Label>
-                        <ListBox Name="KommandeAktiviteterListBox"  Height="400" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top"></ListBox>
-                    </StackPanel>
-                    <Grid>
-                        
-                    </Grid>
-                    <StackPanel Orientation="Vertical" Width="390" Height="500" HorizontalAlignment="Right" VerticalAlignment="Top">
-                        <Label>Aktivitetsinformation</Label>
-                        <RichTextBox Name="AktivitetInfoRichTxtBox" Width="350" Height="400"></RichTextBox>
-                        <Button Name="BokaValdAktivitet" HorizontalAlignment="Right" Height="25" Width="130" Margin="0 10 20 0">Boka vald aktivitet</Button>
-                    </StackPanel>
-                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="10" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="1" Grid.Row="1" >Kommande Aktiviteter</Label>
+                    <ListBox Name="KommandeAktiviteterListBox"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" ></ListBox>
+                    <Label Grid.Column="4" Grid.Row="1" >Aktivitetsinformation</Label>
+                    <RichTextBox Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" Name="AktivitetInfoRichTxtBox" ></RichTextBox>
+                    <Button Name="BokaValdAktivitet" Grid.Column="5" Grid.Row="3" Margin="0 10 0 0">Boka vald aktivitet</Button>
+                </Grid>
+
             </TabItem>
             <TabItem Header="Bokade Aktiviteter">
                 <Grid>
@@ -41,14 +65,14 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="40" />
+                        <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Column="1" Grid.Row="1"  Text="Event" FontSize="18" />
+                    <TextBlock Grid.Column="1" Grid.Row="1"  Text="Event"  />
                     <ListBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" />
-                    <TextBlock Grid.Column="4" Grid.Row="1"  Text="Eventinformation" FontSize="18" />
+                    <TextBlock Grid.Column="4" Grid.Row="1"  Text="Eventinformation" />
                     <ListBox Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" />
-                    <Button Grid.Column="5" Grid.Row="3" Content="Anmäl till event" Margin="0,10,0,0" FontSize="18"/>
+                    <Button Grid.Column="5" Grid.Row="3" Content="Anmäl till event" Margin="0,10,0,0"/>
                 </Grid>
 
             </TabItem>
@@ -75,7 +99,7 @@
 
 
 
-        <Button Name="LoggaUtBtn" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="100" Margin="10" Click="LoggaUtBtn_Click">Logga ut</Button>
+        <Button Grid.Column="1" Grid.Row="2" Name="LoggaUtBtn" HorizontalAlignment="Right" Margin="0,10,0,0" Width="100" Click="LoggaUtBtn_Click">Logga ut</Button>
 
     </Grid>
 </Window>
