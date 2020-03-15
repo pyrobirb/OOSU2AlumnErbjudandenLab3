@@ -4,38 +4,70 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFLayer.View"
-        mc:Ignorable="d"
+        mc:Ignorable="d" FontSize="15"
         Title="MainPersonalWindow" Height="600" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="677*"/>
-            <ColumnDefinition Width="115*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
-        <TabControl Grid.ColumnSpan="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Column="1" Grid.Row="1">
             <TabItem Header="Skapa Aktivitet">
-                <StackPanel Orientation="Horizontal" Width="780" Height="500" VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="380" Height="500">
-                        <Label >Titel</Label>
-                        <TextBox Name="TitelTxtBox" Height="25" Width="300" HorizontalAlignment="Left" Margin="8 0"></TextBox>
-                        <Label >Ansvarig Person</Label>
-                        <TextBox Name="AnsvarigPersonTxtBox" Height="25" Width="300" HorizontalAlignment="Left" Margin="8 0"></TextBox>
-                        <Label>Kontaktperson</Label>
-                        <TextBox Height="25" Width="300" HorizontalAlignment="Left" Margin="8 0"></TextBox>
-                        <Label>Plats</Label>
-                        <TextBox Height="25" Width="300" HorizontalAlignment="Left" Margin="8 0"></TextBox>
-                        <Label>Startdatum</Label>
-                        <DatePicker Height="25" Width="300" HorizontalAlignment="Left" Margin="8 0"></DatePicker>
-                        <Label>Slutdatum</Label>
-                        <DatePicker Height="25" Width="300" HorizontalAlignment="Left" Margin="8 0"></DatePicker>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
 
-                    </StackPanel>
-                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Vertical" Width="400" Height="500">
-                        <Label>Beskrivning</Label>
-                        <RichTextBox Width="360" Height="250"></RichTextBox>
-                        <Button Name="SkapaAktivitet" Height="25" Width="360" Margin="5">Skapa Aktivitet</Button>
-                    </StackPanel>
-                </StackPanel>
+                    <Label Grid.Column="1" Grid.Row="1">Titel</Label>
+                    <TextBox Name="TitelTxtBox" Grid.Column="1" Grid.Row="2" ></TextBox>
+                    <Label Grid.Column="1" Grid.Row="3" >Ansvarig Person</Label>
+                    <TextBox Grid.Column="1" Grid.Row="4" Name="AnsvarigPersonTxtBox" ></TextBox>
+                    <Label Grid.Column="1" Grid.Row="5">Kontaktperson</Label>
+                    <TextBox Grid.Column="1" Grid.Row="6" ></TextBox>
+                    <Label Grid.Column="1" Grid.Row="7">Plats</Label>
+                    <TextBox Grid.Column="1" Grid.Row="8" ></TextBox>
+                    <Label Grid.Column="1" Grid.Row="9">Startdatum</Label>
+                    <DatePicker Grid.Column="1" Grid.Row="10" ></DatePicker>
+                    <Label Grid.Column="1" Grid.Row="11">Slutdatum</Label>
+                    <DatePicker Grid.Column="1" Grid.Row="12"></DatePicker>
 
+
+                     <Label Grid.Column="3" Grid.Row="1">Beskrivning</Label>
+                     <RichTextBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="11"></RichTextBox>
+                     <Button Name="SkapaAktivitet" Grid.Column="4" Grid.Row="13" HorizontalAlignment="Right" Margin="0,10,0,0">Skapa Aktivitet</Button>
+
+                </Grid>
             </TabItem>
             <TabItem Header="Redigera Aktivitet">
                 <StackPanel Orientation="Vertical" Width="780" Height="500" VerticalAlignment="Top" HorizontalAlignment="Center">
@@ -113,6 +145,6 @@
             <TextBlock Margin="10">Välkommen SuperAdmin! Här kan du skapa nytt personalkonto:</TextBlock>
             <Button Name="SkapaPersonalKonto" Height="25" Width="180">Skapa nytt personalkonto</Button>
         </StackPanel>
-        <Button Name="LoggaUtBtn" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="100" Margin="0,0,10,10" Click="LoggaUtBtn_Click" Grid.Column="1">Logga ut</Button>
+        <Button Grid.Column="1" Grid.Row="2" Name="LoggaUtBtn"  HorizontalAlignment="Right" Margin="0,10,0,0" Width="100" Click="LoggaUtBtn_Click">Logga ut</Button>
     </Grid>
 </Window>
