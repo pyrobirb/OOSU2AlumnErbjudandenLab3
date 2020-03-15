@@ -78,22 +78,44 @@
             </TabItem>
             <TabItem Header="Alumnuppgifter"></TabItem>
             <TabItem Header="Användaruppgifter">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Label Grid.Column="1" Grid.Row="1" Margin="5 0">Ändra Förnamn</Label>
+                    <TextBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Name="ÄndraFörnamn"></TextBox>
+                    <Label Grid.Column="1" Grid.Row="3" Margin="5 0">Ändra Efternamn</Label>
+                    <TextBox Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Name="ÄndraEfternamn"></TextBox>
+                    <Label Grid.Column="1" Grid.Row="5" Margin="5 0">Ändra Epostadress</Label>
+                    <TextBox Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Name="ÄndraEpostadress"></TextBox>
+                    <Button Name="SparaÄndringarBtn" Grid.Column="1" Grid.Row="7" Margin="0,10,0,0">Spara ändringar</Button>
 
-                <StackPanel Orientation="Vertical" Height="500" VerticalAlignment="Top">
-                <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Width="400" Height="200">
-                    <Label Margin="5 0">Ändra Förnamn</Label>
-                    <TextBox Height="25" Width="250" HorizontalAlignment="Left" Margin="10 0" Name="ÄndraFörnamn"></TextBox>
-                    <Label Margin="5 0">Ändra Efternamn</Label>
-                    <TextBox Height="25" Width="250" HorizontalAlignment="Left" Margin="10 0" Name="ÄndraEfternamn"></TextBox>
-                    <Label Margin="5 0">Ändra Epostadress</Label>
-                    <TextBox Height="25" Width="250" HorizontalAlignment="Left" Margin="10 0" Name="ÄndraEpostadress"></TextBox>
-                    <Button Name="SparaÄndringarBtn" HorizontalAlignment="Left" Width="150" Height="25" Margin="10">Spara ändringar</Button>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Width="400" Height="150" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10 100">
-                    <Label FontSize="14" Name="WarningLabel">Varning! Det går inte att återställa ett borttaget konto</Label>
-                        <Button Name="RaderaKontoBtn" Height="25" Width="100" HorizontalAlignment="Left">Radera konto</Button>
-                </StackPanel>
-                </StackPanel>
+                    <Label Grid.Column="1" Grid.Row="9" FontSize="14" Grid.ColumnSpan="2" Name="WarningLabel">Varning! Det går inte att återställa ett borttaget konto</Label>
+                    <Button Name="RaderaKontoBtn" Grid.Column="1" Grid.Row="10" >Radera konto</Button>
+
+                </Grid>
+
             </TabItem>
         </TabControl>
 
