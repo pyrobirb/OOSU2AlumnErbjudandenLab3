@@ -1,91 +1,311 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="BusinessEntites.Models.Aktivitet">
-    <Position X="1.5" Y="5.5" Width="1.5" />
-    <TypeIdentifier />
-    <ShowAsCollectionAssociation>
-      <Property Name="InformationsutskickAktivitet" />
-      <Property Name="AlumnAktivitet" />
-    </ShowAsCollectionAssociation>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="BusinessEntites.Models.Alumn">
-    <Position X="7.25" Y="0.75" Width="1.5" />
-    <AssociationLine Name="InformationsutskickAlumn" Type="BusinessEntites.Models.Junction.InformationsutskickAlumn">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="BusinessEntites.Models.Junction.AlumnMaillistaDTO">
+    <Position X="6.5" Y="1.5" Width="2" />
+    <AssociationLine Name="Alumn" Type="BusinessEntites.Models.AlumnDTO">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.327" Y="0.195" />
+        <Position X="0.018" Y="0.537" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier />
-    <ShowAsCollectionAssociation>
-      <Property Name="AlumnProgram" />
-      <Property Name="AlumnKompetens" />
-      <Property Name="InformationsutskickAlumn" />
-      <Property Name="AlumnAktivitet" />
-    </ShowAsCollectionAssociation>
-    <Lollipop Position="0.2" />
+    <ShowAsAssociation>
+      <Property Name="Alumn" />
+      <Property Name="Maillista" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="BusinessEntites.Models.Informationsutskick">
-    <Position X="9.75" Y="5.5" Width="1.5" />
-    <TypeIdentifier />
-    <ShowAsCollectionAssociation>
-      <Property Name="InformationsutskickAlumn" />
-      <Property Name="PersonalInformationsutskick" />
-      <Property Name="InformationsutskickAktivitet" />
-    </ShowAsCollectionAssociation>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="BusinessEntites.Models.Junction.InformationsutskickAktivitet">
-    <Position X="4" Y="6.75" Width="1.5" />
+  <Class Name="BusinessEntites.Models.AlumnDTO">
+    <Position X="10.75" Y="4" Width="5.25" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="BusinessEntites.Models.Junction.InformationsutskickAlumn">
-    <Position X="6.25" Y="4" Width="1.5" />
+  <Class Name="BusinessEntites.Models.MaillistaDTO">
+    <Position X="1" Y="1.25" Width="3.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BusinessEntites.Models.AktivitetDTO">
+    <Position X="16.5" Y="8" Width="5.25" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="BusinessEntites.Models.Personal">
-    <Position X="5.5" Y="9.5" Width="1.5" />
+  <Class Name="BusinessEntites.Models.Junction.AlumnAktivitetBokningDTO">
+    <Position X="17.5" Y="4.5" Width="2.5" />
     <TypeIdentifier />
-    <ShowAsCollectionAssociation>
-      <Property Name="PersonalInformationsutskick" />
-    </ShowAsCollectionAssociation>
+    <ShowAsAssociation>
+      <Property Name="Alumn" />
+      <Property Name="Aktivitet" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="BusinessEntites.Models.Junction.AlumnProgram">
-    <Position X="9.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier />
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="BusinessEntites.Models.Junction.AlumnKompetens">
-    <Position X="9.5" Y="3" Width="1.75" />
+  <Class Name="BusinessEntites.Models.PersonalDTO">
+    <Position X="11" Y="13" Width="5.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="BusinessEntites.Models.Junction.PersonalInformationsutskick">
-    <Position X="8" Y="8.25" Width="1.5" />
+  <Class Name="BusinessEntites.Models.KompetensDTO">
+    <Position X="0.5" Y="4.5" Width="4.25" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="BusinessEntites.Models.Junction.AlumnAktivitetBokning">
-    <Position X="2.75" Y="0.75" Width="2" />
+  <Class Name="BusinessEntites.Models.ProgramDTO">
+    <Position X="1" Y="7" Width="3.75" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="BusinessEntites.Models.Kompetens">
-    <Position X="13" Y="3.5" Width="1.5" />
+  <Class Name="BusinessEntites.Models.Junction.AlumnKompetensDTO">
+    <Position X="6.5" Y="4.25" Width="2.5" />
     <TypeIdentifier />
-    <ShowAsCollectionAssociation>
-      <Property Name="AlumnKompetens" />
-    </ShowAsCollectionAssociation>
+    <ShowAsAssociation>
+      <Property Name="Alumn" />
+      <Property Name="Kompetens" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="BusinessEntites.Models.Program">
-    <Position X="13" Y="0.5" Width="1.5" />
+  <Class Name="BusinessEntites.Models.Junction.AlumnProgramDTO">
+    <Position X="6.5" Y="7" Width="2.25" />
     <TypeIdentifier />
-    <ShowAsCollectionAssociation>
-      <Property Name="AlumnProgram" />
-    </ShowAsCollectionAssociation>
+    <ShowAsAssociation>
+      <Property Name="Alumn" />
+      <Property Name="Program" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
+  <Class Name="BusinessEntites.Models.InformationsutskickDTO">
+    <Position X="0.5" Y="10" Width="5.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BusinessEntites.Models.Junction.InformationsutskickAlumnDTO">
+    <Position X="7.5" Y="10.25" Width="3.5" />
+    <AssociationLine Name="Alumn" Type="BusinessEntites.Models.AlumnDTO" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11" Y="11.125" />
+        <Point X="13.625" Y="11.125" />
+        <Point X="13.625" Y="7.182" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.065" Y="1.193" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Alumn" />
+      <Property Name="Informationsutskick" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BusinessEntites.Models.Junction.PersonalInformationsutskickDTO">
+    <Position X="5" Y="13.75" Width="3.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Personal" />
+      <Property Name="Informationsutskick" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BusinessEntites.Models.Junction.InformationsutskickAktivitetDTO">
+    <Position X="18.25" Y="15.25" Width="3.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Aktivitet" />
+      <Property Name="Informationsutskick" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataLayer.UnitOfWork.UnitOfWork">
+    <Position X="40" Y="17.75" Width="4.5" />
+    <AssociationLine Name="ProgramRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IProgramRepository" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="44.5" Y="18.861" />
+        <Point X="59.875" Y="18.861" />
+        <Point X="59.875" Y="15.588" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="PersonalRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IPersonalRepository" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="44.5" Y="18.719" />
+        <Point X="55.688" Y="18.719" />
+        <Point X="55.688" Y="15.216" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="MaillistaRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IMaillistRepository" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="44.5" Y="18.624" />
+        <Point X="51.938" Y="18.624" />
+        <Point X="51.938" Y="15.402" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="KompetensRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IKompetensRepository" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="44.5" Y="18.474" />
+        <Point X="47.562" Y="18.474" />
+        <Point X="47.562" Y="15.588" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="InformationsutskickRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IInformationsutskickRepository" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="40" Y="18.336" />
+        <Point X="38.375" Y="18.336" />
+        <Point X="38.375" Y="16.145" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="AlumnRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IAlumnRepository" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="40" Y="18.493" />
+        <Point X="33.625" Y="18.493" />
+        <Point X="33.625" Y="15.959" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="AktivitetRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IAktivitetRepository" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="40" Y="18.75" />
+        <Point X="27.375" Y="18.75" />
+        <Point X="27.375" Y="16.081" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="ProgramRepository" />
+      <Property Name="PersonalRepository" />
+      <Property Name="MaillistaRepository" />
+      <Property Name="KompetensRepository" />
+      <Property Name="InformationsutskickRepository" />
+      <Property Name="AlumnRepository" />
+      <Property Name="AktivitetRepository" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataLayer.Repositories.UniqueRepository.AktivitetRepository">
+    <Position X="27" Y="9" Width="5.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataLayer.Repositories.UniqueRepository.AlumnRepository">
+    <Position X="32.75" Y="9" Width="4.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataLayer.Repositories.UniqueRepository.InformationsutskickRepository">
+    <Position X="37.75" Y="9" Width="6" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataLayer.Repositories.UniqueRepository.KompetensRepository">
+    <Position X="44" Y="9" Width="4.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataLayer.Repositories.UniqueRepository.MaillistaRepository">
+    <Position X="49" Y="9" Width="5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataLayer.Repositories.UniqueRepository.PersonalRepository">
+    <Position X="54.5" Y="9" Width="3" />
+    <InheritanceLine Type="DataLayer.Repositories.Repository&lt;TEntity&gt;" ManuallyRouted="true">
+      <Path>
+        <Point X="43.875" Y="7.31" />
+        <Point X="43.875" Y="8.116" />
+        <Point X="56" Y="8.116" />
+        <Point X="56" Y="9" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataLayer.Repositories.UniqueRepository.ProgramRepository">
+    <Position X="57.75" Y="9" Width="4.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataLayer.Repositories.Repository&lt;TEntity&gt;">
+    <Position X="42.5" Y="4.5" Width="2.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="DataLayer.UnitOfWork.IUnitOfWork">
+    <Position X="38.75" Y="4.5" Width="3" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DataLayer.Repositories.IRepository&lt;TEntity&gt;">
+    <Position X="42.5" Y="11.5" Width="2.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DataLayer.Repositories.UniqueRepositoryInterface.IProgramRepository">
+    <Position X="58" Y="14" Width="4.25" />
+    <InheritanceLine Type="DataLayer.Repositories.IRepository&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="45.25" Y="12.375" />
+        <Point X="59.875" Y="12.375" />
+        <Point X="59.875" Y="14" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DataLayer.Repositories.UniqueRepositoryInterface.IPersonalRepository">
+    <Position X="54.25" Y="14" Width="3" />
+    <InheritanceLine Type="DataLayer.Repositories.IRepository&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="45.25" Y="12.625" />
+        <Point X="55.688" Y="12.625" />
+        <Point X="55.688" Y="14" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DataLayer.Repositories.UniqueRepositoryInterface.IMaillistRepository">
+    <Position X="51" Y="14" Width="2" />
+    <InheritanceLine Type="DataLayer.Repositories.IRepository&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="45.25" Y="12.938" />
+        <Point X="51.938" Y="12.938" />
+        <Point X="51.938" Y="14" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DataLayer.Repositories.UniqueRepositoryInterface.IKompetensRepository">
+    <Position X="45.25" Y="14" Width="4.75" />
+    <InheritanceLine Type="DataLayer.Repositories.IRepository&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="45.25" Y="13.187" />
+        <Point X="47.5" Y="13.187" />
+        <Point X="47.5" Y="14" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DataLayer.Repositories.UniqueRepositoryInterface.IInformationsutskickRepository">
+    <Position X="36.75" Y="14" Width="6" />
+    <InheritanceLine Type="DataLayer.Repositories.IRepository&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="42.5" Y="13.125" />
+        <Point X="38.375" Y="13.125" />
+        <Point X="38.375" Y="14" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DataLayer.Repositories.UniqueRepositoryInterface.IAlumnRepository">
+    <Position X="31.25" Y="14" Width="4.75" />
+    <InheritanceLine Type="DataLayer.Repositories.IRepository&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="42.5" Y="12.938" />
+        <Point X="33.688" Y="12.938" />
+        <Point X="33.688" Y="14" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DataLayer.Repositories.UniqueRepositoryInterface.IAktivitetRepository">
+    <Position X="24.75" Y="13.75" Width="5.5" />
+    <InheritanceLine Type="DataLayer.Repositories.IRepository&lt;TEntity&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="42.5" Y="12.688" />
+        <Point X="27.438" Y="12.688" />
+        <Point X="27.438" Y="13.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Interface>
   <Font Name="Arial" Size="10" />
 </ClassDiagram>
