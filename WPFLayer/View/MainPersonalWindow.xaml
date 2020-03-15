@@ -251,7 +251,7 @@
                     <Button Grid.Column="4" Grid.Row="4" Margin="10,0,0,10" Padding="5,0">Hämta lista</Button>
                     <StackPanel Grid.Column="4" Grid.Row="6" VerticalAlignment="Center">
                         <Button  Margin="10,0,0,0" Padding="5">
-                            <TextBlock>Skapa maillista <LineBreak></LineBreak> och .CSV-fil</TextBlock>
+                            <TextBlock>3.Skapa maillista <LineBreak/> och .CSV-fil</TextBlock>
                         </Button>
                     </StackPanel>
 
