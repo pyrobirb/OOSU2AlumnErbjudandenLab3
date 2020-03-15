@@ -68,15 +68,62 @@
                         <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Column="1" Grid.Row="1"  Text="Event"  />
-                    <ListBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" />
-                    <TextBlock Grid.Column="4" Grid.Row="1"  Text="Eventinformation" />
-                    <ListBox Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" />
-                    <Button Grid.Column="5" Grid.Row="3" Content="Anmäl till event" Margin="0,10,0,0"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1"  Text="Bokade aktiviteter"  />
+                    <ListBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0 "/>
+                    <TextBlock Grid.Column="4" Grid.Row="1"  Text="Aktivitetsinformation" />
+                    <ListBox Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0 "/>
+                    <Button Grid.Column="5" Grid.Row="3" Content="Avboka vald aktivitet" Margin="0,10,0,0"/>
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Alumnuppgifter"></TabItem>
+            <TabItem Header="Alumnuppgifter">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="Slutförd utbildning vid högskolan i Borås" />
+                    <TextBox Grid.Column="1" Grid.Row="2" Margin="0,10" Name="LäggTillUtbildningHögskolanIBoråsTextBox"/>
+                    <Button Grid.Column="1" Grid.Row="3" Content="Lägg till utbildning ->" Name="LäggTillUtbildningHögskolanIBoråsButton"/>
+                    <TextBlock Grid.Column="3" Grid.Row="1" Text="Program"/>
+                    <ListBox Grid.Column="3" Grid.Row="2" Grid.RowSpan="3" Margin="0,10,0,0" Name="ProgramListBox"/>
+                    <Button Grid.Column="3" Grid.Row="5" Margin="0,10,0,0" Content="Ta bort valt program" HorizontalAlignment="Right" Name="TabortProgramButton"/>
+                    
+
+                    <TextBlock Grid.Column="1" Grid.Row="6" Text="Kompetenser/Arbetslivserfarenhet"/>
+                    <TextBox Grid.Column="1" Grid.Row="7" Margin="0,10" Name="LäggTillKompetens_ArbetlivserfarenhetTextBox"/>
+                    <Button Grid.Column="1" Grid.Row="8" Content="Lägg till utbildning ->" Name="LäggTillKompetens_ArbetlivserfarenhetButton"/>
+                    <TextBlock Grid.Column="3" Grid.Row="6" Text="Program"/>
+                    <ListBox Grid.Column="3" Grid.Row="7" Grid.RowSpan="4" Margin="0,10,0,0" Name="KompetenserListBox"/>
+                    <Button Grid.Column="3" Grid.Row="11" Margin="0,10,0,0" Content="Ta bort vald kompetens" HorizontalAlignment="Right" Name="TabortKOmpetensButton"/>
+                    
+                </Grid>
+            </TabItem>
+
+                
+
+            
             <TabItem Header="Användaruppgifter">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -103,11 +150,11 @@
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
                     
-                    <Label Grid.Column="1" Grid.Row="1" Margin="5 0">Ändra Förnamn</Label>
+                    <Label Grid.Column="1" Grid.Row="1" >Ändra Förnamn</Label>
                     <TextBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Name="ÄndraFörnamn"></TextBox>
-                    <Label Grid.Column="1" Grid.Row="3" Margin="5 0">Ändra Efternamn</Label>
+                    <Label Grid.Column="1" Grid.Row="3" >Ändra Efternamn</Label>
                     <TextBox Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Name="ÄndraEfternamn"></TextBox>
-                    <Label Grid.Column="1" Grid.Row="5" Margin="5 0">Ändra Epostadress</Label>
+                    <Label Grid.Column="1" Grid.Row="5" >Ändra Epostadress</Label>
                     <TextBox Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Name="ÄndraEpostadress"></TextBox>
                     <Button Name="SparaÄndringarBtn" Grid.Column="1" Grid.Row="7" Margin="0,10,0,0">Spara ändringar</Button>
 
