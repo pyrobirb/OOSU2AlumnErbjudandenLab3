@@ -50,7 +50,7 @@
                     </Grid.RowDefinitions>
 
                     <Label Grid.Column="1" Grid.Row="1">Titel</Label>
-                    <TextBox Name="TitelTxtBox" Grid.Column="1" Grid.Row="2" ></TextBox>
+                    <TextBox Name="TitelTxtBox" Grid.Column="1" Grid.Row="2" Text="{Binding Aktivitet.Titel}"></TextBox>
                     <Label Grid.Column="1" Grid.Row="3" >Ansvarig Person</Label>
                     <TextBox Grid.Column="1" Grid.Row="4" Name="AnsvarigPersonTxtBox" ></TextBox>
                     <Label Grid.Column="1" Grid.Row="5">Kontaktperson</Label>

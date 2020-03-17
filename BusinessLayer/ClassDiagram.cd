@@ -106,18 +106,18 @@
     <Position X="18.25" Y="15.25" Width="3.5" />
     <TypeIdentifier />
     <ShowAsAssociation>
-      <Property Name="Aktivitet" />
       <Property Name="Informationsutskick" />
+      <Property Name="Aktivitet" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DataLayer.UnitOfWork.UnitOfWork">
     <Position X="40" Y="17.75" Width="4.5" />
-    <AssociationLine Name="ProgramRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IProgramRepository" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="AlumnRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IAlumnRepository" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="44.5" Y="18.861" />
-        <Point X="59.875" Y="18.861" />
-        <Point X="59.875" Y="15.588" />
+        <Point X="40" Y="18.493" />
+        <Point X="33.625" Y="18.493" />
+        <Point X="33.625" Y="15.959" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="PersonalRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IPersonalRepository" FixedFromPoint="true" FixedToPoint="true">
@@ -127,18 +127,11 @@
         <Point X="55.688" Y="15.216" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="MaillistaRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IMaillistRepository" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="AktivitetRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IAktivitetRepository" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="44.5" Y="18.624" />
-        <Point X="51.938" Y="18.624" />
-        <Point X="51.938" Y="15.402" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="KompetensRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IKompetensRepository" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="44.5" Y="18.474" />
-        <Point X="47.562" Y="18.474" />
-        <Point X="47.562" Y="15.588" />
+        <Point X="40" Y="18.75" />
+        <Point X="27.375" Y="18.75" />
+        <Point X="27.375" Y="16.081" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="InformationsutskickRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IInformationsutskickRepository" FixedFromPoint="true" FixedToPoint="true">
@@ -148,29 +141,36 @@
         <Point X="38.375" Y="16.145" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="AlumnRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IAlumnRepository" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="KompetensRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IKompetensRepository" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="40" Y="18.493" />
-        <Point X="33.625" Y="18.493" />
-        <Point X="33.625" Y="15.959" />
+        <Point X="44.5" Y="18.474" />
+        <Point X="47.562" Y="18.474" />
+        <Point X="47.562" Y="15.588" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="AktivitetRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IAktivitetRepository" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="ProgramRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IProgramRepository" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="40" Y="18.75" />
-        <Point X="27.375" Y="18.75" />
-        <Point X="27.375" Y="16.081" />
+        <Point X="44.5" Y="18.861" />
+        <Point X="59.875" Y="18.861" />
+        <Point X="59.875" Y="15.588" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="MaillistaRepository" Type="DataLayer.Repositories.UniqueRepositoryInterface.IMaillistRepository" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="44.5" Y="18.624" />
+        <Point X="51.938" Y="18.624" />
+        <Point X="51.938" Y="15.402" />
       </Path>
     </AssociationLine>
     <TypeIdentifier />
     <ShowAsAssociation>
-      <Property Name="ProgramRepository" />
-      <Property Name="PersonalRepository" />
-      <Property Name="MaillistaRepository" />
-      <Property Name="KompetensRepository" />
-      <Property Name="InformationsutskickRepository" />
       <Property Name="AlumnRepository" />
+      <Property Name="PersonalRepository" />
       <Property Name="AktivitetRepository" />
+      <Property Name="InformationsutskickRepository" />
+      <Property Name="KompetensRepository" />
+      <Property Name="ProgramRepository" />
+      <Property Name="MaillistaRepository" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
