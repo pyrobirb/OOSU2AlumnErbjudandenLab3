@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
 using BusinessLayer;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,21 @@ namespace WPFLayer.Models
         public string Förnamn { get; set; }
         [DataMember]
         public string Efternamn { get; set; }
+
+        [DataMember]
+        public virtual ICollection<AlumnProgramDTO> AlumnProgram { get; set; }
+        [DataMember]
+
+        public virtual ICollection<AlumnKompetensDTO> AlumnKompetens { get; set; }
+        [DataMember]
+
+        public virtual ICollection<InformationsutskickAlumnDTO> InformationsutskickAlumn { get; set; }
+        [DataMember]
+
+        public virtual ICollection<AlumnAktivitetBokningDTO> AlumnAktivitet { get; set; }
+        [DataMember]
+
+        public virtual ICollection<AlumnMaillistaDTO> AlumnMaillistor { get; set; }
 
     }
 }

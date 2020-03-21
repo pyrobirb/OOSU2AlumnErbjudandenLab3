@@ -19,8 +19,5 @@ namespace WPFLayer.ViewModel
             get { return aktivitet; }
             set { aktivitet = value; } // köra Changed()
         }
-
-
-
     }
 }
