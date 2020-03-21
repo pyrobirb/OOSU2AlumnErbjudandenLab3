@@ -26,7 +26,12 @@ namespace WPFLayer.View
         {
             InitializeComponent();
             DataContext = mainAlumnViewModel;
+            ÄndraFörnamn.Text = GLOBALSWPF.AktuellAlumn.Förnamn;
+            ÄndraEfternamn.Text = GLOBALSWPF.AktuellAlumn.Efternamn;
+            ÄndraEpostadress.Text = GLOBALSWPF.AktuellAlumn.Användarnamn;
         }
+
+
 
         private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
         {
