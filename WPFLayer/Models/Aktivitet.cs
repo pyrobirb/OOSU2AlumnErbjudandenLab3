@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessEntites.Models.Junction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -26,5 +27,9 @@ namespace WPFLayer.Models
         public DateTime Slutdatum { get; set; }
         [DataMember]
         public string Beskrivning { get; set; }
+        [DataMember]
+        public virtual ICollection<InformationsutskickAktivitetDTO> InformationsutskickAktivitet { get; set; }
+        [DataMember]
+        public virtual ICollection<AlumnAktivitetBokningDTO> AlumnAktivitet { get; set; }
     }
 }

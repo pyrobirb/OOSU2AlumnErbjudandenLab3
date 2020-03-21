@@ -141,8 +141,5 @@ namespace DataLayer.Contexts
         public DbSet<AlumnAktivitetBokningDTO> AlumnAktivitet { get; set; }
         public DbSet<AlumnMaillistaDTO> AlumnMaillist { get; set; }
 
-
-
-
     }
 }
