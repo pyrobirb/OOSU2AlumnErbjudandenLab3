@@ -156,11 +156,11 @@
                     <TextBox Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Name="ÄndraEfternamn"></TextBox>
                     <Label Grid.Column="1" Grid.Row="5" >Ändra Epostadress</Label>
                     <TextBox Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Name="ÄndraEpostadress"></TextBox>
-                    <Button Name="SparaÄndringarBtn" Grid.Column="1" Grid.Row="7" Margin="0,10,0,0">Spara ändringar</Button>
+                    <Button Name="SparaÄndringarBtn" Grid.Column="1" Grid.Row="7" Margin="0,10,0,0" Click="SparaÄndringarBtn_Click">Spara ändringar</Button>
 
                     <TextBlock Grid.Column="1" Grid.Row="9" Margin="0,0,0,5" FontSize="14" Grid.ColumnSpan="2" Name="WarningLabel">Varning!
                         <LineBreak/> Det går inte att återställa <LineBreak/> ett borttaget konto</TextBlock>
-                    <Button Name="RaderaKontoBtn" Grid.Column="1" Grid.Row="10" >Radera konto</Button>
+                    <Button Name="RaderaKontoBtn" Grid.Column="1" Grid.Row="10" Click="RaderaKontoBtn_Click">Radera konto</Button>
 
                 </Grid>
 

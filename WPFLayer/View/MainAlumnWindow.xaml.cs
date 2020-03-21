@@ -39,5 +39,14 @@ namespace WPFLayer.View
             this.Close();
             Application.Current.MainWindow.Show();
         }
+        private void SparaÄndringarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            mainAlumnViewModel.SparaAnvändarÄndringar(ÄndraFörnamn, ÄndraEfternamn, ÄndraEpostadress);
+        }
+
+        private void RaderaKontoBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
