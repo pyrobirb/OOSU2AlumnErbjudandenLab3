@@ -21,13 +21,16 @@
 
         <TabControl Grid.Column="1" Grid.Row="1">
             <TabItem Header="Skapa Aktivitet">
-                <Grid>
+                <Grid  DataContext="{Binding Aktivitet}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="16*"/>
+                        <ColumnDefinition Width="181*"/>
+                        <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="20"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="168*"/>
+                        <ColumnDefinition Width="67*"/>
+                        <ColumnDefinition Width="235*"/>
                         <ColumnDefinition Width="20"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -49,23 +52,23 @@
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Column="1" Grid.Row="1">Titel</Label>
-                    <TextBox Name="TitelTxtBox" Grid.Column="1" Grid.Row="2" Text="{Binding Aktivitet.Titel}"></TextBox>
-                    <Label Grid.Column="1" Grid.Row="3" >Ansvarig Person</Label>
-                    <TextBox Grid.Column="1" Grid.Row="4" Name="AnsvarigPersonTxtBox" ></TextBox>
-                    <Label Grid.Column="1" Grid.Row="5">Kontaktperson</Label>
-                    <TextBox Grid.Column="1" Grid.Row="6" ></TextBox>
-                    <Label Grid.Column="1" Grid.Row="7">Plats</Label>
-                    <TextBox Grid.Column="1" Grid.Row="8" ></TextBox>
-                    <Label Grid.Column="1" Grid.Row="9">Startdatum</Label>
-                    <DatePicker Grid.Column="1" Grid.Row="10" ></DatePicker>
-                    <Label Grid.Column="1" Grid.Row="11">Slutdatum</Label>
-                    <DatePicker Grid.Column="1" Grid.Row="12"></DatePicker>
+                    <Label Grid.Column="1" Grid.Row="1" Margin="0,0,1,0" Grid.ColumnSpan="3">Titel</Label>
+                    <TextBox Name="TitelTxtBox" Grid.Column="1" Grid.Row="2" Text="{Binding Titel}" Margin="0,0,1,0" Grid.ColumnSpan="3"></TextBox>
+                    <Label Grid.Column="1" Grid.Row="3" Margin="0,0,1,0" Grid.ColumnSpan="3" >Ansvarig Person</Label>
+                    <TextBox Grid.Column="1" Grid.Row="4" Name="AnsvarigPersonTxtBox" Text="{Binding Ansvarig}" Margin="0,0,1,0" Grid.ColumnSpan="3"></TextBox>
+                    <Label Grid.Column="1" Grid.Row="5" Margin="0,0,1,0" Grid.ColumnSpan="3">Kontaktperson</Label>
+                    <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding Kontaktperson}" Margin="0,0,1,0" Grid.ColumnSpan="3" ></TextBox>
+                    <Label Grid.Column="1" Grid.Row="7" Margin="0,0,1,0" Grid.ColumnSpan="3">Plats</Label>
+                    <TextBox Grid.Column="1" Grid.Row="8" Text="{Binding Plats}" Margin="0,0,1,0" Grid.ColumnSpan="3"></TextBox>
+                    <Label Grid.Column="1" Grid.Row="9" Margin="0,0,1,0" Grid.ColumnSpan="3">Startdatum</Label>
+                    <DatePicker x:Name="startDatePicker" Grid.Column="1" Grid.Row="10" SelectedDate="{Binding Startdatum}" Margin="0,0,1,0" Grid.ColumnSpan="3"></DatePicker>
+                    <Label Grid.Column="1" Grid.Row="11" Margin="0,0,1,0" Grid.ColumnSpan="3" >Slutdatum</Label>
+                    <DatePicker x:Name="endDatePicker" Grid.Column="1" Grid.Row="12" SelectedDate="{Binding Slutdatum}" Margin="0,0,1,0" Grid.ColumnSpan="3"></DatePicker>
 
 
-                     <Label Grid.Column="3" Grid.Row="1">Beskrivning</Label>
-                     <RichTextBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="11"></RichTextBox>
-                     <Button Name="SkapaAktivitet" Grid.Column="4" Grid.Row="13" Margin="0,10,0,0">Skapa Aktivitet</Button>
+                    <Label Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="3" Margin="19,0,0,0" >Beskrivning</Label>
+                    <TextBox TextWrapping="Wrap" Text="{Binding Beskrivning}" Grid.Column="5" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="11" ></TextBox>
+                    <Button Click="SkapaAktivitet" Grid.Column="7" Grid.Row="13" Margin="0,10,0,0">Skapa Aktivitet</Button>
 
                 </Grid>
             </TabItem>
@@ -102,7 +105,8 @@
 
 
                     <Label Grid.Column="1" Grid.Row="1">Välj aktivitet att redigera:</Label>
-                    <ComboBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Margin="0,0,0,10"></ComboBox>
+                    <ComboBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Margin="0,0,0,10" ItemsSource="{Binding Aktiviteter}" DisplayMemberPath="Titel"
+                  SelectedValuePath="AktivitetsID"></ComboBox>
 
                     <Label Grid.Column="1" Grid.Row="3">Titel</Label>
                     <TextBox Name="RedigeraTiteltxtBox" Grid.Column="1" Grid.Row="4"></TextBox>
@@ -124,8 +128,8 @@
                 </Grid>
 
             </TabItem>
-            
-            
+
+
             <TabItem Header="Publicera Aktivitet">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -146,19 +150,19 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
-                    
 
-                            <Label Grid.Column="1" Grid.Row="1" FontSize="20">1.</Label>
-                            <Label Grid.Column="1" Grid.Row="2">Filtrera på program</Label>
-                            <ComboBox Grid.Column="1" Grid.Row="3"></ComboBox>
-                            <Label Grid.Column="1" Grid.Row="4">Välj alumn</Label>
-                            <ListBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding AvailablePresentationObjects}" >
-                                <ListBox.ItemTemplate>
-                                    <HierarchicalDataTemplate>
-                                        <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
-                                    </HierarchicalDataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+
+                    <Label Grid.Column="1" Grid.Row="1" FontSize="20">1.</Label>
+                    <Label Grid.Column="1" Grid.Row="2">Filtrera på program</Label>
+                    <ComboBox Grid.Column="1" Grid.Row="3"></ComboBox>
+                    <Label Grid.Column="1" Grid.Row="4">Välj alumn</Label>
+                    <ListBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding AvailablePresentationObjects}" >
+                        <ListBox.ItemTemplate>
+                            <HierarchicalDataTemplate>
+                                <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
+                            </HierarchicalDataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                     <StackPanel Grid.Column="2" Grid.Row="5" VerticalAlignment="Center">
                         <Button Padding="5"  Margin="5,5,5,5" >Välj</Button>
                         <Button Padding="5" Margin="5,5,5,5">Ta bort</Button>
@@ -176,7 +180,7 @@
                     </Button>
 
                 </Grid>
-                
+
 
             </TabItem>
             <TabItem Header="Se Anmälningar">
@@ -201,8 +205,8 @@
                     <DataGrid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"></DataGrid>
                 </Grid>
             </TabItem>
-            
-            
+
+
             <TabItem Header="Skapa Utskickslistor">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -237,7 +241,7 @@
                             </HierarchicalDataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    
+
                     <StackPanel Grid.Column="2" Grid.Row="6" VerticalAlignment="Center">
                         <Button Padding="10,5"  Margin="10,5" >Välj</Button>
                         <Button Padding="10,5" Margin="10,5">Ta bort</Button>
@@ -257,7 +261,7 @@
 
 
                 </Grid>
-                
+
             </TabItem>
         </TabControl>
         <StackPanel Name="SuperAdminPanel" Height="45" Width="600" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal">

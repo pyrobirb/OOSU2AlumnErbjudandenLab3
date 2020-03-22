@@ -185,6 +185,7 @@ namespace BusinessLayer
         public void LäggTillAktivitet(AktivitetDTO aktivitet)
         {
             unitOfWork.AktivitetRepository.Add(aktivitet);
+            Commit();
         }
 
         public List<AlumnDTO> HämtaAlumnerMedProgram(ProgramDTO program)

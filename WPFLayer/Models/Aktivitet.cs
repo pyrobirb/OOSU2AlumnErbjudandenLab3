@@ -1,8 +1,12 @@
-﻿using BusinessEntites.Models.Junction;
+﻿using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
+using BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,32 +14,138 @@ using System.Threading.Tasks;
 namespace WPFLayer.Models
 {
     [DataContract]
-    public class Aktivitet
+    public class Aktivitet : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void Changed([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         [DataMember]
-        public int AktivitetsID { get; set; }
+        private int aktivitetsID;
         [DataMember]
-        public string Titel { get; set; }
+        private string titel;
         [DataMember]
-        public string Kontaktperson { get; set; }
+        private string kontaktperson;
         [DataMember]
-        public string Ansvarig { get; set; }
+        private string ansvarig;
         [DataMember]
-        public string Plats { get; set; }
+        private string plats;
         [DataMember]
-        public DateTime Startdatum { get; set; }
+        private DateTime startdatum;
         [DataMember]
-        public DateTime Slutdatum { get; set; }
+        private DateTime slutdatum;
         [DataMember]
-        public string Beskrivning { get; set; }
+        private string beskrivning;
         [DataMember]
         public virtual ICollection<InformationsutskickAktivitetDTO> InformationsutskickAktivitet { get; set; }
         [DataMember]
         public virtual ICollection<AlumnAktivitetBokningDTO> AlumnAktivitet { get; set; }
 
-        internal static ObservableCollection<Aktivitet> HämtaAktiviteter()
+        public int AktivitetsID
         {
-            throw new NotImplementedException();
+            get { return aktivitetsID; }
+            set { aktivitetsID = value; }
+        }
+
+        public string Titel
+        {
+            get { return titel; }
+            set
+            {
+                titel = value;
+                Changed();
+            }
+        }
+        public string Kontaktperson
+        {
+            get { return kontaktperson; }
+            set
+            {
+                kontaktperson = value;
+                Changed();
+            }
+        }
+        public string Ansvarig
+        {
+            get { return ansvarig; }
+            set
+            {
+                ansvarig = value;
+                Changed();
+            }
+        }
+        public string Plats
+        {
+            get { return plats; }
+            set
+            {
+                plats = value;
+                Changed();
+            }
+        }
+        public DateTime Startdatum
+        {
+            get { return startdatum; }
+            set
+            {
+                startdatum = value;
+                Changed();
+            }
+        }
+        public DateTime Slutdatum
+        {
+            get { return slutdatum; }
+            set
+            {
+                slutdatum = value;
+                Changed();
+            }
+        }
+        public string Beskrivning
+        {
+            get { return beskrivning; }
+            set
+            {
+                beskrivning = value;
+                Changed();
+            }
+        }
+
+        
+
+        public static ObservableCollection<Aktivitet> HämtaAktiviteter()
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            ObservableCollection<Aktivitet> x = new ObservableCollection<Aktivitet>();
+
+            foreach (var item in bm.HämtaAllaAktiviteter())
+            {
+                x.Add(mapper.Map<AktivitetDTO, Aktivitet>(item));
+            }
+            return x;
+
+        }
+
+        public void Spara()
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            Aktivitet aktivitet = new Aktivitet()
+            {
+                Titel = this.Titel,
+                Kontaktperson = this.Kontaktperson,
+                Ansvarig = this.Ansvarig,
+                Plats = this.Plats,
+                Startdatum = this.Startdatum,
+                Slutdatum = this.Slutdatum,
+                Beskrivning = this.Beskrivning
+            };
+
+            bm.LäggTillAktivitet(mapper.Map<Aktivitet, AktivitetDTO>(aktivitet));
         }
     }
 }
