@@ -37,6 +37,7 @@ namespace WPFLayer
                 //cfg.AddProfile<AlumnContextProfile>();
                 cfg.CreateMap<AlumnDTO, Alumn>().ReverseMap();
                 cfg.CreateMap<Personal, PersonalDTO>().ReverseMap();
+                cfg.CreateMap<AktivitetDTO, Aktivitet>().ReverseMap();
 
             });
             var mapper = config.CreateMapper();

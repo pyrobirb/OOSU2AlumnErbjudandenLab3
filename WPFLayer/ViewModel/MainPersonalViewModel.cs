@@ -8,5 +8,6 @@ namespace WPFLayer.ViewModel
 {
     public class MainPersonalViewModel
     {
+
     }
 }

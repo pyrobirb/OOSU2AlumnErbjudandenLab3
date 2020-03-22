@@ -16,16 +16,22 @@ using WPFLayer.ViewModel;
 
 namespace WPFLayer.View
 {
+    public class CombinedPersonalViewModel
+    {
+        public MainPersonalViewModel mainPersonalViewModel = new MainPersonalViewModel();
+        public CreateActivityViewModel createActivityViewModel = new CreateActivityViewModel();
+    }
     /// <summary>
     /// Interaction logic for MainPersonalWindow.xaml
     /// </summary>
     public partial class MainPersonalWindow : Window
     {
-        MainPersonalViewModel mainPersonalViewModel = new MainPersonalViewModel();
+        CreateActivityViewModel c = new CreateActivityViewModel();
         public MainPersonalWindow()
         {
             InitializeComponent();
-            DataContext = mainPersonalViewModel;
+            //DataContext = new CombinedPersonalViewModel();
+            DataContext = c;
 
             if (!(GLOBALSWPF.AktuellPersonal.Användarnamn == "SuperAdmin" && GLOBALSWPF.AktuellPersonal.PersonalID == 1))
             {
@@ -38,6 +44,13 @@ namespace WPFLayer.View
             GLOBALSWPF.AktuellPersonal = null;
             this.Close();
             Application.Current.MainWindow.Show();
+        }
+
+        public void SkapaAktivitet(object sender, RoutedEventArgs e)
+        {
+            //var a = new CombinedPersonalViewModel();
+            //a.
+                c.SkapaAktivitet();
         }
     }
 }
