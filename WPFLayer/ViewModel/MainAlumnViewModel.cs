@@ -25,6 +25,7 @@ namespace WPFLayer.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+
         private ObservableCollection<Alumn> alumner;
         public ObservableCollection<Alumn> Alumner
         {
