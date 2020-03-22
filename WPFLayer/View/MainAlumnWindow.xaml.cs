@@ -26,27 +26,13 @@ namespace WPFLayer.View
         {
             InitializeComponent();
             DataContext = mainAlumnViewModel;
-            ÄndraFörnamn.Text = GLOBALSWPF.AktuellAlumn.Förnamn;
-            ÄndraEfternamn.Text = GLOBALSWPF.AktuellAlumn.Efternamn;
-            ÄndraEpostadress.Text = GLOBALSWPF.AktuellAlumn.Användarnamn;
         }
-
-
 
         private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
         {
             GLOBALSWPF.AktuellAlumn = null;
             this.Close();
             Application.Current.MainWindow.Show();
-        }
-        private void SparaÄndringarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            mainAlumnViewModel.SparaAnvändarÄndringar(ÄndraFörnamn, ÄndraEfternamn, ÄndraEpostadress);
-        }
-
-        private void RaderaKontoBtn_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
