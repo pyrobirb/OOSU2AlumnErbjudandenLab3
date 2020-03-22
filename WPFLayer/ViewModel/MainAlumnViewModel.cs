@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using WPFLayer.Models;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 
 namespace WPFLayer.ViewModel
 {
-    public class MainAlumnViewModel : INotifyPropertyChanged, INotifyCollectionChanged
+    public class MainAlumnViewModel : INotifyPropertyChanged
     {
 
         public MainAlumnViewModel()
@@ -21,8 +20,6 @@ namespace WPFLayer.ViewModel
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-
         public void Changed([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -52,12 +49,5 @@ namespace WPFLayer.ViewModel
             Alumner = Alumn.HämtaAlumner();
             Aktiviteter = Aktivitet.HämtaAktiviteter();
         }
-
-        Alumn InloggadAlumn = new Alumn()
-        {
-            Användarnamn = GLOBALSWPF.AktuellAlumn.Användarnamn,
-            Förnamn = GLOBALSWPF.AktuellAlumn.Förnamn,
-            Efternamn = GLOBALSWPF.AktuellAlumn.Efternamn
-        };
     }
 }

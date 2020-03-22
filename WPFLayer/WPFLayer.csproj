@@ -175,7 +175,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Aktivitet.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="ViewModel\CreateActivityViewModel.cs" />
     <Compile Include="ViewModel\CreatePersonalAccountViewModel.cs" />
     <Compile Include="ViewModel\MainAlumnViewModel.cs" />
