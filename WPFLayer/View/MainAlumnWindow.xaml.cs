@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFLayer.Models;
 using WPFLayer.ViewModel;
 
 namespace WPFLayer.View
@@ -25,7 +26,7 @@ namespace WPFLayer.View
         public MainAlumnWindow()
         {
             InitializeComponent();
-            DataContext = mainAlumnViewModel;
+            this.DataContext = mainAlumnViewModel;
         }
 
         private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
@@ -34,5 +35,6 @@ namespace WPFLayer.View
             this.Close();
             Application.Current.MainWindow.Show();
         }
+
     }
 }

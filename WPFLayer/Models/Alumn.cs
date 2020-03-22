@@ -96,6 +96,18 @@ namespace WPFLayer.Models
             }
         }
 
+        public Alumn InloggadAlumn
+        {
+            get { return InloggadAlumn; }
+            set
+            {
+                InloggadAlumn.Förnamn = GLOBALSWPF.AktuellAlumn.Förnamn;
+                InloggadAlumn.Efternamn = GLOBALSWPF.AktuellAlumn.Efternamn;
+                InloggadAlumn.Användarnamn = GLOBALSWPF.AktuellAlumn.Användarnamn;
+                Changed();
+            }
+        }
+
         public static ObservableCollection<Alumn> HämtaAlumner()
         {
             BusinessManager bm = new BusinessManager();
