@@ -1,6 +1,7 @@
 ﻿using BusinessEntites.Models.Junction;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -31,5 +32,10 @@ namespace WPFLayer.Models
         public virtual ICollection<InformationsutskickAktivitetDTO> InformationsutskickAktivitet { get; set; }
         [DataMember]
         public virtual ICollection<AlumnAktivitetBokningDTO> AlumnAktivitet { get; set; }
+
+        internal static ObservableCollection<Aktivitet> HämtaAktiviteter()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

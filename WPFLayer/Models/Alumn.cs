@@ -4,6 +4,7 @@ using BusinessEntites.Models.Junction;
 using BusinessLayer;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -41,6 +42,19 @@ namespace WPFLayer.Models
         [DataMember]
 
         public virtual ICollection<AlumnMaillistaDTO> AlumnMaillistor { get; set; }
+
+    
+        public static ObservableCollection<Alumn> HämtaAlumner()
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            ObservableCollection<Alumn> alumner = new ObservableCollection<Alumn>();
+
+            var hämtadeAlumner = bm.HämtaAllaAlumner(mapper.Map<Alumn, AlumnDTO>(alumn));
+
+            //bm.LäggTillAlumn(mapper.Map<Alumn, AlumnDTO>(alumn));
+        }
 
     }
 }
