@@ -44,17 +44,22 @@ namespace WPFLayer.ViewModel
             }      
         }
 
-        public Alumn inloggadAlumn = new Alumn()
+        private Alumn inloggadAlumn = new Alumn();
+        public Alumn InloggadAlumn
         {
-            Förnamn = GLOBALSWPF.AktuellAlumn.Förnamn,
-            Efternamn = GLOBALSWPF.AktuellAlumn.Efternamn,
-            Användarnamn = GLOBALSWPF.AktuellAlumn.Användarnamn
-        };
+            get { return inloggadAlumn; }
+            set
+            {
+                inloggadAlumn = value;
+                Changed();
+            }
+        }
 
         public void Update()
         {
             Alumner = Alumn.HämtaAlumner();
             Aktiviteter = Aktivitet.HämtaAktiviteter();
+            InloggadAlumn = Alumn.HämtaInloggadAlumn();
         }
     }
 }
