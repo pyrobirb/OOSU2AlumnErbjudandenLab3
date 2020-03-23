@@ -22,11 +22,11 @@ namespace PresentationLayer
         public LoginForm()
         {
             InitializeComponent();
-            
-            //dbContext.Database.EnsureDeleted();
-            //dbContext.Database.EnsureCreated();
 
-            //Seed.Populate(dbContext);
+            dbContext.Database.EnsureDeleted();
+            dbContext.Database.EnsureCreated();
+
+            Seed.Populate(dbContext);
         }
 
         private void ShowForm(Form form)
