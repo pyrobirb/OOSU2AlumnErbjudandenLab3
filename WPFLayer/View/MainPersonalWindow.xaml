@@ -105,14 +105,21 @@
 
 
                     <Label Grid.Column="1" Grid.Row="1">Välj aktivitet att redigera:</Label>
-                    <ComboBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" 
+                    <ComboBox x:Name="aktivitetComboBox"
+                        Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" 
                               Margin="0,0,0,10" 
                               ItemsSource="{Binding Aktiviteter}" 
                               DisplayMemberPath="Titel"
-                  SelectedValuePath="AktivitetsID"></ComboBox>
+                  SelectedItem="Aktivitet"></ComboBox>
 
-                    <Label Grid.Column="1" Grid.Row="3">Titel</Label>
-                    <TextBox Name="RedigeraTiteltxtBox" Grid.Column="1" Grid.Row="4"></TextBox>
+
+                    <StackPanel Grid.Column="1" Grid.Row="3" DataContext="{Binding aktivitetComboBox}">
+                        <Label >Titel</Label>
+                        <TextBox Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Titel}"
+                        x:Name="RedigeraTiteltxtBox" 
+                             Grid.Column="1" 
+                             Grid.Row="4"></TextBox>
+                    </StackPanel>
                     <Label Grid.Column="1" Grid.Row="5">Ansvarig person</Label>
                     <TextBox Name="RedigeraAnsvarigtxtBox" Grid.Column="1" Grid.Row="6"></TextBox>
                     <Label Grid.Column="1" Grid.Row="7">Kontaktperson</Label>
