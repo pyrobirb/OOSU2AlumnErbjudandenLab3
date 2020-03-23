@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using WPFLayer.Models;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace WPFLayer.ViewModel
 {
@@ -36,6 +37,9 @@ namespace WPFLayer.ViewModel
         }
 
         private ObservableCollection<Aktivitet> aktiviteter;
+
+
+
         public ObservableCollection<Aktivitet> Aktiviteter
         {
             get { return aktiviteter; }
@@ -61,5 +65,30 @@ namespace WPFLayer.ViewModel
             Aktiviteter = Aktivitet.HämtaAktiviteter();
             InloggadAlumn = Alumn.HämtaInloggadAlumn();
         }
+
+        internal void SparaÄndradeAnvändaruppgifter(string ändraFörnamn, string ändraEfternamn, string ändraEpostadress, string ändraLösenord)
+        {
+            BusinessManager bm = new BusinessManager();
+
+            if (RegexUtilities.IsValidEmail(ändraEpostadress) == true)
+            {
+                var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALSWPF.AktuellAlumn.AnvändarID);
+                var gammaltFörnamn = InloggadAlumn.Förnamn;
+                var gammaltEfternamn = InloggadAlumn.Efternamn;
+                var gammalepostadress = InloggadAlumn.Användarnamn;
+                bm.UppdateraAlumn(InloggadAlumn.AnvändarID, ändraFörnamn, ändraEfternamn, ändraEpostadress);
+                GLOBALSWPF.AktuellAlumn = bm.HämtaAlumnMedID(InloggadAlumn.AnvändarID);
+                MessageBox.Show($"Dina uppgifter är nu uppdaterade: " +
+                    $"\n{gammaltFörnamn} -> {GLOBALSWPF.AktuellAlumn.Förnamn} " +
+                    $"\n{gammaltEfternamn} -> {GLOBALSWPF.AktuellAlumn.Efternamn} " +
+                    $"\n{gammalepostadress} -> {GLOBALSWPF.AktuellAlumn.Användarnamn}");
+            }
+            else
+            {
+                MessageBox.Show("Var vänlig fyll i en giltig mailadress");
+            }
+
+        }
+
     }
 }

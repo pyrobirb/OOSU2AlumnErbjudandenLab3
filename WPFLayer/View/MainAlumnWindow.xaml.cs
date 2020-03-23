@@ -31,11 +31,18 @@ namespace WPFLayer.View
             //ÄndraFörnamn.Text = GLOBALSWPF.AktuellAlumn.Förnamn;
         }
 
+        private void SparaÄndringarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            mainAlumnViewModel.SparaÄndradeAnvändaruppgifter(ÄndraFörnamn.Text, ÄndraEfternamn.Text, ÄndraEpostadress.Text, ÄndraLösenord.Text);
+        }
+
         private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
         {
             GLOBALSWPF.AktuellAlumn = null;
             this.Close();
             Application.Current.MainWindow.Show();
         }
+
+
     }
 }
