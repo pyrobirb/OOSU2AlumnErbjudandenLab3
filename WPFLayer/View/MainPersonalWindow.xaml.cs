@@ -16,7 +16,7 @@ using WPFLayer.ViewModel;
 
 namespace WPFLayer.View
 {
-    public class CombinedPersonalViewModel
+    public class CombinedPersonalViewModel//används ej nu
     {
         public MainPersonalViewModel mainPersonalViewModel = new MainPersonalViewModel();
         public CreateActivityViewModel createActivityViewModel = new CreateActivityViewModel();

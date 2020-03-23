@@ -105,7 +105,10 @@
 
 
                     <Label Grid.Column="1" Grid.Row="1">Välj aktivitet att redigera:</Label>
-                    <ComboBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Margin="0,0,0,10" ItemsSource="{Binding Aktiviteter}" DisplayMemberPath="Titel"
+                    <ComboBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" 
+                              Margin="0,0,0,10" 
+                              ItemsSource="{Binding Aktiviteter}" 
+                              DisplayMemberPath="Titel"
                   SelectedValuePath="AktivitetsID"></ComboBox>
 
                     <Label Grid.Column="1" Grid.Row="3">Titel</Label>
