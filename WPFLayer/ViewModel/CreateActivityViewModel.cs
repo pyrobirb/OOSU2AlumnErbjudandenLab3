@@ -17,7 +17,10 @@ namespace WPFLayer.ViewModel
     {
         BusinessManager bm = new BusinessManager();
 
-
+        public CreateActivityViewModel()
+        {
+            UppdateraAktiviteter();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
