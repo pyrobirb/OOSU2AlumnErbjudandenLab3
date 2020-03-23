@@ -91,5 +91,19 @@ namespace WPFLayer.ViewModel
 
         }
 
+        internal void TaBortAlumnKonto()
+        {
+            //throw new NotImplementedException();
+
+            BusinessManager bm = new BusinessManager();
+
+            var alumnatttabort = bm.HämtaAlumnMedID((GLOBALSWPF.AktuellAlumn).AnvändarID);
+
+            bm.TaBortAlumn(alumnatttabort);
+            MessageBox.Show("Ditt konto är nu borttaget");
+            bm.Commit();
+        }
+
+
     }
 }
