@@ -60,8 +60,6 @@ namespace WPFLayer.Models
         {
             BusinessManager bm = new BusinessManager();
             var mapper = MapperConfig.GetMapper();
-
-
             return mapper.Map<AlumnDTO, Alumn>(bm.HämtaAlumnMedID(GLOBALSWPF.AktuellAlumn.AnvändarID));
         }
 

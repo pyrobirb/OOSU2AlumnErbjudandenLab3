@@ -37,9 +37,6 @@ namespace WPFLayer.ViewModel
         }
 
         private ObservableCollection<Aktivitet> aktiviteter;
-
-
-
         public ObservableCollection<Aktivitet> Aktiviteter
         {
             get { return aktiviteter; }
@@ -59,12 +56,15 @@ namespace WPFLayer.ViewModel
             }
         }
 
+
         public void Update()
         {
             Alumner = Alumn.HämtaAlumner();
             Aktiviteter = Aktivitet.HämtaAktiviteter();
             InloggadAlumn = Alumn.HämtaInloggadAlumn();
         }
+
+
 
         internal void SparaÄndradeAnvändaruppgifter(string ändraFörnamn, string ändraEfternamn, string ändraEpostadress, string ändraLösenord)
         {
@@ -82,6 +82,7 @@ namespace WPFLayer.ViewModel
                     $"\n{gammaltFörnamn} -> {GLOBALSWPF.AktuellAlumn.Förnamn} " +
                     $"\n{gammaltEfternamn} -> {GLOBALSWPF.AktuellAlumn.Efternamn} " +
                     $"\n{gammalepostadress} -> {GLOBALSWPF.AktuellAlumn.Användarnamn}");
+                Update();
             }
             else
             {
