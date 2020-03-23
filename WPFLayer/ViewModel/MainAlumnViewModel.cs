@@ -76,7 +76,7 @@ namespace WPFLayer.ViewModel
                 var gammaltFörnamn = InloggadAlumn.Förnamn;
                 var gammaltEfternamn = InloggadAlumn.Efternamn;
                 var gammalepostadress = InloggadAlumn.Användarnamn;
-                bm.UppdateraAlumn(InloggadAlumn.AnvändarID, ändraFörnamn, ändraEfternamn, ändraEpostadress);
+                bm.UppdateraAlumn(InloggadAlumn.AnvändarID, ändraFörnamn, ändraEfternamn, ändraEpostadress, ändraLösenord);
                 GLOBALSWPF.AktuellAlumn = bm.HämtaAlumnMedID(InloggadAlumn.AnvändarID);
                 MessageBox.Show($"Dina uppgifter är nu uppdaterade: " +
                     $"\n{gammaltFörnamn} -> {GLOBALSWPF.AktuellAlumn.Förnamn} " +

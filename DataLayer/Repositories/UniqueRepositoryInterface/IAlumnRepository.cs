@@ -11,7 +11,7 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
     public interface IAlumnRepository : IRepository<AlumnDTO>
     {
         AlumnDTO HämtaAlumnKonto(string användarnamn, string lösenord);
-        void UppdateraAlumnKonto(int id, string förnamn, string efternamn, string epostadress);
+        void UppdateraAlumnKonto(int id, string förnamn, string efternamn, string epostadress, string lösenord);
         IQueryable<AlumnProgramDTO> HämtaAlumnerMedProgram(ProgramDTO program);
         AlumnDTO HämtaAlumnGenomID(int AlumnID);
         void LäggTillAlumnMaillista(AlumnMaillistaDTO alumnMaillista);

@@ -177,9 +177,9 @@ namespace BusinessLayer
             unitOfWork.Commit();
         }
 
-        public void UppdateraAlumn(int id, string förnamn, string efternamn, string epostadress)
+        public void UppdateraAlumn(int id, string förnamn, string efternamn, string epostadress, string lösenord = null)
         {
-            unitOfWork.AlumnRepository.UppdateraAlumnKonto(id, förnamn, efternamn, epostadress);
+            unitOfWork.AlumnRepository.UppdateraAlumnKonto(id, förnamn, efternamn, epostadress, lösenord);
         }
 
         public void LäggTillAktivitet(AktivitetDTO aktivitet)

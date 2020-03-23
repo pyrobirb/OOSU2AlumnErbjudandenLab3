@@ -20,13 +20,17 @@ namespace DataLayer.Repositories.UniqueRepository
             }
         }
 
-        public void UppdateraAlumnKonto(int id, string förnamn, string efternamn, string epostadress)
+        public void UppdateraAlumnKonto(int id, string förnamn, string efternamn, string epostadress, string lösenord)
         {
             var alumn = this.GetById(id);
             this.Context.Alumner.Attach(alumn);
             alumn.Förnamn = förnamn;
             alumn.Efternamn = efternamn;
             alumn.Användarnamn = epostadress;
+            if (lösenord != null)
+            {
+                alumn.Lösenord = lösenord;
+            }
             this.Context.SaveChanges();
         }
 
