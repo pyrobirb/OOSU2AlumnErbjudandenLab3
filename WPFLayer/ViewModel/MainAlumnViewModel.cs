@@ -44,6 +44,13 @@ namespace WPFLayer.ViewModel
             }      
         }
 
+        public Alumn inloggadAlumn = new Alumn()
+        {
+            Förnamn = GLOBALSWPF.AktuellAlumn.Förnamn,
+            Efternamn = GLOBALSWPF.AktuellAlumn.Efternamn,
+            Användarnamn = GLOBALSWPF.AktuellAlumn.Användarnamn
+        };
+
         public void Update()
         {
             Alumner = Alumn.HämtaAlumner();

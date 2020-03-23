@@ -106,7 +106,6 @@ namespace WPFLayer.Models
                 inloggadAlumn.efternamn = GLOBALSWPF.AktuellAlumn.Efternamn;
                 inloggadAlumn.användarnamn = GLOBALSWPF.AktuellAlumn.Användarnamn;
                 Changed();
- 
             }
         }
 

@@ -114,9 +114,9 @@ namespace PresentationLayer
 
             //Fyll på utskickslistor på gamla utskickslistor
 
-            MailingListaALumnerlistBox.DataSource = bm.HämtaAllaInformationsutskick();
-            MailingListaALumnerlistBox.DisplayMember = "UtskicksNamn";
-            MailingListaALumnerlistBox.ValueMember = "UtskicksID";
+            //MailingListaALumnerlistBox.DataSource = bm.HämtaAllaInformationsutskick();
+            //MailingListaALumnerlistBox.DisplayMember = "UtskicksNamn";
+            //MailingListaALumnerlistBox.ValueMember = "UtskicksID";
 
             //Fyll på maillistor
 
@@ -317,9 +317,10 @@ namespace PresentationLayer
             //Tömmer sätt namn på Utskicksboxen och ValdaAlumner samt fyller i gamla listorboxen. 
             NamnMailListaTextBox.Clear();
 
-            GamlaListorComboBox.DataSource = bm.HämtaAllaInformationsutskick();
-            GamlaListorComboBox.DisplayMember = "UtskicksNamn";
-            GamlaListorComboBox.ValueMember = "UtskicksID";
+            //GamlaListorComboBox.DataSource = bm.HämtaAllaMaillistor();
+            //GamlaListorComboBox.DisplayMember = "Maillistanamn";
+            //GamlaListorComboBox.ValueMember = "MaillistaID";
+
 
             valdaAlumnerListBox.BeginUpdate();
             valdaAlumnerListBox.DataSource = new ArrayList();

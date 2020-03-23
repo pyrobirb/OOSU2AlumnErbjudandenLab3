@@ -126,7 +126,19 @@ namespace WPFLayer.Models
                 x.Add(mapper.Map<AktivitetDTO, Aktivitet>(item));
             }
             return x;
+        }
 
+        public ObservableCollection<Aktivitet> HämtaAktiviteterFörInloggadAnvändare()
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            ObservableCollection<Aktivitet> y = new ObservableCollection<Aktivitet>();
+
+            foreach (var item in bm.HämtaAktiviteterGenomInformationsutskickID(bm.HämtaInformationsutskickAlumnGenomAlumnID(GLOBALSWPF.AktuellAlumn)))
+            {
+                y.Add(mapper.Map<AktivitetDTO, Aktivitet>(item));
+            }
+            return y;
         }
 
         public void Spara()

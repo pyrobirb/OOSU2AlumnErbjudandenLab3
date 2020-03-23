@@ -11,5 +11,6 @@ namespace BusinessLayer
     {
         public static AlumnDTO AktuellAlumn { get; set; }
         public static PersonalDTO AktuellPersonal { get; set; }
+
     }
 }
