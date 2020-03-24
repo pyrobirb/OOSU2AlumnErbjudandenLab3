@@ -176,6 +176,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\Aktivitet.cs" />
     <Compile Include="Models\Informationsutskick.cs" />
+    <Compile Include="Models\Junktions\AlumnAktivitetsBokning.cs" />
     <Compile Include="Models\Kompetens.cs" />
     <Compile Include="Models\Maillista.cs" />
     <Compile Include="Models\Program.cs" />

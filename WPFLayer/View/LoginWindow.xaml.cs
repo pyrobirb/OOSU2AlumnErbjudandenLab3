@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
 using BusinessLayer;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFLayer.Models;
+using WPFLayer.Models.Junktions;
 using WPFLayer.View;
 using WPFLayer.ViewModel;
 
@@ -42,6 +44,7 @@ namespace WPFLayer
                 cfg.CreateMap<KompetensDTO, Kompetens>().ReverseMap();
                 cfg.CreateMap<MaillistaDTO, Maillista>().ReverseMap();
                 cfg.CreateMap<ProgramDTO, Program>().ReverseMap();
+                cfg.CreateMap<AlumnAktivitetBokningDTO, AlumnAktivitetsBokning>().ReverseMap();
 
 
             });
