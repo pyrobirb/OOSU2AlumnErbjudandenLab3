@@ -170,5 +170,24 @@ namespace WPFLayer.Models
                 return true;
             }
         }
+
+        public void Uppdatera(Aktivitet aktivitet)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            Aktivitet NyAktivitet = new Aktivitet()
+            {
+                Titel = this.Titel,
+                Kontaktperson = this.Kontaktperson,
+                Ansvarig = this.Ansvarig,
+                Plats = this.Plats,
+                Startdatum = this.Startdatum,
+                Slutdatum = this.Slutdatum,
+                Beskrivning = this.Beskrivning
+            };
+
+            bm.UpdateAktivitet(mapper.Map<Aktivitet, AktivitetDTO> (aktivitet), mapper.Map<Aktivitet, AktivitetDTO>(NyAktivitet));
+        }
     }
 }

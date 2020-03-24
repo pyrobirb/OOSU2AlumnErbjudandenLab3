@@ -61,5 +61,10 @@ namespace WPFLayer.View
                 MessageBox.Show("Något gick fel, vänligen försök igen! Se till att alla rutor är ifyllda.");
             }
         }
+
+        public void RedigeraAktivitet(object sender, RoutedEventArgs e)
+        {
+            c.RedigeraAktiviteten();
+        }
     }
 }

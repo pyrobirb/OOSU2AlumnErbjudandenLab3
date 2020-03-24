@@ -95,6 +95,11 @@ namespace WPFLayer.ViewModel
             Aktiviteter = Aktivitet.HämtaAktiviteter();
         }
 
+        public void RedigeraAktiviteten()
+        {
+            Aktivitet.Uppdatera(Aktivitet);
+        }
+
 
     }
 }
