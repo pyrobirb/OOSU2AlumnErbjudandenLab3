@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace WPFLayer.Models
 {
     [DataContract]
-    class Informationsutskick : INotifyPropertyChanged
+    public class Informationsutskick : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void Changed([CallerMemberName] String propertyName = "")

@@ -1,6 +1,9 @@
-﻿using BusinessEntites.Models.Junction;
+﻿using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
+using BusinessLayer;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,7 +14,7 @@ using System.Threading.Tasks;
 namespace WPFLayer.Models
 {
     [DataContract]
-    class Kompetens : INotifyPropertyChanged
+    public class Kompetens : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void Changed([CallerMemberName] String propertyName = "")
@@ -42,5 +45,18 @@ namespace WPFLayer.Models
             }
         }
 
+        internal static ObservableCollection<Kompetens> HämtaAlumnensKompetenser()
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            ObservableCollection<Kompetens> temp = new ObservableCollection<Kompetens>();
+
+            foreach (var item in bm.HämtaKompetenserFörAlumn(GLOBALSWPF.AktuellAlumn))
+            {
+                temp.Add(mapper.Map<KompetensDTO, Kompetens>(item));
+            }
+
+            return temp;
+        }
     }
 }

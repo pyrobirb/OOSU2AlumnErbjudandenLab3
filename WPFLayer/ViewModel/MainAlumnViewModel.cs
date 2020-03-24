@@ -83,7 +83,6 @@ namespace WPFLayer.ViewModel
             }
         }
 
-
         private ObservableCollection<Aktivitet> aktuellaAktiviteter = new ObservableCollection<Aktivitet>();
         public ObservableCollection<Aktivitet> AktuellaAktiviteter
         {
@@ -94,6 +93,31 @@ namespace WPFLayer.ViewModel
                 Changed();
             }
         }
+
+
+        private ObservableCollection<Program> aktuellaProgram = new ObservableCollection<Program>();
+        public ObservableCollection<Program> AktuellaProgram
+        {
+            get { return aktuellaProgram; }
+            set
+            {
+                aktuellaProgram = value;
+                Changed();
+            }
+        }
+
+        private ObservableCollection<Kompetens> aktuellaKompetenser = new ObservableCollection<Kompetens>();
+        public ObservableCollection<Kompetens> AktuellaKompetenser
+        {
+            get { return aktuellaKompetenser; }
+            set
+            {
+                aktuellaKompetenser = value;
+                Changed();
+            }
+        }
+
+
 
         internal void BokaValdAktivitet(object selectedItem)
         {
@@ -122,6 +146,8 @@ namespace WPFLayer.ViewModel
             InloggadAlumn = Alumn.HämtaInloggadAlumn();
             AktuellaAktiviteter = Aktivitet.HämtaAktiviteterFörInloggadAnvändare();
             BokadeAktiviteter = Aktivitet.HämtaBokadeAktiviteter();
+            AktuellaProgram = Program.HämtaAlumnensProgram();
+            AktuellaKompetenser = Kompetens.HämtaAlumnensKompetenser();
         }
 
 
@@ -178,9 +204,21 @@ namespace WPFLayer.ViewModel
             {
                 MessageBox.Show("Du måste välja vilken aktivitet du vill avboka.");
             }
-            
-
-
         }
+
+        internal void LäggtillUtbildning(string text)
+        {
+            BusinessManager bm = new BusinessManager();
+            bm.LäggTillUtbildningTillAlumn(GLOBALSWPF.AktuellAlumn.AnvändarID, text);
+            Update();
+        }
+
+        internal void LäggTillKompetens(string text)
+        {
+            BusinessManager bm = new BusinessManager();
+            bm.LäggTillKompetensTillAlumn(GLOBALSWPF.AktuellAlumn.AnvändarID, text);
+            Update();
+        }
+
     }
 }

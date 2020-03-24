@@ -61,5 +61,17 @@ namespace WPFLayer.View
             mainAlumnViewModel.AvbokaValdAktivitet(BokadeAktiviteterListbox.SelectedItem);
             AktivitetInfoRichTxtBox.Clear();
         }
+
+        private void LäggTillUtbildningHögskolanIBoråsButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainAlumnViewModel.LäggtillUtbildning(LäggTillUtbildningHögskolanIBoråsTextBox.Text);
+            LäggTillUtbildningHögskolanIBoråsTextBox.Clear();
+        }
+
+        private void LäggTillKompetens_ArbetlivserfarenhetButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainAlumnViewModel.LäggTillKompetens(LäggTillKompetens_ArbetlivserfarenhetTextBox.Text);
+            LäggTillKompetens_ArbetlivserfarenhetTextBox.Clear();
+        }
     }
 }

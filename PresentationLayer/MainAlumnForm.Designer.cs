@@ -55,6 +55,7 @@
             this.läggTillUtbildningBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPageUserData = new System.Windows.Forms.TabPage();
+            this.placeHolderWarningLabel = new System.Windows.Forms.Label();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.ändraEpostTxtBox = new System.Windows.Forms.TextBox();
@@ -64,7 +65,6 @@
             this.ändraFörnamnTxtBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
-            this.placeHolderWarningLabel = new System.Windows.Forms.Label();
             this.tabControlAlumn.SuspendLayout();
             this.tabPageUpcommingActivities.SuspendLayout();
             this.tabPageBookedActivities.SuspendLayout();
@@ -286,6 +286,7 @@
             this.programListBox.Name = "programListBox";
             this.programListBox.Size = new System.Drawing.Size(291, 121);
             this.programListBox.TabIndex = 17;
+            this.programListBox.SelectedIndexChanged += new System.EventHandler(this.programListBox_SelectedIndexChanged);
             // 
             // LäggTillArbetslivserfarenhetBtn
             // 
@@ -350,6 +351,15 @@
             this.tabPageUserData.TabIndex = 3;
             this.tabPageUserData.Text = "Användaruppgifter";
             this.tabPageUserData.UseVisualStyleBackColor = true;
+            // 
+            // placeHolderWarningLabel
+            // 
+            this.placeHolderWarningLabel.AutoSize = true;
+            this.placeHolderWarningLabel.Location = new System.Drawing.Point(4, 298);
+            this.placeHolderWarningLabel.Name = "placeHolderWarningLabel";
+            this.placeHolderWarningLabel.Size = new System.Drawing.Size(257, 13);
+            this.placeHolderWarningLabel.TabIndex = 8;
+            this.placeHolderWarningLabel.Text = "Varning! Det går inte att återställa ett borttaget konto.";
             // 
             // btnDeleteAccount
             // 
@@ -429,15 +439,6 @@
             this.btnLogOut.Text = "Logga ut";
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
-            // placeHolderWarningLabel
-            // 
-            this.placeHolderWarningLabel.AutoSize = true;
-            this.placeHolderWarningLabel.Location = new System.Drawing.Point(4, 298);
-            this.placeHolderWarningLabel.Name = "placeHolderWarningLabel";
-            this.placeHolderWarningLabel.Size = new System.Drawing.Size(257, 13);
-            this.placeHolderWarningLabel.TabIndex = 8;
-            this.placeHolderWarningLabel.Text = "Varning! Det går inte att återställa ett borttaget konto.";
             // 
             // MainAlumnForm
             // 

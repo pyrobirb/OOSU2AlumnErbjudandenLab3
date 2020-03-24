@@ -223,5 +223,10 @@ namespace PresentationLayer
         {
 
         }
+
+        private void programListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
