@@ -83,7 +83,7 @@ namespace WPFLayer.View
         private void ProgramComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             Console.WriteLine("elo");
-            c.FiltreraProgramAlumner(ProgramComboBox.SelectedItem);
+            c.FiltreraProgramAlumner((Program)ProgramComboBox.SelectedItem);
         }
     }
 }

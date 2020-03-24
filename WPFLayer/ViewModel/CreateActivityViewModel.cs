@@ -99,7 +99,7 @@ namespace WPFLayer.ViewModel
 
         }
 
-        internal void FiltreraProgramAlumner(object selectedItem)
+        internal void FiltreraProgramAlumner(Program selectedItem)
         {
             Alumner = Program.HämtaProgramAlumner(selectedItem);
         }
