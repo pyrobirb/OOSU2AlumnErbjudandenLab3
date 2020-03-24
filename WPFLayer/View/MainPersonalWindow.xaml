@@ -94,10 +94,11 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="236*"/>
                         <ColumnDefinition Width="20"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="48*"/>
+                        <ColumnDefinition Width="188*"/>
+                        <ColumnDefinition Width="235*"/>
                         <ColumnDefinition Width="20"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -124,7 +125,7 @@
 
                     <Label Grid.Column="1" Grid.Row="1">Välj aktivitet att redigera:</Label>
                     <ComboBox x:Name="aktivitetComboBox"
-                        Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" 
+                        Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" 
                               Margin="0,0,0,10" 
                               ItemsSource="{Binding Aktiviteter}" 
                               DisplayMemberPath="Titel"
@@ -169,13 +170,13 @@
                             x:Name="RedigeraSlutdatumDatePicker" Grid.Column="1" Grid.Row="14"></DatePicker>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="11" DataContext="{Binding aktivitetComboBox}">
-                    <Label>Beskrivning</Label>
+                    <StackPanel Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="10" DataContext="{Binding aktivitetComboBox}">
+                        <Label>Beskrivning</Label>
                         <TextBox Height="200" TextWrapping="Wrap" Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Beskrivning}"
                         x:Name="RedigareBeskrivningTxtBox"></TextBox>
                     </StackPanel>
-                    
-                    <Button Click="RedigeraAktivitet"  Grid.Column="4" Grid.Row="15" Margin="0,10,0,0">Spara ändringar</Button>
+
+                    <Button Click="RedigeraAktivitet"  Grid.Column="5" Grid.Row="15" Margin="0,10,0,0">Spara ändringar</Button>
 
                 </Grid>
 
@@ -206,12 +207,16 @@
 
                     <Label Grid.Column="1" Grid.Row="1" FontSize="20">1.</Label>
                     <Label Grid.Column="1" Grid.Row="2">Filtrera på program</Label>
-                    <ComboBox Grid.Column="1" Grid.Row="3"></ComboBox>
+                    <ComboBox x:Name="ProgramComboBox" ItemsSource="{Binding Programs}" 
+                              DisplayMemberPath="Namn"
+                                SelectedItem="Program"
+                              Grid.Column="1" Grid.Row="3" SelectionChanged="ProgramComboBox_SelectionChanged_1"></ComboBox>
                     <Label Grid.Column="1" Grid.Row="4">Välj alumn</Label>
-                    <ListBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding AvailablePresentationObjects}" >
+                    <ListBox 
+                        ItemsSource="{Binding Alumner}" Grid.Column="1" Grid.Row="5"  >
                         <ListBox.ItemTemplate>
                             <HierarchicalDataTemplate>
-                                <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
+                                <CheckBox Content="{Binding Förnamn}" IsChecked="{Binding IsChecked}"/>
                             </HierarchicalDataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

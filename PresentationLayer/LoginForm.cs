@@ -23,10 +23,10 @@ namespace PresentationLayer
         {
             InitializeComponent();
 
-            //dbContext.Database.EnsureDeleted();
-            //dbContext.Database.EnsureCreated();
+            dbContext.Database.EnsureDeleted();
+            dbContext.Database.EnsureCreated();
 
-            //Seed.Populate(dbContext);
+            Seed.Populate(dbContext);
         }
 
         private void ShowForm(Form form)

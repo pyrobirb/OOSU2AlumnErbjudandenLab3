@@ -19,6 +19,7 @@ namespace WPFLayer.ViewModel
 
         public CreateActivityViewModel()
         {
+            UppdateraProgram();
             UppdateraAktiviteter();
             DatePickerDagensDatum();
         }
@@ -36,6 +37,39 @@ namespace WPFLayer.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
+
+        private ObservableCollection<Alumn> alumner;
+        public ObservableCollection<Alumn> Alumner
+        {
+            get { return alumner; }
+            set
+            {
+                alumner = value;
+                Changed();
+            }
+        }
+
+
+        private ObservableCollection<Program> programs;
+        public ObservableCollection<Program> Programs
+        {
+            get { return programs; }
+            set
+            {
+                programs = value;
+                Changed();
+            }
+        }
+
+        public void UppdateraProgram()
+        {
+            Programs = Program.HämtaAllaProgram();
+        }
+
+
+#region Aktivitet
         private Aktivitet aktivitet = new Aktivitet();
         public Aktivitet Aktivitet
         {
@@ -46,9 +80,6 @@ namespace WPFLayer.ViewModel
                 Changed();
             }
         }
-
-
-
 
         private ObservableCollection<Aktivitet> aktiviteter;
         public ObservableCollection<Aktivitet> Aktiviteter
@@ -67,6 +98,12 @@ namespace WPFLayer.ViewModel
             return Aktivitet.Spara(aktivitet);
 
         }
+
+        internal void FiltreraProgramAlumner(Program selectedItem)
+        {
+            Alumner = Program.HämtaProgramAlumner(selectedItem);
+        }
+
 
         public bool SkapaAktivitet()
         {
@@ -99,7 +136,7 @@ namespace WPFLayer.ViewModel
         {
             Aktivitet.Redigera(aktivitetsid, titel, kontaktperson, ansvarig, plats, startdatum, slutdatum, beskrivning);
         }
-
+        #endregion
 
     }
 }

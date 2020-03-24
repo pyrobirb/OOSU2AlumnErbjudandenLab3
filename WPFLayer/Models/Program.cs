@@ -45,6 +45,42 @@ namespace WPFLayer.Models
             }
         }
 
+        internal static ObservableCollection<Program> HämtaAllaProgram()
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            ObservableCollection<Program> x = new ObservableCollection<Program>();
+
+            foreach (var item in bm.HämtaAllaProgram())
+            {
+                x.Add(mapper.Map<ProgramDTO, Program>(item));
+            }
+            return x;
+        }
+
+        internal static ObservableCollection<Alumn> HämtaProgramAlumner(Program selectedItem)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            ObservableCollection<Alumn> a = new ObservableCollection<Alumn>();
+
+            if (((Program)selectedItem).Namn == "Alla")
+            {
+                foreach (var item in bm.HämtaAllaAlumner())
+                {
+                    a.Add(mapper.Map<AlumnDTO, Alumn>(item));
+                }
+                return a;
+
+            }
+            else
+            {
+                foreach (var item in bm.HämtaAlumnerMedProgram(mapper.Map<Program, ProgramDTO>((Program)selectedItem)))
+                {
+                    a.Add(mapper.Map<AlumnDTO, Alumn>(item));
+                }
+                return a;
+            }
         internal static ObservableCollection<Program> HämtaAlumnensProgram()
         {
             BusinessManager bm = new BusinessManager();
@@ -56,6 +92,9 @@ namespace WPFLayer.Models
                 temp.Add(mapper.Map<ProgramDTO, Program>(item));
             }
 
+        }
+    }
+}
             return temp;
         }
     }

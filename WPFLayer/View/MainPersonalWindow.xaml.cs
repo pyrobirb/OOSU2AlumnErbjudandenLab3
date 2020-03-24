@@ -38,7 +38,7 @@ namespace WPFLayer.View
             {
                 SuperAdminPanel.Visibility = Visibility.Hidden;
             }
-
+            
         }
 
         private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
@@ -63,6 +63,8 @@ namespace WPFLayer.View
             }
         }
 
+        
+
         public void RedigeraAktivitet(object sender, RoutedEventArgs e)
         {
             int selectedAktivitetID = ((Aktivitet)aktivitetComboBox.SelectedItem).AktivitetsID;
@@ -75,6 +77,13 @@ namespace WPFLayer.View
             string beskrivning = RedigareBeskrivningTxtBox.Text;
 
             c.RedigeraAktiviteten(selectedAktivitetID, titel, kontaktperson, ansvarig, plats, startdatum, slutdatum, beskrivning);
+            MessageBox.Show("Ändringarna har sparats!");
+        }
+
+        private void ProgramComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            Console.WriteLine("elo");
+            c.FiltreraProgramAlumner((Program)ProgramComboBox.SelectedItem);
         }
     }
 }
