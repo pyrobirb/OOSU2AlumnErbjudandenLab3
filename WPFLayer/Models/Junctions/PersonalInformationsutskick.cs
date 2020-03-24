@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPFLayer.Models.Junktions
+namespace WPFLayer.Models.Junctions
 {
     [DataContract]
     class PersonalInformationsutskick : INotifyPropertyChanged
