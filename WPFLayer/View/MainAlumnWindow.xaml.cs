@@ -55,5 +55,10 @@ namespace WPFLayer.View
             mainAlumnViewModel.BokaValdAktivitet(KommandeAktiviteterListBox.SelectedItem);
             
         }
+
+        private void AvbokaValdAktivitetButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainAlumnViewModel.AvbokaValdAktivitet(BokadeAktiviteterListbox.SelectedItem);
+        }
     }
 }

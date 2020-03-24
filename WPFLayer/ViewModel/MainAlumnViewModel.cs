@@ -68,6 +68,8 @@ namespace WPFLayer.ViewModel
             }
         }
 
+
+
         private ObservableCollection<Aktivitet> bokadeAktiviteter;
 
         public ObservableCollection<Aktivitet> BokadeAktiviteter
@@ -159,6 +161,9 @@ namespace WPFLayer.ViewModel
             bm.Commit();
         }
 
-
+        internal void AvbokaValdAktivitet(object selectedItem)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
