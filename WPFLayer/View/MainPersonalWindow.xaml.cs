@@ -75,6 +75,7 @@ namespace WPFLayer.View
             string beskrivning = RedigareBeskrivningTxtBox.Text;
 
             c.RedigeraAktiviteten(selectedAktivitetID, titel, kontaktperson, ansvarig, plats, startdatum, slutdatum, beskrivning);
+            MessageBox.Show("Ändringarna har sparats!");
         }
     }
 }
