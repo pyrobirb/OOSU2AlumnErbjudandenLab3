@@ -69,7 +69,7 @@ namespace WPFLayer.ViewModel
         }
 
 
-#region Aktivitet
+        #region Aktivitet
         private Aktivitet aktivitet = new Aktivitet();
         public Aktivitet Aktivitet
         {
@@ -110,10 +110,11 @@ namespace WPFLayer.ViewModel
             if (SkapaAktiviteten(Aktivitet))
             {
                 NollaAktivitet();
+                UppdateraAktiviteter();
                 return true;
             }
             else return false;
-            //Update();
+            
         }
 
         private void NollaAktivitet()
