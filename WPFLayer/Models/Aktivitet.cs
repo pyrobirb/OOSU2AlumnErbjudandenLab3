@@ -141,6 +141,21 @@ namespace WPFLayer.Models
             return y;
         }
 
+        internal static ObservableCollection<Aktivitet> HämtaBokadeAktiviteter()
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            ObservableCollection<Aktivitet> HämtadeAktiviteter = new ObservableCollection<Aktivitet>();
+
+            var HA = bm.HämtaAktiviteterGenomAktivitetID(bm.HämtaAktiviteterGenomAlumn(GLOBALSWPF.AktuellAlumn));
+            foreach (var item in HA)
+            {
+                HämtadeAktiviteter.Add(mapper.Map<AktivitetDTO, Aktivitet>(item));
+            }
+
+            return HämtadeAktiviteter;
+        }
+
         public void Spara()
         {
             BusinessManager bm = new BusinessManager();

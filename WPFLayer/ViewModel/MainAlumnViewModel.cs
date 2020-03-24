@@ -11,10 +11,11 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using WPFLayer.Models.Junktions;
 using BusinessEntites.Models.Junction;
+using System.Collections.Specialized;
 
 namespace WPFLayer.ViewModel
 {
-    public class MainAlumnViewModel : INotifyPropertyChanged
+    public class MainAlumnViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
 
         public MainAlumnViewModel()
@@ -23,11 +24,20 @@ namespace WPFLayer.ViewModel
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+
         public void Changed([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+        {
+            if (CollectionChanged != null)
+            {
+                CollectionChanged(this, e);
+            }
+        }
 
         private ObservableCollection<Alumn> alumner;
         public ObservableCollection<Alumn> Alumner
@@ -58,6 +68,19 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private ObservableCollection<Aktivitet> bokadeAktiviteter;
+
+        public ObservableCollection<Aktivitet> BokadeAktiviteter
+        {
+            get { return bokadeAktiviteter; }
+            set
+            {
+                bokadeAktiviteter = value;
+                Changed();
+            }
+        }
+
+
         private ObservableCollection<Aktivitet> aktuellaAktiviteter = new ObservableCollection<Aktivitet>();
         public ObservableCollection<Aktivitet> AktuellaAktiviteter
         {
@@ -85,9 +108,8 @@ namespace WPFLayer.ViewModel
 
             bm.SparaBokadAktivitet(mapper.Map<AlumnAktivitetsBokning, AlumnAktivitetBokningDTO>(alumnAktivitetBokning));
 
-            //dbContext.AlumnAktivitet.Add(alumnAktivitetBokning);
-            //dbContext.SaveChanges();
             MessageBox.Show("Bokningen har skapats");
+            Update();
         }
 
         public void Update()
@@ -96,6 +118,7 @@ namespace WPFLayer.ViewModel
             Aktiviteter = Aktivitet.HämtaAktiviteter();
             InloggadAlumn = Alumn.HämtaInloggadAlumn();
             AktuellaAktiviteter = Aktivitet.HämtaAktiviteterFörInloggadAnvändare();
+            BokadeAktiviteter = Aktivitet.HämtaBokadeAktiviteter();
         }
 
 
