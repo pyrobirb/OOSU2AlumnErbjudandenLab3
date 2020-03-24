@@ -171,24 +171,24 @@ namespace WPFLayer.Models
             }
         }
 
-        public void Redigera()
+        public void Redigera(int aktivitetsid, string titel, string kontaktperson, string ansvarig, string plats, DateTime startdatum, DateTime slutdatum, string beskrivning)
         {
             BusinessManager bm = new BusinessManager();
             var mapper = MapperConfig.GetMapper();
 
             Aktivitet NyAktivitet = new Aktivitet()
             {
-                Titel = this.Titel,
-                Kontaktperson = this.Kontaktperson,
-                Ansvarig = this.Ansvarig,
-                Plats = this.Plats,
-                Startdatum = this.Startdatum,
-                Slutdatum = this.Slutdatum,
-                Beskrivning = this.Beskrivning
+                Titel = titel,
+                Kontaktperson = kontaktperson,
+                Ansvarig = ansvarig,
+                Plats = plats,
+                Startdatum = startdatum,
+                Slutdatum = slutdatum,
+                Beskrivning = beskrivning
             };
 
-            var GammalAktivitet = mapper.Map<AktivitetDTO, Aktivitet>(bm.HämtaAktivitetGenomID(NyAktivitet.AktivitetsID));
-            bm.UpdateAktivitet(mapper.Map<Aktivitet, AktivitetDTO>(GammalAktivitet), mapper.Map<Aktivitet, AktivitetDTO>(NyAktivitet));
+            var GammalAktivitet = mapper.Map<AktivitetDTO, Aktivitet>(bm.HämtaAktivitetGenomID(aktivitetsid));
+            bm.UpdateAktivitetWPF(mapper.Map<Aktivitet, AktivitetDTO>(GammalAktivitet), mapper.Map<Aktivitet, AktivitetDTO>(NyAktivitet));
         }
     }
 }

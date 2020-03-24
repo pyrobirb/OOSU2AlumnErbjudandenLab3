@@ -12,6 +12,7 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
     public interface IAktivitetRepository : IRepository<AktivitetDTO>
     {
         void UpdateAktivitet(AktivitetDTO aktivitet, AktivitetDTO nyaktivitet);
+        void UpdateAktivitetWPF(AktivitetDTO aktivitet, AktivitetDTO nyaktivitet);
 
         IQueryable<AlumnAktivitetBokningDTO> HämtaBokningFörAlumn(AlumnDTO inloggadAlumn);
         void TaBortAktivitetFrånAlumn(AktivitetDTO aktivitet, AlumnDTO aktuellAlumn);

@@ -95,9 +95,9 @@ namespace WPFLayer.ViewModel
             Aktiviteter = Aktivitet.HämtaAktiviteter();
         }
 
-        public void RedigeraAktiviteten()
+        public void RedigeraAktiviteten(int aktivitetsid, string titel, string kontaktperson, string ansvarig, string plats, DateTime startdatum, DateTime slutdatum, string beskrivning)
         {
-            Aktivitet.Redigera();
+            Aktivitet.Redigera(aktivitetsid, titel, kontaktperson, ansvarig, plats, startdatum, slutdatum, beskrivning);
         }
 
 
