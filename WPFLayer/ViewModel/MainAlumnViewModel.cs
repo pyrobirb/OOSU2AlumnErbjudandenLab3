@@ -67,7 +67,22 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        internal void BokaValdAktivitet(object selectedItem)
+        {
+            //throw new NotImplementedException();
 
+
+            //Aktivitet bokadAktivitet = (Aktivitet)selectedItem;
+
+            //AlumnAktivitetBokningDTO alumnAktivitetBokning = new AlumnAktivitetBokningDTO()
+            //{
+            //    AlumnID = GLOBALS.AktuellAlumn.AnvändarID,
+            //    AktivitetID = bokadAktivitet.AktivitetsID,
+            //};
+            //dbContext.AlumnAktivitet.Add(alumnAktivitetBokning);
+            //dbContext.SaveChanges();
+            //MessageBox.Show("Bokningen har skapats");
+        }
 
         public void Update()
         {

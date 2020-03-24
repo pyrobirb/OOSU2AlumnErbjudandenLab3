@@ -56,13 +56,6 @@ namespace WPFLayer.Models
             set { användarID = value; }
         }
 
-        internal static Alumn HämtaInloggadAlumn()
-        {
-            BusinessManager bm = new BusinessManager();
-            var mapper = MapperConfig.GetMapper();
-            return mapper.Map<AlumnDTO, Alumn>(bm.HämtaAlumnMedID(GLOBALSWPF.AktuellAlumn.AnvändarID));
-        }
-
         public string Användarnamn
         {
             get { return användarnamn; }
@@ -103,7 +96,12 @@ namespace WPFLayer.Models
             }
         }
 
-
+        internal static Alumn HämtaInloggadAlumn()
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            return mapper.Map<AlumnDTO, Alumn>(bm.HämtaAlumnMedID(GLOBALSWPF.AktuellAlumn.AnvändarID));
+        }
 
 
         public static ObservableCollection<Alumn> HämtaAlumner()
