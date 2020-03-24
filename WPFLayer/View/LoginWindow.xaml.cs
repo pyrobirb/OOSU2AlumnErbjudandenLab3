@@ -49,6 +49,8 @@ namespace WPFLayer
                 cfg.CreateMap<AlumnMaillistaDTO, AlumnMaillista>().ReverseMap();
                 cfg.CreateMap<AlumnProgramDTO, AlumnProgram>().ReverseMap();
                 cfg.CreateMap<InformationsutskickAktivitetDTO, InformationsutskickAktivitet>().ReverseMap();
+                cfg.CreateMap<InformationsutskickAlumnDTO, InformationsutskickAlumn>().ReverseMap();
+                cfg.CreateMap<PersonalInformationsutskickDTO, PersonalInformationsutskick>().ReverseMap();
 
 
             });
