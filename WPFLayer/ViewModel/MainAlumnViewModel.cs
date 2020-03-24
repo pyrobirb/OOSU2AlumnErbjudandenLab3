@@ -69,7 +69,7 @@ namespace WPFLayer.ViewModel
 
         internal void BokaValdAktivitet(object selectedItem)
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
 
 
             //Aktivitet bokadAktivitet = (Aktivitet)selectedItem;
