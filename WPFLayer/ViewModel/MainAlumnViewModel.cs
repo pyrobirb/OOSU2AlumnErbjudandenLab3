@@ -56,12 +56,25 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private ObservableCollection<Aktivitet> aktuellaAktiviteter = new ObservableCollection<Aktivitet>();
+        public ObservableCollection<Aktivitet> AktuellaAktiviteter
+        {
+            get { return aktuellaAktiviteter; }
+            set
+            {
+                aktuellaAktiviteter = value;
+                Changed();
+            }
+        }
+
+
 
         public void Update()
         {
             Alumner = Alumn.HämtaAlumner();
             Aktiviteter = Aktivitet.HämtaAktiviteter();
             InloggadAlumn = Alumn.HämtaInloggadAlumn();
+            AktuellaAktiviteter = Aktivitet.HämtaAktiviteterFörInloggadAnvändare();
         }
 
 
@@ -93,8 +106,6 @@ namespace WPFLayer.ViewModel
 
         internal void TaBortAlumnKonto()
         {
-            //throw new NotImplementedException();
-
             BusinessManager bm = new BusinessManager();
 
             var alumnatttabort = bm.HämtaAlumnMedID((GLOBALSWPF.AktuellAlumn).AnvändarID);

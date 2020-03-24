@@ -128,7 +128,7 @@ namespace WPFLayer.Models
             return x;
         }
 
-        public ObservableCollection<Aktivitet> HämtaAktiviteterFörInloggadAnvändare()
+        public static ObservableCollection<Aktivitet> HämtaAktiviteterFörInloggadAnvändare()
         {
             BusinessManager bm = new BusinessManager();
             var mapper = MapperConfig.GetMapper();

@@ -42,7 +42,7 @@
 
                     <Label Grid.Column="1" Grid.Row="1" >Kommande Aktiviteter</Label>
                     <ListBox x:Name="KommandeAktiviteterListBox"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" 
-                             ItemsSource="{Binding Aktiviteter}" 
+                             ItemsSource="{Binding AktuellaAktiviteter}" 
                              DisplayMemberPath="Titel"
                   SelectedValuePath="AktivitetsID"></ListBox>
                     <Label Grid.Column="4" Grid.Row="1" >Aktivitetsinformation</Label>

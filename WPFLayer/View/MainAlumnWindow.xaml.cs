@@ -28,7 +28,6 @@ namespace WPFLayer.View
             DataContext = mainAlumnViewModel;
             
 
-            //ÄndraFörnamn.Text = GLOBALSWPF.AktuellAlumn.Förnamn;
         }
 
         private void SparaÄndringarBtn_Click(object sender, RoutedEventArgs e)
