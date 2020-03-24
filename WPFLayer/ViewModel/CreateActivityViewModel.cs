@@ -61,5 +61,7 @@ namespace WPFLayer.ViewModel
         {
             Aktiviteter = Aktivitet.HämtaAktiviteter();
         }
+
+        
     }
 }

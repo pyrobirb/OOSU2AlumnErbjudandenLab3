@@ -35,30 +35,9 @@ namespace WPFLayer.ViewModel
         internal bool SparaAlumn(Alumn Alumn)
         {
 
-            var mapper = MapperConfig.GetMapper();
+            return Alumn.Spara(Alumn);
 
-            if ((Alumn.Förnamn == null || Alumn.Förnamn == "" || Alumn.Efternamn == null || Alumn.Efternamn == "" || Alumn.Användarnamn == null || Alumn.Användarnamn == "" || Alumn.Lösenord == null || Alumn.Lösenord == "") || !(RegexUtilities.IsValidEmail(Alumn.Användarnamn)))
-            {
-                return false;
-            }
-            else
-            {
-                Alumn alumn = new Alumn()
-                {
-                    Förnamn = Alumn.Förnamn,
-                    Efternamn = Alumn.Efternamn,
-                    Användarnamn = Alumn.Användarnamn,
-                    Lösenord = Alumn.Lösenord
-                };
-
-                bm.LäggTillAlumn(mapper.Map<Alumn, AlumnDTO>(alumn));
-
-                if (bm.HämtaAlumnKonto(alumn.Användarnamn, alumn.Lösenord).Användarnamn == alumn.Användarnamn)
-                {
-                    return true;
-                }
-                else return false;
-            }
+            
 
         }
 
