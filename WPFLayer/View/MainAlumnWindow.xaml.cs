@@ -50,6 +50,9 @@ namespace WPFLayer.View
             Application.Current.MainWindow.Show();
         }
 
+        private void BokaValdAktivitet_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }
