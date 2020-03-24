@@ -81,6 +81,8 @@ namespace WPFLayer.Models
                 }
                 return a;
             }
+        }
+
         internal static ObservableCollection<Program> HämtaAlumnensProgram()
         {
             BusinessManager bm = new BusinessManager();
@@ -91,11 +93,10 @@ namespace WPFLayer.Models
             {
                 temp.Add(mapper.Map<ProgramDTO, Program>(item));
             }
-
-        }
-    }
-}
             return temp;
         }
     }
+
 }
+
+
