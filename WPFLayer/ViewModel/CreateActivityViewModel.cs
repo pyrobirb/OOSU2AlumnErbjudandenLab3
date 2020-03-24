@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using WPFLayer.Models;
 
 namespace WPFLayer.ViewModel
-{   
+{
 
 
     public class CreateActivityViewModel : INotifyPropertyChanged
@@ -20,6 +20,14 @@ namespace WPFLayer.ViewModel
         public CreateActivityViewModel()
         {
             UppdateraAktiviteter();
+            DatePickerDagensDatum();
+        }
+
+        private void DatePickerDagensDatum()
+        {
+
+            Aktivitet.Startdatum = DateTime.Today;
+            Aktivitet.Slutdatum = DateTime.Today;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -32,8 +40,10 @@ namespace WPFLayer.ViewModel
         public Aktivitet Aktivitet
         {
             get { return aktivitet; }
-            set { aktivitet = value;  
-            Changed();
+            set
+            {
+                aktivitet = value;
+                Changed();
             }
         }
 
@@ -51,10 +61,33 @@ namespace WPFLayer.ViewModel
             }
         }
 
-        public void SkapaAktivitet()
+        internal bool SkapaAktiviteten(Aktivitet aktivitet)
         {
-            Aktivitet.Spara();
             UppdateraAktiviteter();
+            return Aktivitet.Spara(aktivitet);
+
+        }
+
+        public bool SkapaAktivitet()
+        {
+            if (SkapaAktiviteten(Aktivitet))
+            {
+                NollaAktivitet();
+                return true;
+            }
+            else return false;
+            //Update();
+        }
+
+        private void NollaAktivitet()
+        {
+            Aktivitet.Titel = null;
+            Aktivitet.Kontaktperson = null;
+            Aktivitet.Ansvarig = null;
+            Aktivitet.Plats = null;
+            Aktivitet.Startdatum = DateTime.Today;
+            Aktivitet.Slutdatum = DateTime.Today;
+            Aktivitet.Beskrivning = null;
         }
 
         public void UppdateraAktiviteter()
@@ -62,6 +95,6 @@ namespace WPFLayer.ViewModel
             Aktiviteter = Aktivitet.HämtaAktiviteter();
         }
 
-        
+
     }
 }

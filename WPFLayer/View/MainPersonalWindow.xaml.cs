@@ -37,6 +37,7 @@ namespace WPFLayer.View
             {
                 SuperAdminPanel.Visibility = Visibility.Hidden;
             }
+
         }
 
         private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
@@ -50,7 +51,15 @@ namespace WPFLayer.View
         {
             //var a = new CombinedPersonalViewModel();
             //a.
-                c.SkapaAktivitet();
+
+            if (c.SkapaAktivitet())
+            {
+                MessageBox.Show("Aktiviteten har skapats!");
+            }
+            else
+            {
+                MessageBox.Show("Något gick fel, vänligen försök igen! Se till att alla rutor är ifyllda.");
+            }
         }
     }
 }

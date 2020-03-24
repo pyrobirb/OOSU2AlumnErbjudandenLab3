@@ -34,11 +34,7 @@ namespace WPFLayer.ViewModel
 
         internal bool SparaAlumn(Alumn Alumn)
         {
-
             return Alumn.Spara(Alumn);
-
-            
-
         }
 
 
