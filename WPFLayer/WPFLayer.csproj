@@ -180,6 +180,7 @@
     <Compile Include="Models\Junktions\AlumnKompetens.cs" />
     <Compile Include="Models\Junktions\AlumnMaillista.cs" />
     <Compile Include="Models\Junktions\AlumnProgram.cs" />
+    <Compile Include="Models\Junktions\InformationsutskickAktivitet.cs" />
     <Compile Include="Models\Kompetens.cs" />
     <Compile Include="Models\Maillista.cs" />
     <Compile Include="Models\Program.cs" />
