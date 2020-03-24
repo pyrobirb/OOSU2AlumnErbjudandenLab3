@@ -17,8 +17,9 @@ namespace BusinessLayer
     {
         public UnitOfWork unitOfWork = new UnitOfWork(new DatabaseContext());
         public IOFileSystem iof = new IOFileSystem();
+        DatabaseContext dbContext = new DatabaseContext();
 
-        
+
         public IEnumerable<AktivitetDTO> HämtaAllaAktiviteter()
         {
             return unitOfWork.AktivitetRepository.GetAll();
@@ -70,11 +71,18 @@ namespace BusinessLayer
         {
             return unitOfWork.PersonalRepository.HämtaPersonalKonto(användarnamn, lösenord);
         }
+
         public void UpdateAktivitet(AktivitetDTO aktivitet, AktivitetDTO nyaktivitet)
         {
             unitOfWork.AktivitetRepository.UpdateAktivitet(aktivitet, nyaktivitet);
         }
 
+        public void SparaBokadAktivitet(AlumnAktivitetBokningDTO alumnAktivitetBokningDTO)
+        {
+            //throw new NotImplementedException();
+            dbContext.AlumnAktivitet.Add(alumnAktivitetBokningDTO);
+            dbContext.SaveChanges();
+        }
 
         public IEnumerable<InformationsutskickDTO> HämtaAllaInformationsutskick()
         {

@@ -9,6 +9,8 @@ using System.Runtime.CompilerServices;
 using WPFLayer.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
+using WPFLayer.Models.Junktions;
+using BusinessEntites.Models.Junction;
 
 namespace WPFLayer.ViewModel
 {
@@ -69,19 +71,23 @@ namespace WPFLayer.ViewModel
 
         internal void BokaValdAktivitet(object selectedItem)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
 
+            Aktivitet bokadAktivitet = (Aktivitet)selectedItem;
 
-            //Aktivitet bokadAktivitet = (Aktivitet)selectedItem;
+            AlumnAktivitetsBokning alumnAktivitetBokning = new AlumnAktivitetsBokning()
+            {
+                AlumnID = GLOBALSWPF.AktuellAlumn.AnvändarID,
+                AktivitetID = bokadAktivitet.AktivitetsID,
+            };
 
-            //AlumnAktivitetBokningDTO alumnAktivitetBokning = new AlumnAktivitetBokningDTO()
-            //{
-            //    AlumnID = GLOBALS.AktuellAlumn.AnvändarID,
-            //    AktivitetID = bokadAktivitet.AktivitetsID,
-            //};
+            bm.SparaBokadAktivitet(mapper.Map<AlumnAktivitetsBokning, AlumnAktivitetBokningDTO>(alumnAktivitetBokning));
+
             //dbContext.AlumnAktivitet.Add(alumnAktivitetBokning);
             //dbContext.SaveChanges();
-            //MessageBox.Show("Bokningen har skapats");
+            MessageBox.Show("Bokningen har skapats");
         }
 
         public void Update()

@@ -52,7 +52,8 @@ namespace WPFLayer.View
 
         private void BokaValdAktivitet_Click(object sender, RoutedEventArgs e)
         {
-            //mainAlumnViewModel.BokaValdAktivitet();
+            mainAlumnViewModel.BokaValdAktivitet(KommandeAktiviteterListBox.SelectedItem);
+            
         }
     }
 }
