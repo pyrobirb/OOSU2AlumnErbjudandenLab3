@@ -39,6 +39,7 @@ namespace WPFLayer
                 cfg.CreateMap<Personal, PersonalDTO>().ReverseMap();
                 cfg.CreateMap<AktivitetDTO, Aktivitet>().ReverseMap();
                 cfg.CreateMap<InformationsutskickDTO, Informationsutskick>().ReverseMap();
+                cfg.CreateMap<KompetensDTO, Kompetens>().ReverseMap();
 
             });
             var mapper = config.CreateMapper();
