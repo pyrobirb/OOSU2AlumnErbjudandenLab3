@@ -7,10 +7,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPFLayer.Models.Junktions
+namespace WPFLayer.Models.Junctions
 {
     [DataContract]
-    class AlumnKompetens : INotifyPropertyChanged
+    class AlumnMaillista : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void Changed([CallerMemberName] String propertyName = "")
@@ -19,27 +19,12 @@ namespace WPFLayer.Models.Junktions
         }
 
         [DataMember]
-        private int alumnID;
+        public int AlumnID { get; set; }
         [DataMember]
         public virtual Alumn Alumn { get; set; }
         [DataMember]
-        private int kompetensID;
+        public int MaillistaID { get; set; }
         [DataMember]
-        public virtual Kompetens Kompetens { get; set; }
-
-        public int KompetensID
-        {
-            get { return kompetensID; }
-            set { kompetensID = value; }
-        }
-
-        public int AlumnID
-        {
-            get { return alumnID; }
-            set { alumnID = value; }
-        }
-
-
-
+        public virtual Maillista Maillista { get; set; }
     }
 }

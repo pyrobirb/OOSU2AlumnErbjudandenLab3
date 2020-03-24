@@ -7,10 +7,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPFLayer.Models.Junktions
+namespace WPFLayer.Models.Junctions
 {
     [DataContract]
-    class InformationsutskickAktivitet : INotifyPropertyChanged
+    class AlumnAktivitetsBokning : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void Changed([CallerMemberName] String propertyName = "")
@@ -19,12 +19,28 @@ namespace WPFLayer.Models.Junktions
         }
 
         [DataMember]
-        public int InformationsutskickID { get; set; }
+        private int alumnID;
+
+        public int AlumnID
+        {
+            get { return alumnID; }
+            set { alumnID = value; }
+        }
+
         [DataMember]
-        public virtual Informationsutskick Informationsutskick { get; set; }
+        public virtual Alumn Alumn { get; set; }
+
         [DataMember]
-        public int AktivitetID { get; set; }
+        private int aktivitetsID;
+
+        public int AktivitetID
+        {
+            get { return aktivitetsID; }
+            set { aktivitetsID = value; }
+        }
+
         [DataMember]
         public virtual Aktivitet Aktivitet { get; set; }
+
     }
 }

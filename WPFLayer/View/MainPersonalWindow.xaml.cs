@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFLayer.Models;
 using WPFLayer.ViewModel;
 
 namespace WPFLayer.View
@@ -37,6 +38,7 @@ namespace WPFLayer.View
             {
                 SuperAdminPanel.Visibility = Visibility.Hidden;
             }
+
         }
 
         private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
@@ -50,7 +52,29 @@ namespace WPFLayer.View
         {
             //var a = new CombinedPersonalViewModel();
             //a.
-                c.SkapaAktivitet();
+
+            if (c.SkapaAktivitet())
+            {
+                MessageBox.Show("Aktiviteten har skapats!");
+            }
+            else
+            {
+                MessageBox.Show("Något gick fel, vänligen försök igen! Se till att alla rutor är ifyllda.");
+            }
+        }
+
+        public void RedigeraAktivitet(object sender, RoutedEventArgs e)
+        {
+            int selectedAktivitetID = ((Aktivitet)aktivitetComboBox.SelectedItem).AktivitetsID;
+            string titel = RedigeraTiteltxtBox.Text;
+            string kontaktperson = RedigeraKontaktpersontxtBox.Text;
+            string ansvarig = RedigeraAnsvarigtxtBox.Text;
+            string plats = RedigeraPlatstxtBox.Text;
+            DateTime startdatum = (DateTime)RedigeraStartdatumDatePicker.SelectedDate;
+            DateTime slutdatum = (DateTime)RedigeraSlutdatumDatePicker.SelectedDate;
+            string beskrivning = RedigareBeskrivningTxtBox.Text;
+
+            c.RedigeraAktiviteten(selectedAktivitetID, titel, kontaktperson, ansvarig, plats, startdatum, slutdatum, beskrivning);
         }
     }
 }

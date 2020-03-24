@@ -26,6 +26,36 @@ namespace WPFLayer.Models
 
         [DataMember]
         private int användarID;
+
+        internal bool Spara(Alumn alumn)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            if ((alumn.Förnamn == null || alumn.Förnamn == "" || alumn.Efternamn == null || alumn.Efternamn == "" || alumn.Användarnamn == null || alumn.Användarnamn == "" || alumn.Lösenord == null || alumn.Lösenord == "") || !(RegexUtilities.IsValidEmail(alumn.Användarnamn)))
+            {
+                return false;
+            }
+            else
+            {
+                Alumn NyAlumn = new Alumn()
+                {
+                    Förnamn = alumn.Förnamn,
+                    Efternamn = alumn.Efternamn,
+                    Användarnamn = alumn.Användarnamn,
+                    Lösenord = alumn.Lösenord
+                };
+
+                bm.LäggTillAlumn(mapper.Map<Alumn, AlumnDTO>(NyAlumn));
+
+                if (bm.HämtaAlumnKonto(alumn.Användarnamn, alumn.Lösenord).Användarnamn == NyAlumn.Användarnamn)
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
+
         [DataMember]
         private string användarnamn;
         [DataMember]

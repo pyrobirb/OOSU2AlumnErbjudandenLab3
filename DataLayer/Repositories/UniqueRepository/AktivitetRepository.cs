@@ -15,19 +15,10 @@ namespace DataLayer.Repositories.UniqueRepository
         public void UpdateAktivitet(AktivitetDTO aktivitet, AktivitetDTO nyaktivitet)
         {
 
-            //var db = new DatabaseContext();
-            //var akt = db.Aktiviteter.Find(aktivitet.AktivitetsID);
+            var db = new DatabaseContext();
+            var akt = db.Aktiviteter.Find(aktivitet.AktivitetsID);
 
 
-            //akt.Titel = nyaktivitet.Titel;
-            //akt.Ansvarig = nyaktivitet.Ansvarig;
-            //akt.Kontaktperson = nyaktivitet.Kontaktperson;
-            //akt.Plats = nyaktivitet.Plats;
-            //akt.Startdatum = nyaktivitet.Startdatum;
-            //akt.Slutdatum = nyaktivitet.Slutdatum;
-            //akt.Beskrivning = nyaktivitet.Beskrivning;
-
-            //db.SaveChanges();
 
 
             this.Context.Aktiviteter.Attach(aktivitet);
@@ -42,8 +33,26 @@ namespace DataLayer.Repositories.UniqueRepository
             this.Context.SaveChanges();
         }
 
-        
-        
+        public void UpdateAktivitetWPF(AktivitetDTO aktivitet, AktivitetDTO nyaktivitet)
+        {
+
+            var db = new DatabaseContext();
+            var akt = db.Aktiviteter.Find(aktivitet.AktivitetsID);
+
+
+            akt.Titel = nyaktivitet.Titel;
+            akt.Ansvarig = nyaktivitet.Ansvarig;
+            akt.Kontaktperson = nyaktivitet.Kontaktperson;
+            akt.Plats = nyaktivitet.Plats;
+            akt.Startdatum = nyaktivitet.Startdatum;
+            akt.Slutdatum = nyaktivitet.Slutdatum;
+            akt.Beskrivning = nyaktivitet.Beskrivning;
+
+            db.SaveChanges();
+
+        }
+
+
 
         public IQueryable<AlumnAktivitetBokningDTO> HämtaBokningFörAlumn (AlumnDTO inloggadAlumn)
         {

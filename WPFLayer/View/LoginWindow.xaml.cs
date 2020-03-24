@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFLayer.Models;
-using WPFLayer.Models.Junktions;
+using WPFLayer.Models.Junctions;
 using WPFLayer.View;
 using WPFLayer.ViewModel;
 

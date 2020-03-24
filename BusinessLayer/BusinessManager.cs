@@ -84,6 +84,10 @@ namespace BusinessLayer
             dbContext.SaveChanges();
         }
 
+        public void UpdateAktivitetWPF(AktivitetDTO aktivitet, AktivitetDTO nyaktivitet)
+        {
+            unitOfWork.AktivitetRepository.UpdateAktivitetWPF(aktivitet, nyaktivitet);
+        }
         public IEnumerable<InformationsutskickDTO> HämtaAllaInformationsutskick()
         {
             return unitOfWork.InformationsutskickRepository.GetAll();

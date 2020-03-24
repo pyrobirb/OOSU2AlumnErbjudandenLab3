@@ -113,7 +113,7 @@ namespace WPFLayer.Models
             }
         }
 
-        
+
 
         public static ObservableCollection<Aktivitet> HämtaAktiviteter()
         {
@@ -157,22 +157,54 @@ namespace WPFLayer.Models
         }
 
         public void Spara()
+        public bool Spara(Aktivitet aktivitet)
         {
             BusinessManager bm = new BusinessManager();
             var mapper = MapperConfig.GetMapper();
 
-            Aktivitet aktivitet = new Aktivitet()
+            if ((aktivitet.Titel == null || aktivitet.Titel == "" || aktivitet.Kontaktperson == null || aktivitet.Kontaktperson == "" || aktivitet.Ansvarig == null || aktivitet.Ansvarig == "" || aktivitet.plats == null || aktivitet.plats == "" || aktivitet.beskrivning == null || aktivitet.beskrivning == ""))
             {
-                Titel = this.Titel,
-                Kontaktperson = this.Kontaktperson,
-                Ansvarig = this.Ansvarig,
-                Plats = this.Plats,
-                Startdatum = this.Startdatum,
-                Slutdatum = this.Slutdatum,
-                Beskrivning = this.Beskrivning
+                return false;
+            }
+
+            else
+            {
+                Aktivitet NyAktivitet = new Aktivitet()
+                {
+                    Titel = this.Titel,
+                    Kontaktperson = this.Kontaktperson,
+                    Ansvarig = this.Ansvarig,
+                    Plats = this.Plats,
+                    Startdatum = this.Startdatum,
+                    Slutdatum = this.Slutdatum,
+                    Beskrivning = this.Beskrivning
+                };
+
+                bm.LäggTillAktivitet(mapper.Map<Aktivitet, AktivitetDTO>(NyAktivitet));
+
+                
+                return true;
+            }
+        }
+
+        public void Redigera(int aktivitetsid, string titel, string kontaktperson, string ansvarig, string plats, DateTime startdatum, DateTime slutdatum, string beskrivning)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            Aktivitet NyAktivitet = new Aktivitet()
+            {
+                Titel = titel,
+                Kontaktperson = kontaktperson,
+                Ansvarig = ansvarig,
+                Plats = plats,
+                Startdatum = startdatum,
+                Slutdatum = slutdatum,
+                Beskrivning = beskrivning
             };
 
-            bm.LäggTillAktivitet(mapper.Map<Aktivitet, AktivitetDTO>(aktivitet));
+            var GammalAktivitet = mapper.Map<AktivitetDTO, Aktivitet>(bm.HämtaAktivitetGenomID(aktivitetsid));
+            bm.UpdateAktivitetWPF(mapper.Map<Aktivitet, AktivitetDTO>(GammalAktivitet), mapper.Map<Aktivitet, AktivitetDTO>(NyAktivitet));
         }
     }
 }
