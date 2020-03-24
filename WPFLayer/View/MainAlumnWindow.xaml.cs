@@ -59,6 +59,7 @@ namespace WPFLayer.View
         private void AvbokaValdAktivitetButton_Click(object sender, RoutedEventArgs e)
         {
             mainAlumnViewModel.AvbokaValdAktivitet(BokadeAktiviteterListbox.SelectedItem);
+            AktivitetInfoRichTxtBox.Clear();
         }
     }
 }

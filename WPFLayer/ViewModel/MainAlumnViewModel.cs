@@ -12,6 +12,7 @@ using System.Windows;
 using BusinessEntites.Models.Junction;
 using System.Collections.Specialized;
 using WPFLayer.Models.Junctions;
+using BusinessEntites.Models;
 
 namespace WPFLayer.ViewModel
 {
@@ -163,7 +164,23 @@ namespace WPFLayer.ViewModel
 
         internal void AvbokaValdAktivitet(object selectedItem)
         {
-            throw new NotImplementedException();
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            Aktivitet aktivitet = (Aktivitet)selectedItem;
+            if (aktivitet != null)
+            {
+                bm.TaBortAktivitetFrånAlumn(mapper.Map<Aktivitet, AktivitetDTO>(aktivitet), GLOBALSWPF.AktuellAlumn);
+                Update();
+                MessageBox.Show("Bokningen har raderats");
+            }
+            else
+            {
+                MessageBox.Show("Du måste välja vilken aktivitet du vill avboka.");
+            }
+            
+
+
         }
     }
 }
