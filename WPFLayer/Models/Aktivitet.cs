@@ -171,7 +171,7 @@ namespace WPFLayer.Models
             }
         }
 
-        public void Uppdatera(Aktivitet aktivitet)
+        public void Redigera()
         {
             BusinessManager bm = new BusinessManager();
             var mapper = MapperConfig.GetMapper();
@@ -187,7 +187,8 @@ namespace WPFLayer.Models
                 Beskrivning = this.Beskrivning
             };
 
-            bm.UpdateAktivitet(mapper.Map<Aktivitet, AktivitetDTO> (aktivitet), mapper.Map<Aktivitet, AktivitetDTO>(NyAktivitet));
+            var GammalAktivitet = mapper.Map<AktivitetDTO, Aktivitet>(bm.HämtaAktivitetGenomID(NyAktivitet.AktivitetsID));
+            bm.UpdateAktivitet(mapper.Map<Aktivitet, AktivitetDTO>(GammalAktivitet), mapper.Map<Aktivitet, AktivitetDTO>(NyAktivitet));
         }
     }
 }

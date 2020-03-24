@@ -97,7 +97,7 @@ namespace WPFLayer.ViewModel
 
         public void RedigeraAktiviteten()
         {
-            Aktivitet.Uppdatera(Aktivitet);
+            Aktivitet.Redigera();
         }
 
 
