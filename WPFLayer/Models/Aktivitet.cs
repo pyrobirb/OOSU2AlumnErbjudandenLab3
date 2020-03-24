@@ -156,7 +156,7 @@ namespace WPFLayer.Models
             return HämtadeAktiviteter;
         }
 
-        public void Spara()
+       //public void Spara()
         public bool Spara(Aktivitet aktivitet)
         {
             BusinessManager bm = new BusinessManager();

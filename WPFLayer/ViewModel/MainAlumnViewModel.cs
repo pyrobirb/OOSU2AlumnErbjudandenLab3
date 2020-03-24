@@ -9,9 +9,9 @@ using System.Runtime.CompilerServices;
 using WPFLayer.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
-using WPFLayer.Models.Junktions;
 using BusinessEntites.Models.Junction;
 using System.Collections.Specialized;
+using WPFLayer.Models.Junctions;
 
 namespace WPFLayer.ViewModel
 {
