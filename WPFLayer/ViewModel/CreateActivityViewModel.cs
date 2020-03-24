@@ -39,6 +39,19 @@ namespace WPFLayer.ViewModel
         }
 
 
+
+        private ObservableCollection<Alumn> alumner;
+        public ObservableCollection<Alumn> Alumner
+        {
+            get { return alumner; }
+            set
+            {
+                alumner = value;
+                Changed();
+            }
+        }
+
+
         private ObservableCollection<Program> programs;
         public ObservableCollection<Program> Programs
         {
@@ -85,6 +98,12 @@ namespace WPFLayer.ViewModel
             return Aktivitet.Spara(aktivitet);
 
         }
+
+        internal void FiltreraProgramAlumner(object selectedItem)
+        {
+            Alumner = Program.HämtaProgramAlumner(selectedItem);
+        }
+
 
         public bool SkapaAktivitet()
         {

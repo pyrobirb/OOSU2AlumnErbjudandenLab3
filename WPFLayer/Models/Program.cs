@@ -57,5 +57,19 @@ namespace WPFLayer.Models
             }
             return x;
         }
+
+        internal static ObservableCollection<Alumn> HämtaProgramAlumner(object selectedItem)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            ObservableCollection<Alumn> a = new ObservableCollection<Alumn>();
+
+            foreach (var item in bm.HämtaAlumnerMedProgram(mapper.Map<Program, ProgramDTO>((Program)selectedItem)))
+            {
+                a.Add(mapper.Map<AlumnDTO, Alumn>(item));
+            }
+            return a;
+
+        }
     }
 }

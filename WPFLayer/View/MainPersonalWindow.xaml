@@ -207,15 +207,16 @@
 
                     <Label Grid.Column="1" Grid.Row="1" FontSize="20">1.</Label>
                     <Label Grid.Column="1" Grid.Row="2">Filtrera på program</Label>
-                    <ComboBox ItemsSource="{Binding Programs}" 
+                    <ComboBox x:Name="ProgramComboBox" ItemsSource="{Binding Programs}" 
                               DisplayMemberPath="Namn"
                                 SelectedItem="Program"
-                              Grid.Column="1" Grid.Row="3"></ComboBox>
+                              Grid.Column="1" Grid.Row="3" SelectionChanged="ProgramComboBox_SelectionChanged_1"></ComboBox>
                     <Label Grid.Column="1" Grid.Row="4">Välj alumn</Label>
-                    <ListBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding AvailablePresentationObjects}" >
+                    <ListBox 
+                        ItemsSource="{Binding Alumner}" Grid.Column="1" Grid.Row="5"  >
                         <ListBox.ItemTemplate>
                             <HierarchicalDataTemplate>
-                                <CheckBox Content="{Binding Name}" IsChecked="{Binding IsChecked}"/>
+                                <CheckBox Content="{Binding Förnamn}" IsChecked="{Binding IsChecked}"/>
                             </HierarchicalDataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
