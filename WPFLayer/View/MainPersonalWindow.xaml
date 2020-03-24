@@ -207,7 +207,7 @@
 
                     <Label Grid.Column="1" Grid.Row="1" FontSize="20">1.</Label>
                     <Label Grid.Column="1" Grid.Row="2">Filtrera på program</Label>
-                    <ComboBox ItemsSource="{Binding Program}" 
+                    <ComboBox ItemsSource="{Binding Programs}" 
                               DisplayMemberPath="Namn"
                                 SelectedItem="Program"
                               Grid.Column="1" Grid.Row="3"></ComboBox>

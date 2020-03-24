@@ -52,7 +52,7 @@ namespace WPFLayer.ViewModel
 
         public void UppdateraProgram()
         {
-            //fortsätt
+            Programs = Program.HämtaAllaProgram();
         }
 
 

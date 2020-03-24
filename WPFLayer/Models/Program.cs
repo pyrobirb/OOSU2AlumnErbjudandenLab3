@@ -1,6 +1,9 @@
-﻿using BusinessEntites.Models.Junction;
+﻿using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
+using BusinessLayer;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -42,6 +45,17 @@ namespace WPFLayer.Models
             }
         }
 
+        internal static ObservableCollection<Program> HämtaAllaProgram()
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            ObservableCollection<Program> x = new ObservableCollection<Program>();
 
+            foreach (var item in bm.HämtaAllaProgram())
+            {
+                x.Add(mapper.Map<ProgramDTO, Program>(item));
+            }
+            return x;
+        }
     }
 }
