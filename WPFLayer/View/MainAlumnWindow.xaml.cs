@@ -73,5 +73,15 @@ namespace WPFLayer.View
             mainAlumnViewModel.LäggTillKompetens(LäggTillKompetens_ArbetlivserfarenhetTextBox.Text);
             LäggTillKompetens_ArbetlivserfarenhetTextBox.Clear();
         }
+
+        private void TabortProgramButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainAlumnViewModel.TaBortProgram(ProgramListBox.SelectedItem);
+        }
+
+        private void TabortKOmpetensButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainAlumnViewModel.TaBortKompetens(KompetenserListBox.SelectedItem);
+        }
     }
 }

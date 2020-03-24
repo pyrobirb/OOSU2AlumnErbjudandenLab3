@@ -96,6 +96,9 @@ namespace WPFLayer.ViewModel
 
 
         private ObservableCollection<Program> aktuellaProgram = new ObservableCollection<Program>();
+
+
+
         public ObservableCollection<Program> AktuellaProgram
         {
             get { return aktuellaProgram; }
@@ -219,6 +222,29 @@ namespace WPFLayer.ViewModel
             bm.LäggTillKompetensTillAlumn(GLOBALSWPF.AktuellAlumn.AnvändarID, text);
             Update();
         }
+
+        internal void TaBortProgram(object selectedItem)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            var selectedProgramToRemove = (Program)selectedItem;
+             
+            bm.TaBortProgramFrånAlumn(mapper.Map<Program, ProgramDTO>(selectedProgramToRemove), GLOBALSWPF.AktuellAlumn);
+            Update();
+        }
+
+        internal void TaBortKompetens(object selectedItem)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            var selectedProgramToRemove = (Kompetens)selectedItem;
+
+            bm.TaBortKompetensFrånAlumn(mapper.Map<Kompetens, KompetensDTO>(selectedProgramToRemove), GLOBALSWPF.AktuellAlumn);
+            Update();
+        }
+
 
     }
 }
