@@ -238,7 +238,7 @@ namespace WPFLayer.ViewModel
             }
 
             bm.SkrivaAlumnAktivitetTillCSVFil(namnMaillista, nyLista);
-
+            UppdateraGamlaUtskick();
 
         }
 
