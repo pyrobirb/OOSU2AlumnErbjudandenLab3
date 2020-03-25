@@ -16,7 +16,7 @@ using WPFLayer.ViewModel;
 namespace WPFLayer.Models
 {
     [DataContract]
-    public class Alumn : INotifyPropertyChanged
+    public class Alumn : INotifyPropertyChanged, IAlumn
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void Changed([CallerMemberName] String propertyName = "")
