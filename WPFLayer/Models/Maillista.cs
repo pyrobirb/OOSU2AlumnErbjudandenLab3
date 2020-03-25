@@ -1,6 +1,9 @@
-﻿using BusinessEntites.Models.Junction;
+﻿using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
+using BusinessLayer;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -22,6 +25,20 @@ namespace WPFLayer.Models
 
         [DataMember]
         private int maillistaID;
+
+        internal static ObservableCollection<Maillista> HämtaAllaMaillistor()
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            ObservableCollection<Maillista> x = new ObservableCollection<Maillista>();
+
+            foreach (var item in bm.HämtaAllaMaillistor())
+            {
+                x.Add(mapper.Map<MaillistaDTO, Maillista>(item));
+            }
+            return x;
+        }
+
         [DataMember]
         private string maillistaNamn;
         [DataMember]
@@ -43,5 +60,18 @@ namespace WPFLayer.Models
             }
         }
 
+        internal static List<Alumn> HämtaAlumnerFrånMaillista(Maillista maillista)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            List<Alumn> x = new List<Alumn>();
+
+            foreach (var item in bm.HämtaAlumnerFrånMailLista(maillista.MaillistaID))
+            {
+                x.Add(mapper.Map<AlumnDTO, Alumn>(item));
+            }
+            return x;
+
+        }
     }
 }

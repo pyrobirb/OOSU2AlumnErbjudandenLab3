@@ -1,6 +1,9 @@
-﻿using BusinessEntites.Models.Junction;
+﻿using BusinessEntites.Models;
+using BusinessEntites.Models.Junction;
+using BusinessLayer;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -19,6 +22,8 @@ namespace WPFLayer.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+       
 
         [DataMember]
         private int utskicksID;

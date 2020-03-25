@@ -21,6 +21,12 @@ namespace WPFLayer.ViewModel
             UppdateraProgram();
             UppdateraAktiviteter();
             DatePickerDagensDatum();
+            UppdateraGamlaUtskick();
+        }
+
+        private void UppdateraGamlaUtskick()
+        {
+            GamlaUtskickMaillista = Maillista.HämtaAllaMaillistor();
         }
 
         private void DatePickerDagensDatum()
@@ -113,7 +119,7 @@ namespace WPFLayer.ViewModel
                 return true;
             }
             else return false;
-            
+
         }
 
         private void NollaAktivitet()
@@ -163,14 +169,18 @@ namespace WPFLayer.ViewModel
                 Changed();
             }
         }
-
-        private ObservableCollection<Alumn> valdAktivitetListaDataGridMedAlumner = new ObservableCollection<Alumn>();
-
-        internal void PubliceraAktivitetTillAlumner(Aktivitet selectedItem)
+        private ObservableCollection<Alumn> utvaldaRedigeraAlumnerMaillista = new ObservableCollection<Alumn>();
+        public ObservableCollection<Alumn> UtvaldaRedigeraAlumnerMaillista
         {
-            Aktivitet.PubliceraAktivitetTillAlumner(selectedItem, UtvaldaRedigeraAlumner);
+            get { return utvaldaRedigeraAlumner; }
+            set
+            {
+                utvaldaRedigeraAlumner = value;
+                Changed();
+            }
         }
 
+        private ObservableCollection<Alumn> valdAktivitetListaDataGridMedAlumner = new ObservableCollection<Alumn>();
         public ObservableCollection<Alumn> ValdAktivitetListaDataGridMedAlumner
         {
             get { return utvaldaRedigeraAlumner; }
@@ -180,6 +190,23 @@ namespace WPFLayer.ViewModel
                 Changed();
             }
         }
+
+        private ObservableCollection<Maillista> gamlaUtskickMaillista = new ObservableCollection<Maillista>();
+        public ObservableCollection<Maillista> GamlaUtskickMaillista
+        {
+            get { return gamlaUtskickMaillista; }
+            set
+            {
+                gamlaUtskickMaillista = value;
+                Changed();
+            }
+        }
+
+        internal void PubliceraAktivitetTillAlumner(Aktivitet selectedItem)
+        {
+            Aktivitet.PubliceraAktivitetTillAlumner(selectedItem, UtvaldaRedigeraAlumner);
+        }
+
         public void TaBortValdaAlumnerFrånRedigeraLista(List<Alumn> alumnerAttTaBort)
         {
 
@@ -191,13 +218,24 @@ namespace WPFLayer.ViewModel
                 utvaldaNyLista.Add(alumn);
             }
 
-            UtvaldaRedigeraAlumner = utvaldaNyLista; 
-            
+            UtvaldaRedigeraAlumner = utvaldaNyLista;
+
         }
 
         public void UppdateraSeAnmälningarValdAktivitetSeAlumner(Aktivitet selectedItem)
         {
             ValdAktivitetListaDataGridMedAlumner = Alumn.HämtaAnmälningarGenomAktivitetsID(selectedItem.AktivitetsID);
+        }
+
+        internal void ImporteraAlumnerFrånGammalMaillista(Maillista maillista)
+        {
+            //från selecteditems alumner 
+            ;
+
+
+
+            //till UtvaldaRedigeraAlumnerMaillista  
+            LäggTillAlumnerILista(Maillista.HämtaAlumnerFrånMaillista(maillista));
         }
 
         internal void LäggTillAlumnerIRedigeraLista(List<Alumn> temp)
@@ -225,7 +263,7 @@ namespace WPFLayer.ViewModel
             foreach (var item in temp)
             {
                 bool AddAlumn = true;
-                foreach (Alumn alumn in UtvaldaALumner)
+                foreach (Alumn alumn in UtvaldaRedigeraAlumnerMaillista)
                 {
                     if (alumn.AnvändarID == item.AnvändarID)
                     {
@@ -234,10 +272,23 @@ namespace WPFLayer.ViewModel
                 }
                 if (AddAlumn)
                 {
-                    UtvaldaALumner.Add(item);
+                    UtvaldaRedigeraAlumnerMaillista.Add(item);
                 }
 
             }
+        }
+
+        internal void TabortValdaAlumnerFrånUtvaldaAlumner(List<Alumn> valdaAlumnerAttTabort)
+        {
+            var nyLista = UtvaldaRedigeraAlumner.Except(valdaAlumnerAttTabort);
+
+            ObservableCollection<Alumn> utvaldaNyLista = new ObservableCollection<Alumn>();
+            foreach (Alumn alumn in nyLista)
+            {
+                utvaldaNyLista.Add(alumn);
+            }
+
+            UtvaldaRedigeraAlumnerMaillista = utvaldaNyLista;
         }
     }
 }

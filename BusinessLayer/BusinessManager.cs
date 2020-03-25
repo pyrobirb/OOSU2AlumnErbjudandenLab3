@@ -303,7 +303,7 @@ namespace BusinessLayer
             unitOfWork.AlumnRepository.LäggTillAlumnMaillista(alumnMaillista);
         }
 
-        public object HämtaAllaMaillistor()
+        public IEnumerable<MaillistaDTO> HämtaAllaMaillistor()
         {
             return unitOfWork.MaillistaRepository.GetAll();
         }

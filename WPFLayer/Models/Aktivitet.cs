@@ -259,8 +259,6 @@ namespace WPFLayer.Models
             {
                 MessageBox.Show("Du måste välja vilken aktivitet du vill avboka.");
             }
-
-
         }
 
         internal static void HämtaBokadeAktiviteter(object selectedItem)

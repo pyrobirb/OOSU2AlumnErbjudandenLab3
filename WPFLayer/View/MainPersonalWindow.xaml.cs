@@ -150,5 +150,35 @@ namespace WPFLayer.View
 
 
         }
+
+        private void SkapaMaillistaOchCSVfil_Click(object sender, RoutedEventArgs e)
+        {
+
+
+
+
+
+
+
+
+            //namngeMaillistaTextBox.Text
+
+
+        }
+
+        private void TaBortAlumnFrånMaillista_Click(object sender, RoutedEventArgs e)
+        {
+            List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
+            foreach (Alumn alumn in skapaMaillistaValdaAlumnerListBox.SelectedItems)
+            {
+                valdaAlumnerAttTabort.Add(alumn);
+            }
+            c.TabortValdaAlumnerFrånUtvaldaAlumner(valdaAlumnerAttTabort);
+        }
+
+        private void HämtaGamlaMaillistAlumner_Click(object sender, RoutedEventArgs e)
+        {
+            c.ImporteraAlumnerFrånGammalMaillista((Maillista)GamlaMaillistorComboBox.SelectedItem);
+        }
     }
 }
