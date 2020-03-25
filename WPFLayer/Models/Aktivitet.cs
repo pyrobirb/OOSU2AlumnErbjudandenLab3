@@ -168,8 +168,9 @@ namespace WPFLayer.Models
 
             Informationsutskick informationsutskick = new Informationsutskick()
             {
-                UtskicksNamn = "inget",
-                UtskickDatum = DateTime.Now
+                UtskicksID = 0,
+                UtskicksNamn = null,
+                UtskickDatum = DateTime.Now,
             };
             bm.LäggTillInformationsutskick(mapper.Map<Informationsutskick, InformationsutskickDTO>(informationsutskick));
 
@@ -180,7 +181,6 @@ namespace WPFLayer.Models
             };
             bm.LäggTillInformationsutskickAktivitet(mapper.Map<InformationsutskickAktivitet, InformationsutskickAktivitetDTO>(informationsutskickAktivitet));
 
-
             foreach (Alumn alumn in utvaldaRedigeraAlumner)
             {
                 InformationsutskickAlumn informationsutskickAlumn = new InformationsutskickAlumn()
@@ -190,9 +190,9 @@ namespace WPFLayer.Models
                 };
                 bm.LäggTillInformationsutskickAlumn(mapper.Map<InformationsutskickAlumn, InformationsutskickAlumnDTO>(informationsutskickAlumn));
             }
+            bm.Commit();
         }
 
-        //public void Spara()
         public bool Spara(Aktivitet aktivitet)
         {
             BusinessManager bm = new BusinessManager();

@@ -247,13 +247,11 @@ namespace BusinessLayer
         public void LäggTillInformationsutskick(InformationsutskickDTO informationsutskick)
         {
             unitOfWork.InformationsutskickRepository.Add(informationsutskick);
-            unitOfWork.Commit();
         }
 
         public void LäggTillInformationsutskickAktivitet(InformationsutskickAktivitetDTO informationsutskickAktivitet)
         {
             unitOfWork.InformationsutskickRepository.LäggTillInformationsutskickAktivitet(informationsutskickAktivitet);
-            unitOfWork.Commit();
         }
 
         public InformationsutskickDTO HämtaInformationsutskickMedID(int utskicksID)
