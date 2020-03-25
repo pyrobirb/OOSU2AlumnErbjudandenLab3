@@ -186,7 +186,23 @@ namespace WPFLayer.Models
                 MessageBox.Show("Var vänlig fyll i en giltig mailadress");
             }
         }
-    
+
+        internal static ObservableCollection<Alumn> HämtaAnmälningarGenomAktivitetsID(int aktivitetsID)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            var lista = bm.HämtaAnmälningarGenomAktivitetsID(aktivitetsID);
+            ObservableCollection<Alumn> nyLista = new ObservableCollection<Alumn>();
+
+            foreach (var item in lista)
+            {
+                nyLista.Add(mapper.Map<AlumnDTO, Alumn>(item));
+            }
+            return nyLista;
+
+        }
+
         internal static object HämtaAlumnMedID(int användarID)
         {
             BusinessManager bm = new BusinessManager();

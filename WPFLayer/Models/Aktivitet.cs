@@ -17,7 +17,7 @@ using WPFLayer.Models.Interfaces;
 namespace WPFLayer.Models
 {
     [DataContract]
-    public class Aktivitet : INotifyPropertyChanged, IAktivitet 
+    public class Aktivitet : INotifyPropertyChanged, IAktivitet
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void Changed([CallerMemberName] String propertyName = "")
@@ -161,7 +161,38 @@ namespace WPFLayer.Models
             return HämtadeAktiviteter;
         }
 
-       //public void Spara()
+        internal void PubliceraAktivitetTillAlumner(Aktivitet selectedItem, ObservableCollection<Alumn> utvaldaRedigeraAlumner)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            Informationsutskick informationsutskick = new Informationsutskick()
+            {
+                UtskicksNamn = "inget",
+                UtskickDatum = DateTime.Now
+            };
+            bm.LäggTillInformationsutskick(mapper.Map<Informationsutskick, InformationsutskickDTO>(informationsutskick));
+
+            InformationsutskickAktivitet informationsutskickAktivitet = new InformationsutskickAktivitet()
+            {
+                AktivitetID = selectedItem.AktivitetsID,
+                InformationsutskickID = informationsutskick.UtskicksID
+            };
+            bm.LäggTillInformationsutskickAktivitet(mapper.Map<InformationsutskickAktivitet, InformationsutskickAktivitetDTO>(informationsutskickAktivitet));
+
+
+            foreach (Alumn alumn in utvaldaRedigeraAlumner)
+            {
+                InformationsutskickAlumn informationsutskickAlumn = new InformationsutskickAlumn()
+                {
+                    AlumnID = alumn.AnvändarID,
+                    InformationsutskickID = informationsutskick.UtskicksID
+                };
+                bm.LäggTillInformationsutskickAlumn(mapper.Map<InformationsutskickAlumn, InformationsutskickAlumnDTO>(informationsutskickAlumn));
+            }
+        }
+
+        //public void Spara()
         public bool Spara(Aktivitet aktivitet)
         {
             BusinessManager bm = new BusinessManager();
@@ -187,10 +218,12 @@ namespace WPFLayer.Models
 
                 bm.LäggTillAktivitet(mapper.Map<Aktivitet, AktivitetDTO>(NyAktivitet));
 
-                
+
                 return true;
             }
         }
+
+
 
         public void Redigera(int aktivitetsid, string titel, string kontaktperson, string ansvarig, string plats, DateTime startdatum, DateTime slutdatum, string beskrivning)
         {
@@ -221,7 +254,7 @@ namespace WPFLayer.Models
             if (aktivitet != null)
             {
                 bm.TaBortAktivitetFrånAlumn(mapper.Map<Aktivitet, AktivitetDTO>(aktivitet), GLOBALSWPF.AktuellAlumn);
-                
+
                 MessageBox.Show("Bokningen har raderats");
             }
             else

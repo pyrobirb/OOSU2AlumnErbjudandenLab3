@@ -222,7 +222,7 @@
                     </ListBox>
                     <StackPanel Grid.Column="2" Grid.Row="5" VerticalAlignment="Center">
                         <Button Click="VäljAlumnTillInformationsutskick_Click" x:Name="VäljAlumnTillInformationsutskick" Padding="5"  Margin="5,5,5,5" >Välj</Button>
-                        <Button Padding="5" Margin="5,5,5,5" Click="Button_Click">Ta bort</Button>
+                        <Button Padding="5" Margin="5,5,5,5" Click="FlyttaRedigeraAlumner_Click">Ta bort</Button>
                     </StackPanel>
 
 
@@ -262,9 +262,13 @@
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Column="1" Grid.Row="1">Välj aktivitet</Label>
-                    <ComboBox Grid.Column="1" Grid.Row="2"></ComboBox>
+                    <ComboBox x:Name="SeAnmälningarValdAktivitet" ItemsSource="{Binding Aktiviteter}"
+                              DisplayMemberPath="Titel"
+                              SelectedItem="Aktivitet" Grid.Column="1" Grid.Row="2" SelectionChanged="SeAnmälningarValdAktivitet_SelectionChanged"></ComboBox>
                     <Label Grid.Column="1" Grid.Row="3">Anmälda alumner</Label>
-                    <DataGrid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"></DataGrid>
+                    <DataGrid x:Name="valdAktivitetDataGridMedAlumner"
+                        ItemsSource="{Binding ValdAktivitetListaDataGridMedAlumner}" 
+                        Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"></DataGrid>
                 </Grid>
             </TabItem>
 

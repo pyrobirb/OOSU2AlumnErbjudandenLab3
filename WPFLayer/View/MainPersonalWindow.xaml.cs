@@ -112,7 +112,7 @@ namespace WPFLayer.View
             createPersonalAccountWindow.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void FlyttaRedigeraAlumner_Click(object sender, RoutedEventArgs e)
         {
             List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
             foreach (Alumn alumn in PubliceraAktivitetValdaAlumner.SelectedItems)
@@ -127,7 +127,26 @@ namespace WPFLayer.View
         private void PubliceraUtskick_Click_1(object sender, RoutedEventArgs e)
         {
 
+            c.PubliceraAktivitetTillAlumner((Aktivitet)VäljAktivitetComboBox.SelectedItem);
 
+            MessageBox.Show("Utskick skapat");
+        }
+
+        private void SeAnmälningarValdAktivitet_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            c.UppdateraSeAnmälningarValdAktivitetSeAlumner((Aktivitet)SeAnmälningarValdAktivitet.SelectedItem);
+
+
+            valdAktivitetDataGridMedAlumner.Columns[0].Visibility = Visibility.Hidden;
+            valdAktivitetDataGridMedAlumner.Columns[1].Visibility = Visibility.Hidden;
+            valdAktivitetDataGridMedAlumner.Columns[2].Visibility = Visibility.Hidden;
+            valdAktivitetDataGridMedAlumner.Columns[3].Visibility = Visibility.Hidden;
+            valdAktivitetDataGridMedAlumner.Columns[4].Visibility = Visibility.Hidden;
+            valdAktivitetDataGridMedAlumner.Columns[5].Visibility = Visibility.Visible;
+            valdAktivitetDataGridMedAlumner.Columns[6].Visibility = Visibility.Visible;
+            valdAktivitetDataGridMedAlumner.Columns[7].Visibility = Visibility.Hidden;
+            valdAktivitetDataGridMedAlumner.Columns[8].Visibility = Visibility.Visible;
+            valdAktivitetDataGridMedAlumner.Columns[9].Visibility = Visibility.Visible;
 
 
         }

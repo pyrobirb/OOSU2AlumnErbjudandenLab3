@@ -610,5 +610,10 @@ namespace PresentationLayer
         {
 
         }
+
+        private void AnmäldaAlumnerDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -164,6 +164,22 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private ObservableCollection<Alumn> valdAktivitetListaDataGridMedAlumner = new ObservableCollection<Alumn>();
+
+        internal void PubliceraAktivitetTillAlumner(Aktivitet selectedItem)
+        {
+            Aktivitet.PubliceraAktivitetTillAlumner(selectedItem, UtvaldaRedigeraAlumner);
+        }
+
+        public ObservableCollection<Alumn> ValdAktivitetListaDataGridMedAlumner
+        {
+            get { return utvaldaRedigeraAlumner; }
+            set
+            {
+                utvaldaRedigeraAlumner = value;
+                Changed();
+            }
+        }
         public void TaBortValdaAlumnerFrånRedigeraLista(List<Alumn> alumnerAttTaBort)
         {
 
@@ -177,8 +193,11 @@ namespace WPFLayer.ViewModel
 
             UtvaldaRedigeraAlumner = utvaldaNyLista; 
             
+        }
 
-
+        public void UppdateraSeAnmälningarValdAktivitetSeAlumner(Aktivitet selectedItem)
+        {
+            ValdAktivitetListaDataGridMedAlumner = Alumn.HämtaAnmälningarGenomAktivitetsID(selectedItem.AktivitetsID);
         }
 
         internal void LäggTillAlumnerIRedigeraLista(List<Alumn> temp)

@@ -636,6 +636,7 @@
             this.AnmäldaAlumnerDataGridView.Name = "AnmäldaAlumnerDataGridView";
             this.AnmäldaAlumnerDataGridView.Size = new System.Drawing.Size(484, 204);
             this.AnmäldaAlumnerDataGridView.TabIndex = 4;
+            this.AnmäldaAlumnerDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AnmäldaAlumnerDataGridView_CellContentClick);
             // 
             // label24
             // 
