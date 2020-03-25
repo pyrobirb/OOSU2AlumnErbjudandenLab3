@@ -186,7 +186,7 @@ namespace WPFLayer.Models
                 MessageBox.Show("Var vänlig fyll i en giltig mailadress");
             }
         }
-    }
+    
         internal static object HämtaAlumnMedID(int användarID)
         {
             BusinessManager bm = new BusinessManager();
