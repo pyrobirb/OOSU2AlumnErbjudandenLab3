@@ -242,6 +242,12 @@ namespace WPFLayer.ViewModel
 
         }
 
+        internal void TömMailLista()
+        {
+            UtvaldaRedigeraAlumnerMaillista = new ObservableCollection<Alumn>();
+            
+        }
+
         public void UppdateraSeAnmälningarValdAktivitetSeAlumner(Aktivitet selectedItem)
         {
             ValdAktivitetListaDataGridMedAlumner = Alumn.HämtaAnmälningarGenomAktivitetsID(selectedItem.AktivitetsID);

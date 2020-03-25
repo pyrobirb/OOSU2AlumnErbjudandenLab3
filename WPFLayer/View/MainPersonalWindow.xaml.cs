@@ -167,6 +167,8 @@ namespace WPFLayer.View
                 MessageBox.Show("Maillistan har skapats!\n\n" + "Maillistans namn och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
                                  "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug/");
             }
+            c.TömMailLista();
+            namngeMaillistaTextBox.Clear();
         }
 
         private void TaBortAlumnFrånMaillista_Click(object sender, RoutedEventArgs e)
