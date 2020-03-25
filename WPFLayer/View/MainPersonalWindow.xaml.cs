@@ -101,5 +101,12 @@ namespace WPFLayer.View
             }
             c.LäggTillAlumnerILista(temp);
         }
+
+        private void SkapaPersonalKonto_Click(object sender, RoutedEventArgs e)
+        {
+            CreatePersonalAccountWindow createPersonalAccountWindow = new CreatePersonalAccountWindow();
+            this.Hide();
+            createPersonalAccountWindow.Show();
+        }
     }
 }

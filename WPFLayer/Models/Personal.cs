@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessEntites.Models;
+using BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -25,6 +27,36 @@ namespace WPFLayer.Models
         private int personalID;
         [DataMember]
         private string användarnamn;
+
+        public bool Spara(Personal personal)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            if ((personal.Förnamn == null || personal.Förnamn == "" || personal.Efternamn == null || personal.Efternamn == "" || personal.Användarnamn == null || personal.Användarnamn == "" || personal.Lösenord == null || personal.Lösenord == ""))
+            {
+                return false;
+            }
+            else
+            {
+                Personal NyAlumn = new Personal()
+                {
+                    Förnamn = personal.Förnamn,
+                    Efternamn = personal.Efternamn,
+                    Användarnamn = personal.Användarnamn,
+                    Lösenord = personal.Lösenord
+                };
+
+                bm.LäggTillPersonal(mapper.Map<Personal, PersonalDTO>(NyAlumn));
+
+                if (bm.HämtaPersonalKonto(personal.Användarnamn, personal.Lösenord).Användarnamn == NyAlumn.Användarnamn)
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
+
         [DataMember]
         private string lösenord;
         [DataMember]
@@ -40,23 +72,27 @@ namespace WPFLayer.Models
         public string Användarnamn
         {
             get { return användarnamn; }
-            set { användarnamn = value; }
+            set { användarnamn = value; 
+                Changed(); }
         }
         public string Lösenord
         {
             get { return lösenord; }
-            set { lösenord = value; }
+            set { lösenord = value; 
+                Changed(); }
         }
         public string Förnamn
         {
             get { return förnamn; }
-            set { förnamn = value; }
+            set { förnamn = value; 
+                Changed(); }
         }
 
         public string Efternamn
         {
             get { return efternamn; }
-            set { efternamn = value; }
+            set { efternamn = value; 
+                Changed(); }
         }
     }
 }

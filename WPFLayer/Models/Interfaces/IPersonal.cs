@@ -12,7 +12,7 @@ namespace WPFLayer.Models.Interfaces
     {
         event PropertyChangedEventHandler PropertyChanged;
         void Changed([CallerMemberName] String propertyName = "");
-        
+        bool Spara(Personal personal);
         int PersonalID { get; set; }
         string Användarnamn { get; set; }
         string Lösenord { get; set; }
