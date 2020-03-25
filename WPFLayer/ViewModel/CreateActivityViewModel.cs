@@ -137,7 +137,41 @@ namespace WPFLayer.ViewModel
         {
             Aktivitet.Redigera(aktivitetsid, titel, kontaktperson, ansvarig, plats, startdatum, slutdatum, beskrivning);
         }
+
+
+
+
         #endregion
 
+        private ObservableCollection<Alumn> utvaldaAlumner = new ObservableCollection<Alumn>();
+        public ObservableCollection<Alumn> UtvaldaALumner
+        {
+            get { return utvaldaAlumner; }
+            set
+            {
+                utvaldaAlumner = value;
+                Changed();
+            }
+        }
+
+        internal void LäggTillAlumnerILista(List<Alumn> temp)
+        {
+            foreach (var item in temp)
+            {
+                bool AddAlumn = true;
+                foreach (Alumn alumn in UtvaldaALumner)
+                {
+                    if (alumn == item)
+                    {
+                        AddAlumn = false;
+                    }
+                }
+                if (AddAlumn)
+                {
+                    UtvaldaALumner.Add(item);
+                }
+
+            }
+        }
     }
 }

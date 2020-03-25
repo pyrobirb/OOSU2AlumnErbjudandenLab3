@@ -295,24 +295,25 @@
                                SelectionChanged="ProgramComboBox_SelectionChanged_2"/>
                     <TextBlock Grid.Column="1" Grid.Row="5" Text="2.Välj Alumn"/>
 
-                    <ListBox 
-                        ItemsSource="{Binding Alumner}" Grid.Column="1" Grid.Row="6"  >
+                    <ListBox x:Name="AlumnerAttFlyttaTillSkapaMaillista"
+                        ItemsSource="{Binding Alumner}" SelectionMode="Multiple" Grid.Column="1" Grid.Row="6">
                         <ListBox.ItemTemplate>
                             <HierarchicalDataTemplate>
-                                <CheckBox Content="{Binding Förnamn}" IsChecked="{Binding IsChecked}"/>
+                                <ListBoxItem Content="{Binding Förnamn}" >
+                                </ListBoxItem>
                             </HierarchicalDataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
 
                     <StackPanel Grid.Column="2" Grid.Row="6" VerticalAlignment="Center">
-                        <Button Padding="10,5"  Margin="10,5" >Välj</Button>
-                        <Button Padding="10,5" Margin="10,5">Ta bort</Button>
+                        <Button x:Name="VäljAlumnTillMaillista" Padding="10,5"  Margin="10,5" Click="VäljAlumnTillMaillista_Click" >Välj</Button>
+                        <Button x:Name="TaBortAlumnFrånMaillista" Padding="10,5" Margin="10,5">Ta bort</Button>
                     </StackPanel>
 
                     <TextBlock Grid.Column="3" Grid.Row="3" Text="Utgå från gammal lista" />
                     <ComboBox Name="GamlaMaillistorComboBox" Grid.Column="3" Grid.Row="4" Margin="0,0,0,10"/>
                     <TextBlock Grid.Column="3" Grid.Row="5" Text="Valda alumner" />
-                    <ListBox Name="skapaMaillistaValdaAlumnerListBox" Grid.Column="3" Grid.Row="6"></ListBox>
+                    <ListBox Name="skapaMaillistaValdaAlumnerListBox" Grid.Column="3" Grid.Row="6" ItemsSource="{Binding UtvaldaALumner}" DisplayMemberPath="Förnamn"></ListBox>
 
                     <Button Grid.Column="4" Grid.Row="4" Margin="10,0,0,10" Padding="5,0">Hämta lista</Button>
                     <StackPanel Grid.Column="4" Grid.Row="6" VerticalAlignment="Center">

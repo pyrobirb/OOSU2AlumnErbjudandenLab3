@@ -91,5 +91,15 @@ namespace WPFLayer.View
             Console.WriteLine("elo");
             c.FiltreraProgramAlumner((Program)SkapaMaillistaFiltreraPåProgramComboBox.SelectedItem);
         }
+
+        private void VäljAlumnTillMaillista_Click(object sender, RoutedEventArgs e)
+        {
+            List<Alumn> temp = new List<Alumn>();
+            foreach (Alumn item in AlumnerAttFlyttaTillSkapaMaillista.SelectedItems)
+            {
+                temp.Add(item);
+            }
+            c.LäggTillAlumnerILista(temp);
+        }
     }
 }
