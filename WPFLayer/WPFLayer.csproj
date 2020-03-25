@@ -192,6 +192,10 @@
     <Compile Include="Models\Junctions\Interfaces\IAlumnKompetens.cs" />
     <Compile Include="Models\Junctions\Interfaces\IAlumnAktivitetsBokning.cs" />
     <Compile Include="Models\Junctions\Interfaces\IAlumnMaillista.cs" />
+    <Compile Include="Models\Junctions\Interfaces\IAlumnProgram.cs" />
+    <Compile Include="Models\Junctions\Interfaces\IInformationsutskickAktivitet.cs" />
+    <Compile Include="Models\Junctions\Interfaces\IInformationsutskickAlumn.cs" />
+    <Compile Include="Models\Junctions\Interfaces\IPersonalInformationsutskick.cs" />
     <Compile Include="Models\Junctions\PersonalInformationsutskick.cs" />
     <Compile Include="Models\Kompetens.cs" />
     <Compile Include="Models\Maillista.cs" />

@@ -6,11 +6,12 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using WPFLayer.Models.Junctions.Interfaces;
 
 namespace WPFLayer.Models.Junctions
 {
     [DataContract]
-    class InformationsutskickAlumn : INotifyPropertyChanged
+    class InformationsutskickAlumn : INotifyPropertyChanged, IInformationsutskickAlumn
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void Changed([CallerMemberName] String propertyName = "")
