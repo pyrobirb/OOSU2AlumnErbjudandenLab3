@@ -213,10 +213,10 @@
                               Grid.Column="1" Grid.Row="3" SelectionChanged="ProgramComboBox_SelectionChanged_1"></ComboBox>
                     <Label Grid.Column="1" Grid.Row="4">Välj alumn</Label>
                     <ListBox 
-                        ItemsSource="{Binding Alumner}" Grid.Column="1" Grid.Row="5"  >
+                        ItemsSource="{Binding Alumner}" SelectionMode="Multiple" Grid.Column="1" Grid.Row="5"  >
                         <ListBox.ItemTemplate>
                             <HierarchicalDataTemplate>
-                                <CheckBox Content="{Binding Förnamn}" IsChecked="{Binding IsChecked}"/>
+                                <ListBoxItem Content="{Binding Förnamn}"/>
                             </HierarchicalDataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
