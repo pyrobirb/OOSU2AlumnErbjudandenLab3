@@ -543,7 +543,7 @@ namespace PresentationLayer
 
                 bm.SkrivaAlumnAktivitetTillCSVFil(NamnMailListaTextBox.Text, alumner);
                 MessageBox.Show("Maillistans namn och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
-                                 "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug");
+                                 "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/WPFLayer/bin/Debug");
                 //Tömmer sätt namn på Utskicksboxen och ValdaAlumner samt fyller i gamla listorboxen. 
                 NamnMailListaTextBox.Clear();
 
