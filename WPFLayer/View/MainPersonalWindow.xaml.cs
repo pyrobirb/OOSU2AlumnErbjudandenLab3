@@ -85,5 +85,11 @@ namespace WPFLayer.View
             Console.WriteLine("elo");
             c.FiltreraProgramAlumner((Program)ProgramComboBox.SelectedItem);
         }
+
+        private void ProgramComboBox_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
+        {
+            Console.WriteLine("elo");
+            c.FiltreraProgramAlumner((Program)SkapaMaillistaFiltreraPåProgramComboBox.SelectedItem);
+        }
     }
 }

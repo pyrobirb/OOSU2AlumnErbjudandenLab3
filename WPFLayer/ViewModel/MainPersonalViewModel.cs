@@ -54,5 +54,17 @@ namespace WPFLayer.ViewModel
         {
             Aktiviteter = Aktivitet.HämtaAktiviteter();
         }
+
+        private ObservableCollection<Alumn> utvaldaAlumner;
+        public ObservableCollection<Alumn> UtvaldaALumner
+        {
+            get { return utvaldaAlumner; }
+            set
+            {
+                utvaldaAlumner = value;
+            }
+        }
+
+
     }
 }
