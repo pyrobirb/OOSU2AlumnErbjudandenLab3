@@ -10,11 +10,12 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using WPFLayer.Models.Interfaces;
 
 namespace WPFLayer.Models
 {
     [DataContract]
-    public class Kompetens : INotifyPropertyChanged
+    public class Kompetens : INotifyPropertyChanged, IKompetens
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void Changed([CallerMemberName] String propertyName = "")

@@ -28,7 +28,7 @@ namespace WPFLayer.Models
         [DataMember]
         private int användarID;
 
-        internal bool Spara(Alumn alumn)
+        public bool Spara(Alumn alumn)
         {
             BusinessManager bm = new BusinessManager();
             var mapper = MapperConfig.GetMapper();

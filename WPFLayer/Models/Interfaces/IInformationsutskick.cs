@@ -15,9 +15,6 @@ namespace WPFLayer.Models.Interfaces
         event PropertyChangedEventHandler PropertyChanged;
         void Changed([CallerMemberName] String propertyName = "");
 
-        int utskicksID { get; set; }
-        string utskicksNamn { get; set; }
-        DateTime utskickDatum { get; set; }
         ICollection<Alumn> Alumner { get; set; }
         ICollection<InformationsutskickAlumnDTO> InformationsutskickAlumn { get; set; }
         ICollection<PersonalInformationsutskickDTO> PersonalInformationsutskick { get; set; }
