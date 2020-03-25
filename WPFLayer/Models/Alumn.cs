@@ -150,5 +150,18 @@ namespace WPFLayer.Models
             return Hämtadealumner;
         }
 
+        internal static object HämtaAlumnMedID(int användarID)
+        {
+            BusinessManager bm = new BusinessManager();
+            return bm.HämtaAlumnMedID(användarID);
+        }
+
+        internal static void TaBortAlumn(Alumn alumnatttabort)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            bm.TaBortAlumn(mapper.Map<Alumn, AlumnDTO>(alumnatttabort));
+        }
     }
 }

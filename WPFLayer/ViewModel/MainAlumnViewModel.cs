@@ -183,10 +183,10 @@ namespace WPFLayer.ViewModel
         internal void TaBortAlumnKonto()
         {
             BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            Alumn alumnatttabort = (Alumn)mapper.Map<AlumnDTO, Alumn>((AlumnDTO)Alumn.HämtaAlumnMedID((GLOBALSWPF.AktuellAlumn).AnvändarID));
 
-            var alumnatttabort = bm.HämtaAlumnMedID((GLOBALSWPF.AktuellAlumn).AnvändarID);
-
-            bm.TaBortAlumn(alumnatttabort);
+            Alumn.TaBortAlumn(alumnatttabort);
             MessageBox.Show("Ditt konto är nu borttaget");
             bm.Commit();
         }
