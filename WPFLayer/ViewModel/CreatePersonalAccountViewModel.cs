@@ -10,7 +10,6 @@ namespace WPFLayer.ViewModel
 {
     public class CreatePersonalAccountViewModel
     {
-        BusinessManager bm = new BusinessManager();
         private Personal personal = new Personal();
 
         public Personal Personal

@@ -11,7 +11,6 @@ namespace WPFLayer.ViewModel
 {
     public class CreateAlumnAccViewModel
     {
-        BusinessManager bm = new BusinessManager();
 
         private Alumn alumn = new Alumn();
 

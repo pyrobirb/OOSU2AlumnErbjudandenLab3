@@ -15,7 +15,6 @@ namespace WPFLayer.ViewModel
 
     public class MainPersonalViewModel : INotifyPropertyChanged
     {
-        BusinessManager bm = new BusinessManager();
 
         public MainPersonalViewModel()
         {
@@ -163,6 +162,23 @@ namespace WPFLayer.ViewModel
                 utvaldaRedigeraAlumner = value;
                 Changed();
             }
+        }
+
+        public void TaBortValdaAlumnerFrånRedigeraLista(List<Alumn> alumnerAttTaBort)
+        {
+
+            var nyLista = UtvaldaRedigeraAlumner.Except(alumnerAttTaBort);
+
+            ObservableCollection<Alumn> utvaldaNyLista = new ObservableCollection<Alumn>();
+            foreach (Alumn alumn in nyLista)
+            {
+                utvaldaNyLista.Add(alumn);
+            }
+
+            UtvaldaRedigeraAlumner = utvaldaNyLista; 
+            
+
+
         }
 
         internal void LäggTillAlumnerIRedigeraLista(List<Alumn> temp)

@@ -77,13 +77,11 @@ namespace WPFLayer.View
 
         private void ProgramComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine("elo");
             c.FiltreraProgramAlumner((Program)ProgramComboBox.SelectedItem);
         }
 
         private void ProgramComboBox_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine("elo");
             c.FiltreraProgramAlumner((Program)SkapaMaillistaFiltreraPåProgramComboBox.SelectedItem);
         }
 
@@ -112,6 +110,26 @@ namespace WPFLayer.View
             CreatePersonalAccountWindow createPersonalAccountWindow = new CreatePersonalAccountWindow();
             this.Hide();
             createPersonalAccountWindow.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
+            foreach (Alumn alumn in PubliceraAktivitetValdaAlumner.SelectedItems)
+            {
+                valdaAlumnerAttTabort.Add(alumn);
+            }
+            c.TaBortValdaAlumnerFrånRedigeraLista(valdaAlumnerAttTabort);
+
+
+        }
+
+        private void PubliceraUtskick_Click_1(object sender, RoutedEventArgs e)
+        {
+
+
+
+
         }
     }
 }

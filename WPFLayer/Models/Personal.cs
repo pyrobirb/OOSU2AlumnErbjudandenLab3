@@ -57,6 +57,12 @@ namespace WPFLayer.Models
             }
         }
 
+        public static PersonalDTO HämtaPersonalKonto(string användarnamn, string lösenord)
+        {
+            BusinessManager bm = new BusinessManager();
+            return bm.HämtaPersonalKonto(användarnamn, lösenord);
+        }
+
         [DataMember]
         private string lösenord;
         [DataMember]

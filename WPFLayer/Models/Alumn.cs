@@ -163,5 +163,11 @@ namespace WPFLayer.Models
 
             bm.TaBortAlumn(mapper.Map<Alumn, AlumnDTO>(alumnatttabort));
         }
+
+        public static AlumnDTO HämtaAlumnKonto(string användarnamn, string lösenord)
+        {
+            BusinessManager bm = new BusinessManager();
+            return bm.HämtaAlumnKonto(användarnamn, lösenord);
+        }
     }
 }

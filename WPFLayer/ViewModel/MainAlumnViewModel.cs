@@ -188,7 +188,6 @@ namespace WPFLayer.ViewModel
 
             Alumn.TaBortAlumn(alumnatttabort);
             MessageBox.Show("Ditt konto är nu borttaget");
-            bm.Commit();
         }
 
         internal void AvbokaValdAktivitet(object selectedItem)
