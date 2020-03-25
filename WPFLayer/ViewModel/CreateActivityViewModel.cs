@@ -154,6 +154,37 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private ObservableCollection<Alumn> utvaldaRedigeraAlumner = new ObservableCollection<Alumn>();
+        public ObservableCollection<Alumn> UtvaldaRedigeraAlumner
+        {
+            get { return utvaldaRedigeraAlumner; }
+            set
+            {
+                utvaldaRedigeraAlumner = value;
+                Changed();
+            }
+        }
+
+        internal void LäggTillAlumnerIRedigeraLista(List<Alumn> temp)
+        {
+            foreach (var item in temp)
+            {
+                bool AddAlumn = true;
+                foreach (Alumn alumn in UtvaldaRedigeraAlumner)
+                {
+                    if (alumn.AnvändarID == item.AnvändarID)
+                    {
+                        AddAlumn = false;
+                    }
+                }
+                if (AddAlumn)
+                {
+                    UtvaldaRedigeraAlumner.Add(item);
+                }
+
+            }
+        }
+
         internal void LäggTillAlumnerILista(List<Alumn> temp)
         {
             foreach (var item in temp)

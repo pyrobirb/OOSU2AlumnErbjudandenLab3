@@ -102,6 +102,16 @@ namespace WPFLayer.View
             c.LäggTillAlumnerILista(temp);
         }
 
+        public void VäljAlumnTillInformationsutskick_Click(object sender, RoutedEventArgs e)
+        {
+            List<Alumn> temp = new List<Alumn>();
+            foreach (Alumn item in FlyttaRedigeraAlumner.SelectedItems)
+            {
+                temp.Add(item);
+            }
+            c.LäggTillAlumnerIRedigeraLista(temp);
+        }
+
         private void SkapaPersonalKonto_Click(object sender, RoutedEventArgs e)
         {
             CreatePersonalAccountWindow createPersonalAccountWindow = new CreatePersonalAccountWindow();
