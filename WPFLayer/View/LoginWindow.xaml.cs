@@ -36,7 +36,6 @@ namespace WPFLayer
             //Automapper Initialization
             var config = new MapperConfiguration(cfg =>
             {
-                //cfg.AddProfile<AlumnContextProfile>();
                 cfg.CreateMap<AlumnDTO, Alumn>().ReverseMap();
                 cfg.CreateMap<Personal, PersonalDTO>().ReverseMap();
                 cfg.CreateMap<AktivitetDTO, Aktivitet>().ReverseMap();
@@ -83,7 +82,6 @@ namespace WPFLayer
                     MainPersonalWindow mainPersonalWindow = new MainPersonalWindow();
                     this.Hide();
                     mainPersonalWindow.Show();
-                    // Rensa Användarnamn.Text och Lösenord.Password men mer praktiskt att inte göra det för testning
                 }
             }
             if (User.Text == "Alumn")
@@ -97,8 +95,6 @@ namespace WPFLayer
                     MainAlumnWindow mainAlumnWindow = new MainAlumnWindow();
                     this.Hide();
                     mainAlumnWindow.Show();
-                    // Rensa Användarnamn.Text och Lösenord.Password men mer praktiskt att inte göra det för testning
-
                 }
             }
             

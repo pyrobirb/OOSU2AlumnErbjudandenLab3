@@ -17,21 +17,16 @@ using WPFLayer.ViewModel;
 
 namespace WPFLayer.View
 {
-    public class CombinedPersonalViewModel//används ej nu
-    {
-        public MainPersonalViewModel mainPersonalViewModel = new MainPersonalViewModel();
-        public CreateActivityViewModel createActivityViewModel = new CreateActivityViewModel();
-    }
+    
     /// <summary>
     /// Interaction logic for MainPersonalWindow.xaml
     /// </summary>
     public partial class MainPersonalWindow : Window
     {
-        CreateActivityViewModel c = new CreateActivityViewModel();
+        MainPersonalViewModel c = new MainPersonalViewModel();
         public MainPersonalWindow()
         {
             InitializeComponent();
-            //DataContext = new CombinedPersonalViewModel();
             DataContext = c;
 
             if (!(GLOBALSWPF.AktuellPersonal.Användarnamn == "SuperAdmin" && GLOBALSWPF.AktuellPersonal.PersonalID == 1))

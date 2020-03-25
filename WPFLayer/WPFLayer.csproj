@@ -193,10 +193,9 @@
     <Compile Include="Models\Kompetens.cs" />
     <Compile Include="Models\Maillista.cs" />
     <Compile Include="Models\Program.cs" />
-    <Compile Include="ViewModel\CreateActivityViewModel.cs" />
+    <Compile Include="ViewModel\MainPersonalViewModel.cs" />
     <Compile Include="ViewModel\CreatePersonalAccountViewModel.cs" />
     <Compile Include="ViewModel\MainAlumnViewModel.cs" />
-    <Compile Include="ViewModel\MainPersonalViewModel.cs" />
     <Compile Include="View\CreatePersonalAccountWindow.xaml.cs">
       <DependentUpon>CreatePersonalAccountWindow.xaml</DependentUpon>
     </Compile>

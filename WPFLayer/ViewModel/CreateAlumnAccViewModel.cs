@@ -29,7 +29,6 @@ namespace WPFLayer.ViewModel
                 return true;
             }
             else return false;
-            //Update();
         }
 
         internal bool SparaAlumn(Alumn Alumn)
