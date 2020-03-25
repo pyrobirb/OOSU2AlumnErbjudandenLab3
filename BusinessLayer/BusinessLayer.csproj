@@ -46,6 +46,7 @@
     <Compile Include="BusinessManager.cs" />
     <Compile Include="GLOBALS.cs" />
     <Compile Include="GLOBALSWPF.cs" />
+    <Compile Include="IBusinessManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexUtilities.cs" />
   </ItemGroup>
