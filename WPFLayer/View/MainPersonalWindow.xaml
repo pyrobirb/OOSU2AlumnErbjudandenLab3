@@ -19,7 +19,7 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <TabControl Grid.Column="1" Grid.Row="1" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl Grid.Column="1" Grid.Row="1">
             <TabItem Header="Skapa Aktivitet">
                 <Grid  DataContext="{Binding Aktivitet}">
                     <Grid.ColumnDefinitions>

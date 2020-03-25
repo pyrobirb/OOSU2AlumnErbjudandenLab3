@@ -37,6 +37,7 @@ namespace WPFLayer
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<AlumnDTO, Alumn>().ReverseMap();
+                cfg.CreateMap<Alumn, AlumnDTO>().ReverseMap();
                 cfg.CreateMap<Personal, PersonalDTO>().ReverseMap();
                 cfg.CreateMap<AktivitetDTO, Aktivitet>().ReverseMap();
                 cfg.CreateMap<InformationsutskickDTO, Informationsutskick>().ReverseMap();

@@ -1,4 +1,5 @@
-﻿using BusinessLayer;
+﻿using BusinessEntites.Models;
+using BusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using WPFLayer.Models;
+using WPFLayer.Models.Junctions;
 
 namespace WPFLayer.ViewModel
 {
@@ -219,6 +221,24 @@ namespace WPFLayer.ViewModel
             }
 
             UtvaldaRedigeraAlumner = utvaldaNyLista;
+
+        }
+
+        internal void SkapaMaillista(string namnMaillista)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+            Maillista.SkapaMailLista(namnMaillista);
+            AlumnMaillista.SkapaAlumnMaillista(UtvaldaRedigeraAlumnerMaillista);
+
+            List<AlumnDTO> nyLista = new List<AlumnDTO>();
+            foreach (Alumn item in UtvaldaRedigeraAlumnerMaillista)
+            {
+                nyLista.Add(mapper.Map<Alumn, AlumnDTO>(item));
+            }
+
+            bm.SkrivaAlumnAktivitetTillCSVFil(namnMaillista, nyLista);
+
 
         }
 

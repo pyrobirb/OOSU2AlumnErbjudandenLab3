@@ -12,7 +12,7 @@ namespace DataLayer
     {
         public void SkrivaAlumnAktivitetTillCSVFil(string Aktivitettitel, List<AlumnDTO> alumner)
         {
-            using (TextWriter sw = new StreamWriter($"{Aktivitettitel}.csv"))
+            using (TextWriter sw = new StreamWriter($"/CSV/{Aktivitettitel}.csv"))
             {
 
                 sw.WriteLine(Aktivitettitel);

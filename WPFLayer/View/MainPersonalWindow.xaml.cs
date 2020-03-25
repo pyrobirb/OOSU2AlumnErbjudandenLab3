@@ -153,17 +153,20 @@ namespace WPFLayer.View
 
         private void SkapaMaillistaOchCSVfil_Click(object sender, RoutedEventArgs e)
         {
-
-
-
-
-
-
-
-
-            //namngeMaillistaTextBox.Text
-
-
+            if (namngeMaillistaTextBox.Text == "")
+            {
+                MessageBox.Show("Du måste namnge listan.");
+            }
+            else if (skapaMaillistaValdaAlumnerListBox.Items.Count < 1)
+            {
+                MessageBox.Show("Du måste lägga till minst en alumn i listan valda alumner.");
+            }
+            else
+            {
+                c.SkapaMaillista(namngeMaillistaTextBox.Text);
+                MessageBox.Show("Maillistan har skapats!\n\n" + "Maillistans namn och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
+                                 "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug/CSV/");
+            }
         }
 
         private void TaBortAlumnFrånMaillista_Click(object sender, RoutedEventArgs e)

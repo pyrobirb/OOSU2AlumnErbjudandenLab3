@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BusinessEntites.Models.Junction;
+using BusinessLayer;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -26,5 +29,23 @@ namespace WPFLayer.Models.Junctions
         public int MaillistaID { get; set; }
         [DataMember]
         public virtual Maillista Maillista { get; set; }
+
+        internal static void SkapaAlumnMaillista(ObservableCollection<Alumn> utvaldaRedigeraAlumnerMaillista)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            foreach (Alumn alumn in utvaldaRedigeraAlumnerMaillista)
+            {
+                AlumnMaillista alumnMaillista = new AlumnMaillista()
+                {
+                    MaillistaID = bm.HämtaSenasteMaillista().MaillistaID,
+                    AlumnID = (bm.HämtaAlumnMedID(alumn.AnvändarID)).AnvändarID
+                };
+                bm.LäggTillAlumnMaillista(mapper.Map<AlumnMaillista, AlumnMaillistaDTO>(alumnMaillista));
+            }
+            bm.Commit();
+
+        }
     }
 }

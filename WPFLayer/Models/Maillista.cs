@@ -73,5 +73,27 @@ namespace WPFLayer.Models
             return x;
 
         }
+
+        internal static void SkapaMailLista(string namnMaillista)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            Maillista maillista = new Maillista()
+            {
+                MaillistaNamn = namnMaillista,
+                AlumnMaillistor = new List<AlumnMaillistaDTO>()
+            };
+            bm.LäggTillMaillista(mapper.Map<Maillista, MaillistaDTO>(maillista));
+            bm.Commit();
+
+
+
+
+
+
+
+
+        }
     }
 }

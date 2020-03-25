@@ -312,7 +312,7 @@ namespace PresentationLayer
 
             //bm.SkrivaAlumnAktivitetTillCSVFil(((Aktivitet)AktivitetComboBox.SelectedItem).Titel, alumner);
             MessageBox.Show("Aktiviteten har nu blivit publicerad hos alumnerna."//"Aktivitetens titel och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
-                //"Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug"
+                //"Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug/CSV/"
                 );
             //Tömmer sätt namn på Utskicksboxen och ValdaAlumner samt fyller i gamla listorboxen. 
             NamnMailListaTextBox.Clear();
