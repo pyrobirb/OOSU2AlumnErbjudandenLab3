@@ -52,6 +52,15 @@ namespace DataLayer.Repositories.UniqueRepository
             }
         }
 
+        public void TaBortProgram(ProgramDTO programDTO)
+        {
+            var db = new DatabaseContext();
+
+            var query = db.Program.Where(x => x.ProgramID == programDTO.ProgramID).Select(x=>x).FirstOrDefault();
+            db.Program.Remove(query);
+            db.SaveChanges();
+        }
+
         public void TaBortProgramFrånAlumn(ProgramDTO selectedProgramToRemove, AlumnDTO aktuellAlumn)
         {
             var db = new DatabaseContext();

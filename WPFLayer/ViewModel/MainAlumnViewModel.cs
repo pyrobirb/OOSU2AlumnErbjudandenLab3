@@ -124,21 +124,7 @@ namespace WPFLayer.ViewModel
 
         internal void BokaValdAktivitet(object selectedItem)
         {
-            //throw new NotImplementedException();
-            BusinessManager bm = new BusinessManager();
-            var mapper = MapperConfig.GetMapper();
-
-            Aktivitet bokadAktivitet = (Aktivitet)selectedItem;
-
-            AlumnAktivitetsBokning alumnAktivitetBokning = new AlumnAktivitetsBokning()
-            {
-                AlumnID = GLOBALSWPF.AktuellAlumn.AnvändarID,
-                AktivitetID = bokadAktivitet.AktivitetsID,
-            };
-
-            bm.SparaBokadAktivitet(mapper.Map<AlumnAktivitetsBokning, AlumnAktivitetBokningDTO>(alumnAktivitetBokning));
-
-            MessageBox.Show("Bokningen har skapats");
+            Aktivitet.HämtaBokadeAktiviteter(selectedItem);           
             Update();
         }
 
@@ -157,91 +143,43 @@ namespace WPFLayer.ViewModel
 
         internal void SparaÄndradeAnvändaruppgifter(string ändraFörnamn, string ändraEfternamn, string ändraEpostadress, string ändraLösenord)
         {
-            BusinessManager bm = new BusinessManager();
-
-            if (RegexUtilities.IsValidEmail(ändraEpostadress) == true)
-            {
-                var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALSWPF.AktuellAlumn.AnvändarID);
-                var gammaltFörnamn = InloggadAlumn.Förnamn;
-                var gammaltEfternamn = InloggadAlumn.Efternamn;
-                var gammalepostadress = InloggadAlumn.Användarnamn;
-                bm.UppdateraAlumn(InloggadAlumn.AnvändarID, ändraFörnamn, ändraEfternamn, ändraEpostadress, ändraLösenord);
-                GLOBALSWPF.AktuellAlumn = bm.HämtaAlumnMedID(InloggadAlumn.AnvändarID);
-                MessageBox.Show($"Dina uppgifter är nu uppdaterade: " +
-                    $"\n{gammaltFörnamn} -> {GLOBALSWPF.AktuellAlumn.Förnamn} " +
-                    $"\n{gammaltEfternamn} -> {GLOBALSWPF.AktuellAlumn.Efternamn} " +
-                    $"\n{gammalepostadress} -> {GLOBALSWPF.AktuellAlumn.Användarnamn}");
-                Update();
-            }
-            else
-            {
-                MessageBox.Show("Var vänlig fyll i en giltig mailadress");
-            }
-
+            Alumn.SparaÄndradeUppgifter(ändraFörnamn, ändraEfternamn, ändraEpostadress, ändraLösenord);
+            Update();
         }
 
         internal void TaBortAlumnKonto()
         {
-            BusinessManager bm = new BusinessManager();
-
-            var alumnatttabort = bm.HämtaAlumnMedID((GLOBALSWPF.AktuellAlumn).AnvändarID);
-
-            bm.TaBortAlumn(alumnatttabort);
-            MessageBox.Show("Ditt konto är nu borttaget");
-            bm.Commit();
+            Alumn.TaBort();
         }
 
         internal void AvbokaValdAktivitet(object selectedItem)
         {
-            BusinessManager bm = new BusinessManager();
-            var mapper = MapperConfig.GetMapper();
+            Aktivitet.Avboka(selectedItem);
+            Update();
 
-            Aktivitet aktivitet = (Aktivitet)selectedItem;
-            if (aktivitet != null)
-            {
-                bm.TaBortAktivitetFrånAlumn(mapper.Map<Aktivitet, AktivitetDTO>(aktivitet), GLOBALSWPF.AktuellAlumn);
-                Update();
-                MessageBox.Show("Bokningen har raderats");
-            }
-            else
-            {
-                MessageBox.Show("Du måste välja vilken aktivitet du vill avboka.");
-            }
         }
 
         internal void LäggtillUtbildning(string text)
         {
-            BusinessManager bm = new BusinessManager();
-            bm.LäggTillUtbildningTillAlumn(GLOBALSWPF.AktuellAlumn.AnvändarID, text);
+            Program.LäggTill(text);
             Update();
         }
 
         internal void LäggTillKompetens(string text)
         {
-            BusinessManager bm = new BusinessManager();
-            bm.LäggTillKompetensTillAlumn(GLOBALSWPF.AktuellAlumn.AnvändarID, text);
+            Kompetens.LäggTill(text);
             Update();
         }
 
         internal void TaBortProgram(object selectedItem)
         {
-            BusinessManager bm = new BusinessManager();
-            var mapper = MapperConfig.GetMapper();
-
-            var selectedProgramToRemove = (Program)selectedItem;
-             
-            bm.TaBortProgramFrånAlumn(mapper.Map<Program, ProgramDTO>(selectedProgramToRemove), GLOBALSWPF.AktuellAlumn);
+            Program.Tabort(selectedItem);
             Update();
         }
 
         internal void TaBortKompetens(object selectedItem)
         {
-            BusinessManager bm = new BusinessManager();
-            var mapper = MapperConfig.GetMapper();
-
-            var selectedProgramToRemove = (Kompetens)selectedItem;
-
-            bm.TaBortKompetensFrånAlumn(mapper.Map<Kompetens, KompetensDTO>(selectedProgramToRemove), GLOBALSWPF.AktuellAlumn);
+            Kompetens.TaBort(selectedItem);
             Update();
         }
 

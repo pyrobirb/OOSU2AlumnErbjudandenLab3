@@ -103,7 +103,10 @@ namespace BusinessLayer
             return aktiviteter;
         }
 
-
+        public void TaBortProgram(ProgramClass programDTO)
+        {
+            unitOfWork.ProgramRepository.TaBortProgram(programDTO);
+        }
 
         public IQueryable<int> HämtaInformationsutskickAlumnGenomAlumnID(AlumnDTO aktuellAlumn)
         {
@@ -120,7 +123,7 @@ namespace BusinessLayer
             return unitOfWork.AlumnRepository.GetById(användarID);
 
         }
-
+        
         public AktivitetDTO HämtaAktivitetGenomID(int aktivitetID)
         {
             return unitOfWork.AktivitetRepository.GetById(aktivitetID);

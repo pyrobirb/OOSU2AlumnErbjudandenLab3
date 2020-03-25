@@ -58,5 +58,22 @@ namespace WPFLayer.Models
 
             return temp;
         }
+
+        internal static void TaBort(object selectedItem)
+        {
+
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            var selectedProgramToRemove = (Kompetens)selectedItem;
+
+            bm.TaBortKompetensFrånAlumn(mapper.Map<Kompetens, KompetensDTO>(selectedProgramToRemove), GLOBALSWPF.AktuellAlumn);
+        }
+
+        internal static void LäggTill(string text)
+        {
+            BusinessManager bm = new BusinessManager();
+            bm.LäggTillKompetensTillAlumn(GLOBALSWPF.AktuellAlumn.AnvändarID, text);
+        }
     }
 }

@@ -10,6 +10,8 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using WPFLayer.Models.Junctions;
 
 namespace WPFLayer.Models
 {
@@ -141,6 +143,8 @@ namespace WPFLayer.Models
             return y;
         }
 
+
+
         internal static ObservableCollection<Aktivitet> HämtaBokadeAktiviteter()
         {
             BusinessManager bm = new BusinessManager();
@@ -205,6 +209,44 @@ namespace WPFLayer.Models
 
             var GammalAktivitet = mapper.Map<AktivitetDTO, Aktivitet>(bm.HämtaAktivitetGenomID(aktivitetsid));
             bm.UpdateAktivitetWPF(mapper.Map<Aktivitet, AktivitetDTO>(GammalAktivitet), mapper.Map<Aktivitet, AktivitetDTO>(NyAktivitet));
+        }
+
+        internal static void Avboka(object selectedItem)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            Aktivitet aktivitet = (Aktivitet)selectedItem;
+            if (aktivitet != null)
+            {
+                bm.TaBortAktivitetFrånAlumn(mapper.Map<Aktivitet, AktivitetDTO>(aktivitet), GLOBALSWPF.AktuellAlumn);
+                
+                MessageBox.Show("Bokningen har raderats");
+            }
+            else
+            {
+                MessageBox.Show("Du måste välja vilken aktivitet du vill avboka.");
+            }
+
+
+        }
+
+        internal static void HämtaBokadeAktiviteter(object selectedItem)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            Aktivitet bokadAktivitet = (Aktivitet)selectedItem;
+
+            AlumnAktivitetsBokning alumnAktivitetBokning = new AlumnAktivitetsBokning()
+            {
+                AlumnID = GLOBALSWPF.AktuellAlumn.AnvändarID,
+                AktivitetID = bokadAktivitet.AktivitetsID,
+            };
+
+            bm.SparaBokadAktivitet(mapper.Map<AlumnAktivitetsBokning, AlumnAktivitetBokningDTO>(alumnAktivitetBokning));
+
+            MessageBox.Show("Bokningen har skapats");
         }
     }
 }

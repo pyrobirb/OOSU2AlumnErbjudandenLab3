@@ -12,5 +12,6 @@ namespace DataLayer.Repositories.UniqueRepositoryInterface
         void LäggTillUtbildningTillAlumn(int id, string text);
         IQueryable<ProgramDTO> HämtaProgramFörAlumn(AlumnDTO aktuellAlumn);
         void TaBortProgramFrånAlumn(ProgramDTO selectedProgramToRemove, AlumnDTO aktuellAlumn);
+        void TaBortProgram(ProgramDTO programDTO);
     }
 }

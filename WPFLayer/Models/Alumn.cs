@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WPFLayer.ViewModel;
 
 namespace WPFLayer.Models
@@ -149,5 +150,40 @@ namespace WPFLayer.Models
             return Hämtadealumner;
         }
 
+        internal static void TaBort()
+        {
+
+            BusinessManager bm = new BusinessManager();
+
+            var alumnatttabort = bm.HämtaAlumnMedID((GLOBALSWPF.AktuellAlumn).AnvändarID);
+
+            bm.TaBortAlumn(alumnatttabort);
+            MessageBox.Show("Ditt konto är nu borttaget");
+            bm.Commit();
+        }
+
+        internal static void SparaÄndradeUppgifter(string ändraFörnamn, string ändraEfternamn, string ändraEpostadress, string ändraLösenord)
+        {
+            BusinessManager bm = new BusinessManager();
+
+            if (RegexUtilities.IsValidEmail(ändraEpostadress) == true)
+            {
+                var InloggadAlumn = bm.HämtaAlumnMedID(GLOBALSWPF.AktuellAlumn.AnvändarID);
+                var gammaltFörnamn = InloggadAlumn.Förnamn;
+                var gammaltEfternamn = InloggadAlumn.Efternamn;
+                var gammalepostadress = InloggadAlumn.Användarnamn;
+                bm.UppdateraAlumn(InloggadAlumn.AnvändarID, ändraFörnamn, ändraEfternamn, ändraEpostadress, ändraLösenord);
+                GLOBALSWPF.AktuellAlumn = bm.HämtaAlumnMedID(InloggadAlumn.AnvändarID);
+                MessageBox.Show($"Dina uppgifter är nu uppdaterade: " +
+                    $"\n{gammaltFörnamn} -> {GLOBALSWPF.AktuellAlumn.Förnamn} " +
+                    $"\n{gammaltEfternamn} -> {GLOBALSWPF.AktuellAlumn.Efternamn} " +
+                    $"\n{gammalepostadress} -> {GLOBALSWPF.AktuellAlumn.Användarnamn}");
+
+            }
+            else
+            {
+                MessageBox.Show("Var vänlig fyll i en giltig mailadress");
+            }
+        }
     }
 }

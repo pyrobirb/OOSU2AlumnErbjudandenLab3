@@ -95,6 +95,23 @@ namespace WPFLayer.Models
             }
             return temp;
         }
+
+        internal static void Tabort(object selectedItem)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            var selectedProgramToRemove = (Program)selectedItem;
+
+            bm.TaBortProgramFrånAlumn(mapper.Map<Program, ProgramDTO>(selectedProgramToRemove), GLOBALSWPF.AktuellAlumn);
+            bm.TaBortProgram(mapper.Map<Program, ProgramDTO>(selectedProgramToRemove));
+        }
+
+        internal static void LäggTill(string text)
+        {
+            BusinessManager bm = new BusinessManager();
+            bm.LäggTillUtbildningTillAlumn(GLOBALSWPF.AktuellAlumn.AnvändarID, text);
+        }
     }
 
 }
