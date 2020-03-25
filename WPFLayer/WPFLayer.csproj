@@ -182,6 +182,7 @@
     <Compile Include="Models\Interfaces\IKompetens.cs" />
     <Compile Include="Models\Interfaces\IMaillista.cs" />
     <Compile Include="Models\Interfaces\IPersonal.cs" />
+    <Compile Include="Models\Interfaces\IProgram.cs" />
     <Compile Include="Models\Junctions\AlumnAktivitetsBokning.cs" />
     <Compile Include="Models\Junctions\AlumnKompetens.cs" />
     <Compile Include="Models\Junctions\AlumnMaillista.cs" />
