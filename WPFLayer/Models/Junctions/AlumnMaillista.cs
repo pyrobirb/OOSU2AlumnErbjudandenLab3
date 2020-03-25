@@ -9,11 +9,12 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using WPFLayer.Models.Junctions.Interfaces;
 
 namespace WPFLayer.Models.Junctions
 {
     [DataContract]
-    class AlumnMaillista : INotifyPropertyChanged
+    class AlumnMaillista : INotifyPropertyChanged, IAlumnMaillista
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void Changed([CallerMemberName] String propertyName = "")

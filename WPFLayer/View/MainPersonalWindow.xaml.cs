@@ -165,7 +165,7 @@ namespace WPFLayer.View
             {
                 c.SkapaMaillista(namngeMaillistaTextBox.Text);
                 MessageBox.Show("Maillistan har skapats!\n\n" + "Maillistans namn och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
-                                 "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug/CSV/");
+                                 "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug/");
             }
         }
 

@@ -189,6 +189,9 @@
     <Compile Include="Models\Junctions\AlumnProgram.cs" />
     <Compile Include="Models\Junctions\InformationsutskickAktivitet.cs" />
     <Compile Include="Models\Junctions\InformationsutskickAlumn.cs" />
+    <Compile Include="Models\Junctions\Interfaces\IAlumnKompetens.cs" />
+    <Compile Include="Models\Junctions\Interfaces\IAlumnAktivitetsBokning.cs" />
+    <Compile Include="Models\Junctions\Interfaces\IAlumnMaillista.cs" />
     <Compile Include="Models\Junctions\PersonalInformationsutskick.cs" />
     <Compile Include="Models\Kompetens.cs" />
     <Compile Include="Models\Maillista.cs" />
@@ -260,6 +263,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagramWPF.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -279,9 +283,7 @@
       <Name>BusinessLayer</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Junctions\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
