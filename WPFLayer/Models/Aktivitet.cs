@@ -166,18 +166,17 @@ namespace WPFLayer.Models
             BusinessManager bm = new BusinessManager();
             var mapper = MapperConfig.GetMapper();
 
-            Informationsutskick informationsutskick = new Informationsutskick()
+            InformationsutskickDTO informationsutskick = new InformationsutskickDTO()
             {
-                UtskicksID = 0,
-                UtskicksNamn = null,
-                UtskickDatum = DateTime.Now,
+                UtskickDatum = DateTime.Now
             };
-            bm.LäggTillInformationsutskick(mapper.Map<Informationsutskick, InformationsutskickDTO>(informationsutskick));
+            bm.LäggTillInformationsutskick(informationsutskick);
+            bm.Commit();
 
             InformationsutskickAktivitet informationsutskickAktivitet = new InformationsutskickAktivitet()
             {
                 AktivitetID = selectedItem.AktivitetsID,
-                InformationsutskickID = informationsutskick.UtskicksID
+                InformationsutskickID = bm.HämtaInformationsutskickMedID(informationsutskick.UtskicksID).UtskicksID
             };
             bm.LäggTillInformationsutskickAktivitet(mapper.Map<InformationsutskickAktivitet, InformationsutskickAktivitetDTO>(informationsutskickAktivitet));
 
@@ -186,11 +185,10 @@ namespace WPFLayer.Models
                 InformationsutskickAlumn informationsutskickAlumn = new InformationsutskickAlumn()
                 {
                     AlumnID = alumn.AnvändarID,
-                    InformationsutskickID = informationsutskick.UtskicksID
+                    InformationsutskickID = bm.HämtaInformationsutskickMedID(informationsutskick.UtskicksID).UtskicksID
                 };
                 bm.LäggTillInformationsutskickAlumn(mapper.Map<InformationsutskickAlumn, InformationsutskickAlumnDTO>(informationsutskickAlumn));
             }
-            bm.Commit();
         }
 
         public bool Spara(Aktivitet aktivitet)
