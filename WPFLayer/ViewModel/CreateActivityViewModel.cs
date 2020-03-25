@@ -161,7 +161,7 @@ namespace WPFLayer.ViewModel
                 bool AddAlumn = true;
                 foreach (Alumn alumn in UtvaldaALumner)
                 {
-                    if (alumn == item)
+                    if (alumn.AnvändarID == item.AnvändarID)
                     {
                         AddAlumn = false;
                     }
