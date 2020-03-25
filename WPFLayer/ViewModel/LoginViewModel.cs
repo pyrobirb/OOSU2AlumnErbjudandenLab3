@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WPFLayer.Models;
 
 namespace WPFLayer.ViewModel
 {
@@ -16,7 +17,7 @@ namespace WPFLayer.ViewModel
 
             if (bm.HämtaAlumnKonto(användarnamn, lösenord) != null)
             {
-                GLOBALSWPF.AktuellAlumn = bm.HämtaAlumnKonto(användarnamn, lösenord);
+                GLOBALSWPF.AktuellAlumn = Alumn.HämtaAlumnKonto(användarnamn, lösenord);
                 return true;
             }
             else return false;
@@ -26,7 +27,7 @@ namespace WPFLayer.ViewModel
         {
             if (bm.HämtaPersonalKonto(användarnamn, lösenord) != null)
             {
-                GLOBALSWPF.AktuellPersonal = bm.HämtaPersonalKonto(användarnamn, lösenord);
+                GLOBALSWPF.AktuellPersonal = Personal.HämtaPersonalKonto(användarnamn, lösenord);
                 return true;
             }
             else return false;

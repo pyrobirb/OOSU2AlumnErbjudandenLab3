@@ -11,7 +11,6 @@ namespace WPFLayer.ViewModel
 {
     public class CreateAlumnAccViewModel
     {
-        BusinessManager bm = new BusinessManager();
 
         private Alumn alumn = new Alumn();
 
@@ -29,7 +28,6 @@ namespace WPFLayer.ViewModel
                 return true;
             }
             else return false;
-            //Update();
         }
 
         internal bool SparaAlumn(Alumn Alumn)

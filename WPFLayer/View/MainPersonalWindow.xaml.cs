@@ -17,21 +17,16 @@ using WPFLayer.ViewModel;
 
 namespace WPFLayer.View
 {
-    public class CombinedPersonalViewModel//används ej nu
-    {
-        public MainPersonalViewModel mainPersonalViewModel = new MainPersonalViewModel();
-        public CreateActivityViewModel createActivityViewModel = new CreateActivityViewModel();
-    }
+    
     /// <summary>
     /// Interaction logic for MainPersonalWindow.xaml
     /// </summary>
     public partial class MainPersonalWindow : Window
     {
-        CreateActivityViewModel c = new CreateActivityViewModel();
+        MainPersonalViewModel c = new MainPersonalViewModel();
         public MainPersonalWindow()
         {
             InitializeComponent();
-            //DataContext = new CombinedPersonalViewModel();
             DataContext = c;
 
             if (!(GLOBALSWPF.AktuellPersonal.Användarnamn == "SuperAdmin" && GLOBALSWPF.AktuellPersonal.PersonalID == 1))
@@ -82,13 +77,11 @@ namespace WPFLayer.View
 
         private void ProgramComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine("elo");
             c.FiltreraProgramAlumner((Program)ProgramComboBox.SelectedItem);
         }
 
         private void ProgramComboBox_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine("elo");
             c.FiltreraProgramAlumner((Program)SkapaMaillistaFiltreraPåProgramComboBox.SelectedItem);
         }
 
@@ -100,6 +93,43 @@ namespace WPFLayer.View
                 temp.Add(item);
             }
             c.LäggTillAlumnerILista(temp);
+        }
+
+        public void VäljAlumnTillInformationsutskick_Click(object sender, RoutedEventArgs e)
+        {
+            List<Alumn> temp = new List<Alumn>();
+            foreach (Alumn item in FlyttaRedigeraAlumner.SelectedItems)
+            {
+                temp.Add(item);
+            }
+            c.LäggTillAlumnerIRedigeraLista(temp);
+        }
+
+        private void SkapaPersonalKonto_Click(object sender, RoutedEventArgs e)
+        {
+            CreatePersonalAccountWindow createPersonalAccountWindow = new CreatePersonalAccountWindow();
+            this.Hide();
+            createPersonalAccountWindow.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
+            foreach (Alumn alumn in PubliceraAktivitetValdaAlumner.SelectedItems)
+            {
+                valdaAlumnerAttTabort.Add(alumn);
+            }
+            c.TaBortValdaAlumnerFrånRedigeraLista(valdaAlumnerAttTabort);
+
+
+        }
+
+        private void PubliceraUtskick_Click_1(object sender, RoutedEventArgs e)
+        {
+
+
+
+
         }
     }
 }

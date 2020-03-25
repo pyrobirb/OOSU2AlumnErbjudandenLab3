@@ -1,24 +1,104 @@
-﻿using System;
+﻿using BusinessEntites.Models;
+using BusinessLayer;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using WPFLayer.Models.Interfaces;
 
 namespace WPFLayer.Models
 {
     [DataContract]
-    public class Personal
+    public class Personal : INotifyPropertyChanged, IPersonal
     {
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void Changed([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         [DataMember]
-        public int PersonalID { get; set; }
+        private int personalID;
         [DataMember]
-        public string Användarnamn { get; set; }
+        private string användarnamn;
+
+        public bool Spara(Personal personal)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            if ((personal.Förnamn == null || personal.Förnamn == "" || personal.Efternamn == null || personal.Efternamn == "" || personal.Användarnamn == null || personal.Användarnamn == "" || personal.Lösenord == null || personal.Lösenord == ""))
+            {
+                return false;
+            }
+            else
+            {
+                Personal NyAlumn = new Personal()
+                {
+                    Förnamn = personal.Förnamn,
+                    Efternamn = personal.Efternamn,
+                    Användarnamn = personal.Användarnamn,
+                    Lösenord = personal.Lösenord
+                };
+
+                bm.LäggTillPersonal(mapper.Map<Personal, PersonalDTO>(NyAlumn));
+
+                if (bm.HämtaPersonalKonto(personal.Användarnamn, personal.Lösenord).Användarnamn == NyAlumn.Användarnamn)
+                {
+                    return true;
+                }
+                else return false;
+            }
+        }
+
+        public static PersonalDTO HämtaPersonalKonto(string användarnamn, string lösenord)
+        {
+            BusinessManager bm = new BusinessManager();
+            return bm.HämtaPersonalKonto(användarnamn, lösenord);
+        }
+
         [DataMember]
-        public string Lösenord { get; set; }
+        private string lösenord;
         [DataMember]
-        public string Förnamn { get; set; }
+        private string förnamn;
         [DataMember]
-        public string Efternamn { get; set; }
+        private string efternamn;
+
+        public int PersonalID
+        {
+            get { return personalID; }
+            set { personalID = value; }
+        }
+        public string Användarnamn
+        {
+            get { return användarnamn; }
+            set { användarnamn = value; 
+                Changed(); }
+        }
+        public string Lösenord
+        {
+            get { return lösenord; }
+            set { lösenord = value; 
+                Changed(); }
+        }
+        public string Förnamn
+        {
+            get { return förnamn; }
+            set { förnamn = value; 
+                Changed(); }
+        }
+
+        public string Efternamn
+        {
+            get { return efternamn; }
+            set { efternamn = value; 
+                Changed(); }
+        }
     }
 }

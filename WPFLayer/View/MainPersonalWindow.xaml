@@ -212,30 +212,35 @@
                                 SelectedItem="Program"
                               Grid.Column="1" Grid.Row="3" SelectionChanged="ProgramComboBox_SelectionChanged_1"></ComboBox>
                     <Label Grid.Column="1" Grid.Row="4">Välj alumn</Label>
-                    <ListBox 
-                        ItemsSource="{Binding Alumner}" Grid.Column="1" Grid.Row="5"  >
+                    <ListBox x:Name="FlyttaRedigeraAlumner"
+                        ItemsSource="{Binding Alumner}" SelectionMode="Multiple" Grid.Column="1" Grid.Row="5"  >
                         <ListBox.ItemTemplate>
                             <HierarchicalDataTemplate>
-                                <CheckBox Content="{Binding Förnamn}" IsChecked="{Binding IsChecked}"/>
+                                <ListBoxItem Content="{Binding Förnamn}"/>
                             </HierarchicalDataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <StackPanel Grid.Column="2" Grid.Row="5" VerticalAlignment="Center">
-                        <Button Padding="5"  Margin="5,5,5,5" >Välj</Button>
-                        <Button Padding="5" Margin="5,5,5,5">Ta bort</Button>
+                        <Button Click="VäljAlumnTillInformationsutskick_Click" x:Name="VäljAlumnTillInformationsutskick" Padding="5"  Margin="5,5,5,5" >Välj</Button>
+                        <Button Padding="5" Margin="5,5,5,5" Click="Button_Click">Ta bort</Button>
                     </StackPanel>
 
 
                     <Label Grid.Column="3" Grid.Row="1" Padding="5" FontSize="20">2.</Label>
                     <Label Grid.Column="3" Grid.Row="2">Välj aktivitet</Label>
-                    <ComboBox Grid.Column="3" Grid.Row="3" ></ComboBox>
+                    <ComboBox x:Name="VäljAktivitetComboBox"
+                              ItemsSource="{Binding Aktiviteter}"
+                              DisplayMemberPath="Titel"
+                              SelectedItem="Aktivitet"
+                              Grid.Column="3" Grid.Row="3" ></ComboBox>
                     <Label Grid.Column="3" Grid.Row="4">Valda alumner</Label>
-                    <ListBox Name="PubliceraAktivitetValdaAlumner" Grid.Column="3" Grid.Row="5"></ListBox>
+                    <ListBox x:Name="PubliceraAktivitetValdaAlumner" 
+                             ItemsSource="{Binding UtvaldaRedigeraAlumner}" DisplayMemberPath="Förnamn"
+                             Grid.Column="3" Grid.Row="5" SelectionMode="Multiple"></ListBox>
 
-                    <Button Grid.Column="3" Grid.Row="6" Margin="0,10,0,0" Background="LightGreen">
+                    <Button Height="25" Grid.Column="3" Grid.Row="6" Margin="0,10,0,0" Background="LightGreen" Click="PubliceraUtskick_Click_1">
                         <TextBlock TextWrapping="Wrap">Publicera till valda alumner</TextBlock>
                     </Button>
-
                 </Grid>
 
 
@@ -327,9 +332,9 @@
 
             </TabItem>
         </TabControl>
-        <StackPanel Name="SuperAdminPanel" Height="45" Width="600" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal">
+        <StackPanel Grid.Column="1" Grid.Row="2" Name="SuperAdminPanel" Height="45" Width="670" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal">
             <TextBlock Margin="10">Välkommen SuperAdmin! Här kan du skapa nytt personalkonto:</TextBlock>
-            <Button Name="SkapaPersonalKonto" Height="25" Width="180">Skapa nytt personalkonto</Button>
+            <Button Name="SkapaPersonalKonto" Height="25" Width="180" Click="SkapaPersonalKonto_Click">Skapa nytt personalkonto</Button>
         </StackPanel>
         <Button Grid.Column="1" Grid.Row="2" Name="LoggaUtBtn"  HorizontalAlignment="Right" Margin="0,10,0,0" Width="100" Click="LoggaUtBtn_Click">Logga ut</Button>
     </Grid>

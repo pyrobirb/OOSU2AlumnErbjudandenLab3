@@ -176,6 +176,13 @@
     </ApplicationDefinition>
     <Compile Include="Models\Aktivitet.cs" />
     <Compile Include="Models\Informationsutskick.cs" />
+    <Compile Include="Models\Interfaces\IAktivitet.cs" />
+    <Compile Include="Models\Interfaces\IAlumn.cs" />
+    <Compile Include="Models\Interfaces\IInformationsutskick.cs" />
+    <Compile Include="Models\Interfaces\IKompetens.cs" />
+    <Compile Include="Models\Interfaces\IMaillista.cs" />
+    <Compile Include="Models\Interfaces\IPersonal.cs" />
+    <Compile Include="Models\Interfaces\IProgram.cs" />
     <Compile Include="Models\Junctions\AlumnAktivitetsBokning.cs" />
     <Compile Include="Models\Junctions\AlumnKompetens.cs" />
     <Compile Include="Models\Junctions\AlumnMaillista.cs" />
@@ -186,10 +193,9 @@
     <Compile Include="Models\Kompetens.cs" />
     <Compile Include="Models\Maillista.cs" />
     <Compile Include="Models\Program.cs" />
-    <Compile Include="ViewModel\CreateActivityViewModel.cs" />
+    <Compile Include="ViewModel\MainPersonalViewModel.cs" />
     <Compile Include="ViewModel\CreatePersonalAccountViewModel.cs" />
     <Compile Include="ViewModel\MainAlumnViewModel.cs" />
-    <Compile Include="ViewModel\MainPersonalViewModel.cs" />
     <Compile Include="View\CreatePersonalAccountWindow.xaml.cs">
       <DependentUpon>CreatePersonalAccountWindow.xaml</DependentUpon>
     </Compile>
@@ -272,6 +278,9 @@
       <Project>{3e1ef99b-88ef-4fe8-8538-e43f74960355}</Project>
       <Name>BusinessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Junctions\Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />

@@ -11,13 +11,14 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using WPFLayer.Models.Interfaces;
 using System.Windows;
 using WPFLayer.ViewModel;
 
 namespace WPFLayer.Models
 {
     [DataContract]
-    public class Alumn : INotifyPropertyChanged
+    public class Alumn : INotifyPropertyChanged, IAlumn
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void Changed([CallerMemberName] String propertyName = "")
@@ -28,7 +29,7 @@ namespace WPFLayer.Models
         [DataMember]
         private int användarID;
 
-        internal bool Spara(Alumn alumn)
+        public bool Spara(Alumn alumn)
         {
             BusinessManager bm = new BusinessManager();
             var mapper = MapperConfig.GetMapper();
@@ -184,6 +185,26 @@ namespace WPFLayer.Models
             {
                 MessageBox.Show("Var vänlig fyll i en giltig mailadress");
             }
+        }
+    }
+        internal static object HämtaAlumnMedID(int användarID)
+        {
+            BusinessManager bm = new BusinessManager();
+            return bm.HämtaAlumnMedID(användarID);
+        }
+
+        internal static void TaBortAlumn(Alumn alumnatttabort)
+        {
+            BusinessManager bm = new BusinessManager();
+            var mapper = MapperConfig.GetMapper();
+
+            bm.TaBortAlumn(mapper.Map<Alumn, AlumnDTO>(alumnatttabort));
+        }
+
+        public static AlumnDTO HämtaAlumnKonto(string användarnamn, string lösenord)
+        {
+            BusinessManager bm = new BusinessManager();
+            return bm.HämtaAlumnKonto(användarnamn, lösenord);
         }
     }
 }
