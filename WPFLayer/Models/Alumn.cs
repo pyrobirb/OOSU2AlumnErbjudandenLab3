@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using WPFLayer.Models.Interfaces;
 using WPFLayer.ViewModel;
 
 namespace WPFLayer.Models

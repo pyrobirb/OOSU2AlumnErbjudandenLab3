@@ -178,6 +178,7 @@
     <Compile Include="Models\Informationsutskick.cs" />
     <Compile Include="Models\Interfaces\IAktivitet.cs" />
     <Compile Include="Models\Interfaces\IAlumn.cs" />
+    <Compile Include="Models\Interfaces\IInformationsutskick.cs" />
     <Compile Include="Models\Junctions\AlumnAktivitetsBokning.cs" />
     <Compile Include="Models\Junctions\AlumnKompetens.cs" />
     <Compile Include="Models\Junctions\AlumnMaillista.cs" />
