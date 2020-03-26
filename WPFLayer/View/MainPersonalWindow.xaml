@@ -134,7 +134,7 @@
 
                     <StackPanel Grid.Column="1" Grid.Row="3" DataContext="{Binding aktivitetComboBox}">
                         <Label >Titel</Label>
-                        <TextBox Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Titel}"
+                        <TextBox Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Titel, Mode=TwoWay}"
                         x:Name="RedigeraTiteltxtBox" 
                              Grid.Column="1" 
                              Grid.Row="4"></TextBox>
