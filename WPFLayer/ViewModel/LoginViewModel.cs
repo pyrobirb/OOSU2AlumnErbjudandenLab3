@@ -2,16 +2,128 @@
 using BusinessLayer;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using WPFLayer.Models;
+using WPFLayer.View;
 
 namespace WPFLayer.ViewModel
 {
     public class LoginViewModel
     {
         BusinessManager bm = new BusinessManager();
+
+
+        // Skapa ICommands...
+        private readonly DelegateCommand _LoggaInCommand;
+        public ICommand LoggaInCommand => _LoggaInCommand;
+
+        private readonly DelegateCommand _SkapaAlumnKontoCommand;
+        public ICommand SkapaAlumnKontoCommand => _SkapaAlumnKontoCommand;
+        // ...Properties
+
+        public LoginViewModel()
+        {
+            //Instantiera propertieserna...
+            _LoggaInCommand = new DelegateCommand(LoggaIn);
+            _SkapaAlumnKontoCommand = new DelegateCommand(SkapaAlumnKonto);
+            //...Med metoderna nedan
+
+        }
+        private string användare;
+
+        public string Användare
+        {
+            get { return användare; }
+            set { användare = value; }
+        }
+
+        //Användarnamnet som ...
+        private string användarnamn;
+
+        public string Användarnamn
+        {
+            get { return användarnamn; }
+            set { användarnamn = value; }
+        }
+        //...Skrivs in i textboxen
+
+        //Lösenordet som...
+        private string lösenord;
+
+        public string Lösenord
+        {
+            get { return lösenord; }
+            set { lösenord = value; }
+        }
+        //...skrivs in i textboxen
+
+        public void LoggaIn(object commandParameter)
+        {
+
+            if ((Användare == null) || (Användare == ""))
+            {
+                MessageBox.Show("Vänligen en typ av användare att logga in som");
+            }
+            if (Användare == "Personal")
+            {
+                if (!(KontrolleraInloggningPersonal(Användarnamn, Lösenord)))
+                {
+                    MessageBox.Show("Fel användarnamn eller lösenord");
+                }
+                else
+                {
+                    MainPersonalWindow mainPersonalWindow = new MainPersonalWindow();
+                    
+                    // fixa göm denna ruta
+                    //this.Hide();
+                    mainPersonalWindow.Show();
+                }
+            }
+            if (Användare == "Alumn")
+            {
+                if (!(KontrolleraInloggningAlumn(Användarnamn, Lösenord)))
+                {
+                    MessageBox.Show("Fel användarnamn eller lösenord");
+                }
+                else
+                {
+                    MainAlumnWindow mainAlumnWindow = new MainAlumnWindow();
+                    // fixa göm denna ruta
+                    //this.Hide();
+                    mainAlumnWindow.Show();
+                }
+            }
+
+
+        }
+
+
+
+        public void SkapaAlumnKonto(object commandParameter)
+        {
+
+
+            // skapa alumn-konto öppna ny
+            // fixa en this.close(); liknande grej
+
+            CreateAlumnAccountWindow createAlumnAccountWindow = new CreateAlumnAccountWindow();
+            createAlumnAccountWindow.ShowDialog();
+
+        }
+
+
+
+
+
+
+
+
+
         internal bool KontrolleraInloggningAlumn(string användarnamn, string lösenord)
         {
 
@@ -22,6 +134,8 @@ namespace WPFLayer.ViewModel
             }
             else return false;
         }
+
+        
 
         internal bool KontrolleraInloggningPersonal(string användarnamn, string lösenord)
         {

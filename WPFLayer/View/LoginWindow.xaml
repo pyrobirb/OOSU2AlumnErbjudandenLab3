@@ -21,7 +21,7 @@
             </StackPanel>
             <StackPanel Width="300"  Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                 <TextBlock HorizontalAlignment="Left" Width="84" Margin="6 0 0 0">Logga in som:</TextBlock>
-                <ComboBox Name="User" Margin="10 0"  Width="100">
+                <ComboBox Name="User" Text="{Binding Användare}"  Margin="10 0"  Width="100">
                     <ComboBoxItem Content="Alumn" HorizontalAlignment="Left" Width="98"/>
                     <ComboBoxItem Content="Personal" HorizontalAlignment="Left" Width="98"/>
                 </ComboBox>
@@ -31,14 +31,14 @@
             <StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
                     <Label Width="100">Användarnamn:</Label>
-                    <TextBox Name="Användarnamn" BorderBrush="Black" BorderThickness="1" Width="200"></TextBox>
+                    <TextBox Text="{Binding Användarnamn}" BorderBrush="Black" BorderThickness="1" Width="200"></TextBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
                     <Label Width="100">Lösenord:</Label>
-                    <PasswordBox Name="Lösenord" BorderBrush="Black" BorderThickness="1" Width="200"></PasswordBox>
+                    <PasswordBox MaxLength="12" BorderBrush="Black" BorderThickness="1" Width="200"></PasswordBox>
                 </StackPanel>
             </StackPanel>
-            <Button HorizontalAlignment="Center" Width="100" Height="25" Click="LoginBtn_Click">Logga in</Button>
+            <Button HorizontalAlignment="Center" Width="100" Height="25" Command="{Binding Path=LoggaInCommand}">Logga in</Button>
 
             <StackPanel Margin="30" HorizontalAlignment="Stretch" Height="20"></StackPanel>
             <TextBlock Height="25"   HorizontalAlignment="Center">Har du inget konto? Skapa ett här:</TextBlock>

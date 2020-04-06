@@ -33,6 +33,9 @@ namespace WPFLayer
         {
             InitializeComponent();
 
+
+            //Lägga automapper någonannanstans ( ViewModel?)
+
             //Automapper Initialization
             var config = new MapperConfiguration(cfg =>
             {
@@ -66,39 +69,39 @@ namespace WPFLayer
             createAlumnAccountWindow.ShowDialog();
         }
 
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if ((User.Text == null) || (User.Text == ""))
-            {
-                MessageBox.Show("Vänligen en typ av användare att logga in som");
-            }
-            if (User.Text == "Personal")
-            {
-                if (!(loginViewModel.KontrolleraInloggningPersonal(Användarnamn.Text, Lösenord.Password)))
-                {
-                    MessageBox.Show("Fel användarnamn eller lösenord");
-                }
-                else
-                {
-                    MainPersonalWindow mainPersonalWindow = new MainPersonalWindow();
-                    this.Hide();
-                    mainPersonalWindow.Show();
-                }
-            }
-            if (User.Text == "Alumn")
-            {
-                if (!(loginViewModel.KontrolleraInloggningAlumn(Användarnamn.Text, Lösenord.Password)))
-                {
-                    MessageBox.Show("Fel användarnamn eller lösenord");
-                }
-                else
-                {
-                    MainAlumnWindow mainAlumnWindow = new MainAlumnWindow();
-                    this.Hide();
-                    mainAlumnWindow.Show();
-                }
-            }
+        //private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if ((User.Text == null) || (User.Text == ""))
+        //    {
+        //        MessageBox.Show("Vänligen en typ av användare att logga in som");
+        //    }
+        //    if (User.Text == "Personal")
+        //    {
+        //        if (!(loginViewModel.KontrolleraInloggningPersonal(Användarnamn.Text, Lösenord.Password)))
+        //        {
+        //            MessageBox.Show("Fel användarnamn eller lösenord");
+        //        }
+        //        else
+        //        {
+        //            MainPersonalWindow mainPersonalWindow = new MainPersonalWindow();
+        //            this.Hide();
+        //            mainPersonalWindow.Show();
+        //        }
+        //    }
+        //    if (User.Text == "Alumn")
+        //    {
+        //        if (!(loginViewModel.KontrolleraInloggningAlumn(Användarnamn.Text, Lösenord.Password)))
+        //        {
+        //            MessageBox.Show("Fel användarnamn eller lösenord");
+        //        }
+        //        else
+        //        {
+        //            MainAlumnWindow mainAlumnWindow = new MainAlumnWindow();
+        //            this.Hide();
+        //            mainAlumnWindow.Show();
+        //        }
+        //    }
             
-        }
+        //}
     }
 }
