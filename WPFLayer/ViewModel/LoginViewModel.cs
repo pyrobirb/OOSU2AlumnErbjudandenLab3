@@ -91,7 +91,7 @@ namespace WPFLayer.ViewModel
             HelperClass.FindChild<PasswordBox>(Application.Current.MainWindow, "Lösenord");
 
 
-            Console.WriteLine(foundPwdBox.Password);
+        
             if ((Användare == null) || (Användare == ""))
             {
                 MessageBox.Show("Vänligen en typ av användare att logga in som");
@@ -106,8 +106,15 @@ namespace WPFLayer.ViewModel
                 {
                     MainPersonalWindow mainPersonalWindow = new MainPersonalWindow();
 
-                    // fixa göm denna ruta
-                    //this.Hide();
+                    foreach (var window in Application.Current.Windows)
+                    {
+                        if (window is MainWindow x)
+                        {
+                            x.Close();
+                        }
+                    }
+
+
                     mainPersonalWindow.Show();
                 }
             }
@@ -120,8 +127,13 @@ namespace WPFLayer.ViewModel
                 else
                 {
                     MainAlumnWindow mainAlumnWindow = new MainAlumnWindow();
-                    // fixa göm denna ruta
-                    //this.Hide();
+                    foreach (var window in Application.Current.Windows)
+                    {
+                        if (window is MainWindow x)
+                        {
+                            x.Close();
+                        }
+                    }
                     mainAlumnWindow.Show();
                 }
             }
