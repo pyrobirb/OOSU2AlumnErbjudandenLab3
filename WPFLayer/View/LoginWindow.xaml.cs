@@ -37,28 +37,30 @@ namespace WPFLayer
             //Lägga automapper någonannanstans ( ViewModel?)
 
             //Automapper Initialization
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<AlumnDTO, Alumn>().ReverseMap();
-                cfg.CreateMap<Alumn, AlumnDTO>().ReverseMap();
-                cfg.CreateMap<Personal, PersonalDTO>().ReverseMap();
-                cfg.CreateMap<AktivitetDTO, Aktivitet>().ReverseMap();
-                cfg.CreateMap<InformationsutskickDTO, Informationsutskick>().ReverseMap();
-                cfg.CreateMap<KompetensDTO, Kompetens>().ReverseMap();
-                cfg.CreateMap<MaillistaDTO, Maillista>().ReverseMap();
-                cfg.CreateMap<ProgramDTO, Program>().ReverseMap();
-                cfg.CreateMap<AlumnAktivitetBokningDTO, AlumnAktivitetsBokning>().ReverseMap();
-                cfg.CreateMap<AlumnKompetensDTO, AlumnKompetens>().ReverseMap();
-                cfg.CreateMap<AlumnMaillistaDTO, AlumnMaillista>().ReverseMap();
-                cfg.CreateMap<AlumnProgramDTO, AlumnProgram>().ReverseMap();
-                cfg.CreateMap<InformationsutskickAktivitetDTO, InformationsutskickAktivitet>().ReverseMap();
-                cfg.CreateMap<InformationsutskickAlumnDTO, InformationsutskickAlumn>().ReverseMap();
-                cfg.CreateMap<PersonalInformationsutskickDTO, PersonalInformationsutskick>().ReverseMap();
+            //var config = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.CreateMap<AlumnDTO, Alumn>().ReverseMap();
+            //    cfg.CreateMap<Alumn, AlumnDTO>().ReverseMap();
+            //    cfg.CreateMap<Personal, PersonalDTO>().ReverseMap();
+            //    cfg.CreateMap<AktivitetDTO, Aktivitet>().ReverseMap();
+            //    cfg.CreateMap<InformationsutskickDTO, Informationsutskick>().ReverseMap();
+            //    cfg.CreateMap<KompetensDTO, Kompetens>().ReverseMap();
+            //    cfg.CreateMap<MaillistaDTO, Maillista>().ReverseMap();
+            //    cfg.CreateMap<ProgramDTO, Program>().ReverseMap();
+            //    cfg.CreateMap<AlumnAktivitetBokningDTO, AlumnAktivitetsBokning>().ReverseMap();
+            //    cfg.CreateMap<AlumnKompetensDTO, AlumnKompetens>().ReverseMap();
+            //    cfg.CreateMap<AlumnMaillistaDTO, AlumnMaillista>().ReverseMap();
+            //    cfg.CreateMap<AlumnProgramDTO, AlumnProgram>().ReverseMap();
+            //    cfg.CreateMap<InformationsutskickAktivitetDTO, InformationsutskickAktivitet>().ReverseMap();
+            //    cfg.CreateMap<InformationsutskickAlumnDTO, InformationsutskickAlumn>().ReverseMap();
+            //    cfg.CreateMap<PersonalInformationsutskickDTO, PersonalInformationsutskick>().ReverseMap();
 
 
-            });
-            var mapper = config.CreateMapper();
-            MapperConfig.SetMapper(mapper);
+            //});
+            //var mapper = config.CreateMapper();
+            //MapperConfig.SetMapper(mapper);
+
+
             DataContext = loginViewModel;
         }
 

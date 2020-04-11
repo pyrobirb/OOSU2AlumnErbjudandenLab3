@@ -33,7 +33,6 @@ namespace WPFLayer.ViewModel
 
         private void DatePickerDagensDatum()
         {
-
             Aktivitet.Startdatum = DateTime.Today;
             Aktivitet.Slutdatum = DateTime.Today;
         }

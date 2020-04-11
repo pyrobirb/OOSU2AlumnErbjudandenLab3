@@ -35,7 +35,8 @@
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5">
                     <Label Width="100">Lösenord:</Label>
-                    <PasswordBox MaxLength="12" BorderBrush="Black" BorderThickness="1" Width="200"></PasswordBox>
+                    <PasswordBox x:Name="Lösenord"
+                        MaxLength="12" BorderBrush="Black" BorderThickness="1" Width="200"></PasswordBox>
                 </StackPanel>
             </StackPanel>
             <Button HorizontalAlignment="Center" Width="100" Height="25" Command="{Binding Path=LoggaInCommand}">Logga in</Button>
