@@ -28,12 +28,21 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _TaBortAlumnKontoCommand;
         public ICommand TaBortAlumnKontoCommand => _TaBortAlumnKontoCommand;
 
+        private readonly DelegateCommand _BokaValdAktivitetCommand;
+        public ICommand BokaValdAktivitetCommand => _BokaValdAktivitetCommand;
+
+        private readonly DelegateCommand _AvbokaValdAktivitetCommand;
+        public ICommand AvbokaValdAktivitetCommand => _AvbokaValdAktivitetCommand;
+
+
         public MainAlumnViewModel()
         {
             Update();
             //Instantiera propertieserna
             _SparaÄndradeAnvändaruppgifterCommand = new DelegateCommand(SparaÄndradeAnvändaruppgifter);
             _TaBortAlumnKontoCommand = new DelegateCommand(TaBortAlumnKonto);
+            _BokaValdAktivitetCommand = new DelegateCommand(BokaValdAktivitet);
+            _AvbokaValdAktivitetCommand = new DelegateCommand(AvbokaValdAktivitet);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -133,12 +142,9 @@ namespace WPFLayer.ViewModel
         }
 
 
+        public Aktivitet SelectedAktivitet { get; set; }
 
-        internal void BokaValdAktivitet(object selectedItem)
-        {
-            Aktivitet.HämtaBokadeAktiviteter(selectedItem);           
-            Update();
-        }
+
 
         public void Update()
         {
@@ -152,14 +158,19 @@ namespace WPFLayer.ViewModel
         }
 
 
+        internal void BokaValdAktivitet(object commandParameter) //Klar
+        {
+            Aktivitet.HämtaBokadeAktiviteter(SelectedAktivitet);
+            Update();
+        }
 
-        public void SparaÄndradeAnvändaruppgifter(object commandParameter)
+        public void SparaÄndradeAnvändaruppgifter(object commandParameter) //Klar
         {
             Alumn.SparaÄndradeUppgifter(inloggadAlumn.Förnamn, inloggadAlumn.Efternamn, inloggadAlumn.Användarnamn, inloggadAlumn.Lösenord);
             Update();
         }
 
-        public void TaBortAlumnKonto(object commandParameter)
+        public void TaBortAlumnKonto(object commandParameter) //Klar
         {
             Alumn.TaBort();
             GLOBALSWPF.AktuellAlumn = null;
@@ -174,11 +185,9 @@ namespace WPFLayer.ViewModel
             loginWindow.Show();
         }
 
-    
-
-        internal void AvbokaValdAktivitet(object selectedItem)
+        internal void AvbokaValdAktivitet(object commandParameter) //Klar
         {
-            Aktivitet.Avboka(selectedItem);
+            Aktivitet.Avboka(SelectedAktivitet);
             Update();
 
         }

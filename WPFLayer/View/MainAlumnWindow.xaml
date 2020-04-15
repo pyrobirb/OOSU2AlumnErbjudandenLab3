@@ -42,14 +42,15 @@
 
                     <Label Grid.Column="1" Grid.Row="1" >Kommande Aktiviteter</Label>
                     <ListBox x:Name="KommandeAktiviteterListBox"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" 
-                             ItemsSource="{Binding AktuellaAktiviteter}" 
+                             ItemsSource="{Binding AktuellaAktiviteter}"
+                             SelectedItem="{Binding SelectedAktivitet}"
                              DisplayMemberPath="Titel"
                   SelectedValuePath="AktivitetsID"></ListBox>
                     <Label Grid.Column="4" Grid.Row="1" >Aktivitetsinformation</Label>
                     <TextBox Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" x:Name="AktivitetInfoRichTxtBox" 
                                   Text="{Binding ElementName=KommandeAktiviteterListBox, Path=SelectedItem.Beskrivning}" TextWrapping="Wrap"
                                  ></TextBox>
-                    <Button x:Name="BokaValdAktivitet" Grid.Column="5" Grid.Row="3" Margin="0 10 0 0" Click="BokaValdAktivitet_Click">Boka vald aktivitet</Button>
+                    <Button x:Name="BokaValdAktivitet" Grid.Column="5" Grid.Row="3" Margin="0 10 0 0" Command="{Binding Path=BokaValdAktivitetCommand}">Boka vald aktivitet</Button>
                 </Grid>
 
             </TabItem>
@@ -76,12 +77,13 @@
                     <TextBlock Grid.Column="1" Grid.Row="1"  Text="Bokade aktiviteter"  />
                     <ListBox x:Name="BokadeAktiviteterListbox"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0 " 
                              ItemsSource="{Binding BokadeAktiviteter}" 
+                             SelectedItem="{Binding SelectedAktivitet}"
                              DisplayMemberPath="Titel" 
                              SelectedValuePath="AktivitetsID"/>
                     <TextBlock Grid.Column="4" Grid.Row="1"  Text="Aktivitetsinformation" />
                     <TextBox Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0 " TextWrapping="Wrap"
                              Text="{Binding ElementName=BokadeAktiviteterListbox, Path=SelectedItem.Beskrivning}"/>
-                    <Button x:Name="AvbokaValdAktivitetButton"  Grid.Column="5" Grid.Row="3" Content="Avboka vald aktivitet" Margin="0,10,0,0" Click="AvbokaValdAktivitetButton_Click" />
+                    <Button x:Name="AvbokaValdAktivitetButton"  Grid.Column="5" Grid.Row="3" Content="Avboka vald aktivitet" Margin="0,10,0,0" Command="{Binding Path=AvbokaValdAktivitetCommand}" />
                 </Grid>
 
             </TabItem>
