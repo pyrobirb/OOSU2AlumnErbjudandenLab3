@@ -183,7 +183,7 @@
 
                     <TextBlock Grid.Column="1" Grid.Row="11" Margin="0,0,0,5" FontSize="14" Grid.ColumnSpan="2" x:Name="WarningLabel">Varning!
                         <LineBreak/> Det går inte att återställa <LineBreak/> ett borttaget konto</TextBlock>
-                    <Button x:Name="RaderaKontoBtn" Grid.Column="1" Grid.Row="12" Click="RaderaKontoBtn_Click" >Radera konto</Button>
+                    <Button x:Name="RaderaKontoBtn" Grid.Column="1" Grid.Row="12" Command="{Binding Path=TaBortAlumnKontoCommand}" >Radera konto</Button>
 
                 </Grid>
 

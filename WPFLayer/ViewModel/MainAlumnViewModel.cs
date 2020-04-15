@@ -14,21 +14,26 @@ using System.Collections.Specialized;
 using WPFLayer.Models.Junctions;
 using BusinessEntites.Models;
 using System.Windows.Input;
+using WPFLayer.View;
 
 namespace WPFLayer.ViewModel
 {
     public class MainAlumnViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
 
-        // Skapa ICommands...
+        // Skapa ICommands
         private readonly DelegateCommand _SparaÄndradeAnvändaruppgifterCommand;
         public ICommand SparaÄndradeAnvändaruppgifterCommand => _SparaÄndradeAnvändaruppgifterCommand;
 
+        private readonly DelegateCommand _TaBortAlumnKontoCommand;
+        public ICommand TaBortAlumnKontoCommand => _TaBortAlumnKontoCommand;
+
         public MainAlumnViewModel()
         {
-            _SparaÄndradeAnvändaruppgifterCommand = new DelegateCommand(SparaÄndradeAnvändaruppgifter);
             Update();
-
+            //Instantiera propertieserna
+            _SparaÄndradeAnvändaruppgifterCommand = new DelegateCommand(SparaÄndradeAnvändaruppgifter);
+            _TaBortAlumnKontoCommand = new DelegateCommand(TaBortAlumnKonto);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -154,10 +159,22 @@ namespace WPFLayer.ViewModel
             Update();
         }
 
-        internal void TaBortAlumnKonto()
+        public void TaBortAlumnKonto(object commandParameter)
         {
             Alumn.TaBort();
+            GLOBALSWPF.AktuellAlumn = null;
+            MainWindow loginWindow = new MainWindow();
+            foreach (var window in Application.Current.Windows)
+            {
+                if (window is MainAlumnWindow x)
+                {
+                    x.Close();
+                }
+            }
+            loginWindow.Show();
         }
+
+    
 
         internal void AvbokaValdAktivitet(object selectedItem)
         {

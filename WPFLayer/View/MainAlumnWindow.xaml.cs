@@ -35,13 +35,13 @@ namespace WPFLayer.View
         //    mainAlumnViewModel.SparaÄndradeAnvändaruppgifter(ÄndraFörnamn.Text, ÄndraEfternamn.Text, ÄndraEpostadress.Text, ÄndraLösenord.Text);
         //}
 
-        private void RaderaKontoBtn_Click(object sender, RoutedEventArgs e)
-        {
-            mainAlumnViewModel.TaBortAlumnKonto();
-            GLOBALSWPF.AktuellAlumn = null;
-            this.Close();
-            Application.Current.MainWindow.Show();
-        }
+        //private void RaderaKontoBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    mainAlumnViewModel.TaBortAlumnKonto();
+        //    GLOBALSWPF.AktuellAlumn = null;
+        //    this.Close();
+        //    Application.Current.MainWindow.Show();
+        //}
 
         private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
         {
