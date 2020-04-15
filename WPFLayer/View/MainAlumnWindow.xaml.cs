@@ -30,10 +30,10 @@ namespace WPFLayer.View
 
         }
 
-        private void SparaÄndringarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            mainAlumnViewModel.SparaÄndradeAnvändaruppgifter(ÄndraFörnamn.Text, ÄndraEfternamn.Text, ÄndraEpostadress.Text, ÄndraLösenord.Text);
-        }
+        //private void SparaÄndringarBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    mainAlumnViewModel.SparaÄndradeAnvändaruppgifter(ÄndraFörnamn.Text, ÄndraEfternamn.Text, ÄndraEpostadress.Text, ÄndraLösenord.Text);
+        //}
 
         private void RaderaKontoBtn_Click(object sender, RoutedEventArgs e)
         {

@@ -13,15 +13,22 @@ using BusinessEntites.Models.Junction;
 using System.Collections.Specialized;
 using WPFLayer.Models.Junctions;
 using BusinessEntites.Models;
+using System.Windows.Input;
 
 namespace WPFLayer.ViewModel
 {
     public class MainAlumnViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
 
+        // Skapa ICommands...
+        private readonly DelegateCommand _SparaÄndradeAnvändaruppgifterCommand;
+        public ICommand SparaÄndradeAnvändaruppgifterCommand => _SparaÄndradeAnvändaruppgifterCommand;
+
         public MainAlumnViewModel()
         {
+            _SparaÄndradeAnvändaruppgifterCommand = new DelegateCommand(SparaÄndradeAnvändaruppgifter);
             Update();
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -141,9 +148,9 @@ namespace WPFLayer.ViewModel
 
 
 
-        internal void SparaÄndradeAnvändaruppgifter(string ändraFörnamn, string ändraEfternamn, string ändraEpostadress, string ändraLösenord)
+        public void SparaÄndradeAnvändaruppgifter(object commandParameter)
         {
-            Alumn.SparaÄndradeUppgifter(ändraFörnamn, ändraEfternamn, ändraEpostadress, ändraLösenord);
+            Alumn.SparaÄndradeUppgifter(inloggadAlumn.Förnamn, inloggadAlumn.Efternamn, inloggadAlumn.Användarnamn, inloggadAlumn.Lösenord);
             Update();
         }
 
