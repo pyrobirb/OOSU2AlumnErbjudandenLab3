@@ -8,6 +8,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using WPFLayer.Models;
 using WPFLayer.Models.Junctions;
 
@@ -17,9 +19,12 @@ namespace WPFLayer.ViewModel
 
     public class MainPersonalViewModel : INotifyPropertyChanged
     {
+        private readonly DelegateCommand _SkapaAktivitetMeddelandeCommand;
+        public ICommand SkapaAktivitetMeddelandeCommand => _SkapaAktivitetMeddelandeCommand;
 
         public MainPersonalViewModel()
         {
+            _SkapaAktivitetMeddelandeCommand = new DelegateCommand(SkapaAktivitetMeddelande);
             UppdateraProgram();
             UppdateraAktiviteter();
             DatePickerDagensDatum();
@@ -148,6 +153,20 @@ namespace WPFLayer.ViewModel
 
 
         #endregion
+
+        public void SkapaAktivitetMeddelande(object commandParameter)
+        {
+
+            if (SkapaAktivitet())
+            {
+                MessageBox.Show("Aktiviteten har skapats!");
+            }
+            else
+            {
+                MessageBox.Show("Något gick fel, vänligen försök igen! Se till att alla rutor är ifyllda.");
+            }
+        }
+
 
         private ObservableCollection<Alumn> utvaldaAlumner = new ObservableCollection<Alumn>();
         public ObservableCollection<Alumn> UtvaldaALumner

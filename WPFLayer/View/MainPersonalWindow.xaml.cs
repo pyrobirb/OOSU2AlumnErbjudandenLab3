@@ -43,20 +43,17 @@ namespace WPFLayer.View
             Application.Current.MainWindow.Show();
         }
 
-        public void SkapaAktivitet(object sender, RoutedEventArgs e)
-        {
-            //var a = new CombinedPersonalViewModel();
-            //a.
-
-            if (c.SkapaAktivitet())
-            {
-                MessageBox.Show("Aktiviteten har skapats!");
-            }
-            else
-            {
-                MessageBox.Show("Något gick fel, vänligen försök igen! Se till att alla rutor är ifyllda.");
-            }
-        }
+        //public void SkapaAktivitet(object sender, RoutedEventArgs e)
+        //{
+        //    if (c.SkapaAktivitet())
+        //    {
+        //        MessageBox.Show("Aktiviteten har skapats!");
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Något gick fel, vänligen försök igen! Se till att alla rutor är ifyllda.");
+        //    }
+        //}
 
         
 
