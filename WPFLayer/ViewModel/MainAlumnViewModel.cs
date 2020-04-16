@@ -15,6 +15,7 @@ using WPFLayer.Models.Junctions;
 using BusinessEntites.Models;
 using System.Windows.Input;
 using WPFLayer.View;
+using System.Windows.Controls;
 
 namespace WPFLayer.ViewModel
 {
@@ -34,6 +35,9 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _AvbokaValdAktivitetCommand;
         public ICommand AvbokaValdAktivitetCommand => _AvbokaValdAktivitetCommand;
 
+        private readonly DelegateCommand _LäggtillUtbildningCommand;
+        public ICommand LäggtillUtbildningCommand => _LäggtillUtbildningCommand;
+
 
         public MainAlumnViewModel()
         {
@@ -43,6 +47,7 @@ namespace WPFLayer.ViewModel
             _TaBortAlumnKontoCommand = new DelegateCommand(TaBortAlumnKonto);
             _BokaValdAktivitetCommand = new DelegateCommand(BokaValdAktivitet);
             _AvbokaValdAktivitetCommand = new DelegateCommand(AvbokaValdAktivitet);
+            _LäggtillUtbildningCommand = new DelegateCommand(LäggtillUtbildning);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -141,10 +146,32 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private Aktivitet selectedAktivitet;
 
-        public Aktivitet SelectedAktivitet { get; set; }
+        public Aktivitet SelectedAktivitet
+        {
+            get { return selectedAktivitet; }
+            set
+            {
+                selectedAktivitet = value;
+                Changed();
+            }
+        }
 
 
+        private string textBoxTextUtbildning;
+
+        public string TextBoxTextUtbildning
+        {
+            get { return textBoxTextUtbildning; }
+            set {
+                textBoxTextUtbildning = value;
+                Changed();
+            }
+        }
+
+
+        public Program Selectedprogram { get; set; }
 
         public void Update()
         {
@@ -192,9 +219,10 @@ namespace WPFLayer.ViewModel
 
         }
 
-        internal void LäggtillUtbildning(string text)
+        internal void LäggtillUtbildning(object commandParameter) //Klar
         {
-            Program.LäggTill(text);
+            Program.LäggTill(TextBoxTextUtbildning);
+            TextBoxTextUtbildning = string.Empty;
             Update();
         }
 

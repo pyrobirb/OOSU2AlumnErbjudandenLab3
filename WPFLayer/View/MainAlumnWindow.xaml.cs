@@ -62,11 +62,11 @@ namespace WPFLayer.View
         //    AktivitetInfoRichTxtBox.Clear();
         //}
 
-        private void LäggTillUtbildningHögskolanIBoråsButton_Click(object sender, RoutedEventArgs e)
-        {
-            mainAlumnViewModel.LäggtillUtbildning(LäggTillUtbildningHögskolanIBoråsTextBox.Text);
-            LäggTillUtbildningHögskolanIBoråsTextBox.Clear();
-        }
+        //private void LäggTillUtbildningHögskolanIBoråsButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    mainAlumnViewModel.LäggtillUtbildning(LäggTillUtbildningHögskolanIBoråsTextBox.Text);
+        //    LäggTillUtbildningHögskolanIBoråsTextBox.Clear();
+        //}
 
         private void LäggTillKompetens_ArbetlivserfarenhetButton_Click(object sender, RoutedEventArgs e)
         {
