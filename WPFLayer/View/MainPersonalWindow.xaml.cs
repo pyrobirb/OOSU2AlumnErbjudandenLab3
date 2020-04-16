@@ -92,15 +92,15 @@ namespace WPFLayer.View
             c.LäggTillAlumnerILista(temp);
         }
 
-        public void VäljAlumnTillInformationsutskick_Click(object sender, RoutedEventArgs e)
-        {
-            List<Alumn> temp = new List<Alumn>();
-            foreach (Alumn item in FlyttaRedigeraAlumner.SelectedItems)
-            {
-                temp.Add(item);
-            }
-            c.LäggTillAlumnerIRedigeraLista(temp);
-        }
+        //public void VäljAlumnTillInformationsutskick_Click(object sender, RoutedEventArgs e)
+        //{
+        //    List<Alumn> temp = new List<Alumn>();
+        //    foreach (Alumn item in FlyttaRedigeraAlumner.SelectedItems)
+        //    {
+        //        temp.Add(item);
+        //    }
+        //    c.LäggTillAlumnerIRedigeraLista(temp);
+        //}
 
         private void SkapaPersonalKonto_Click(object sender, RoutedEventArgs e)
         {
@@ -109,25 +109,25 @@ namespace WPFLayer.View
             createPersonalAccountWindow.Show();
         }
 
-        private void FlyttaRedigeraAlumner_Click(object sender, RoutedEventArgs e)
-        {
-            List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
-            foreach (Alumn alumn in PubliceraAktivitetValdaAlumner.SelectedItems)
-            {
-                valdaAlumnerAttTabort.Add(alumn);
-            }
-            c.TaBortValdaAlumnerFrånRedigeraLista(valdaAlumnerAttTabort);
+        //private void FlyttaRedigeraAlumner_Click(object sender, RoutedEventArgs e)
+        //{
+        //    List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
+        //    foreach (Alumn alumn in PubliceraAktivitetValdaAlumner.SelectedItems)
+        //    {
+        //        valdaAlumnerAttTabort.Add(alumn);
+        //    }
+        //    c.TaBortValdaAlumnerFrånRedigeraLista(valdaAlumnerAttTabort);
 
 
-        }
+        //}
 
-        private void PubliceraUtskick_Click_1(object sender, RoutedEventArgs e)
-        {
+        //private void PubliceraUtskick_Click_1(object sender, RoutedEventArgs e)
+        //{
 
-            c.PubliceraAktivitetTillAlumner((Aktivitet)VäljAktivitetComboBox.SelectedItem);
+        //    c.PubliceraAktivitetTillAlumner((Aktivitet)VäljAktivitetComboBox.SelectedItem);
 
-            MessageBox.Show("Utskick skapat");
-        }
+        //    MessageBox.Show("Utskick skapat");
+        //}
 
         private void SeAnmälningarValdAktivitet_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

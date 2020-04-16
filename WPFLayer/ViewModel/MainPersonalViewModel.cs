@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using WPFLayer.Models;
 using WPFLayer.Models.Junctions;
+using WPFLayer.View;
 
 namespace WPFLayer.ViewModel
 {
@@ -26,10 +27,24 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _RedigeraAktivitetCommand;
         public ICommand RedigeraAktivitetCommand => _RedigeraAktivitetCommand;
 
+        private readonly DelegateCommand _VäljAlumnTillInformationsutskickCommand;
+        public ICommand VäljAlumnTillInformationsutskickCommand => _VäljAlumnTillInformationsutskickCommand;
+
+        private readonly DelegateCommand _FlyttaRedigeraAlumnerCommand;
+        public ICommand FlyttaRedigeraAlumnerCommand => _FlyttaRedigeraAlumnerCommand;
+
+        private readonly DelegateCommand _PubliceraUtskickCommand;
+        public ICommand PubliceraUtskickCommand => _PubliceraUtskickCommand;
+
+
+
         public MainPersonalViewModel()
         {
             _SkapaAktivitetMeddelandeCommand = new DelegateCommand(SkapaAktivitetMeddelande);
             _RedigeraAktivitetCommand = new DelegateCommand(RedigeraAktivitet);
+            _VäljAlumnTillInformationsutskickCommand = new DelegateCommand(VäljAlumnTillInformationsutskick);
+            _FlyttaRedigeraAlumnerCommand = new DelegateCommand(FlyttaRedigeraAlumner);
+            _PubliceraUtskickCommand = new DelegateCommand(PubliceraUtskick);
             UppdateraProgram();
             UppdateraAktiviteter();
             DatePickerDagensDatum();
@@ -69,11 +84,12 @@ namespace WPFLayer.ViewModel
 
         private Aktivitet valdAktivitet;
 
-        public Aktivitet ValdAktivitet 
+        public Aktivitet ValdAktivitet
         {
             get { return valdAktivitet; }
-            set { 
-                    valdAktivitet = value;
+            set
+            {
+                valdAktivitet = value;
                 Changed();
             }
         }
@@ -186,7 +202,7 @@ namespace WPFLayer.ViewModel
 
         public void RedigeraAktivitet(object commandParameter)
         {
-            
+
 
 
             int selectedAktivitetID = ValdAktivitet.AktivitetsID;
@@ -202,6 +218,49 @@ namespace WPFLayer.ViewModel
             RedigeraAktiviteten(selectedAktivitetID, titel, kontaktperson, ansvarig, plats, startdatum, slutdatum, beskrivning);
             MessageBox.Show("Ändringarna har sparats!");
         }
+
+        public void VäljAlumnTillInformationsutskick(object commandParameter)
+        {
+            ListBox foundListBox =
+            HelperClass.FindChild<ListBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "FlyttaRedigeraAlumner");
+
+            List<Alumn> temp = new List<Alumn>();
+
+            foreach (Alumn item in foundListBox.SelectedItems)
+            {
+                temp.Add(item);
+            }
+            LäggTillAlumnerIRedigeraLista(temp);
+        }
+
+        private void FlyttaRedigeraAlumner(object commandParameter)
+        {
+            ListBox foundListBox =
+            HelperClass.FindChild<ListBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "PubliceraAktivitetValdaAlumner");
+
+
+            List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
+            foreach (Alumn alumn in foundListBox.SelectedItems)
+            {
+                valdaAlumnerAttTabort.Add(alumn);
+            }
+            TaBortValdaAlumnerFrånRedigeraLista(valdaAlumnerAttTabort);
+
+        }
+
+        private void PubliceraUtskick(object commandParameter)
+        {
+            ComboBox foundComboBox =
+            HelperClass.FindChild<ComboBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "VäljAktivitetComboBox");
+
+            PubliceraAktivitetTillAlumner((Aktivitet)foundComboBox.SelectedItem);
+
+                MessageBox.Show("Utskick skapat");
+
+
+            UtvaldaRedigeraAlumner.Clear();
+        }
+
 
         private ObservableCollection<Alumn> utvaldaAlumner = new ObservableCollection<Alumn>();
         public ObservableCollection<Alumn> UtvaldaALumner
@@ -298,7 +357,7 @@ namespace WPFLayer.ViewModel
         internal void TömMailLista()
         {
             UtvaldaRedigeraAlumnerMaillista = new ObservableCollection<Alumn>();
-            
+
         }
 
         public void UppdateraSeAnmälningarValdAktivitetSeAlumner(Aktivitet selectedItem)
