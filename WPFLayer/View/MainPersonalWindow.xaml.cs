@@ -57,20 +57,20 @@ namespace WPFLayer.View
 
         
 
-        public void RedigeraAktivitet(object sender, RoutedEventArgs e)
-        {
-            int selectedAktivitetID = ((Aktivitet)aktivitetComboBox.SelectedItem).AktivitetsID;
-            string titel = RedigeraTiteltxtBox.Text;
-            string kontaktperson = RedigeraKontaktpersontxtBox.Text;
-            string ansvarig = RedigeraAnsvarigtxtBox.Text;
-            string plats = RedigeraPlatstxtBox.Text;
-            DateTime startdatum = (DateTime)RedigeraStartdatumDatePicker.SelectedDate;
-            DateTime slutdatum = (DateTime)RedigeraSlutdatumDatePicker.SelectedDate;
-            string beskrivning = RedigareBeskrivningTxtBox.Text;
+        //public void RedigeraAktivitet(object sender, RoutedEventArgs e)
+        //{
+        //    int selectedAktivitetID = ((Aktivitet)aktivitetComboBox.SelectedItem).AktivitetsID;
+        //    string titel = RedigeraTiteltxtBox.Text;
+        //    string kontaktperson = RedigeraKontaktpersontxtBox.Text;
+        //    string ansvarig = RedigeraAnsvarigtxtBox.Text;
+        //    string plats = RedigeraPlatstxtBox.Text;
+        //    DateTime startdatum = (DateTime)RedigeraStartdatumDatePicker.SelectedDate;
+        //    DateTime slutdatum = (DateTime)RedigeraSlutdatumDatePicker.SelectedDate;
+        //    string beskrivning = RedigareBeskrivningTxtBox.Text;
 
-            c.RedigeraAktiviteten(selectedAktivitetID, titel, kontaktperson, ansvarig, plats, startdatum, slutdatum, beskrivning);
-            MessageBox.Show("Ändringarna har sparats!");
-        }
+        //    c.RedigeraAktiviteten(selectedAktivitetID, titel, kontaktperson, ansvarig, plats, startdatum, slutdatum, beskrivning);
+        //    MessageBox.Show("Ändringarna har sparats!");
+        //}
 
         private void ProgramComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {

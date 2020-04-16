@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WPFLayer.Models;
 using WPFLayer.Models.Junctions;
@@ -22,9 +23,13 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _SkapaAktivitetMeddelandeCommand;
         public ICommand SkapaAktivitetMeddelandeCommand => _SkapaAktivitetMeddelandeCommand;
 
+        private readonly DelegateCommand _RedigeraAktivitetCommand;
+        public ICommand RedigeraAktivitetCommand => _RedigeraAktivitetCommand;
+
         public MainPersonalViewModel()
         {
             _SkapaAktivitetMeddelandeCommand = new DelegateCommand(SkapaAktivitetMeddelande);
+            _RedigeraAktivitetCommand = new DelegateCommand(RedigeraAktivitet);
             UppdateraProgram();
             UppdateraAktiviteter();
             DatePickerDagensDatum();
@@ -58,6 +63,17 @@ namespace WPFLayer.ViewModel
             set
             {
                 alumner = value;
+                Changed();
+            }
+        }
+
+        private Aktivitet valdAktivitet;
+
+        public Aktivitet ValdAktivitet 
+        {
+            get { return valdAktivitet; }
+            set { 
+                    valdAktivitet = value;
                 Changed();
             }
         }
@@ -167,6 +183,25 @@ namespace WPFLayer.ViewModel
             }
         }
 
+
+        public void RedigeraAktivitet(object commandParameter)
+        {
+            
+
+
+            int selectedAktivitetID = ValdAktivitet.AktivitetsID;
+            string titel = ValdAktivitet.Titel;
+            string kontaktperson = ValdAktivitet.Kontaktperson;
+            string ansvarig = ValdAktivitet.Ansvarig;
+            string plats = ValdAktivitet.Plats;
+            DateTime startdatum = ValdAktivitet.Startdatum;
+            DateTime slutdatum = ValdAktivitet.Slutdatum;
+            string beskrivning = ValdAktivitet.Beskrivning;
+
+
+            RedigeraAktiviteten(selectedAktivitetID, titel, kontaktperson, ansvarig, plats, startdatum, slutdatum, beskrivning);
+            MessageBox.Show("Ändringarna har sparats!");
+        }
 
         private ObservableCollection<Alumn> utvaldaAlumner = new ObservableCollection<Alumn>();
         public ObservableCollection<Alumn> UtvaldaALumner

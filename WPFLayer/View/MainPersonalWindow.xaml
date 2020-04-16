@@ -140,11 +140,13 @@
                         Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5" 
                               Margin="0,0,0,10" 
                               ItemsSource="{Binding Aktiviteter}" 
+                              SelectedItem="{Binding ValdAktivitet}"
                               DisplayMemberPath="Titel"
-                  SelectedItem="Aktivitet"></ComboBox>
+                 ></ComboBox>
 
 
-                    <StackPanel Grid.Column="1" Grid.Row="3" DataContext="{Binding aktivitetComboBox}">
+                    <StackPanel Grid.Column="1" Grid.Row="3" 
+                                DataContext="{Binding aktivitetComboBox}">
                         <Label >Titel</Label>
                         <TextBox Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Titel, Mode=TwoWay}"
                         x:Name="RedigeraTiteltxtBox" 
@@ -152,43 +154,44 @@
                              Grid.Row="4"></TextBox>
                     </StackPanel>
 
-                    <StackPanel Grid.Column="1" Grid.Row="5" DataContext="{Binding aktivitetComboBox}">
+                    <StackPanel Grid.Column="1" Grid.Row="5" 
+                                DataContext="{Binding aktivitetComboBox, Mode=TwoWay}">
                         <Label>Ansvarig person</Label>
-                        <TextBox Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Ansvarig}"
+                        <TextBox Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Ansvarig, Mode=TwoWay}"
                             x:Name="RedigeraAnsvarigtxtBox" Grid.Column="1" Grid.Row="6"></TextBox>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Grid.Row="7" DataContext="{Binding aktivitetComboBox}">
                         <Label>Kontaktperson</Label>
-                        <TextBox Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Kontaktperson}"
+                        <TextBox Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Kontaktperson, Mode=TwoWay}"
                         x:Name="RedigeraKontaktpersontxtBox" Grid.Column="1" Grid.Row="8"></TextBox>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Grid.Row="9" DataContext="{Binding aktivitetComboBox}">
                         <Label >Plats</Label>
-                        <TextBox Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Plats}"
+                        <TextBox Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Plats, Mode=TwoWay}"
                         x:Name="RedigeraPlatstxtBox" Grid.Column="1" Grid.Row="10"></TextBox>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Grid.Row="11" DataContext="{Binding aktivitetComboBox}">
                         <Label>Startdatum</Label>
-                        <DatePicker Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Startdatum}"
+                        <DatePicker Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Startdatum, Mode=TwoWay}"
                         x:Name="RedigeraStartdatumDatePicker" Grid.Column="1" Grid.Row="12"></DatePicker>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Grid.Row="13" DataContext="{Binding aktivitetComboBox}">
                         <Label>Slutdatum</Label>
-                        <DatePicker Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Slutdatum}" 
+                        <DatePicker Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Slutdatum, Mode=TwoWay}" 
                             x:Name="RedigeraSlutdatumDatePicker" Grid.Column="1" Grid.Row="14"></DatePicker>
                     </StackPanel>
 
                     <StackPanel Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="10" DataContext="{Binding aktivitetComboBox}">
                         <Label>Beskrivning</Label>
-                        <TextBox Height="200" TextWrapping="Wrap" Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Beskrivning}"
+                        <TextBox Height="200" TextWrapping="Wrap" Text="{Binding ElementName=aktivitetComboBox, Path=SelectedValue.Beskrivning, Mode=TwoWay}"
                         x:Name="RedigareBeskrivningTxtBox"></TextBox>
                     </StackPanel>
 
-                    <Button Click="RedigeraAktivitet"  Grid.Column="5" Grid.Row="15" Margin="0,10,0,0">Spara ändringar</Button>
+                    <Button Command="{Binding RedigeraAktivitetCommand}"  Grid.Column="5" Grid.Row="15" Margin="0,10,0,0">Spara ändringar</Button>
 
                 </Grid>
 
