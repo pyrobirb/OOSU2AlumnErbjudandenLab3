@@ -26,22 +26,7 @@ namespace WPFLayer.View
         {
             InitializeComponent();
             DataContext = mainAlumnViewModel;
-            
-
         }
-
-        //private void SparaÄndringarBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    mainAlumnViewModel.SparaÄndradeAnvändaruppgifter(ÄndraFörnamn.Text, ÄndraEfternamn.Text, ÄndraEpostadress.Text, ÄndraLösenord.Text);
-        //}
-
-        //private void RaderaKontoBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    mainAlumnViewModel.TaBortAlumnKonto();
-        //    GLOBALSWPF.AktuellAlumn = null;
-        //    this.Close();
-        //    Application.Current.MainWindow.Show();
-        //}
 
         private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -49,39 +34,5 @@ namespace WPFLayer.View
             this.Close();
             Application.Current.MainWindow.Show();
         }
-
-        //private void BokaValdAktivitet_Click(object sender, RoutedEventArgs e)
-        //{
-        //    mainAlumnViewModel.BokaValdAktivitet(KommandeAktiviteterListBox.SelectedItem);
-            
-        //}
-
-        //private void AvbokaValdAktivitetButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    mainAlumnViewModel.AvbokaValdAktivitet(BokadeAktiviteterListbox.SelectedItem);
-        //    AktivitetInfoRichTxtBox.Clear();
-        //}
-
-        //private void LäggTillUtbildningHögskolanIBoråsButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    mainAlumnViewModel.LäggtillUtbildning(LäggTillUtbildningHögskolanIBoråsTextBox.Text);
-        //    LäggTillUtbildningHögskolanIBoråsTextBox.Clear();
-        //}
-
-        //private void LäggTillKompetens_ArbetlivserfarenhetButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    mainAlumnViewModel.LäggTillKompetens(LäggTillKompetens_ArbetlivserfarenhetTextBox.Text);
-        //    LäggTillKompetens_ArbetlivserfarenhetTextBox.Clear();
-        //}
-
-        //private void TabortProgramButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    mainAlumnViewModel.TaBortProgram(ProgramListBox.SelectedItem);
-        //}
-
-        //private void TabortKOmpetensButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    mainAlumnViewModel.TaBortKompetens(KompetenserListBox.SelectedItem);
-        //}
     }
 }
