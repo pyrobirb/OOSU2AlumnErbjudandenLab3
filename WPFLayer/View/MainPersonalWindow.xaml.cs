@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using WPFLayer.Models;
 using WPFLayer.ViewModel;
 
+
 namespace WPFLayer.View
 {
     
@@ -129,24 +130,24 @@ namespace WPFLayer.View
         //    MessageBox.Show("Utskick skapat");
         //}
 
-        private void SeAnmälningarValdAktivitet_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            c.UppdateraSeAnmälningarValdAktivitetSeAlumner((Aktivitet)SeAnmälningarValdAktivitet.SelectedItem);
+        //private void SeAnmälningarValdAktivitet_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    c.UppdateraSeAnmälningarValdAktivitetSeAlumner((Aktivitet)SeAnmälningarValdAktivitet.SelectedItem);
 
 
-            valdAktivitetDataGridMedAlumner.Columns[0].Visibility = Visibility.Hidden;
-            valdAktivitetDataGridMedAlumner.Columns[1].Visibility = Visibility.Hidden;
-            valdAktivitetDataGridMedAlumner.Columns[2].Visibility = Visibility.Hidden;
-            valdAktivitetDataGridMedAlumner.Columns[3].Visibility = Visibility.Hidden;
-            valdAktivitetDataGridMedAlumner.Columns[4].Visibility = Visibility.Hidden;
-            valdAktivitetDataGridMedAlumner.Columns[5].Visibility = Visibility.Visible;
-            valdAktivitetDataGridMedAlumner.Columns[6].Visibility = Visibility.Visible;
-            valdAktivitetDataGridMedAlumner.Columns[7].Visibility = Visibility.Hidden;
-            valdAktivitetDataGridMedAlumner.Columns[8].Visibility = Visibility.Visible;
-            valdAktivitetDataGridMedAlumner.Columns[9].Visibility = Visibility.Visible;
+        //    valdAktivitetDataGridMedAlumner.Columns[0].Visibility = Visibility.Hidden;
+        //    valdAktivitetDataGridMedAlumner.Columns[1].Visibility = Visibility.Hidden;
+        //    valdAktivitetDataGridMedAlumner.Columns[2].Visibility = Visibility.Hidden;
+        //    valdAktivitetDataGridMedAlumner.Columns[3].Visibility = Visibility.Hidden;
+        //    valdAktivitetDataGridMedAlumner.Columns[4].Visibility = Visibility.Hidden;
+        //    valdAktivitetDataGridMedAlumner.Columns[5].Visibility = Visibility.Visible;
+        //    valdAktivitetDataGridMedAlumner.Columns[6].Visibility = Visibility.Visible;
+        //    valdAktivitetDataGridMedAlumner.Columns[7].Visibility = Visibility.Hidden;
+        //    valdAktivitetDataGridMedAlumner.Columns[8].Visibility = Visibility.Visible;
+        //    valdAktivitetDataGridMedAlumner.Columns[9].Visibility = Visibility.Visible;
 
 
-        }
+        //}
 
         private void SkapaMaillistaOchCSVfil_Click(object sender, RoutedEventArgs e)
         {

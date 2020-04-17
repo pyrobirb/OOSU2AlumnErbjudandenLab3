@@ -36,6 +36,8 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _PubliceraUtskickCommand;
         public ICommand PubliceraUtskickCommand => _PubliceraUtskickCommand;
 
+        private readonly DelegateCommand _SeAnmälningarValdAktivitet_SelectionChangedCommand;
+        public ICommand SeAnmälningarValdAktivitet_SelectionChangedCommand => _SeAnmälningarValdAktivitet_SelectionChangedCommand;
 
 
         public MainPersonalViewModel()
@@ -45,6 +47,7 @@ namespace WPFLayer.ViewModel
             _VäljAlumnTillInformationsutskickCommand = new DelegateCommand(VäljAlumnTillInformationsutskick);
             _FlyttaRedigeraAlumnerCommand = new DelegateCommand(FlyttaRedigeraAlumner);
             _PubliceraUtskickCommand = new DelegateCommand(PubliceraUtskick);
+            _SeAnmälningarValdAktivitet_SelectionChangedCommand = new DelegateCommand(SeAnmälningarValdAktivitet_SelectionChanged);
             UppdateraProgram();
             UppdateraAktiviteter();
             DatePickerDagensDatum();
@@ -120,6 +123,17 @@ namespace WPFLayer.ViewModel
             set
             {
                 aktivitet = value;
+                Changed();
+            }
+        }
+
+        private Aktivitet aktivitetAnmälda = new Aktivitet();
+        public Aktivitet AktivitetAnmälda
+        {
+            get { return aktivitetAnmälda; }
+            set
+            {
+                aktivitetAnmälda = value;
                 Changed();
             }
         }
@@ -261,6 +275,31 @@ namespace WPFLayer.ViewModel
             UtvaldaRedigeraAlumner.Clear();
         }
 
+        private void SeAnmälningarValdAktivitet_SelectionChanged(object commandParameter)
+        {
+
+            ComboBox AnmälningarValdAktivitet =
+            HelperClass.FindChild<ComboBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "SeAnmälningarValdAktivitet");
+
+            DataGrid DataGridAnmäldaAlumner =
+            HelperClass.FindChild<DataGrid>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "valdAktivitetDataGridMedAlumner");
+
+            UppdateraSeAnmälningarValdAktivitetSeAlumner(AktivitetAnmälda);
+
+            DataGridAnmäldaAlumner.Columns[0].Visibility = Visibility.Hidden;
+            DataGridAnmäldaAlumner.Columns[1].Visibility = Visibility.Hidden;
+            DataGridAnmäldaAlumner.Columns[2].Visibility = Visibility.Hidden;
+            DataGridAnmäldaAlumner.Columns[3].Visibility = Visibility.Hidden;
+            DataGridAnmäldaAlumner.Columns[4].Visibility = Visibility.Hidden;
+            DataGridAnmäldaAlumner.Columns[5].Visibility = Visibility.Visible;
+            DataGridAnmäldaAlumner.Columns[6].Visibility = Visibility.Visible;
+            DataGridAnmäldaAlumner.Columns[7].Visibility = Visibility.Hidden;
+            DataGridAnmäldaAlumner.Columns[8].Visibility = Visibility.Visible;
+            DataGridAnmäldaAlumner.Columns[9].Visibility = Visibility.Visible;
+
+
+        }
+
 
         private ObservableCollection<Alumn> utvaldaAlumner = new ObservableCollection<Alumn>();
         public ObservableCollection<Alumn> UtvaldaALumner
@@ -362,6 +401,7 @@ namespace WPFLayer.ViewModel
 
         public void UppdateraSeAnmälningarValdAktivitetSeAlumner(Aktivitet selectedItem)
         {
+            
             ValdAktivitetListaDataGridMedAlumner = Alumn.HämtaAnmälningarGenomAktivitetsID(selectedItem.AktivitetsID);
         }
 
