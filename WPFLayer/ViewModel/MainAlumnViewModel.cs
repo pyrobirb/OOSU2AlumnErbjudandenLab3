@@ -41,6 +41,14 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _LäggTillKompetensCommand;
         public ICommand LäggTillKompetensCommand => _LäggTillKompetensCommand;
 
+        private readonly DelegateCommand _TaBortProgramCommand;
+        public ICommand TaBortProgramCommand => _TaBortProgramCommand;
+
+        private readonly DelegateCommand _TaBortKompetensCommand;
+        public ICommand TaBortKompetensCommand => _TaBortKompetensCommand;
+        
+
+
 
         public MainAlumnViewModel()
         {
@@ -52,6 +60,9 @@ namespace WPFLayer.ViewModel
             _AvbokaValdAktivitetCommand = new DelegateCommand(AvbokaValdAktivitet);
             _LäggtillUtbildningCommand = new DelegateCommand(LäggtillUtbildning);
             _LäggTillKompetensCommand = new DelegateCommand(LäggTillKompetens);
+            _TaBortProgramCommand = new DelegateCommand(TaBortProgram);
+            _TaBortKompetensCommand = new DelegateCommand(TaBortKompetens);
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -186,9 +197,32 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private Program selectedProgram;
+
+        public Program Selectedprogram
+        {
+            get { return selectedProgram;  }
+            set
+            {
+                selectedProgram = value;
+                Changed();
+            }
+        }
+
+        private Kompetens selectedKompetens;
+
+        public Kompetens SelectedKompetens
+        {
+            get { return selectedKompetens; }
+            set
+            {
+                selectedKompetens = value;
+                Changed();
+            }
+        }
 
 
-        public Program Selectedprogram { get; set; }
+
 
         public void Update()
         {
@@ -243,22 +277,22 @@ namespace WPFLayer.ViewModel
             Update();
         }
 
-        internal void LäggTillKompetens(object commandParameter)
+        internal void LäggTillKompetens(object commandParameter) //Klar
         {
             Kompetens.LäggTill(TextBoxTextKompetens);
             TextBoxTextKompetens = string.Empty;
             Update();
         }
 
-        internal void TaBortProgram(object selectedItem)
+        internal void TaBortProgram(object commandParameter) //Klar
         {
-            Program.Tabort(selectedItem);
+            Program.Tabort(Selectedprogram);
             Update();
         }
 
-        internal void TaBortKompetens(object selectedItem)
+        internal void TaBortKompetens(object commandParameter)
         {
-            Kompetens.TaBort(selectedItem);
+            Kompetens.TaBort(SelectedKompetens);
             Update();
         }
 

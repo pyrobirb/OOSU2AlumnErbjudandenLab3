@@ -119,11 +119,12 @@
                     <Button Grid.Column="1" Grid.Row="3" Content="Lägg till utbildning ->" x:Name="LäggTillUtbildningHögskolanIBoråsButton" Command="{Binding Path=LäggtillUtbildningCommand}"/>
                     <TextBlock Grid.Column="3" Grid.Row="1" Text="Program"/>
                     <ListBox Grid.Column="3" Grid.Row="2" Grid.RowSpan="3" Margin="0,10,0,0" x:Name="ProgramListBox" 
-                             ItemsSource="{Binding AktuellaProgram}" 
+                             ItemsSource="{Binding AktuellaProgram}"
+                             SelectedItem="{Binding Selectedprogram}"
                              DisplayMemberPath="Namn" 
                              SelectedValuePath="ProgramID"
                              />
-                    <Button Grid.Column="3" Grid.Row="5" Margin="0,10,0,0" Content="Ta bort valt program" HorizontalAlignment="Right" x:Name="TabortProgramButton" Click="TabortProgramButton_Click" />
+                    <Button Grid.Column="3" Grid.Row="5" Margin="0,10,0,0" Content="Ta bort valt program" HorizontalAlignment="Right" x:Name="TabortProgramButton" Command="{Binding Path=TaBortProgramCommand}" />
                     
 
                     <TextBlock Grid.Column="1" Grid.Row="6" Text="Kompetenser/Arbetslivserfarenhet"/>
@@ -132,9 +133,10 @@
                     <TextBlock Grid.Column="3" Grid.Row="6" Text="Kompetenser"/>
                     <ListBox Grid.Column="3" Grid.Row="7" Grid.RowSpan="4" Margin="0,10,0,0" x:Name="KompetenserListBox"
                              ItemsSource="{Binding AktuellaKompetenser}" 
+                             SelectedItem="{Binding SelectedKompetens}"
                              DisplayMemberPath="Beskrivning" 
                              SelectedValuePath="AktuellaKompetenser"/>
-                    <Button Grid.Column="3" Grid.Row="11" Margin="0,10,0,0" Content="Ta bort vald kompetens" HorizontalAlignment="Right" x:Name="TabortKOmpetensButton" Click="TabortKOmpetensButton_Click"/>
+                    <Button Grid.Column="3" Grid.Row="11" Margin="0,10,0,0" Content="Ta bort vald kompetens" HorizontalAlignment="Right" x:Name="TabortKOmpetensButton" Command="{Binding Path=TaBortKompetensCommand}" />
                     
                 </Grid>
             </TabItem>
