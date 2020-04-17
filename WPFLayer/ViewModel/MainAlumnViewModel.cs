@@ -38,6 +38,9 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _LäggtillUtbildningCommand;
         public ICommand LäggtillUtbildningCommand => _LäggtillUtbildningCommand;
 
+        private readonly DelegateCommand _LäggTillKompetensCommand;
+        public ICommand LäggTillKompetensCommand => _LäggTillKompetensCommand;
+
 
         public MainAlumnViewModel()
         {
@@ -48,6 +51,7 @@ namespace WPFLayer.ViewModel
             _BokaValdAktivitetCommand = new DelegateCommand(BokaValdAktivitet);
             _AvbokaValdAktivitetCommand = new DelegateCommand(AvbokaValdAktivitet);
             _LäggtillUtbildningCommand = new DelegateCommand(LäggtillUtbildning);
+            _LäggTillKompetensCommand = new DelegateCommand(LäggTillKompetens);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -170,6 +174,19 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private string textBoxTextKompetens;
+
+        public string TextBoxTextKompetens
+        {
+            get { return textBoxTextKompetens; }
+            set
+            {
+                textBoxTextKompetens = value;
+                Changed();
+            }
+        }
+
+
 
         public Program Selectedprogram { get; set; }
 
@@ -226,9 +243,10 @@ namespace WPFLayer.ViewModel
             Update();
         }
 
-        internal void LäggTillKompetens(string text)
+        internal void LäggTillKompetens(object commandParameter)
         {
-            Kompetens.LäggTill(text);
+            Kompetens.LäggTill(TextBoxTextKompetens);
+            TextBoxTextKompetens = string.Empty;
             Update();
         }
 

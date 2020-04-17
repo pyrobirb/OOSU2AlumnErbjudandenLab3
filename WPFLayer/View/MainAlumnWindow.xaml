@@ -115,7 +115,7 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Column="1" Grid.Row="1" Text="Slutförd utbildning vid högskolan i Borås" />
-                    <TextBox Grid.Column="1" Grid.Row="2" Margin="0,10" x:Name="LäggTillUtbildningHögskolanIBoråsTextBox" Text="{Binding TextBoxText}"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" Margin="0,10" x:Name="LäggTillUtbildningHögskolanIBoråsTextBox" Text="{Binding TextBoxTextUtbildning}"/>
                     <Button Grid.Column="1" Grid.Row="3" Content="Lägg till utbildning ->" x:Name="LäggTillUtbildningHögskolanIBoråsButton" Command="{Binding Path=LäggtillUtbildningCommand}"/>
                     <TextBlock Grid.Column="3" Grid.Row="1" Text="Program"/>
                     <ListBox Grid.Column="3" Grid.Row="2" Grid.RowSpan="3" Margin="0,10,0,0" x:Name="ProgramListBox" 
@@ -127,8 +127,8 @@
                     
 
                     <TextBlock Grid.Column="1" Grid.Row="6" Text="Kompetenser/Arbetslivserfarenhet"/>
-                    <TextBox Grid.Column="1" Grid.Row="7" Margin="0,10" x:Name="LäggTillKompetens_ArbetlivserfarenhetTextBox"/>
-                    <Button Grid.Column="1" Grid.Row="8" Content="Lägg till utbildning ->" x:Name="LäggTillKompetens_ArbetlivserfarenhetButton" Click="LäggTillKompetens_ArbetlivserfarenhetButton_Click" />
+                    <TextBox Grid.Column="1" Grid.Row="7" Margin="0,10" x:Name="LäggTillKompetens_ArbetlivserfarenhetTextBox"  Text="{Binding TextBoxTextKompetens}" />
+                    <Button Grid.Column="1" Grid.Row="8" Content="Lägg till utbildning ->" x:Name="LäggTillKompetens_ArbetlivserfarenhetButton" Command="{Binding Path=LäggTillKompetensCommand}" />
                     <TextBlock Grid.Column="3" Grid.Row="6" Text="Kompetenser"/>
                     <ListBox Grid.Column="3" Grid.Row="7" Grid.RowSpan="4" Margin="0,10,0,0" x:Name="KompetenserListBox"
                              ItemsSource="{Binding AktuellaKompetenser}" 
