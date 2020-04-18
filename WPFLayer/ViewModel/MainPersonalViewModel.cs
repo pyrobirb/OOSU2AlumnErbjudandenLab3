@@ -49,7 +49,7 @@ namespace WPFLayer.ViewModel
             _VäljAlumnTillInformationsutskickCommand = new DelegateCommand(VäljAlumnTillInformationsutskick);
             _FlyttaRedigeraAlumnerCommand = new DelegateCommand(FlyttaRedigeraAlumner);
             _PubliceraUtskickCommand = new DelegateCommand(PubliceraUtskick);
-            _SeAnmälningarValdAktivitet_SelectionChangedCommand = new DelegateCommand(SeAnmälningarValdAktivitet_SelectionChanged);
+
             _LoggaUtCommand = new DelegateCommand(LoggaUt);
 
 
@@ -120,6 +120,7 @@ namespace WPFLayer.ViewModel
             {
                 valdAktivitet = value;
                 Changed();
+
             }
         }
 
@@ -161,6 +162,7 @@ namespace WPFLayer.ViewModel
             {
                 aktivitetAnmälda = value;
                 Changed();
+                SeAnmälningarValdAktivitet_SelectionChanged();
             }
         }
 
@@ -301,7 +303,7 @@ namespace WPFLayer.ViewModel
             UtvaldaRedigeraAlumner.Clear();
         }
 
-        private void SeAnmälningarValdAktivitet_SelectionChanged(object commandParameter)
+        private void SeAnmälningarValdAktivitet_SelectionChanged()
         {
 
             ComboBox AnmälningarValdAktivitet =
@@ -427,7 +429,7 @@ namespace WPFLayer.ViewModel
 
         public void UppdateraSeAnmälningarValdAktivitetSeAlumner(Aktivitet selectedItem)
         {
-            
+            Console.WriteLine("poopo");
             ValdAktivitetListaDataGridMedAlumner = Alumn.HämtaAnmälningarGenomAktivitetsID(selectedItem.AktivitetsID);
         }
 

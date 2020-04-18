@@ -284,8 +284,6 @@
                               SelectedItem="{Binding AktivitetAnmälda}" 
                               Grid.Column="1" Grid.Row="2" 
                               ></ComboBox>
-                    <Button  Command="{Binding SeAnmälningarValdAktivitet_SelectionChangedCommand}"
-                        Grid.Column="2" Grid.Row="2" Width="70">Hämta</Button>
                     <Label Grid.Column="1" Grid.Row="3">Anmälda alumner</Label>
                     <DataGrid x:Name="valdAktivitetDataGridMedAlumner"
                         ItemsSource="{Binding ValdAktivitetListaDataGridMedAlumner}" 

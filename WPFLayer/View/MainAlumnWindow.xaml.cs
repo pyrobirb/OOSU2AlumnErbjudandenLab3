@@ -28,14 +28,5 @@ namespace WPFLayer.View
             DataContext = mainAlumnViewModel;
         }
 
-        //private void LoggaUtBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    GLOBALSWPF.AktuellAlumn = null;
-        //    this.Close();
-        //    Application.Current.MainWindow.Show();
-
-
-
-        //}
     }
 }
