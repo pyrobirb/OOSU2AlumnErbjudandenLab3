@@ -58,13 +58,13 @@ namespace WPFLayer.Models
             return x;
         }
 
-        internal static ObservableCollection<Alumn> HämtaProgramAlumner(Program selectedItem)
+        internal static ObservableCollection<Alumn> HämtaProgramAlumner(Program MailProgram)
         {
             BusinessManager bm = new BusinessManager();
             var mapper = MapperConfig.GetMapper();
             ObservableCollection<Alumn> a = new ObservableCollection<Alumn>();
 
-            if (((Program)selectedItem).Namn == "Alla")
+            if ((MailProgram).Namn == "Alla")
             {
                 foreach (var item in bm.HämtaAllaAlumner())
                 {
@@ -75,7 +75,7 @@ namespace WPFLayer.Models
             }
             else
             {
-                foreach (var item in bm.HämtaAlumnerMedProgram(mapper.Map<Program, ProgramDTO>((Program)selectedItem)))
+                foreach (var item in bm.HämtaAlumnerMedProgram(mapper.Map<Program, ProgramDTO>((Program)MailProgram)))
                 {
                     a.Add(mapper.Map<AlumnDTO, Alumn>(item));
                 }

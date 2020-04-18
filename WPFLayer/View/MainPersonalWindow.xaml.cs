@@ -78,20 +78,20 @@ namespace WPFLayer.View
             c.FiltreraProgramAlumner((Program)ProgramComboBox.SelectedItem);
         }
 
-        private void ProgramComboBox_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
-        {
-            c.FiltreraProgramAlumner((Program)SkapaMaillistaFiltreraPåProgramComboBox.SelectedItem);
-        }
+        //private void ProgramComboBox_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
+        //{
+        //    c.FiltreraProgramAlumner((Program)SkapaMaillistaFiltreraPåProgramComboBox.SelectedItem);
+        //}
 
-        private void VäljAlumnTillMaillista_Click(object sender, RoutedEventArgs e)
-        {
-            List<Alumn> temp = new List<Alumn>();
-            foreach (Alumn item in AlumnerAttFlyttaTillSkapaMaillista.SelectedItems)
-            {
-                temp.Add(item);
-            }
-            c.LäggTillAlumnerILista(temp);
-        }
+        //private void VäljAlumnTillMaillista_Click(object sender, RoutedEventArgs e)
+        //{
+        //    List<Alumn> temp = new List<Alumn>();
+        //    foreach (Alumn item in AlumnerAttFlyttaTillSkapaMaillista.SelectedItems)
+        //    {
+        //        temp.Add(item);
+        //    }
+        //    c.LäggTillAlumnerILista(temp);
+        //}
 
         //public void VäljAlumnTillInformationsutskick_Click(object sender, RoutedEventArgs e)
         //{
@@ -149,35 +149,35 @@ namespace WPFLayer.View
 
         //}
 
-        private void SkapaMaillistaOchCSVfil_Click(object sender, RoutedEventArgs e)
-        {
-            if (namngeMaillistaTextBox.Text == "")
-            {
-                MessageBox.Show("Du måste namnge listan.");
-            }
-            else if (skapaMaillistaValdaAlumnerListBox.Items.Count < 1)
-            {
-                MessageBox.Show("Du måste lägga till minst en alumn i listan valda alumner.");
-            }
-            else
-            {
-                c.SkapaMaillista(namngeMaillistaTextBox.Text);
-                MessageBox.Show("Maillistan har skapats!\n\n" + "Maillistans namn och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
-                                 "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug/");
-            }
-            c.TömMailLista();
-            namngeMaillistaTextBox.Clear();
-        }
+        //private void SkapaMaillistaOchCSVfil_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (namngeMaillistaTextBox.Text == "")
+        //    {
+        //        MessageBox.Show("Du måste namnge listan.");
+        //    }
+        //    else if (skapaMaillistaValdaAlumnerListBox.Items.Count < 1)
+        //    {
+        //        MessageBox.Show("Du måste lägga till minst en alumn i listan valda alumner.");
+        //    }
+        //    else
+        //    {
+        //        c.SkapaMaillista(namngeMaillistaTextBox.Text);
+        //        MessageBox.Show("Maillistan har skapats!\n\n" + "Maillistans namn och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
+        //                         "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug/");
+        //    }
+        //    c.TömMailLista();
+        //    namngeMaillistaTextBox.Clear();
+        //}
 
-        private void TaBortAlumnFrånMaillista_Click(object sender, RoutedEventArgs e)
-        {
-            List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
-            foreach (Alumn alumn in skapaMaillistaValdaAlumnerListBox.SelectedItems)
-            {
-                valdaAlumnerAttTabort.Add(alumn);
-            }
-            c.TabortValdaAlumnerFrånUtvaldaAlumner(valdaAlumnerAttTabort);
-        }
+        //private void TaBortAlumnFrånMaillista_Click(object sender, RoutedEventArgs e)
+        //{
+        //    List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
+        //    foreach (Alumn alumn in skapaMaillistaValdaAlumnerListBox.SelectedItems)
+        //    {
+        //        valdaAlumnerAttTabort.Add(alumn);
+        //    }
+        //    c.TabortValdaAlumnerFrånUtvaldaAlumner(valdaAlumnerAttTabort);
+        //}
 
         private void HämtaGamlaMaillistAlumner_Click(object sender, RoutedEventArgs e)
         {

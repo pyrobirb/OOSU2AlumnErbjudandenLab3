@@ -319,8 +319,8 @@
                     <ComboBox x:Name="SkapaMaillistaFiltreraPåProgramComboBox" Grid.Column="1" Grid.Row="4" Margin="0,0,0,10"
                               ItemsSource="{Binding Programs}"
                                DisplayMemberPath="Namn"
-                                SelectedItem="Program"
-                               SelectionChanged="ProgramComboBox_SelectionChanged_2"/>
+                                SelectedItem="{Binding MailProgram}"
+                               />
                     <TextBlock Grid.Column="1" Grid.Row="5" Text="2.Välj Alumn"/>
 
                     <ListBox x:Name="AlumnerAttFlyttaTillSkapaMaillista"
@@ -334,8 +334,9 @@
                     </ListBox>
 
                     <StackPanel Grid.Column="2" Grid.Row="6" VerticalAlignment="Center">
-                        <Button x:Name="VäljAlumnTillMaillista" Padding="10,5"  Margin="10,5" Click="VäljAlumnTillMaillista_Click" >Välj</Button>
-                        <Button x:Name="TaBortAlumnFrånMaillista" Padding="10,5" Margin="10,5" Click="TaBortAlumnFrånMaillista_Click">Ta bort</Button>
+                        <Button x:Name="VäljAlumnTillMaillista" Padding="10,5"  Margin="10,5" 
+                                Command="{Binding VäljAlumnTillMaillista_ClickCommand}">Välj</Button>
+                        <Button x:Name="TaBortAlumnFrånMaillista" Padding="10,5" Margin="10,5" Command="{Binding TaBortAlumnFrånMaillista_ClickCommand}">Ta bort</Button>
                     </StackPanel>
 
                     <TextBlock Grid.Column="3" Grid.Row="3" Text="Utgå från gammal maillista" />
@@ -349,7 +350,7 @@
 
                     <Button Grid.Column="4" Grid.Row="4" Margin="10,0,0,10" Padding="5,0" Click="HämtaGamlaMaillistAlumner_Click">Hämta lista</Button>
                     <StackPanel Grid.Column="4" Grid.Row="6" VerticalAlignment="Center">
-                        <Button  Margin="10,0,0,0" Padding="5" Click="SkapaMaillistaOchCSVfil_Click">
+                        <Button  Margin="10,0,0,0" Padding="5" Command="{Binding SkapaMaillistaOchCSVfil_ClickCommand}">
                             <TextBlock>3.Skapa maillista <LineBreak/> och .CSV-fil</TextBlock>
                         </Button>
                     </StackPanel>

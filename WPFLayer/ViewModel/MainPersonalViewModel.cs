@@ -36,11 +36,20 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _PubliceraUtskickCommand;
         public ICommand PubliceraUtskickCommand => _PubliceraUtskickCommand;
 
-        private readonly DelegateCommand _SeAnmälningarValdAktivitet_SelectionChangedCommand;
-        public ICommand SeAnmälningarValdAktivitet_SelectionChangedCommand => _SeAnmälningarValdAktivitet_SelectionChangedCommand;
-
         private readonly DelegateCommand _LoggaUtCommand;
         public ICommand LoggaUtCommand => _LoggaUtCommand;
+
+        private readonly DelegateCommand _VäljAlumnTillMaillista_ClickCommand;
+        public ICommand VäljAlumnTillMaillista_ClickCommand => _VäljAlumnTillMaillista_ClickCommand;
+
+
+        private readonly DelegateCommand _TaBortAlumnFrånMaillista_ClickCommand;
+        public ICommand TaBortAlumnFrånMaillista_ClickCommand => _TaBortAlumnFrånMaillista_ClickCommand;
+
+        private readonly DelegateCommand _SkapaMaillistaOchCSVfil_ClickCommand;
+        public ICommand SkapaMaillistaOchCSVfil_ClickCommand => _SkapaMaillistaOchCSVfil_ClickCommand;
+
+
 
         public MainPersonalViewModel()
         {
@@ -49,9 +58,10 @@ namespace WPFLayer.ViewModel
             _VäljAlumnTillInformationsutskickCommand = new DelegateCommand(VäljAlumnTillInformationsutskick);
             _FlyttaRedigeraAlumnerCommand = new DelegateCommand(FlyttaRedigeraAlumner);
             _PubliceraUtskickCommand = new DelegateCommand(PubliceraUtskick);
-
             _LoggaUtCommand = new DelegateCommand(LoggaUt);
-
+            _VäljAlumnTillMaillista_ClickCommand = new DelegateCommand(VäljAlumnTillMaillista_Click);
+            _TaBortAlumnFrånMaillista_ClickCommand = new DelegateCommand(TaBortAlumnFrånMaillista_Click);
+            _SkapaMaillistaOchCSVfil_ClickCommand = new DelegateCommand(SkapaMaillistaOchCSVfil_Click);
 
             UppdateraProgram();
             UppdateraAktiviteter();
@@ -166,6 +176,20 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private Program mailProgram = new Program();
+        public Program MailProgram
+        {
+            get { return mailProgram; }
+            set
+            {
+                mailProgram = value;
+                Changed();
+                ProgramComboBox_SelectionChanged_2();
+            }
+        }
+
+        
+
         private ObservableCollection<Aktivitet> aktiviteter;
         public ObservableCollection<Aktivitet> Aktiviteter
         {
@@ -176,6 +200,7 @@ namespace WPFLayer.ViewModel
                 Changed();
             }
         }
+
 
         internal bool SkapaAktiviteten(Aktivitet aktivitet)
         {
@@ -328,6 +353,69 @@ namespace WPFLayer.ViewModel
 
         }
 
+        
+
+        private void ProgramComboBox_SelectionChanged_2()
+        {
+            ComboBox MaillistaProgram =
+                HelperClass.FindChild<ComboBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "SkapaMaillistaFiltreraPåProgramComboBox");
+
+            FiltreraProgramAlumner((Program)MailProgram);
+        }
+
+
+        private void VäljAlumnTillMaillista_Click(object commandParameter)
+        {
+            ListBox AlumnTillMail =
+                HelperClass.FindChild<ListBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "AlumnerAttFlyttaTillSkapaMaillista");
+
+            List<Alumn> temp = new List<Alumn>();
+            foreach (Alumn item in AlumnTillMail.SelectedItems)
+            {
+                temp.Add(item);
+            }
+            LäggTillAlumnerILista(temp);
+        }
+
+        private void TaBortAlumnFrånMaillista_Click(object commandParameter)
+        {
+            ListBox AlumnTillMail =
+                HelperClass.FindChild<ListBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "skapaMaillistaValdaAlumnerListBox");
+
+            List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
+            foreach (Alumn alumn in AlumnTillMail.SelectedItems)
+            {
+                valdaAlumnerAttTabort.Add(alumn);
+            }
+            TabortValdaAlumnerFrånUtvaldaAlumner(valdaAlumnerAttTabort);
+        }
+
+
+        private void SkapaMaillistaOchCSVfil_Click(object commandParameter)
+        {
+            TextBox namngivning =
+                HelperClass.FindChild<TextBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "namngeMaillistaTextBox");
+
+            ListBox skapaMaillista =
+                HelperClass.FindChild<ListBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "skapaMaillistaValdaAlumnerListBox");
+
+            if (namngivning.Text == "")
+            {
+                MessageBox.Show("Du måste namnge listan.");
+            }
+            else if (skapaMaillista.Items.Count < 1)
+            {
+                MessageBox.Show("Du måste lägga till minst en alumn i listan valda alumner.");
+            }
+            else
+            {
+                SkapaMaillista(namngivning.Text);
+                MessageBox.Show("Maillistan har skapats!\n\n" + "Maillistans namn och Alumnernas epostadresser har blivit skrivna till CSV Filen!" +
+                                 "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug/");
+            }
+            TömMailLista();
+            namngivning.Clear();
+        }
 
         private ObservableCollection<Alumn> utvaldaAlumner = new ObservableCollection<Alumn>();
         public ObservableCollection<Alumn> UtvaldaALumner
