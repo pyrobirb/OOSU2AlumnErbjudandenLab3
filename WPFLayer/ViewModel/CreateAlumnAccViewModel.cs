@@ -38,11 +38,6 @@ namespace WPFLayer.ViewModel
             set { alumn = value; } // köra Changed()
         }
 
-
-
-
-
-
         private void SkapaAlumnKonto(object commandParameter)
         {
             if (SkapaAlumnKonto())

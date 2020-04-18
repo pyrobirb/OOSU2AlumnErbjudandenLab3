@@ -26,9 +26,6 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _LoggaInCommand;
         public ICommand LoggaInCommand => _LoggaInCommand;
 
-        private readonly DelegateCommand _SkapaAlumnKontoCommand;
-        public ICommand SkapaAlumnKontoCommand => _SkapaAlumnKontoCommand;
-
         private readonly DelegateCommand _CreateAlumnAccountCommand;
         public ICommand CreateAlumnAccountCommand => _CreateAlumnAccountCommand;
         // ...Properties
@@ -37,7 +34,7 @@ namespace WPFLayer.ViewModel
         {
             //Instantiera propertieserna...
             _LoggaInCommand = new DelegateCommand(LoggaIn);
-            _SkapaAlumnKontoCommand = new DelegateCommand(SkapaAlumnKonto);
+           
             _CreateAlumnAccountCommand = new DelegateCommand(CreateAlumnAccount);
 
             //...Med metoderna nedan
@@ -161,25 +158,6 @@ namespace WPFLayer.ViewModel
 
         }
 
-        public void SkapaAlumnKonto(object commandParameter)
-        {
-
-
-            // skapa alumn-konto öppna ny
-            // fixa en this.close(); liknande grej
-
-            CreateAlumnAccountWindow createAlumnAccountWindow = new CreateAlumnAccountWindow();
-            createAlumnAccountWindow.ShowDialog();
-
-        }
-
-
-
-
-
-
-
-
 
         internal bool KontrolleraInloggningAlumn(string användarnamn, string lösenord)
         {
@@ -191,7 +169,6 @@ namespace WPFLayer.ViewModel
             }
             else return false;
         }
-
 
 
         internal bool KontrolleraInloggningPersonal(string användarnamn, string lösenord)

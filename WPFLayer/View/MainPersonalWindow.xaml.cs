@@ -29,25 +29,11 @@ namespace WPFLayer.View
         {
             InitializeComponent();
             DataContext = c;
-
-            if (!(GLOBALSWPF.AktuellPersonal.Användarnamn == "SuperAdmin" && GLOBALSWPF.AktuellPersonal.PersonalID == 1))
-            {
-                SuperAdminPanel.Visibility = Visibility.Hidden;
-            }
-            
         }
-
 
         private void ProgramComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             c.FiltreraProgramAlumner((Program)ProgramComboBox.SelectedItem);
-        }
-
-        private void SkapaPersonalKonto_Click(object sender, RoutedEventArgs e)
-        {
-            CreatePersonalAccountWindow createPersonalAccountWindow = new CreatePersonalAccountWindow();
-            this.Hide();
-            createPersonalAccountWindow.Show();
         }
 
         private void HämtaGamlaMaillistAlumner_Click(object sender, RoutedEventArgs e)

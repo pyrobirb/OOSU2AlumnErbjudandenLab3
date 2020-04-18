@@ -360,8 +360,8 @@
 
             </TabItem>
         </TabControl>
-        <StackPanel Grid.Column="1" Grid.Row="2" Name="SuperAdminPanel" Height="45" Width="670" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal">
-            <Button Margin="25 0" Name="SkapaPersonalKonto" Height="25" Width="180" Click="SkapaPersonalKonto_Click">Skapa nytt personalkonto</Button>
+        <StackPanel IsEnabled="{Binding IsSuperAdmin}" Grid.Column="1" Grid.Row="2" x:Name="SuperAdminPanel" Height="45" Width="300" VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal">
+            <Button Margin="25 0" x:Name="SkapaPersonalKonto" Height="25" Width="180" Command="{Binding ÖppnaPersonalKontoCommand}">Skapa nytt personalkonto</Button>
         </StackPanel>
         <Button Grid.Column="1" Grid.Row="2" Name="LoggaUtBtn"  HorizontalAlignment="Right" Margin="0,10,0,0" Width="100" Command="{Binding LoggaUtCommand}">Logga ut</Button>
     </Grid>

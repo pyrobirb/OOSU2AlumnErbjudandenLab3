@@ -49,7 +49,8 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _SkapaMaillistaOchCSVfil_ClickCommand;
         public ICommand SkapaMaillistaOchCSVfil_ClickCommand => _SkapaMaillistaOchCSVfil_ClickCommand;
 
-
+        private readonly DelegateCommand _ÖppnaPersonalKontoCommand;
+        public ICommand ÖppnaPersonalKontoCommand => _ÖppnaPersonalKontoCommand;
 
         public MainPersonalViewModel()
         {
@@ -62,12 +63,47 @@ namespace WPFLayer.ViewModel
             _VäljAlumnTillMaillista_ClickCommand = new DelegateCommand(VäljAlumnTillMaillista_Click);
             _TaBortAlumnFrånMaillista_ClickCommand = new DelegateCommand(TaBortAlumnFrånMaillista_Click);
             _SkapaMaillistaOchCSVfil_ClickCommand = new DelegateCommand(SkapaMaillistaOchCSVfil_Click);
+            _ÖppnaPersonalKontoCommand = new DelegateCommand(ÖppnaPersonalKonto);
 
             UppdateraProgram();
             UppdateraAktiviteter();
             DatePickerDagensDatum();
             UppdateraGamlaUtskick();
+            IsSuperAdminCheck();
         }
+
+        private bool isSuperAdmin;
+
+        public bool IsSuperAdmin
+        {
+            get { return isSuperAdmin; }
+            set { isSuperAdmin = value; }
+        }
+
+
+        private void IsSuperAdminCheck()
+        {
+            if (!(GLOBALSWPF.AktuellPersonal.Användarnamn == "SuperAdmin" && GLOBALSWPF.AktuellPersonal.PersonalID == 1))
+            {
+                IsSuperAdmin = false;
+            }
+            else { IsSuperAdmin = true; }
+        }
+        private void ÖppnaPersonalKonto(object commandParameter)
+        {
+                foreach (var window in Application.Current.Windows)
+                {
+                    if (window is MainPersonalWindow x)
+                    {
+                        x.Hide();
+                    }
+                }
+
+
+                CreatePersonalAccountWindow createPersonalAccountWindow = new CreatePersonalAccountWindow();
+                createPersonalAccountWindow.Show();
+        }
+
 
         private void LoggaUt(object commandParameter)
         {
@@ -189,7 +225,7 @@ namespace WPFLayer.ViewModel
             }
         }
 
-        
+
 
         private ObservableCollection<Aktivitet> aktiviteter;
         public ObservableCollection<Aktivitet> Aktiviteter
@@ -321,7 +357,7 @@ namespace WPFLayer.ViewModel
 
             PubliceraAktivitetTillAlumner((Aktivitet)foundComboBox.SelectedItem);
 
-                MessageBox.Show("Utskick skapat");
+            MessageBox.Show("Utskick skapat");
 
 
             UtvaldaRedigeraAlumner.Clear();
@@ -352,7 +388,7 @@ namespace WPFLayer.ViewModel
 
         }
 
-        
+
 
         private void ProgramComboBox_SelectionChanged_2()
         {
@@ -523,7 +559,7 @@ namespace WPFLayer.ViewModel
         internal void ImporteraAlumnerFrånGammalMaillista(Maillista maillista)
         {
             //från selecteditems alumner 
-            
+
 
 
 
