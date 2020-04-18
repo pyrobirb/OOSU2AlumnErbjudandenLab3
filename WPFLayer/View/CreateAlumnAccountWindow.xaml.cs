@@ -27,29 +27,5 @@ namespace WPFLayer.View
             InitializeComponent();
             DataContext = createAlumnAccViewModel;
         }
-
-
-        private void SkapaAlumnKonto(object sender, RoutedEventArgs e)
-        {
-            if (createAlumnAccViewModel.SkapaAlumnKonto())
-            {
-                MessageBox.Show("Ditt Alumn-konto är nu skapat! Var god logga in.");
-                this.Close();
-                Application.Current.MainWindow.Show();
-            }
-            else
-            {
-                MessageBox.Show("Något gick fel, vänligen försök igen! Se till att alla rutor är ifyllda. Se även till att eposten är en giltig epostadress.");
-
-            }
-
-        }
-
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            Application.Current.MainWindow.Show();
-            
-        }
     }
 }

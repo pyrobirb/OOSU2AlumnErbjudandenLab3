@@ -240,11 +240,11 @@ namespace WPFLayer.ViewModel
 
             Application.Current.MainWindow.Show();
 
-            var lösenord = HelperClass.FindChild<PasswordBox>(Application.Current.MainWindow, "Lösenord");
-            lösenord.Password = null;
+            var anvNamn = HelperClass.FindChild<TextBox>(Application.Current.MainWindow, "InloggAnvändarnamn");
+            anvNamn.Text = "";
 
-            var användarnamn = HelperClass.FindChild<TextBox>(Application.Current.MainWindow, "InloggAnvändarnamn");
-            användarnamn.Text = null;
+            var pwdBox = HelperClass.FindChild<PasswordBox>(Application.Current.MainWindow, "Lösenord");
+            pwdBox.Clear();
 
         }
 

@@ -32,78 +32,7 @@ namespace WPFLayer
         public MainWindow()
         {
             InitializeComponent();
-
-
-            //Lägga automapper någonannanstans ( ViewModel?)
-
-            //Automapper Initialization
-            //var config = new MapperConfiguration(cfg =>
-            //{
-            //    cfg.CreateMap<AlumnDTO, Alumn>().ReverseMap();
-            //    cfg.CreateMap<Alumn, AlumnDTO>().ReverseMap();
-            //    cfg.CreateMap<Personal, PersonalDTO>().ReverseMap();
-            //    cfg.CreateMap<AktivitetDTO, Aktivitet>().ReverseMap();
-            //    cfg.CreateMap<InformationsutskickDTO, Informationsutskick>().ReverseMap();
-            //    cfg.CreateMap<KompetensDTO, Kompetens>().ReverseMap();
-            //    cfg.CreateMap<MaillistaDTO, Maillista>().ReverseMap();
-            //    cfg.CreateMap<ProgramDTO, Program>().ReverseMap();
-            //    cfg.CreateMap<AlumnAktivitetBokningDTO, AlumnAktivitetsBokning>().ReverseMap();
-            //    cfg.CreateMap<AlumnKompetensDTO, AlumnKompetens>().ReverseMap();
-            //    cfg.CreateMap<AlumnMaillistaDTO, AlumnMaillista>().ReverseMap();
-            //    cfg.CreateMap<AlumnProgramDTO, AlumnProgram>().ReverseMap();
-            //    cfg.CreateMap<InformationsutskickAktivitetDTO, InformationsutskickAktivitet>().ReverseMap();
-            //    cfg.CreateMap<InformationsutskickAlumnDTO, InformationsutskickAlumn>().ReverseMap();
-            //    cfg.CreateMap<PersonalInformationsutskickDTO, PersonalInformationsutskick>().ReverseMap();
-
-
-            //});
-            //var mapper = config.CreateMapper();
-            //MapperConfig.SetMapper(mapper);
-
-
             DataContext = loginViewModel;
         }
-
-        private void CreateAlumnAccBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            CreateAlumnAccountWindow createAlumnAccountWindow = new CreateAlumnAccountWindow();
-            createAlumnAccountWindow.ShowDialog();
-        }
-
-        //private void LoginBtn_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if ((User.Text == null) || (User.Text == ""))
-        //    {
-        //        MessageBox.Show("Vänligen en typ av användare att logga in som");
-        //    }
-        //    if (User.Text == "Personal")
-        //    {
-        //        if (!(loginViewModel.KontrolleraInloggningPersonal(Användarnamn.Text, Lösenord.Password)))
-        //        {
-        //            MessageBox.Show("Fel användarnamn eller lösenord");
-        //        }
-        //        else
-        //        {
-        //            MainPersonalWindow mainPersonalWindow = new MainPersonalWindow();
-        //            this.Hide();
-        //            mainPersonalWindow.Show();
-        //        }
-        //    }
-        //    if (User.Text == "Alumn")
-        //    {
-        //        if (!(loginViewModel.KontrolleraInloggningAlumn(Användarnamn.Text, Lösenord.Password)))
-        //        {
-        //            MessageBox.Show("Fel användarnamn eller lösenord");
-        //        }
-        //        else
-        //        {
-        //            MainAlumnWindow mainAlumnWindow = new MainAlumnWindow();
-        //            this.Hide();
-        //            mainAlumnWindow.Show();
-        //        }
-        //    }
-            
-        //}
     }
 }

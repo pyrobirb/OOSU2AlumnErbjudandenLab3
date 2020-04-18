@@ -29,9 +29,9 @@
                 </StackPanel>
             </StackPanel>
 
-            <Button Margin="0 10"  HorizontalAlignment="Right" Height="25" Width="150" Click="SkapaPersonalKonto">Skapa Personal-konto</Button>
+            <Button Margin="0 10"  HorizontalAlignment="Right" Height="25" Width="150" Command="{Binding SkapaPersonalKontoCommand}">Skapa Personal-konto</Button>
             <TextBlock TextWrapping="Wrap" FontSize="8">Genom att trycka på "Skapa personal-konto" godkänner du villkoren för GDPR och behandlingen av dina personuppgifter enligt anställningslagen.</TextBlock>
-            <Button Width="80" Height="20" HorizontalAlignment="Right" Margin="0 10" Click="BackBtn_Click">Tillbaka</Button>
+            <Button Width="80" Height="20" HorizontalAlignment="Right" Margin="0 10" Command="{Binding TillbakaCommand}">Tillbaka</Button>
         </StackPanel>
     </Grid>
 </Window>

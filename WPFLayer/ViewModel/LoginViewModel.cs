@@ -28,6 +28,9 @@ namespace WPFLayer.ViewModel
 
         private readonly DelegateCommand _SkapaAlumnKontoCommand;
         public ICommand SkapaAlumnKontoCommand => _SkapaAlumnKontoCommand;
+
+        private readonly DelegateCommand _CreateAlumnAccountCommand;
+        public ICommand CreateAlumnAccountCommand => _CreateAlumnAccountCommand;
         // ...Properties
 
         public LoginViewModel()
@@ -35,6 +38,8 @@ namespace WPFLayer.ViewModel
             //Instantiera propertieserna...
             _LoggaInCommand = new DelegateCommand(LoggaIn);
             _SkapaAlumnKontoCommand = new DelegateCommand(SkapaAlumnKonto);
+            _CreateAlumnAccountCommand = new DelegateCommand(CreateAlumnAccount);
+
             //...Med metoderna nedan
 
             //Automapper Initialization
@@ -91,7 +96,6 @@ namespace WPFLayer.ViewModel
             HelperClass.FindChild<PasswordBox>(Application.Current.MainWindow, "Lösenord");
 
 
-        
             if ((Användare == null) || (Användare == ""))
             {
                 MessageBox.Show("Vänligen en typ av användare att logga in som");
@@ -113,7 +117,6 @@ namespace WPFLayer.ViewModel
                             x.Hide();
                         }
                     }
-
 
                     mainPersonalWindow.Show();
                 }
@@ -142,6 +145,21 @@ namespace WPFLayer.ViewModel
         }
 
 
+        public void CreateAlumnAccount(object commandParameter)
+        {
+
+            foreach (var window in Application.Current.Windows)
+            {
+                if (window is MainWindow x)
+                {
+                    x.Hide();
+                }
+            }
+
+            CreateAlumnAccountWindow createAlumnAccountWindow = new CreateAlumnAccountWindow();
+            createAlumnAccountWindow.ShowDialog();
+
+        }
 
         public void SkapaAlumnKonto(object commandParameter)
         {

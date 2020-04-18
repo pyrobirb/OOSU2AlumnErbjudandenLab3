@@ -81,13 +81,14 @@ namespace WPFLayer.ViewModel
                 }
             }
 
+            var anvNamn = HelperClass.FindChild<TextBox>(Application.Current.MainWindow, "InloggAnvändarnamn");
+            anvNamn.Text = "";
+
+            var pwdBox = HelperClass.FindChild<PasswordBox>(Application.Current.MainWindow, "Lösenord");
+            pwdBox.Clear();
+
             Application.Current.MainWindow.Show();
 
-            var lösenord = HelperClass.FindChild<PasswordBox>(Application.Current.MainWindow, "Lösenord");
-            lösenord.Password = null;
-
-            var användarnamn = HelperClass.FindChild<TextBox>(Application.Current.MainWindow, "InloggAnvändarnamn");
-            användarnamn.Text = null;
         }
 
         private void UppdateraGamlaUtskick()
@@ -269,8 +270,6 @@ namespace WPFLayer.ViewModel
 
         public void RedigeraAktivitet(object commandParameter)
         {
-
-
 
             int selectedAktivitetID = ValdAktivitet.AktivitetsID;
             string titel = ValdAktivitet.Titel;
@@ -524,7 +523,7 @@ namespace WPFLayer.ViewModel
         internal void ImporteraAlumnerFrånGammalMaillista(Maillista maillista)
         {
             //från selecteditems alumner 
-            ;
+            
 
 
 
