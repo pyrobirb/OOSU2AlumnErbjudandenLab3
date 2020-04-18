@@ -39,6 +39,8 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _SeAnmälningarValdAktivitet_SelectionChangedCommand;
         public ICommand SeAnmälningarValdAktivitet_SelectionChangedCommand => _SeAnmälningarValdAktivitet_SelectionChangedCommand;
 
+        private readonly DelegateCommand _LoggaUtCommand;
+        public ICommand LoggaUtCommand => _LoggaUtCommand;
 
         public MainPersonalViewModel()
         {
@@ -48,10 +50,34 @@ namespace WPFLayer.ViewModel
             _FlyttaRedigeraAlumnerCommand = new DelegateCommand(FlyttaRedigeraAlumner);
             _PubliceraUtskickCommand = new DelegateCommand(PubliceraUtskick);
             _SeAnmälningarValdAktivitet_SelectionChangedCommand = new DelegateCommand(SeAnmälningarValdAktivitet_SelectionChanged);
+            _LoggaUtCommand = new DelegateCommand(LoggaUt);
+
+
             UppdateraProgram();
             UppdateraAktiviteter();
             DatePickerDagensDatum();
             UppdateraGamlaUtskick();
+        }
+
+        private void LoggaUt(object commandParameter)
+        {
+            GLOBALSWPF.AktuellPersonal = null;
+
+            foreach (var window in Application.Current.Windows)
+            {
+                if (window is MainPersonalWindow x)
+                {
+                    x.Close();
+                }
+            }
+
+            Application.Current.MainWindow.Show();
+
+            var lösenord = HelperClass.FindChild<PasswordBox>(Application.Current.MainWindow, "Lösenord");
+            lösenord.Password = null;
+
+            var användarnamn = HelperClass.FindChild<TextBox>(Application.Current.MainWindow, "InloggAnvändarnamn");
+            användarnamn.Text = null;
         }
 
         private void UppdateraGamlaUtskick()

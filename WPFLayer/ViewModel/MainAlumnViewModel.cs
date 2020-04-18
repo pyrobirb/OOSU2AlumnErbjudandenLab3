@@ -46,8 +46,9 @@ namespace WPFLayer.ViewModel
 
         private readonly DelegateCommand _TaBortKompetensCommand;
         public ICommand TaBortKompetensCommand => _TaBortKompetensCommand;
-        
 
+        private readonly DelegateCommand _LoggaUtCommand;
+        public ICommand LoggaUtCommand => _LoggaUtCommand;
 
 
         public MainAlumnViewModel()
@@ -62,7 +63,8 @@ namespace WPFLayer.ViewModel
             _LäggTillKompetensCommand = new DelegateCommand(LäggTillKompetens);
             _TaBortProgramCommand = new DelegateCommand(TaBortProgram);
             _TaBortKompetensCommand = new DelegateCommand(TaBortKompetens);
-            
+            _LoggaUtCommand = new DelegateCommand(LoggaUt);
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -222,7 +224,29 @@ namespace WPFLayer.ViewModel
         }
 
 
+        private void LoggaUt(object commandParameter)
+        {
+            GLOBALSWPF.AktuellAlumn = null;
+            
+            
 
+            foreach (var window in Application.Current.Windows)
+            {
+                if (window is MainAlumnWindow x)
+                {
+                    x.Close();
+                }
+            }
+
+            Application.Current.MainWindow.Show();
+
+            var lösenord = HelperClass.FindChild<PasswordBox>(Application.Current.MainWindow, "Lösenord");
+            lösenord.Password = null;
+
+            var användarnamn = HelperClass.FindChild<TextBox>(Application.Current.MainWindow, "InloggAnvändarnamn");
+            användarnamn.Text = null;
+
+        }
 
         public void Update()
         {

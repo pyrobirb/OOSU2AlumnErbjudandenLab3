@@ -110,7 +110,7 @@ namespace WPFLayer.ViewModel
                     {
                         if (window is MainWindow x)
                         {
-                            x.Close();
+                            x.Hide();
                         }
                     }
 
@@ -131,7 +131,7 @@ namespace WPFLayer.ViewModel
                     {
                         if (window is MainWindow x)
                         {
-                            x.Close();
+                            x.Hide();
                         }
                     }
                     mainAlumnWindow.Show();
