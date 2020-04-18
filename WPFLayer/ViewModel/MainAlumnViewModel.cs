@@ -13,15 +13,56 @@ using BusinessEntites.Models.Junction;
 using System.Collections.Specialized;
 using WPFLayer.Models.Junctions;
 using BusinessEntites.Models;
+using System.Windows.Input;
+using WPFLayer.View;
+using System.Windows.Controls;
 
 namespace WPFLayer.ViewModel
 {
     public class MainAlumnViewModel : INotifyPropertyChanged, INotifyCollectionChanged
     {
 
+        // Skapa ICommands
+        private readonly DelegateCommand _SparaÄndradeAnvändaruppgifterCommand;
+        public ICommand SparaÄndradeAnvändaruppgifterCommand => _SparaÄndradeAnvändaruppgifterCommand;
+
+        private readonly DelegateCommand _TaBortAlumnKontoCommand;
+        public ICommand TaBortAlumnKontoCommand => _TaBortAlumnKontoCommand;
+
+        private readonly DelegateCommand _BokaValdAktivitetCommand;
+        public ICommand BokaValdAktivitetCommand => _BokaValdAktivitetCommand;
+
+        private readonly DelegateCommand _AvbokaValdAktivitetCommand;
+        public ICommand AvbokaValdAktivitetCommand => _AvbokaValdAktivitetCommand;
+
+        private readonly DelegateCommand _LäggtillUtbildningCommand;
+        public ICommand LäggtillUtbildningCommand => _LäggtillUtbildningCommand;
+
+        private readonly DelegateCommand _LäggTillKompetensCommand;
+        public ICommand LäggTillKompetensCommand => _LäggTillKompetensCommand;
+
+        private readonly DelegateCommand _TaBortProgramCommand;
+        public ICommand TaBortProgramCommand => _TaBortProgramCommand;
+
+        private readonly DelegateCommand _TaBortKompetensCommand;
+        public ICommand TaBortKompetensCommand => _TaBortKompetensCommand;
+        
+
+
+
         public MainAlumnViewModel()
         {
             Update();
+            //Instantiera propertieserna
+            _SparaÄndradeAnvändaruppgifterCommand = new DelegateCommand(SparaÄndradeAnvändaruppgifter);
+            _TaBortAlumnKontoCommand = new DelegateCommand(TaBortAlumnKonto);
+            _BokaValdAktivitetCommand = new DelegateCommand(BokaValdAktivitet);
+            _AvbokaValdAktivitetCommand = new DelegateCommand(AvbokaValdAktivitet);
+            _LäggtillUtbildningCommand = new DelegateCommand(LäggtillUtbildning);
+            _LäggTillKompetensCommand = new DelegateCommand(LäggTillKompetens);
+            _TaBortProgramCommand = new DelegateCommand(TaBortProgram);
+            _TaBortKompetensCommand = new DelegateCommand(TaBortKompetens);
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -120,13 +161,68 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private Aktivitet selectedAktivitet;
 
-
-        internal void BokaValdAktivitet(object selectedItem)
+        public Aktivitet SelectedAktivitet
         {
-            Aktivitet.HämtaBokadeAktiviteter(selectedItem);           
-            Update();
+            get { return selectedAktivitet; }
+            set
+            {
+                selectedAktivitet = value;
+                Changed();
+            }
         }
+
+
+        private string textBoxTextUtbildning;
+
+        public string TextBoxTextUtbildning
+        {
+            get { return textBoxTextUtbildning; }
+            set {
+                textBoxTextUtbildning = value;
+                Changed();
+            }
+        }
+
+        private string textBoxTextKompetens;
+
+        public string TextBoxTextKompetens
+        {
+            get { return textBoxTextKompetens; }
+            set
+            {
+                textBoxTextKompetens = value;
+                Changed();
+            }
+        }
+
+        private Program selectedProgram;
+
+        public Program Selectedprogram
+        {
+            get { return selectedProgram;  }
+            set
+            {
+                selectedProgram = value;
+                Changed();
+            }
+        }
+
+        private Kompetens selectedKompetens;
+
+        public Kompetens SelectedKompetens
+        {
+            get { return selectedKompetens; }
+            set
+            {
+                selectedKompetens = value;
+                Changed();
+            }
+        }
+
+
+
 
         public void Update()
         {
@@ -140,46 +236,63 @@ namespace WPFLayer.ViewModel
         }
 
 
-
-        internal void SparaÄndradeAnvändaruppgifter(string ändraFörnamn, string ändraEfternamn, string ändraEpostadress, string ändraLösenord)
+        internal void BokaValdAktivitet(object commandParameter) //Klar
         {
-            Alumn.SparaÄndradeUppgifter(ändraFörnamn, ändraEfternamn, ändraEpostadress, ändraLösenord);
+            Aktivitet.HämtaBokadeAktiviteter(SelectedAktivitet);
             Update();
         }
 
-        internal void TaBortAlumnKonto()
+        public void SparaÄndradeAnvändaruppgifter(object commandParameter) //Klar
+        {
+            Alumn.SparaÄndradeUppgifter(inloggadAlumn.Förnamn, inloggadAlumn.Efternamn, inloggadAlumn.Användarnamn, inloggadAlumn.Lösenord);
+            Update();
+        }
+
+        public void TaBortAlumnKonto(object commandParameter) //Klar
         {
             Alumn.TaBort();
+            GLOBALSWPF.AktuellAlumn = null;
+            MainWindow loginWindow = new MainWindow();
+            foreach (var window in Application.Current.Windows)
+            {
+                if (window is MainAlumnWindow x)
+                {
+                    x.Close();
+                }
+            }
+            loginWindow.Show();
         }
 
-        internal void AvbokaValdAktivitet(object selectedItem)
+        internal void AvbokaValdAktivitet(object commandParameter) //Klar
         {
-            Aktivitet.Avboka(selectedItem);
+            Aktivitet.Avboka(SelectedAktivitet);
             Update();
 
         }
 
-        internal void LäggtillUtbildning(string text)
+        internal void LäggtillUtbildning(object commandParameter) //Klar
         {
-            Program.LäggTill(text);
+            Program.LäggTill(TextBoxTextUtbildning);
+            TextBoxTextUtbildning = string.Empty;
             Update();
         }
 
-        internal void LäggTillKompetens(string text)
+        internal void LäggTillKompetens(object commandParameter) //Klar
         {
-            Kompetens.LäggTill(text);
+            Kompetens.LäggTill(TextBoxTextKompetens);
+            TextBoxTextKompetens = string.Empty;
             Update();
         }
 
-        internal void TaBortProgram(object selectedItem)
+        internal void TaBortProgram(object commandParameter) //Klar
         {
-            Program.Tabort(selectedItem);
+            Program.Tabort(Selectedprogram);
             Update();
         }
 
-        internal void TaBortKompetens(object selectedItem)
+        internal void TaBortKompetens(object commandParameter)
         {
-            Kompetens.TaBort(selectedItem);
+            Kompetens.TaBort(SelectedKompetens);
             Update();
         }
 
