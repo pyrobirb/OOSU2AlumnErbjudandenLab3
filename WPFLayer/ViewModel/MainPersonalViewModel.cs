@@ -77,6 +77,8 @@ namespace WPFLayer.ViewModel
             IsSuperAdminCheck();
 
             UtvaldaRedigeraAlumnerMaillista = new ObservableCollection<Alumn>();
+            PubliceraAktivitetAlumn = new ObservableCollection<Alumn>();
+
         }
 
         private bool isSuperAdmin;
@@ -385,7 +387,7 @@ namespace WPFLayer.ViewModel
             MessageBox.Show("Utskick skapat");
 
 
-            UtvaldaRedigeraAlumner.Clear();
+            PubliceraAktivitetAlumn.Clear();
         }
 
         private void SeAnmälningarValdAktivitet_SelectionChanged()
@@ -524,6 +526,17 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private ObservableCollection<Alumn> publiceraAktivitetAlumn = new ObservableCollection<Alumn>();
+        public ObservableCollection<Alumn> PubliceraAktivitetAlumn
+        {
+            get { return publiceraAktivitetAlumn; }
+            set
+            {
+                publiceraAktivitetAlumn = value;
+                Changed();
+            }
+        }
+
         private ObservableCollection<Alumn> valdAktivitetListaDataGridMedAlumner = new ObservableCollection<Alumn>();
         public ObservableCollection<Alumn> ValdAktivitetListaDataGridMedAlumner
         {
@@ -554,7 +567,7 @@ namespace WPFLayer.ViewModel
         public void TaBortValdaAlumnerFrånRedigeraLista(List<Alumn> alumnerAttTaBort)
         {
 
-            var nyLista = UtvaldaRedigeraAlumner.Except(alumnerAttTaBort);
+            var nyLista = PubliceraAktivitetAlumn.Except(alumnerAttTaBort);
 
             ObservableCollection<Alumn> utvaldaNyLista = new ObservableCollection<Alumn>();
             foreach (Alumn alumn in nyLista)
@@ -562,7 +575,7 @@ namespace WPFLayer.ViewModel
                 utvaldaNyLista.Add(alumn);
             }
 
-            UtvaldaRedigeraAlumner = utvaldaNyLista;
+            PubliceraAktivitetAlumn = utvaldaNyLista;
 
         }
 
@@ -604,7 +617,7 @@ namespace WPFLayer.ViewModel
             foreach (var item in temp)
             {
                 bool AddAlumn = true;
-                foreach (Alumn alumn in UtvaldaRedigeraAlumner)
+                foreach (Alumn alumn in PubliceraAktivitetAlumn)
                 {
                     if (alumn.AnvändarID == item.AnvändarID)
                     {
@@ -613,7 +626,7 @@ namespace WPFLayer.ViewModel
                 }
                 if (AddAlumn)
                 {
-                    UtvaldaRedigeraAlumner.Add(item);
+                    PubliceraAktivitetAlumn.Add(item);
                 }
 
             }
