@@ -56,16 +56,20 @@ namespace DataLayer.Repositories.UniqueRepository
                 }
                 else
                 {
-                    AlumnProgramDTO ap = new AlumnProgramDTO()
+                    IQueryable<AlumnProgramDTO> Dubbelkoll = db.AlumnProgram.Where(x => x.AlumnID == id).Where(x => x.ProgramID == befintligtProgramID.FirstOrDefault());
+
+                    if (!Dubbelkoll.Any())
                     {
-                        AlumnID = id,
-                        ProgramID = befintligtProgramID.FirstOrDefault()
-                    };
-                    this.Context.AlumnProgram.Add(ap);
-                    this.Context.SaveChanges();
+                        AlumnProgramDTO ap = new AlumnProgramDTO()
+                        {
+                            AlumnID = id,
+                            ProgramID = befintligtProgramID.FirstOrDefault()
+                        };
+                        this.Context.AlumnProgram.Add(ap);
+                        this.Context.SaveChanges();
+                    }
+
                 }
-
-
 
             }
         }
