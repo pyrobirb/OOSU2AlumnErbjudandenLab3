@@ -557,7 +557,7 @@ namespace WPFLayer.ViewModel
 
         internal void PubliceraAktivitetTillAlumner(Aktivitet selectedItem)
         {
-            Aktivitet.PubliceraAktivitetTillAlumner(selectedItem, UtvaldaRedigeraAlumner);
+            Aktivitet.PubliceraAktivitetTillAlumner(selectedItem, PubliceraAktivitetAlumn);
         }
 
         public void TaBortValdaAlumnerFrånRedigeraLista(ObservableCollection<Alumn> alumnerAttTaBort)
