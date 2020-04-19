@@ -32,11 +32,7 @@ namespace DataLayer.Repositories.UniqueRepository
         {
             using (var db = new DatabaseContext())
             {
-                IQueryable<ProgramDTO> query = db.Program.Where(x => x.Namn.Equals(text));
-                IQueryable<int> befintligtProgramID = query.Select(x => x.ProgramID);
 
-                if (!query.Any())
-                {
                     ProgramDTO program = new ProgramDTO()
                     {
                         Namn = text
@@ -53,18 +49,7 @@ namespace DataLayer.Repositories.UniqueRepository
                     };
                     this.Context.AlumnProgram.Add(ap);
                     this.Context.SaveChanges();
-                }
-                else
-                {
-                    AlumnProgramDTO ap = new AlumnProgramDTO()
-                    {
-                        AlumnID = id,
-                        ProgramID = befintligtProgramID.FirstOrDefault()
-                    };
-                    this.Context.AlumnProgram.Add(ap);
-                    this.Context.SaveChanges();
-                }
-
+                
 
 
             }
