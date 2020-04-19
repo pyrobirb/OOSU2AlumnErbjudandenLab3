@@ -54,7 +54,7 @@ namespace WPFLayer.ViewModel
 
         private readonly DelegateCommand _HämtaGamlaMaillistAlumner_ClickCommand;
         public ICommand HämtaGamlaMaillistAlumner_ClickCommand => _HämtaGamlaMaillistAlumner_ClickCommand;
-        
+
 
         public MainPersonalViewModel()
         {
@@ -75,9 +75,6 @@ namespace WPFLayer.ViewModel
             DatePickerDagensDatum();
             UppdateraGamlaUtskick();
             IsSuperAdminCheck();
-
-            UtvaldaRedigeraAlumnerMaillista = new ObservableCollection<Alumn>();
-            PubliceraAktivitetAlumn = new ObservableCollection<Alumn>();
 
         }
 
@@ -194,7 +191,7 @@ namespace WPFLayer.ViewModel
             }
         }
 
-        
+
 
         private ObservableCollection<Program> programs;
         public ObservableCollection<Program> Programs
@@ -204,7 +201,7 @@ namespace WPFLayer.ViewModel
             {
                 programs = value;
                 Changed();
-                
+
             }
         }
 
@@ -367,8 +364,7 @@ namespace WPFLayer.ViewModel
             ListBox foundListBox =
             HelperClass.FindChild<ListBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "PubliceraAktivitetValdaAlumner");
 
-
-            List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
+            ObservableCollection<Alumn> valdaAlumnerAttTabort = new ObservableCollection<Alumn>();
             foreach (Alumn alumn in foundListBox.SelectedItems)
             {
                 valdaAlumnerAttTabort.Add(alumn);
@@ -427,7 +423,7 @@ namespace WPFLayer.ViewModel
             ListBox AlumnTillMail =
                 HelperClass.FindChild<ListBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "AlumnerAttFlyttaTillSkapaMaillista");
 
-            List<Alumn> temp = new List<Alumn>();
+            ObservableCollection<Alumn> temp = new ObservableCollection<Alumn>();
             foreach (Alumn item in AlumnTillMail.SelectedItems)
             {
                 temp.Add(item);
@@ -440,7 +436,7 @@ namespace WPFLayer.ViewModel
             ListBox AlumnTillMail =
                 HelperClass.FindChild<ListBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "skapaMaillistaValdaAlumnerListBox");
 
-            List<Alumn> valdaAlumnerAttTabort = new List<Alumn>();
+            ObservableCollection<Alumn> valdaAlumnerAttTabort = new ObservableCollection<Alumn>();
             foreach (Alumn alumn in AlumnTillMail.SelectedItems)
             {
                 valdaAlumnerAttTabort.Add(alumn);
@@ -473,16 +469,16 @@ namespace WPFLayer.ViewModel
             }
             TömMailLista();
 
-           
+
             UppdateraGamlaUtskick();
-            
+
 
             namngivning.Clear();
         }
 
         private void ProgramComboBox_SelectionChanged_1()
         {
-                FiltreraProgramAlumner((Program)FiltreraProgram);
+            FiltreraProgramAlumner((Program)FiltreraProgram);
 
         }
 
@@ -518,10 +514,10 @@ namespace WPFLayer.ViewModel
         private ObservableCollection<Alumn> utvaldaRedigeraAlumnerMaillista = new ObservableCollection<Alumn>();
         public ObservableCollection<Alumn> UtvaldaRedigeraAlumnerMaillista
         {
-            get { return utvaldaRedigeraAlumner; }
+            get { return utvaldaRedigeraAlumnerMaillista; }
             set
             {
-                utvaldaRedigeraAlumner = value;
+                utvaldaRedigeraAlumnerMaillista = value;
                 Changed();
             }
         }
@@ -564,7 +560,7 @@ namespace WPFLayer.ViewModel
             Aktivitet.PubliceraAktivitetTillAlumner(selectedItem, UtvaldaRedigeraAlumner);
         }
 
-        public void TaBortValdaAlumnerFrånRedigeraLista(List<Alumn> alumnerAttTaBort)
+        public void TaBortValdaAlumnerFrånRedigeraLista(ObservableCollection<Alumn> alumnerAttTaBort)
         {
 
             var nyLista = PubliceraAktivitetAlumn.Except(alumnerAttTaBort);
@@ -609,7 +605,24 @@ namespace WPFLayer.ViewModel
 
         internal void ImporteraAlumnerFrånGammalMaillista(Maillista maillista)
         {
-            LäggTillAlumnerILista(Maillista.HämtaAlumnerFrånMaillista(maillista));
+            if (maillista != null)
+            {
+                ObservableCollection<Alumn> alumner = new ObservableCollection<Alumn>();
+                var lista = Maillista.HämtaAlumnerFrånMaillista(maillista);
+
+                foreach (var item in lista)
+                {
+                    alumner.Add(item);
+                }
+
+                LäggTillAlumnerILista(alumner);
+            }
+            else
+            {
+                MessageBox.Show("Det finns ingen maillista att importera!");
+            }
+
+
         }
 
         internal void LäggTillAlumnerIRedigeraLista(List<Alumn> temp)
@@ -632,7 +645,7 @@ namespace WPFLayer.ViewModel
             }
         }
 
-        internal void LäggTillAlumnerILista(List<Alumn> temp)
+        internal void LäggTillAlumnerILista(ObservableCollection<Alumn> temp)
         {
 
             if (temp != null)
@@ -657,12 +670,12 @@ namespace WPFLayer.ViewModel
 
         }
 
-        internal void TabortValdaAlumnerFrånUtvaldaAlumner(List<Alumn> valdaAlumnerAttTabort)
+        internal void TabortValdaAlumnerFrånUtvaldaAlumner(ObservableCollection<Alumn> valdaAlumnerAttTabort)
         {
 
 
 
-            var nyLista = UtvaldaRedigeraAlumner.Except(valdaAlumnerAttTabort);
+            var nyLista = UtvaldaRedigeraAlumnerMaillista.Except(valdaAlumnerAttTabort);
 
             ObservableCollection<Alumn> utvaldaNyLista = new ObservableCollection<Alumn>();
             foreach (Alumn alumn in nyLista)
