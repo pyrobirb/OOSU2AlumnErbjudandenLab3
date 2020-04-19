@@ -358,7 +358,7 @@
                     </ListBox>
 
 
-                    <Button Grid.Column="4" Grid.Row="4" Margin="10,0,0,10" Padding="5,0" Click="HämtaGamlaMaillistAlumner_Click">Hämta lista</Button>
+                    <Button Grid.Column="4" Grid.Row="4" Margin="10,0,0,10" Padding="5,0"  Command="{Binding HämtaGamlaMaillistAlumner_ClickCommand}">Hämta lista</Button>
                     <StackPanel Grid.Column="4" Grid.Row="6" VerticalAlignment="Center">
                         <Button  Margin="10,0,0,0" Padding="5" Command="{Binding SkapaMaillistaOchCSVfil_ClickCommand}">
                             <TextBlock>3.Skapa maillista <LineBreak/> och .CSV-fil</TextBlock>

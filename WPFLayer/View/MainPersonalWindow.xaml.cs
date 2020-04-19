@@ -32,9 +32,6 @@ namespace WPFLayer.View
         }
 
 
-        private void HämtaGamlaMaillistAlumner_Click(object sender, RoutedEventArgs e)
-        {
-            c.ImporteraAlumnerFrånGammalMaillista((Maillista)GamlaMaillistorComboBox.SelectedItem);
-        }
+
     }
 }

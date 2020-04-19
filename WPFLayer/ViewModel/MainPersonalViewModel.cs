@@ -52,6 +52,10 @@ namespace WPFLayer.ViewModel
         private readonly DelegateCommand _ÖppnaPersonalKontoCommand;
         public ICommand ÖppnaPersonalKontoCommand => _ÖppnaPersonalKontoCommand;
 
+        private readonly DelegateCommand _HämtaGamlaMaillistAlumner_ClickCommand;
+        public ICommand HämtaGamlaMaillistAlumner_ClickCommand => _HämtaGamlaMaillistAlumner_ClickCommand;
+        
+
         public MainPersonalViewModel()
         {
             _SkapaAktivitetMeddelandeCommand = new DelegateCommand(SkapaAktivitetMeddelande);
@@ -64,6 +68,7 @@ namespace WPFLayer.ViewModel
             _TaBortAlumnFrånMaillista_ClickCommand = new DelegateCommand(TaBortAlumnFrånMaillista_Click);
             _SkapaMaillistaOchCSVfil_ClickCommand = new DelegateCommand(SkapaMaillistaOchCSVfil_Click);
             _ÖppnaPersonalKontoCommand = new DelegateCommand(ÖppnaPersonalKonto);
+            _HämtaGamlaMaillistAlumner_ClickCommand = new DelegateCommand(HämtaGamlaMaillistAlumner_Click);
 
             UppdateraProgram();
             UppdateraAktiviteter();
@@ -477,6 +482,14 @@ namespace WPFLayer.ViewModel
         {
                 FiltreraProgramAlumner((Program)FiltreraProgram);
 
+        }
+
+        private void HämtaGamlaMaillistAlumner_Click(object commandParameter)
+        {
+            ComboBox hämtaMaillista =
+                HelperClass.FindChild<ComboBox>(Application.Current.Windows.OfType<MainPersonalWindow>().FirstOrDefault(), "GamlaMaillistorComboBox");
+
+            ImporteraAlumnerFrånGammalMaillista((Maillista)hämtaMaillista.SelectedItem);
         }
 
         private ObservableCollection<Alumn> utvaldaAlumner = new ObservableCollection<Alumn>();
