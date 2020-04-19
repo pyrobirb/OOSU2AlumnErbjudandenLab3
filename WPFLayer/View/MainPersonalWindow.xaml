@@ -51,7 +51,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Label Grid.Column="1" Grid.Row="1" Margin="0,0,1,0" Grid.ColumnSpan="3">Titel</Label>
                     <TextBox x:Name="TitelTxtBox" 
                              Grid.Column="1" Grid.Row="2" 
@@ -97,7 +97,7 @@
                         TextWrapping="Wrap" 
                              DataContext="{Binding Aktivitet}"
                              Text="{Binding Beskrivning, Mode=TwoWay}" Grid.Column="5" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="11" ></TextBox>
-                    
+
                     <Button Command="{Binding SkapaAktivitetMeddelandeCommand}" Grid.Column="7" Grid.Row="13" Margin="0,10,0,0">Skapa Aktivitet</Button>
 
                 </Grid>
@@ -346,7 +346,16 @@
                               SelectedItem="Maillista"
                               Grid.Column="3" Grid.Row="4" Margin="0,0,0,10"/>
                     <TextBlock Grid.Column="3" Grid.Row="5" Text="Valda alumner" />
-                    <ListBox Name="skapaMaillistaValdaAlumnerListBox" Grid.Column="3" Grid.Row="6" ItemsSource="{Binding UtvaldaRedigeraAlumnerMaillista}" DisplayMemberPath="Förnamn" SelectionMode="Multiple"></ListBox>
+                    <ListBox Name="skapaMaillistaValdaAlumnerListBox" Grid.Column="3" Grid.Row="6" 
+                             ItemsSource="{Binding UtvaldaRedigeraAlumnerMaillista}" 
+                             SelectionMode="Multiple">
+                        <ListBox.ItemTemplate>
+                            <HierarchicalDataTemplate>
+                                <ListBoxItem Content="{Binding Förnamn}" >
+                                </ListBoxItem>
+                            </HierarchicalDataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
 
                     <Button Grid.Column="4" Grid.Row="4" Margin="10,0,0,10" Padding="5,0" Click="HämtaGamlaMaillistAlumner_Click">Hämta lista</Button>

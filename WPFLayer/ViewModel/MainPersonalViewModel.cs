@@ -70,6 +70,8 @@ namespace WPFLayer.ViewModel
             DatePickerDagensDatum();
             UppdateraGamlaUtskick();
             IsSuperAdminCheck();
+
+            UtvaldaRedigeraAlumnerMaillista = new ObservableCollection<Alumn>();
         }
 
         private bool isSuperAdmin;
