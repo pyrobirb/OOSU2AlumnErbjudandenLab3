@@ -31,10 +31,6 @@ namespace WPFLayer.View
             DataContext = c;
         }
 
-        private void ProgramComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            c.FiltreraProgramAlumner((Program)ProgramComboBox.SelectedItem);
-        }
 
         private void HämtaGamlaMaillistAlumner_Click(object sender, RoutedEventArgs e)
         {

@@ -173,6 +173,21 @@ namespace WPFLayer.ViewModel
             }
         }
 
+        private Program filtreraProgram;
+
+        public Program FiltreraProgram
+        {
+            get { return filtreraProgram; }
+            set
+            {
+                filtreraProgram = value;
+                Changed();
+                ProgramComboBox_SelectionChanged_1();
+
+            }
+        }
+
+        
 
         private ObservableCollection<Program> programs;
         public ObservableCollection<Program> Programs
@@ -182,8 +197,11 @@ namespace WPFLayer.ViewModel
             {
                 programs = value;
                 Changed();
+                
             }
         }
+
+
 
         public void UppdateraProgram()
         {
@@ -248,9 +266,9 @@ namespace WPFLayer.ViewModel
 
         }
 
-        internal void FiltreraProgramAlumner(Program selectedItem)
+        internal void FiltreraProgramAlumner(Program FiltreraProgram)
         {
-            Alumner = Program.HämtaProgramAlumner(selectedItem);
+            Alumner = Program.HämtaProgramAlumner(FiltreraProgram);
         }
 
 
@@ -448,11 +466,17 @@ namespace WPFLayer.ViewModel
             }
             TömMailLista();
 
-            // OBS TEST
+           
             UppdateraGamlaUtskick();
-            // TA BORT OM EJ FUNKAR 
+            
 
             namngivning.Clear();
+        }
+
+        private void ProgramComboBox_SelectionChanged_1()
+        {
+                FiltreraProgramAlumner((Program)FiltreraProgram);
+
         }
 
         private ObservableCollection<Alumn> utvaldaAlumner = new ObservableCollection<Alumn>();

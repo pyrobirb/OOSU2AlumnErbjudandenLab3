@@ -224,8 +224,8 @@
                     <Label Grid.Column="1" Grid.Row="2">Filtrera på program</Label>
                     <ComboBox x:Name="ProgramComboBox" ItemsSource="{Binding Programs}" 
                               DisplayMemberPath="Namn"
-                                SelectedItem="Program"
-                              Grid.Column="1" Grid.Row="3" SelectionChanged="ProgramComboBox_SelectionChanged_1"></ComboBox>
+                                SelectedItem="{Binding FiltreraProgram}"
+                              Grid.Column="1" Grid.Row="3" ></ComboBox>
                     <Label Grid.Column="1" Grid.Row="4">Välj alumn</Label>
                     <ListBox x:Name="FlyttaRedigeraAlumner"
                         ItemsSource="{Binding Alumner}" SelectionMode="Multiple" Grid.Column="1" Grid.Row="5"  >
