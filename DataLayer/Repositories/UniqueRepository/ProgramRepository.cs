@@ -32,22 +32,40 @@ namespace DataLayer.Repositories.UniqueRepository
         {
             using (var db = new DatabaseContext())
             {
-                ProgramDTO program = new ProgramDTO()
-                {
-                    Namn = text
-                };
-                db.Program.Add(program);
-                db.SaveChanges();
+                IQueryable<ProgramDTO> query = db.Program.Where(x => x.Namn.Equals(text));
+                IQueryable<int> befintligtProgramID = query.Select(x => x.ProgramID);
 
-                db.Program.Attach(program);
-
-                AlumnProgramDTO ap = new AlumnProgramDTO()
+                if (!query.Any())
                 {
-                    AlumnID = id,
-                    ProgramID = program.ProgramID
-                };
-                this.Context.AlumnProgram.Add(ap);
-                this.Context.SaveChanges();
+                    ProgramDTO program = new ProgramDTO()
+                    {
+                        Namn = text
+                    };
+                    db.Program.Add(program);
+                    db.SaveChanges();
+
+                    db.Program.Attach(program);
+
+                    AlumnProgramDTO ap = new AlumnProgramDTO()
+                    {
+                        AlumnID = id,
+                        ProgramID = program.ProgramID
+                    };
+                    this.Context.AlumnProgram.Add(ap);
+                    this.Context.SaveChanges();
+                }
+                else
+                {
+                    AlumnProgramDTO ap = new AlumnProgramDTO()
+                    {
+                        AlumnID = id,
+                        ProgramID = befintligtProgramID.FirstOrDefault()
+                    };
+                    this.Context.AlumnProgram.Add(ap);
+                    this.Context.SaveChanges();
+                }
+
+
 
             }
         }
