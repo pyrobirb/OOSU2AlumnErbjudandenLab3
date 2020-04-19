@@ -104,7 +104,12 @@ namespace WPFLayer.Models
             var selectedProgramToRemove = (Program)selectedItem;
 
             bm.TaBortProgramFrånAlumn(mapper.Map<Program, ProgramDTO>(selectedProgramToRemove), GLOBALSWPF.AktuellAlumn);
-            bm.TaBortProgram(mapper.Map<Program, ProgramDTO>(selectedProgramToRemove));
+            List<AlumnDTO> AlumnerMedProgram = bm.HämtaAlumnerMedProgram(mapper.Map<Program, ProgramDTO>(selectedProgramToRemove));
+            if (AlumnerMedProgram.Count()<1)
+            {
+                bm.TaBortProgram(mapper.Map<Program, ProgramDTO>(selectedProgramToRemove));
+            }
+
         }
 
         internal static void LäggTill(string text)
