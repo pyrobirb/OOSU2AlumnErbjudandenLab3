@@ -384,11 +384,7 @@ namespace WPFLayer.ViewModel
             DataGridAnmäldaAlumner.Columns[7].Visibility = Visibility.Hidden;
             DataGridAnmäldaAlumner.Columns[8].Visibility = Visibility.Visible;
             DataGridAnmäldaAlumner.Columns[9].Visibility = Visibility.Visible;
-
-
         }
-
-
 
         private void ProgramComboBox_SelectionChanged_2()
         {
@@ -552,7 +548,6 @@ namespace WPFLayer.ViewModel
         internal void TömMailLista()
         {
             UtvaldaRedigeraAlumnerMaillista = new ObservableCollection<Alumn>();
-
         }
 
         public void UppdateraSeAnmälningarValdAktivitetSeAlumner(Aktivitet selectedItem)
