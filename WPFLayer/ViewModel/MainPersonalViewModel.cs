@@ -91,17 +91,17 @@ namespace WPFLayer.ViewModel
         }
         private void ÖppnaPersonalKonto(object commandParameter)
         {
-                foreach (var window in Application.Current.Windows)
+            foreach (var window in Application.Current.Windows)
+            {
+                if (window is MainPersonalWindow x)
                 {
-                    if (window is MainPersonalWindow x)
-                    {
-                        x.Hide();
-                    }
+                    x.Hide();
                 }
+            }
 
 
-                CreatePersonalAccountWindow createPersonalAccountWindow = new CreatePersonalAccountWindow();
-                createPersonalAccountWindow.Show();
+            CreatePersonalAccountWindow createPersonalAccountWindow = new CreatePersonalAccountWindow();
+            createPersonalAccountWindow.Show();
         }
 
 
@@ -449,6 +449,11 @@ namespace WPFLayer.ViewModel
                                  "Filen hittar du OOSU2AlumnErbjudanden/OOSU2AlumnErbjudanden/PresentationLayer/bin/Debug/");
             }
             TömMailLista();
+
+            // OBS TEST
+            UppdateraGamlaUtskick();
+            // TA BORT OM EJ FUNKAR 
+
             namngivning.Clear();
         }
 
@@ -552,18 +557,11 @@ namespace WPFLayer.ViewModel
 
         public void UppdateraSeAnmälningarValdAktivitetSeAlumner(Aktivitet selectedItem)
         {
-            Console.WriteLine("poopo");
             ValdAktivitetListaDataGridMedAlumner = Alumn.HämtaAnmälningarGenomAktivitetsID(selectedItem.AktivitetsID);
         }
 
         internal void ImporteraAlumnerFrånGammalMaillista(Maillista maillista)
         {
-            //från selecteditems alumner 
-
-
-
-
-            //till UtvaldaRedigeraAlumnerMaillista  
             LäggTillAlumnerILista(Maillista.HämtaAlumnerFrånMaillista(maillista));
         }
 
@@ -589,26 +587,34 @@ namespace WPFLayer.ViewModel
 
         internal void LäggTillAlumnerILista(List<Alumn> temp)
         {
-            foreach (var item in temp)
-            {
-                bool AddAlumn = true;
-                foreach (Alumn alumn in UtvaldaRedigeraAlumnerMaillista)
-                {
-                    if (alumn.AnvändarID == item.AnvändarID)
-                    {
-                        AddAlumn = false;
-                    }
-                }
-                if (AddAlumn)
-                {
-                    UtvaldaRedigeraAlumnerMaillista.Add(item);
-                }
 
+            if (temp != null)
+            {
+                foreach (var item in temp)
+                {
+                    bool AddAlumn = true;
+                    foreach (Alumn alumn in UtvaldaRedigeraAlumnerMaillista)
+                    {
+                        if (alumn.AnvändarID == item.AnvändarID)
+                        {
+                            AddAlumn = false;
+                        }
+                    }
+                    if (AddAlumn)
+                    {
+                        UtvaldaRedigeraAlumnerMaillista.Add(item);
+                    }
+
+                }
             }
+
         }
 
         internal void TabortValdaAlumnerFrånUtvaldaAlumner(List<Alumn> valdaAlumnerAttTabort)
         {
+
+
+
             var nyLista = UtvaldaRedigeraAlumner.Except(valdaAlumnerAttTabort);
 
             ObservableCollection<Alumn> utvaldaNyLista = new ObservableCollection<Alumn>();
@@ -618,6 +624,8 @@ namespace WPFLayer.ViewModel
             }
 
             UtvaldaRedigeraAlumnerMaillista = utvaldaNyLista;
+
+
         }
     }
 }

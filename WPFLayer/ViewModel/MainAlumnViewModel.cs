@@ -87,7 +87,9 @@ namespace WPFLayer.ViewModel
         public ObservableCollection<Alumn> Alumner
         {
             get { return alumner; }
-            set { alumner = value;
+            set
+            {
+                alumner = value;
                 Changed();
             }
         }
@@ -96,9 +98,11 @@ namespace WPFLayer.ViewModel
         public ObservableCollection<Aktivitet> Aktiviteter
         {
             get { return aktiviteter; }
-            set { aktiviteter = value;
+            set
+            {
+                aktiviteter = value;
                 Changed();
-            }      
+            }
         }
 
         private Alumn inloggadAlumn = new Alumn();
@@ -181,7 +185,8 @@ namespace WPFLayer.ViewModel
         public string TextBoxTextUtbildning
         {
             get { return textBoxTextUtbildning; }
-            set {
+            set
+            {
                 textBoxTextUtbildning = value;
                 Changed();
             }
@@ -203,7 +208,7 @@ namespace WPFLayer.ViewModel
 
         public Program Selectedprogram
         {
-            get { return selectedProgram;  }
+            get { return selectedProgram; }
             set
             {
                 selectedProgram = value;
@@ -227,8 +232,8 @@ namespace WPFLayer.ViewModel
         private void LoggaUt(object commandParameter)
         {
             GLOBALSWPF.AktuellAlumn = null;
-            
-            
+
+
 
             foreach (var window in Application.Current.Windows)
             {
@@ -310,14 +315,23 @@ namespace WPFLayer.ViewModel
 
         internal void TaBortProgram(object commandParameter) //Klar
         {
-            Program.Tabort(Selectedprogram);
-            Update();
+
+            if (Selectedprogram != null)
+            {
+                Program.Tabort(Selectedprogram);
+                Update();
+            }
         }
 
         internal void TaBortKompetens(object commandParameter)
         {
-            Kompetens.TaBort(SelectedKompetens);
-            Update();
+
+            if (SelectedKompetens != null)
+            {
+
+                Kompetens.TaBort(SelectedKompetens);
+                Update();
+            }
         }
 
 

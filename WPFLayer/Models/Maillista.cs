@@ -66,11 +66,17 @@ namespace WPFLayer.Models
             var mapper = MapperConfig.GetMapper();
             List<Alumn> x = new List<Alumn>();
 
-            foreach (var item in bm.HämtaAlumnerFrånMailLista(maillista.MaillistaID))
+
+            if (maillista != null)
             {
-                x.Add(mapper.Map<AlumnDTO, Alumn>(item));
+                foreach (var item in bm.HämtaAlumnerFrånMailLista(maillista.MaillistaID))
+                {
+                    x.Add(mapper.Map<AlumnDTO, Alumn>(item));
+                }
+                return x;
             }
-            return x;
+            else return null;
+
 
         }
 
