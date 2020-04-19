@@ -30,8 +30,6 @@ namespace DataLayer.Repositories.UniqueRepository
 
         public void LäggTillUtbildningTillAlumn(int id, string text)
         {
-
-
             using (var db = new DatabaseContext())
             {
                 KompetensDTO kompetens = new KompetensDTO()
